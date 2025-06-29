@@ -1,73 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Faith Based Pilot</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
       background-color: #fff;
       color: #000;
       transition: background-color 0.3s, color 0.3s;
     }
+
     nav {
       background-color: #f0f0f0;
-      padding: 10px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
+
     nav a {
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
       color: inherit;
+      font-size: 14px;
     }
+
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
     }
-    .nav-right button {
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      padding: 0;
+
+    .nav-right a {
+      font-size: 20px;
+      font-weight: normal;
     }
+
     .dark-mode {
       background-color: #121212;
       color: #ffffff;
     }
+
     .dark-mode nav {
       background-color: #1e1e1e;
     }
-    .section-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 30px;
-      gap: 30px;
-    }
-    .section-box {
-      flex: 1 1 250px;
-      max-width: 400px;
-      background-color: #f5f7ff;
+
+    main {
       padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      transition: background-color 0.3s;
     }
-    .dark-mode .section-box {
-      background-color: #1e1e2e;
-    }
+
     h1 {
       text-align: center;
-      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .column {
+      background-color: #f5f7ff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 300px;
+      flex: 1 1 300px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .dark-mode .column {
+      background-color: #242424;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        font-size: 12px;
+        margin: 5px;
+      }
+
+      .nav-right a {
+        font-size: 18px;
+      }
+
+      .columns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      main {
+        padding: 15px;
+      }
     }
   </style>
 </head>
-<body>
+<body class="light">
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
@@ -76,50 +111,44 @@
       <a href="the-hangar.html">The Hangar</a>
     </div>
     <div class="nav-right">
-      <button id="themeToggle" onclick="toggleTheme()">🌞</button>
+      <a href="#" onclick="themeToggle()" id="theme-icon">☀️</a>
     </div>
   </nav>
-
   <main>
     <h1>About Faith Based Pilot</h1>
-    <div class="section-container">
-      <div class="section-box">
+    <div class="columns">
+      <div class="column">
         <h2>Welcome</h2>
-        <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.</p>
+        <p>
+          Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
+        </p>
       </div>
-      <div class="section-box">
+      <div class="column">
         <h2>Mission</h2>
-        <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and helping them draw closer to the teachings of Jesus Christ.</p>
+        <p>
+          Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and helping them draw closer to the teachings of Jesus Christ.
+        </p>
       </div>
-      <div class="section-box">
+      <div class="column">
         <h2>Why Anonymity</h2>
-        <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.</p>
+        <p>
+          I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
+        </p>
       </div>
     </div>
   </main>
-
   <script>
-    const themeButton = document.getElementById('themeToggle');
-
-    function applyTheme(theme) {
-      if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeButton.textContent = '🌙';
+    function themeToggle() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      if (body.classList.contains("light")) {
+        body.classList.replace("light", "dark-mode");
+        icon.textContent = "🌙";
       } else {
-        document.body.classList.remove('dark-mode');
-        themeButton.textContent = '🌞';
+        body.classList.replace("dark-mode", "light");
+        icon.textContent = "☀️";
       }
     }
-
-    function toggleTheme() {
-      const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', newTheme);
-      applyTheme(newTheme);
-    }
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme);
   </script>
 </body>
 </html>
