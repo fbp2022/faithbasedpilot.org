@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logbook – Faith Based Pilot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logbook</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -52,9 +52,8 @@
     }
 
     main {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 40px 60px;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -62,9 +61,26 @@
       margin-bottom: 30px;
     }
 
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
+    .log-entry {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      background-color: #f5f7ff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .dark-mode .log-entry {
+      background-color: #242424;
+    }
+
+    .log-entry h2 {
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    .log-entry p {
+      margin: 10px 0 0 0;
+      line-height: 1.5;
     }
 
     @media (max-width: 600px) {
@@ -78,12 +94,12 @@
       }
 
       main {
-        padding: 15px;
+        padding: 20px;
       }
     }
   </style>
 </head>
-<body class="light">
+<body>
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
@@ -97,39 +113,38 @@
   </nav>
   <main>
     <h1>Logbook</h1>
-    <p>This section is a digital record of key moments, reflections, and entries that parallel a pilot’s flight log. Here I chronicle spiritual lessons, challenges, victories, and revelations along my journey as a Faith Based Pilot in Christ. Each log is a checkpoint in faith and purpose.</p>
+
+    <div class="log-entry">
+      <h2>June 29, 2025</h2>
+      <p>First full week of the 16-week plan is done. Despite a rough start with hydration on Monday, the rest of the week smoothed out. Shoulder strain during dumbbell presses was short-lived and healed up by the next day. Workout compliance was good. OMAD went well, with adjusted snacks improving focus and energy. Excited to start Week 2 strong.</p>
+    </div>
+
+    <div class="log-entry">
+      <h2>June 22, 2025</h2>
+      <p>Day 1 of the 16-week plan. Completed initial weigh-in and setup. Logged food and water, and did the full Monday workout. Starting stats, progress targets, and diet structure (OMAD) were finalized this weekend.</p>
+    </div>
+
+    <!-- Add more log-entry blocks as needed -->
+
   </main>
- <script>
-  // Apply saved theme on page load
-  window.onload = function() {
-    const savedTheme = localStorage.getItem("theme");
-    const body = document.body;
-    const icon = document.getElementById("theme-icon");
-
-    if (savedTheme === "dark") {
-      body.classList.replace("light", "dark-mode");
-      icon.textContent = "🌙";
-    } else {
-      body.classList.replace("dark-mode", "light");
-      icon.textContent = "☀️";
+  <script>
+    function themeToggle() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      const isDark = body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      icon.textContent = isDark ? "🌙" : "☀️";
     }
-  };
 
-  // Toggle and save theme
-  function themeToggle() {
-    const body = document.body;
-    const icon = document.getElementById("theme-icon");
-
-    if (body.classList.contains("light")) {
-      body.classList.replace("light", "dark-mode");
-      icon.textContent = "🌙";
-      localStorage.setItem("theme", "dark");
-    } else {
-      body.classList.replace("dark-mode", "light");
-      icon.textContent = "☀️";
-      localStorage.setItem("theme", "light");
-    }
-  }
-</script>
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme");
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      if (savedTheme === "dark") {
+        body.classList.add("dark-mode");
+        icon.textContent = "🌙";
+      }
+    };
+  </script>
 </body>
 </html>
