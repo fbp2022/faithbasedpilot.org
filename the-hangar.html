@@ -123,18 +123,37 @@
       <a href="#">Continue Reading</a>
     </div>
   </main>
-  <script>
-    function themeToggle() {
-      const body = document.body;
-      const icon = document.getElementById("theme-icon");
-      if (body.classList.contains("light")) {
-        body.classList.replace("light", "dark-mode");
-        icon.textContent = "🌙";
-      } else {
-        body.classList.replace("dark-mode", "light");
-        icon.textContent = "☀️";
-      }
+ <script>
+  // Apply saved theme on page load
+  window.onload = function() {
+    const savedTheme = localStorage.getItem("theme");
+    const body = document.body;
+    const icon = document.getElementById("theme-icon");
+
+    if (savedTheme === "dark") {
+      body.classList.replace("light", "dark-mode");
+      icon.textContent = "🌙";
+    } else {
+      body.classList.replace("dark-mode", "light");
+      icon.textContent = "☀️";
     }
-  </script>
+  };
+
+  // Toggle and save theme
+  function themeToggle() {
+    const body = document.body;
+    const icon = document.getElementById("theme-icon");
+
+    if (body.classList.contains("light")) {
+      body.classList.replace("light", "dark-mode");
+      icon.textContent = "🌙";
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.replace("dark-mode", "light");
+      icon.textContent = "☀️";
+      localStorage.setItem("theme", "light");
+    }
+  }
+</script>
 </body>
 </html>
