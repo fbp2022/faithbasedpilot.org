@@ -1,42 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Faith Based Pilot in Christ</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #000;
+      transition: background-color 0.3s, color 0.3s;
+    }
     nav {
       background-color: #f0f0f0;
       padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     nav a {
-      margin-right: 15px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
-      color: #333;
+      color: inherit;
     }
-    nav a:hover {
-      text-decoration: underline;
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .dark-mode nav {
+      background-color: #1e1e1e;
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">FBP</a>
-    <a href="beliefs.html">Beliefs</a>
-    <a href="logbook.html">Logbook</a>
-    <a href="the-hangar.html">The Hangar</a>
+    <div class="nav-left">
+      <a href="index.html">FBP</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="themeToggle()">Toggle Theme</a>
+    </div>
   </nav>
-
-  <h1>About Faith Based Pilot in Christ</h1>
-
-  <h2>Welcome</h2>
-  <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.</p>
-
-  <h2>Mission</h2>
-  <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and helping them draw closer to the teachings of Jesus Christ.</p>
-
-  <h2>Why Anonymity</h2>
-  <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.</p>
+  <main>
+    <h1>About Faith Based Pilot in Christ</h1>
+    <h2>Welcome</h2>
+    <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father...</p>
+    <h2>Mission</h2>
+    <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world...</p>
+    <h2>Why Anonymity</h2>
+    <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message...</p>
+  </main>
+  <script>
+    function themeToggle() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
