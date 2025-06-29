@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Hangar – Faith Based Pilot</title>
   <style>
     body {
@@ -52,9 +52,8 @@
     }
 
     main {
-      padding: 20px;
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 40px 60px;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -63,21 +62,27 @@
     }
 
     .post {
-      margin-bottom: 40px;
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      background-color: #f5f7ff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .dark-mode .post {
+      background-color: #242424;
     }
 
     .post h2 {
-      margin-bottom: 10px;
-    }
-
-    .post p {
-      margin-bottom: 10px;
+      margin-top: 0;
     }
 
     .post a {
-      color: #0077cc;
-      text-decoration: none;
-      font-size: 14px;
+      display: inline-block;
+      margin-top: 10px;
+      color: inherit;
+      text-decoration: underline;
+      font-weight: bold;
     }
 
     @media (max-width: 600px) {
@@ -91,12 +96,12 @@
       }
 
       main {
-        padding: 15px;
+        padding: 20px;
       }
     }
   </style>
 </head>
-<body class="light">
+<body>
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
@@ -112,48 +117,38 @@
     <h1>The Hangar</h1>
 
     <div class="post">
-      <h2>May 26, 2025 – The Strength of a Servant</h2>
-      <p>Serving is easy when it’s public... But true servanthood begins where pride dies. This post dives into the kind of leadership that isn’t loud—but lowly.</p>
+      <h2>May 26, 2025 – The Strength of a Servant: Killing Pride and Leading Low</h2>
+      <p>Serving is easy when it’s public, praised, or profitable. But true servanthood begins where pride dies. In private. When no one else is watching. When there's no applause. This post explores what it really means to lead through humility, not power.</p>
       <a href="#">Continue Reading</a>
     </div>
 
     <div class="post">
       <h2>May 26, 2025 – Slave to Christ</h2>
-      <p>What does it really mean to be a servant—or even a slave—of Christ? Explore the language and the call to total surrender.</p>
+      <p>I’ve been thinking about how our culture has shaped the way we understand the words servant and slave. Scripture uses both, but our modern ears only hear one. What does it mean to truly belong to Christ, body and soul?</p>
       <a href="#">Continue Reading</a>
     </div>
+
+    <!-- Add additional posts as needed -->
+
   </main>
- <script>
-  // Apply saved theme on page load
-  window.onload = function() {
-    const savedTheme = localStorage.getItem("theme");
-    const body = document.body;
-    const icon = document.getElementById("theme-icon");
-
-    if (savedTheme === "dark") {
-      body.classList.replace("light", "dark-mode");
-      icon.textContent = "🌙";
-    } else {
-      body.classList.replace("dark-mode", "light");
-      icon.textContent = "☀️";
+  <script>
+    function themeToggle() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      const isDark = body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      icon.textContent = isDark ? "🌙" : "☀️";
     }
-  };
 
-  // Toggle and save theme
-  function themeToggle() {
-    const body = document.body;
-    const icon = document.getElementById("theme-icon");
-
-    if (body.classList.contains("light")) {
-      body.classList.replace("light", "dark-mode");
-      icon.textContent = "🌙";
-      localStorage.setItem("theme", "dark");
-    } else {
-      body.classList.replace("dark-mode", "light");
-      icon.textContent = "☀️";
-      localStorage.setItem("theme", "light");
-    }
-  }
-</script>
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme");
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      if (savedTheme === "dark") {
+        body.classList.add("dark-mode");
+        icon.textContent = "🌙";
+      }
+    };
+  </script>
 </body>
 </html>
