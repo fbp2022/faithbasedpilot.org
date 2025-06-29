@@ -1,47 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logbook – Faith Based Pilot</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
       background-color: #fff;
       color: #000;
       transition: background-color 0.3s, color 0.3s;
     }
+
     nav {
       background-color: #f0f0f0;
-      padding: 10px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
+
     nav a {
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
       color: inherit;
+      font-size: 14px;
     }
+
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
     }
+
     .nav-right a {
+      font-size: 20px;
       font-weight: normal;
-      font-size: 0.9em;
     }
+
     .dark-mode {
       background-color: #121212;
       color: #ffffff;
     }
+
     .dark-mode nav {
       background-color: #1e1e1e;
     }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        font-size: 12px;
+        margin: 5px;
+      }
+
+      .nav-right a {
+        font-size: 18px;
+      }
+
+      main {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="light">
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
@@ -50,28 +92,24 @@
       <a href="the-hangar.html">The Hangar</a>
     </div>
     <div class="nav-right">
-      <a href="#" onclick="themeToggle()" id="theme-toggle" title="Toggle Theme">☀️</a>
+      <a href="#" onclick="themeToggle()" id="theme-icon">☀️</a>
     </div>
   </nav>
   <main>
     <h1>Logbook</h1>
-    <p>Notes, flight analogies, spiritual reflections — all logged here like an aviator’s journal.</p>
+    <p>This section is a digital record of key moments, reflections, and entries that parallel a pilot’s flight log. Here I chronicle spiritual lessons, challenges, victories, and revelations along my journey as a Faith Based Pilot in Christ. Each log is a checkpoint in faith and purpose.</p>
   </main>
   <script>
-    const toggle = document.getElementById("theme-toggle");
-    const savedTheme = localStorage.getItem('theme');
-    const body = document.body;
-
-    if (savedTheme === 'dark') {
-      body.classList.add('dark-mode');
-      toggle.textContent = "🌙";
-    }
-
     function themeToggle() {
-      body.classList.toggle("dark-mode");
-      const isDark = body.classList.contains("dark-mode");
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      toggle.textContent = isDark ? "🌙" : "☀️";
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      if (body.classList.contains("light")) {
+        body.classList.replace("light", "dark-mode");
+        icon.textContent = "🌙";
+      } else {
+        body.classList.replace("dark-mode", "light");
+        icon.textContent = "☀️";
+      }
     }
   </script>
 </body>
