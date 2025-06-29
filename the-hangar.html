@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>The Hangar – Faith Based Pilot</title>
   <style>
     body {
@@ -37,9 +37,43 @@
     }
   </style>
 </head>
-<body class="light">
+<body>
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
       <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.htm
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="themeToggle()">Toggle Theme</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>The Hangar</h1>
+
+    <h2>May 26, 2025 – The Strength of a Servant: Killing Pride and Leading Low</h2>
+    <p>Serving is easy when it’s public... But true servanthood begins where pride dies. It begins in secret places where humility, not applause, reigns. When we learn to serve when no one sees, we mirror the heart of Christ. As pilots learn to follow their instruments in clouds, so we learn to follow the Spirit, not our ego. Humility isn’t a weakness—it’s the secret weapon of a servant leader.</p>
+    <a href="#">Continue Reading</a>
+
+    <h2>May 26, 2025 – Slave to Christ</h2>
+    <p>I’ve been thinking about how our culture has shaped the way we understand the words servant and slave. But the Apostle Paul wasn’t ashamed to call himself a “slave of Christ.” He knew the world’s freedom was empty. Christ’s ownership meant life, purpose, and destiny. I want my obedience to be that total—where my identity is wrapped in Him, and nothing else matters.</p>
+    <a href="#">Continue Reading</a>
+  </main>
+
+  <script>
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+
+    function themeToggle() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>
