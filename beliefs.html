@@ -1,54 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beliefs - Faith Based Pilot</title>
+  <meta charset="UTF-8">
+  <title>Beliefs – Faith Based Pilot</title>
   <style>
-    nav {
-      background-color: #f0f0f0;
-      padding: 10px;
-    }
-    nav a {
-      margin-right: 15px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
+    /* Same styles as index.html */
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">FBP</a>
-    <a href="beliefs.html">Beliefs</a>
-    <a href="logbook.html">Logbook</a>
-    <a href="the-hangar.html">The Hangar</a>
+    <div class="nav-left">
+      <a href="index.html">FBP</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="themeToggle()">Toggle Theme</a>
+    </div>
   </nav>
-
-  <h1>Beliefs</h1>
-
-  <h2>About God</h2>
-  <p>I firmly believe in the existence of one true God who exists eternally in three persons: God the Father, God the Son, and God the Holy Spirit. Their equality in power and glory is unquestionable. God's act of creating everything from nothing merely by speaking is a testament to His divine authority and creative prowess.</p>
-
-  <h2>About the Bible</h2>
-  <p>I hold it in the highest regard as God's direct communication to humanity. It stands as an unparalleled love story and the most remarkable rescue mission in the accounts of the universe. Its perfection and infallibility are absolute. The Word of God serves as the bedrock guiding our actions. Moreover, I firmly assert that the Word of God holds precedence over any earthly law that contradicts its teachings.</p>
-
-  <h2>About the Holy Spirit</h2>
-  <p>The Holy Spirit is a distinct person within the triune Godhead, equal in importance alongside the Father and the Son. His presence is actively felt in our world, guiding individuals by revealing truths about sin, righteousness, and judgment. Upon embracing faith, the Holy Spirit dwells within believers, empowering them for their life's purpose and service. Bestowing spiritual gifts according to His discretion and timing, He remains the source of these divine abilities. The primary manifestation of being filled with the Holy Spirit is reflected in one's genuine love for others. The spiritual gifts remain relevant within the body of Christ today and must be used responsibly, in alignment with God's Word.</p>
-
-  <h2>About Mankind</h2>
-  <p>It's an intrinsic part of our nature to fall short of God's perfect standard due to our inherent sinfulness. Despite our efforts, we are incapable of saving ourselves. Everyone has experienced sin, yet through Christ, we are transformed into renewed beings.</p>
-
-  <h2>About Jesus</h2>
-  <p>Jesus stands as the eternal essence of God—fully divine, inseparable from God the Father and God the Spirit within the triune Godhead. Born of a virgin in humble surroundings, He lived a sinless life and sacrificed Himself for humanity's sins. Through His voluntary death and resurrection, He conquered sin and death. He ascended to Heaven and prepares an everlasting dwelling for believers. His imminent return awaits.</p>
-
-  <h2>About the Church</h2>
-  <p>I believe in the singular church, guided by Jesus Himself. The purpose of this ministry is to intimately know, adore, and bring glory to God while spreading His message. Jesus appoints leaders to empower believers, and the church gathers regularly for study, fellowship, communion, and prayer. A fundamental command is to spread the teachings of Christ worldwide.</p>
-
-  <h2>About Human Life</h2>
-  <p>Every individual is sacred, created by God in His own image. This inherent worth extends from the womb to the elderly, the differently abled, and all stages in between. Our duty is to safeguard, cherish, and honor every aspect of human life, as guided by Psalm 139:16–14 and Jeremiah 1:5.</p>
+  <main>
+    <h1>Beliefs</h1>
+    <p>These are the foundational truths of Faith Based Pilot: Jesus is the Son of God, the Bible is the inerrant Word of God, salvation is through Christ alone...</p>
+  </main>
+  <script>
+    function themeToggle() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
