@@ -52,6 +52,19 @@
     .section-box {
       flex: 1 1 250px;
       max-width: 400px;
+      background-color: #f5f7ff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+    .section-box img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .dark-mode .section-box {
+      background-color: #1e1e2e;
     }
     h1 {
       text-align: center;
@@ -70,48 +83,4 @@
     <div class="nav-right">
       <button id="themeToggle" onclick="toggleTheme()">🌞</button>
     </div>
-  </nav>
-
-  <main>
-    <h1>About Faith Based Pilot</h1>
-    <div class="section-container">
-      <div class="section-box">
-        <h2>Welcome</h2>
-        <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father. Here, faith and aviation intersect to help others take flight through biblical truths, spiritual insights, and Christ-centered devotionals.</p>
-      </div>
-      <div class="section-box">
-        <h2>Mission</h2>
-        <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world. I use aviation parallels to illustrate spiritual lessons, hoping to inspire others to walk boldly with Christ, no matter the turbulence they face.</p>
-      </div>
-      <div class="section-box">
-        <h2>Why Anonymity</h2>
-        <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message—not mine. My identity isn’t the story—His is. I’m just the vessel, not the destination.</p>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    const themeButton = document.getElementById('themeToggle');
-
-    function applyTheme(theme) {
-      if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeButton.textContent = '🌙';
-      } else {
-        document.body.classList.remove('dark-mode');
-        themeButton.textContent = '🌞';
-      }
-    }
-
-    function toggleTheme() {
-      const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', newTheme);
-      applyTheme(newTheme);
-    }
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme);
-  </script>
-</body>
-</html>
+  </nav
