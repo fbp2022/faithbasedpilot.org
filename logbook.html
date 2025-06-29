@@ -99,18 +99,37 @@
     <h1>Logbook</h1>
     <p>This section is a digital record of key moments, reflections, and entries that parallel a pilot’s flight log. Here I chronicle spiritual lessons, challenges, victories, and revelations along my journey as a Faith Based Pilot in Christ. Each log is a checkpoint in faith and purpose.</p>
   </main>
-  <script>
-    function themeToggle() {
-      const body = document.body;
-      const icon = document.getElementById("theme-icon");
-      if (body.classList.contains("light")) {
-        body.classList.replace("light", "dark-mode");
-        icon.textContent = "🌙";
-      } else {
-        body.classList.replace("dark-mode", "light");
-        icon.textContent = "☀️";
-      }
+ <script>
+  // Apply saved theme on page load
+  window.onload = function() {
+    const savedTheme = localStorage.getItem("theme");
+    const body = document.body;
+    const icon = document.getElementById("theme-icon");
+
+    if (savedTheme === "dark") {
+      body.classList.replace("light", "dark-mode");
+      icon.textContent = "🌙";
+    } else {
+      body.classList.replace("dark-mode", "light");
+      icon.textContent = "☀️";
     }
-  </script>
+  };
+
+  // Toggle and save theme
+  function themeToggle() {
+    const body = document.body;
+    const icon = document.getElementById("theme-icon");
+
+    if (body.classList.contains("light")) {
+      body.classList.replace("light", "dark-mode");
+      icon.textContent = "🌙";
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.replace("dark-mode", "light");
+      icon.textContent = "☀️";
+      localStorage.setItem("theme", "light");
+    }
+  }
+</script>
 </body>
 </html>
