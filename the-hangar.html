@@ -4,52 +4,42 @@
   <meta charset="UTF-8">
   <title>The Hangar – Faith Based Pilot</title>
   <style>
-    /* Same styles as index.html */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #000;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav {
+      background-color: #f0f0f0;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      color: inherit;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .dark-mode nav {
+      background-color: #1e1e1e;
+    }
   </style>
 </head>
-<<body class="light">>
+<body class="light">
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
       <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" onclick="themeToggle()">Toggle Theme</a>
-    </div>
-  </nav>
-  <main>
-    <h1>The Hangar</h1>
-    <p>Latest blog entries from Faith Based Pilot.</p>
-    <h2>May 26, 2025 – The Strength of a Servant: Killing Pride and Leading Low</h2>
-    <p>Serving is easy when it’s public... But true servanthood begins where pride dies...</p>
-    <a href="#">Continue Reading</a>
-
-    <h2>May 26, 2025 – Slave to Christ</h2>
-    <p>I’ve been thinking about how our culture has shaped the way we understand the words servant and slave...</p>
-    <a href="#">Continue Reading</a>
-  </main>
-  <script>
-    // Load saved theme from localStorage
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.body.className = savedTheme;
-  } else {
-    document.body.className = 'light'; // Default to light
-  }
-
-  // Toggle and save theme
-  function toggleTheme() {
-    const body = document.body;
-    if (body.classList.contains('light')) {
-      body.className = 'dark';
-      localStorage.setItem('theme', 'dark');
-    } else {
-      body.className = 'light';
-      localStorage.setItem('theme', 'light');
-    }
-  }
-  </script>
-</body>
-</html>
+      <a href="logbook.htm
