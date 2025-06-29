@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Beliefs – Faith Based Pilot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What I Believe</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -52,23 +52,28 @@
     }
 
     main {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 40px 60px;
+      box-sizing: border-box;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 30px;
-    }
-
-    section {
       margin-bottom: 40px;
     }
 
-    h2 {
-      margin-bottom: 10px;
-      font-size: 1.4em;
+    .belief-section {
+      max-width: 900px;
+      margin: 0 auto 30px auto;
+    }
+
+    .belief-section h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .belief-section p {
+      margin: 0 0 20px 0;
+      line-height: 1.5;
     }
 
     @media (max-width: 600px) {
@@ -82,12 +87,12 @@
       }
 
       main {
-        padding: 15px;
+        padding: 20px;
       }
     }
   </style>
 </head>
-<body class="light">
+<body>
   <nav>
     <div class="nav-left">
       <a href="index.html">FBP</a>
@@ -102,68 +107,54 @@
   <main>
     <h1>What I Believe</h1>
 
-    <div class="belief">
+    <div class="belief-section">
       <h2>Jesus Is Lord</h2>
       <p>I believe that Jesus Christ is the Son of God, who died for our sins and rose again to give us eternal life. Salvation is a gift of grace through faith, not earned by works.</p>
     </div>
 
-    <div class="belief">
+    <div class="belief-section">
       <h2>The Bible Is Truth</h2>
       <p>I believe the Bible is the inspired and infallible Word of God. It is the final authority for faith, life, and truth in every generation.</p>
     </div>
 
-    <div class="belief">
+    <div class="belief-section">
       <h2>We Are Called to Live Boldly</h2>
       <p>Faith is not passive. We are called to act boldly, speak truthfully, and live according to God’s Word — regardless of the world’s opinion.</p>
     </div>
 
-    <div class="belief">
+    <div class="belief-section">
       <h2>The Holy Spirit Empowers</h2>
       <p>The Holy Spirit lives in every believer, guiding us, convicting us of sin, and empowering us to walk in obedience, courage, and love.</p>
     </div>
 
-    <div class="belief">
+    <div class="belief-section">
       <h2>The Church is the Body</h2>
       <p>We are called to be active members of Christ’s body. Church is not just a building but a community of believers supporting one another, worshiping together, and serving the world.</p>
     </div>
 
-    <div class="belief">
+    <div class="belief-section">
       <h2>Jesus Is Coming Again</h2>
-      <p>Jesus will return in glory. Every knee will bow, and every tongue will confess that He is Lord. This hope shapes the way we live now—in holiness, readiness, and joy.</p>
+      <p>Jesus will return in glory. Every knee will bow, and every tongue will confess that He is Lord. This hope shapes the way we live now — in holiness, readiness, and joy.</p>
     </div>
-    </section>
   </main>
   <script>
-  // Apply saved theme on page load
-  window.onload = function() {
-    const savedTheme = localStorage.getItem("theme");
-    const body = document.body;
-    const icon = document.getElementById("theme-icon");
-
-    if (savedTheme === "dark") {
-      body.classList.replace("light", "dark-mode");
-      icon.textContent = "🌙";
-    } else {
-      body.classList.replace("dark-mode", "light");
-      icon.textContent = "☀️";
+    function themeToggle() {
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      const isDark = body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      icon.textContent = isDark ? "🌙" : "☀️";
     }
-  };
 
-  // Toggle and save theme
-  function themeToggle() {
-    const body = document.body;
-    const icon = document.getElementById("theme-icon");
-
-    if (body.classList.contains("light")) {
-      body.classList.replace("light", "dark-mode");
-      icon.textContent = "🌙";
-      localStorage.setItem("theme", "dark");
-    } else {
-      body.classList.replace("dark-mode", "light");
-      icon.textContent = "☀️";
-      localStorage.setItem("theme", "light");
-    }
-  }
-</script>
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme");
+      const body = document.body;
+      const icon = document.getElementById("theme-icon");
+      if (savedTheme === "dark") {
+        body.classList.add("dark-mode");
+        icon.textContent = "🌙";
+      }
+    };
+  </script>
 </body>
 </html>
