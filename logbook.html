@@ -1,51 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logbook - Faith Based Pilot</title>
+  <meta charset="UTF-8">
+  <title>Logbook – Faith Based Pilot</title>
   <style>
-    nav {
-      background-color: #f0f0f0;
-      padding: 10px;
-    }
-    nav a {
-      margin-right: 15px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      margin-bottom: 40px;
-    }
+    /* Same styles as index.html */
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">FBP</a>
-    <a href="beliefs.html">Beliefs</a>
-    <a href="logbook.html">Logbook</a>
-    <a href="the-hangar.html">The Hangar</a>
+    <div class="nav-left">
+      <a href="index.html">FBP</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="themeToggle()">Toggle Theme</a>
+    </div>
   </nav>
-
-  <h1>Logbook</h1>
-  <p>This section houses all written teachings and downloadable PDF documents.</p>
-
-  <section>
-    <h2>The Catholic Church</h2>
-    <ul>
-      <li><a href="pdfs/Catholics-Lost-in-the-Law.pdf" download>Are Catholics Lost in the Law - 3/7/2025</a></li>
-      <li><a href="images/10Commandments-Catholic.png" download>10 Commandments from the New Catholic Bible Translation</a></li>
-      <li><a href="images/10Commandments-ESV.png" download>10 Commandments from the ESV Bible Translation</a></li>
-      <li><a href="images/10Commandments-KJV.png" download>10 Commandments from the KJV Bible Translation</a></li>
-      <li><a href="images/10Commandments-LSB.png" download>10 Commandments from the LSB Bible Translation</a></li>
-      <li><a href="images/Catechism-TenCommandments.png" download>Catholic Catechism of the Ten Commandments</a></li>
-    </ul>
-  </section>
-
-  <!-- Repeat structure for other categories like Specialized Topics, Seasonal, etc. -->
+  <main>
+    <h1>Logbook</h1>
+    <p>Notes, flight analogies, spiritual reflections — all logged here like an aviator’s journal.</p>
+  </main>
+  <script>
+    function themeToggle() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
