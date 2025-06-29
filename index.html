@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Faith Based Pilot</title>
   <style>
     body {
@@ -11,7 +11,6 @@
       color: #000;
       transition: background-color 0.3s, color 0.3s;
     }
-
     nav {
       background-color: #f0f0f0;
       padding: 10px;
@@ -19,19 +18,16 @@
       justify-content: space-between;
       align-items: center;
     }
-
     nav a {
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
       color: inherit;
     }
-
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
     }
-
     .nav-right button {
       background: none;
       border: none;
@@ -39,40 +35,12 @@
       cursor: pointer;
       padding: 0;
     }
-
     .dark-mode {
       background-color: #121212;
       color: #ffffff;
     }
-
     .dark-mode nav {
       background-color: #1e1e1e;
-    }
-
-    .card-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-
-    .card {
-      background-color: #f5f8ff;
-      padding: 20px;
-      margin: 10px;
-      border-radius: 8px;
-      width: 300px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .dark-mode .card {
-      background-color: #1e2a3a;
-    }
-
-    h1, h2 {
-      margin-top: 0;
     }
   </style>
 </head>
@@ -88,21 +56,37 @@
       <button id="themeToggle" onclick="toggleTheme()">🌞</button>
     </div>
   </nav>
+  <main>
+    <h1>About Faith Based Pilot</h1>
+    <h2>Welcome</h2>
+    <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father...</p>
+    <h2>Mission</h2>
+    <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world...</p>
+    <h2>Why Anonymity</h2>
+    <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message...</p>
+  </main>
+  <script>
+    const themeButton = document.getElementById('themeToggle');
 
-  <main class="card-container">
-    <div class="card">
-      <h2>Welcome</h2>
-      <p>
-        Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
-      </p>
-    </div>
-    <div class="card">
-      <h2>Mission</h2>
-      <p>
-        Using Faith Based Pilot, my mission is simple: to bring God’s Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and helping them draw closer to the teachings of Jesus Christ.
-      </p>
-    </div>
-    <div class="card">
-      <h2>Why Anonymity</h2>
-      <p>
-        I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God’s message. I believe His teachings are the focus an
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeButton.textContent = '🌙';
+      } else {
+        document.body.classList.remove('dark-mode');
+        themeButton.textContent = '🌞';
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', newTheme);
+      applyTheme(newTheme);
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+  </script>
+</body>
+</html>
