@@ -158,17 +158,20 @@
     <!-- Prevent spam captcha & redirect -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://faithbasedpilot.org/thank-you.html">
+    <input type="hidden" name="_template" value="table">
 
     <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+    <input type="text" id="name" name="name" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
 
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+    <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
 
     <label for="message">Prayer Request (optional):</label><br>
-    <textarea id="message" name="message" rows="5" placeholder="Write your request here..."></textarea><br><br>
+    <textarea id="message" name="message" rows="5" placeholder="Write your request here..." style="width: 100%; padding: 0.5rem;"></textarea><br><br>
 
-    <button type="submit">Submit</button>
+    <button type="submit" style="width: 100%; padding: 0.75rem; background-color: #444; color: white; border: none; font-weight: bold;">
+      Submit
+    </button>
   </form>
 </section>
 </body>
