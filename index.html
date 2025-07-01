@@ -13,27 +13,47 @@
       padding: 0;
     }
 
-    nav {
-      background-color: #222;
-  padding: 1rem 2rem;
-  text-align: left;
+    body.light {
+      background-color: #fff;
+      color: #000;
+    }
 
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
     }
 
     nav a {
-      color: white;
+      color: inherit;
       text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1.1rem;
+      font-weight: bold;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    #themeToggle {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: filter 0.3s ease;
+    }
+
+    body.light #themeToggle {
+      filter: invert(0);
+    }
+
+    body.dark #themeToggle {
+      filter: invert(1);
     }
 
     h1 {
       text-align: center;
-      margin: 2rem 0;
+      margin-bottom: 3rem;
     }
 
     .section-container {
@@ -41,7 +61,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 2rem;
-      padding: 0 2rem 3rem;
+      padding: 0 2rem 2rem;
     }
 
     .section {
@@ -52,14 +72,15 @@
 
     .section img {
       width: 100%;
-      height: 300px;
+      height: auto;
+      max-height: 350px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 1rem;
     }
 
     .section p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       text-align: left;
     }
@@ -69,25 +90,23 @@
         max-width: 100%;
       }
 
-      .section-container {
+      nav {
         flex-direction: column;
-        align-items: center;
-      }
-
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="beliefs.html">Beliefs</a>
-    <a href="logbook.html">Logbook</a>
-    <a href="the-hangar.html">The Hangar</a>
-  </nav>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </nav>
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Theme Toggle">
+  </header>
 
   <h1>About Faith Based Pilot</h1>
 
@@ -114,5 +133,22 @@
       </p>
     </div>
   </div>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Apply saved theme on load
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.classList.add(savedTheme);
+
+    // Toggle theme on click
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
 </body>
 </html>
