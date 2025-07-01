@@ -2,184 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logbook</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0 1rem;
-      background-color: white;
-      color: black;
+      padding: 0;
       transition: background-color 0.3s, color 0.3s;
     }
 
-    header {
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: #111;
-      color: white;
-      padding: 0.5rem 1rem;
+      padding: 10px 15px;
       flex-wrap: wrap;
     }
 
-    nav {
-      flex: 1;
-      text-align: center;
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
     }
 
-    nav a {
-      margin: 0 0.5rem;
-      text-decoration: none;
+    .nav-left a {
       color: white;
+      text-decoration: none;
+      margin: 0 10px;
       font-size: 14px;
-      display: inline-block;
+      white-space: nowrap;
     }
 
-    .theme-toggle {
-      width: 30px;
-      height: 30px;
+    .nav-left a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right button {
+      background: none;
+      border: none;
       cursor: pointer;
+    }
+
+    .nav-right img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      padding: 20px;
     }
 
     h1 {
       text-align: center;
-      margin: 1rem 0;
-    }
-
-    section {
-      margin-bottom: 2rem;
+      margin-top: 20px;
     }
 
     h2 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.2rem;
+      margin-top: 30px;
+      border-bottom: 1px solid gray;
+      padding-bottom: 5px;
+      font-size: 18px;
     }
 
     ul {
-      padding-left: 1rem;
+      padding-left: 20px;
     }
 
-    ul li {
-      margin-bottom: 0.5rem;
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
     }
 
-    .dark {
+    /* Light mode */
+    body.light {
+      background-color: white;
+      color: black;
+    }
+
+    /* Dark mode */
+    body.dark {
       background-color: #121212;
-      color: #f1f1f1;
-    }
-
-    .dark a {
-      color: #f1f1f1;
+      color: white;
     }
 
     @media screen and (max-width: 600px) {
-      nav a {
-        font-size: 12px;
+      .nav-left {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-left a {
+        margin: 5px 8px;
+        font-size: 13px;
+      }
+
+      .nav-right {
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 24px;
       }
 
-      body {
-        padding: 0 0.75rem;
+      li {
+        font-size: 14px;
       }
     }
   </style>
 </head>
-<body>
-  <header>
-    <img src="images/theme-toggle-logo.png" alt="Toggle Theme" class="theme-toggle" id="themeButton" />
-    <nav>
-      <a href="index.html">FBP</a>
+<body class="light">
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="fbp.html">FBP</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
-    </nav>
-  </header>
+    </div>
+    <div class="nav-right">
+      <button onclick="toggleTheme()" aria-label="Toggle Theme">
+        <img src="compass.png" alt="Toggle Theme" />
+      </button>
+    </div>
+  </div>
 
-  <main>
+  <div class="container">
     <h1>Logbook</h1>
 
-    <section>
-      <h2>The Catholic church</h2>
-      <ul>
-        <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
-        <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
-        <li>10 Commandments from the ESV Bible Translation - 3/7/2025 (png)</li>
-        <li>10 Commandments from the KJV Bible Translation - 3/7/2025 (png)</li>
-        <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
-        <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
-      </ul>
-    </section>
+    <h2>The Catholic church</h2>
+    <ul>
+      <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
+      <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the ESV Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the KJV Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
+      <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
+    </ul>
 
-    <section>
-      <h2>Specialized Topics</h2>
-      <ul>
-        <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
-        <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
-        <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
-        <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
-        <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
-      </ul>
-    </section>
+    <h2>Specialized Topics</h2>
+    <ul>
+      <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
+      <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
+      <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
+      <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
+      <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
+    </ul>
 
-    <section>
-      <h2>Seasonal</h2>
-      <ul>
-        <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
-      </ul>
-    </section>
+    <h2>Seasonal</h2>
+    <ul>
+      <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
+    </ul>
 
-    <section>
-      <h2>Have you turned away from the Lord?</h2>
-      <ul>
-        <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
-        <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
-      </ul>
-    </section>
+    <h2>Have you turned away from the Lord?</h2>
+    <ul>
+      <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
+      <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
+    </ul>
 
-    <section>
-      <h2>Spirit of Elijah - 1/14/2024</h2>
-      <ul>
-        <li>Meaning of "Spirit of Elijah" (pdf)</li>
-        <li>Recognizing the Spirit of Elijah (pdf)</li>
-        <li>How to Accept Responsibility of the Elijah Spirit (pdf)</li>
-      </ul>
-    </section>
+    <h2>Spirit of Elijah - 1/14/2024</h2>
+    <ul>
+      <li>Meaning of "Spirit of Elijah" (pdf)</li>
+      <li>Recognizing the Spirit of Elijah (pdf)</li>
+      <li>How to Accept Responsibility of the Elijah Spirit (pdf)</li>
+    </ul>
 
-    <section>
-      <h2>An Ahab Spirit - 2/12/2024</h2>
-      <ul>
-        <li>What is an Ahab Spirit (pdf)</li>
-        <li>Recognizing an Ahab Spirit (pdf)</li>
-        <li>Guarding Against an Ahab Spirit (pdf)</li>
-        <li>Forgiving an Ahab Spirit (pdf)</li>
-      </ul>
-    </section>
+    <h2>An Ahab Spirit - 2/12/2024</h2>
+    <ul>
+      <li>What is an Ahab Spirit (pdf)</li>
+      <li>Recognizing an Ahab Spirit (pdf)</li>
+      <li>Guarding Against an Ahab Spirit (pdf)</li>
+      <li>Forgiving an Ahab Spirit (pdf)</li>
+    </ul>
 
-    <section>
-      <h2>A Jezebelian Spirit - 12/29/2024</h2>
-      <ul>
-        <li>What is a Jezebelian Spirit (pdf)</li>
-        <li>Recognizing a Jezebelian Spirit (pdf)</li>
-        <li>Guarding Against a Jezebelian Spirit (pdf)</li>
-        <li>Forgiving the Jezebelian Inhabited (pdf)</li>
-      </ul>
-    </section>
-  </main>
+    <h2>A Jezebelian Spirit - 12/29/2024</h2>
+    <ul>
+      <li>Recognizing a Jezebelian Spirit (pdf)</li>
+      <li>Discerning the Jezebelian Spirit (pdf)</li>
+      <li>Guarding Against a Jezebelian Spirit (pdf)</li>
+      <li>How to Reject a Jezebelian Spirit (pdf)</li>
+    </ul>
+  </div>
 
   <script>
-    const themeBtn = document.getElementById("themeButton");
-    const body = document.body;
-
-    themeBtn.addEventListener("click", () => {
-      body.classList.toggle("dark");
-    });
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('light');
+      body.classList.toggle('dark');
+    }
   </script>
 </body>
 </html>
