@@ -2,180 +2,204 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logbook - Faith Based Pilot</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logbook | Faith Based Pilot</title>
   <style>
     :root {
-      --background: #121212;
-      --text: #ffffff;
-    }
-    [data-theme="light"] {
-      --background: #ffffff;
-      --text: #000000;
+      --bg-dark: #111;
+      --text-dark: #fff;
+      --bg-light: #fff;
+      --text-light: #000;
     }
 
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-      padding-bottom: 3rem;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    header.navbar {
-      background-color: var(--background);
-      padding: 1rem;
-      border-bottom: 1px solid #333;
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
     }
 
-    .nav-container {
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: #000;
+      padding: 10px 20px;
+      flex-wrap: nowrap;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 15px;
+      flex-wrap: nowrap;
     }
 
     .nav-left a {
-      color: var(--text);
+      color: white;
       text-decoration: none;
-      margin-right: 1.5rem;
-      font-weight: bold;
-      font-size: 1rem;
+      font-size: 15px;
+      white-space: nowrap;
     }
 
-    .nav-left a:last-child {
-      margin-right: 0;
-    }
-
-    .nav-right img {
-      height: 32px;
+    nav img {
+      width: 28px;
+      height: 28px;
       cursor: pointer;
     }
 
-    main {
-      padding: 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    section {
-      margin-bottom: 2rem;
+    h1 {
+      text-align: center;
+      margin: 30px 0 10px;
     }
 
     h2 {
-      border-bottom: 1px solid #666;
-      padding-bottom: 0.25rem;
+      margin-top: 40px;
+      margin-left: 20px;
+      font-size: 20px;
+      border-bottom: 1px solid #555;
+      padding-bottom: 5px;
     }
 
     ul {
-      list-style-type: none;
-      padding-left: 0;
+      list-style-type: disc;
+      padding-left: 40px;
+      margin-bottom: 40px;
     }
 
     li {
-      padding: 0.2rem 0;
+      margin: 6px 0;
+    }
+
+    @media (max-width: 500px) {
+      .nav-left a {
+        font-size: 13px;
+      }
+      nav img {
+        width: 24px;
+        height: 24px;
+      }
     }
   </style>
 </head>
 <body>
+  <nav>
+    <div class="nav-left">
+      <a href="fbp.html">FBP</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </div>
+    <img src="images/theme-toggle-logo-dark.png" alt="Toggle Theme" id="theme-toggle" />
+  </nav>
 
-  <header class="navbar">
-    <nav class="nav-container">
-      <div class="nav-left">
-        <a href="index.html">FBP</a>
-        <a href="beliefs.html">Beliefs</a>
-        <a href="logbook.html">Logbook</a>
-        <a href="the-hangar.html">The Hangar</a>
-      </div>
-      <div class="nav-right">
-        <img src="images/theme-toggle-logo.png" alt="Toggle Theme" id="theme-toggle" />
-      </div>
-    </nav>
-  </header>
+  <h1>Flight Log: Documents</h1>
 
-  <main>
-    <h1>Logbook</h1>
+  <h2>The Catholic church</h2>
+  <ul>
+    <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
+    <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
+    <li>10 Commandments from the ESV Bible Translation - 3/7/2025 (png)</li>
+    <li>10 Commandments from the KJV Bible Translation - 3/7/2025 (png)</li>
+    <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
+    <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
+  </ul>
 
-    <section>
-      <h2>Devotionals & Biblical Study</h2>
-      <ul>
-        <li>The Raven and the Dove — 2025-05-19</li>
-        <li>God Won’t Give You Anything He Can’t Handle — 2024-07-15</li>
-        <li>Take Every Thought Captive — 2025-05-13</li>
-        <li>Luke 6 Study — 2025-07-09</li>
-        <li>1 Peter 5 Devotional — 2025-06-30</li>
-        <li>Psalm 37:23 Cross-Reference — 2025-06-26</li>
-        <li>Romans 8:31 Breakdown — 2025-06-28</li>
-        <li>Hebrews 11:1 Devotional — 2025-06-21</li>
-      </ul>
-    </section>
+  <h2>Specialized Topics</h2>
+  <ul>
+    <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
+    <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
+    <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
+    <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
+    <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
+  </ul>
 
-    <section>
-      <h2>Legal, Custody & Medical</h2>
-      <ul>
-        <li>Everything Tristan Allegedly Has Done to Hanna — 2025-05-04</li>
-        <li>Contempt of Court and Violations — 2025-05-03</li>
-        <li>Talking Points of Concern — 2025-05-03</li>
-        <li>Medical Reimbursement Request — 2025-05-03</li>
-        <li>First Mediation Documentation — 2025-05-03</li>
-        <li>Medical History Notes — 2025-05-03</li>
-        <li>Emergency Room Visit 3/22/2024 — 2024-03-22</li>
-        <li>Dental Visit Documentation — 2025-05-03</li>
-        <li>Phone Call Transcripts — 2025-05-03</li>
-        <li>Parenting Time Log — 2025-05-03</li>
-        <li>Tennessee Custody Laws — 2025-05-03</li>
-        <li>Child Support Misuse Notes — 2025-05-03</li>
-        <li>Medical Portal Access Issue — 2025-05-03</li>
-      </ul>
-    </section>
+  <h2>Seasonal</h2>
+  <ul>
+    <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
+  </ul>
 
-    <section>
-      <h2>Aviation & CAP</h2>
-      <ul>
-        <li>Aviation Ministry Vision — 2025-05-03</li>
-        <li>CAP Egg Drop Rules — 2025-06-04</li>
-        <li>CAP Aerospace Lesson Plan — 2025-05-03</li>
-        <li>CAP Membership Recruitment Pitch — 2025-05-03</li>
-        <li>CAP SUI Prep Sheet — 2025-05-03</li>
-        <li>CAP Aerospace Ed Role — 2025-05-02</li>
-        <li>Flying 64th Membership Email — 2025-05-03</li>
-        <li>Flight Club Financial Proposal — 2025-05-03</li>
-      </ul>
-    </section>
+  <h2>Have you turned away from the Lord?</h2>
+  <ul>
+    <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
+    <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
+  </ul>
 
-    <section>
-      <h2>Fitness & Nutrition</h2>
-      <ul>
-        <li>Faith-Based Fitness Plan — 2025-06-22</li>
-        <li>16-Week Fat Loss Plan — 2025-06-22</li>
-        <li>Weekly Weigh-In Chart — 2025-06-22</li>
-        <li>Workout Tracker Template — 2025-05-03</li>
-        <li>Meal Prep Strategy — 2025-05-03</li>
-        <li>OMAD Performance Reflection — 2025-06-29</li>
-        <li>Alfredo Calorie Breakdown — 2025-07-01</li>
-        <li>Crave Food Truck Meal Logs — 2025-06-30</li>
-        <li>Coffee Drink Calorie Log — 2025-06-25</li>
-      </ul>
-    </section>
+  <h2>Spirit of Elijah - 1/14/2024</h2>
+  <ul>
+    <li>Meaning of "Spirit of Elijah" (pdf)</li>
+    <li>Recognizing the Spirit of Elijah (pdf)</li>
+    <li>How to Accept Responsability of the Elijah Spirit (pdf)</li>
+  </ul>
 
-    <section>
-      <h2>Planning & Site Content</h2>
-      <ul>
-        <li>Blog Schedule Plan — 2025-05-03</li>
-        <li>Aviation Devotional Intro — 2025-05-03</li>
-        <li>Y-12 CNS Pay Breakdown — 2025-06-01</li>
-        <li>CNS Benefit FAQ — 2025-06-01</li>
-      </ul>
-    </section>
+  <h2>An Ahab spirit - 2/12/2024</h2>
+  <ul>
+    <li>What is an Ahab Spirit (pdf)</li>
+    <li>Recognizing an Ahab Spirit (pdf)</li>
+    <li>Guarding Against an Ahab Spirit (pdf)</li>
+    <li>Forgiving an Ahab Spirit (pdf)</li>
+  </ul>
 
-  </main>
+  <h2>A Jezebelian Spirit - 12/29/2024</h2>
+  <ul>
+    <li>What is a Jezebelian Spirit (pdf)</li>
+    <li>Recognizing a Jezebelian Spirit (pdf)</li>
+    <li>Guarding Against a Jezebelian Spirit (pdf)</li>
+    <li>Forgiving the Jezebelian Inhabited (pdf)</li>
+  </ul>
+
+  <h2>Creation</h2>
+  <ul>
+    <li>Book of Genesis- Chapter 1 Verses 1-5 - 10/25/2023 (pdf)</li>
+    <li>Book of Genesis Chapter 1 Verses 6-8 - 10/25/2023 (pdf)</li>
+    <li>Book of Genesis- Chapter 1:9-31 - 2/12/2025 (pdf)</li>
+  </ul>
+
+  <h2>Prophecies and a Covenant - 11/15/2023</h2>
+  <ul>
+    <li>Promised Land & Eschatology References (pdf)</li>
+    <li>Prophecy References and Resources (pdf)</li>
+    <li>A Covenant and Prophecies (pdf)</li>
+  </ul>
+
+  <h2>Studies</h2>
+  <ul>
+    <li>The Pillars - 9/3/2024 (pdf)</li>
+    <li>Trusting in Christ: Foundations of Faith and Righteous Living - 7/18/2024 (pdf)</li>
+    <li>Acts 20:13-28 - 7/16/2024 (pdf)</li>
+    <li>Forgiveness - 10/25/2023 (pdf)</li>
+    <li>Giving Praise Through Trials and Tribulation - 10/27/2023 (pdf)</li>
+    <li>God’s Blessings, Promises, and How He Keeps Us - 10/25/2023 (pdf)</li>
+    <li>Prayer - 10/25/2023 (pdf)</li>
+    <li>Who is Lucifer and How We Defend Ourselves Against Him - 10/25/2023 (pdf)</li>
+    <li>Your Sin Affects Those Around You - 10/25/2023 (pdf)</li>
+    <li>Obey and Abide - 3/27/2024 (pdf)</li>
+    <li>Faith's Wings: Accountability, Peace, Compassion - 4/5/2024 (pdf)</li>
+  </ul>
 
   <script>
     const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-      document.documentElement.toggleAttribute('data-theme');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      toggle.src = `images/theme-toggle-logo-${newTheme}.png`;
+    }
+
+    toggle.addEventListener('click', toggleTheme);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentTheme = html.getAttribute('data-theme') || 'dark';
+      toggle.src = `images/theme-toggle-logo-${currentTheme}.png`;
     });
   </script>
-
 </body>
 </html>
