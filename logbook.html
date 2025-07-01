@@ -3,100 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logbook - Faith Based Pilot</title>
+  <title>Logbook | Faith Based Pilot</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
+      padding: 1rem;
+      background-color: #f2f2f2;
     }
-
-    body.light {
-      background-color: #fff;
-      color: #000;
+    h1, h2 {
+      color: #333;
     }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      flex-wrap: wrap;
+    ul {
+      list-style-type: none;
+      padding-left: 0;
     }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+    li {
+      margin: 0.4rem 0;
     }
-
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-
-    #themeToggle {
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      transition: filter 0.3s ease;
-    }
-
-    body.light #themeToggle {
-      filter: invert(0);
-    }
-
-    body.dark #themeToggle {
-      filter: invert(1);
-    }
-
-    h1 {
-      text-align: center;
-      margin: 2rem 0 1rem;
-    }
-
-    main {
-      padding: 0 2rem 2rem;
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
+    .section {
+      margin-bottom: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="fbp.html">FBP</a>
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
-    </nav>
-    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Theme Toggle">
-  </header>
+  <h1>Logbook</h1>
 
-  <h1>Flight Logbook</h1>
+  <div class="section">
+    <h2>The Catholic Church</h2>
+    <ul>
+      <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
+      <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the ESV Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the KJV Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
+      <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
+    </ul>
+  </div>
 
-  <main>
-    <p>This section will feature logs of my training, certifications, flights, and related aviation experiences. It will also include lessons learned, key dates, and milestones.</p>
-  </main>
+  <div class="section">
+    <h2>Christian Living</h2>
+    <ul>
+      <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
+      <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
+      <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
+      <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
+      <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
+      <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
+      <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
+      <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
+    </ul>
+  </div>
 
-  <script>
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.add(savedTheme);
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      body.classList.toggle('light');
-      const theme = body.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
-    });
-  </script>
+  <div class="section">
+    <h2>Spiritual Discernment</h2>
+    <ul>
+      <li>Meaning of "Spirit of Elijah" (pdf)</li>
+      <li>Recognizing the Spirit of Elijah (pdf)</li>
+      <li>How to Accept Responsability of the Elijah Spirit (pdf)</li>
+      <li>What is an Ahab Spirit (pdf)</li>
+      <li>Recognizing an Ahab Spirit (pdf)</li>
+      <li>Guarding Against an Ahab Spirit (pdf)</li>
+      <li>Forgiving an Ahab Spirit (pdf)</li>
+      <li>What is a Jezebelian Spirit (pdf)</li>
+      <li>Recognizing a Jezebelian Spirit (pdf)</li>
+      <li>Guarding Against a Jezebelian Spirit (pdf)</li>
+      <li>Forgiving the Jezebelian Inhabited (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Biblical Studies</h2>
+    <ul>
+      <li>Book of Genesis- Chapter 1 Verses 1-5 - 10/25/2023 (pdf)</li>
+      <li>Book of Genesis Chapter 1 Verses 6-8 - 10/25/2023 (pdf)</li>
+      <li>Book of Genesis- Chapter 1:9-31 - 2/12/2025 (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Prophecy and Covenant</h2>
+    <ul>
+      <li>Prophecies and a Covenant - 11/15/2023:</li>
+      <li>Promised Land & Eschatology References (pdf)</li>
+      <li>Prophecy References and Resources (pdf)</li>
+      <li>A Covenant and Prophecies (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Foundations and Faith</h2>
+    <ul>
+      <li>The Pillars - 9/3/2024 (pdf)</li>
+      <li>Trusting in Christ: Foundations of Faith and Righteous Living - 7/18/2024 (pdf)</li>
+      <li>Acts 20:13-28 - 7/16/2024 (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Encouragement and Conviction</h2>
+    <ul>
+      <li>Forgiveness - 10/25/2023 (pdf)</li>
+      <li>Giving Praise Through Trials and Tribulation - 10/27/2023 (pdf)</li>
+      <li>God’s Blessings, Promises, and How He Keeps Us - 10/25/2023 (pdf)</li>
+      <li>Prayer - 10/25/2023 (pdf)</li>
+      <li>Who is Lucifer and How We Defend Ourselves Against Him - 10/25/2023 (pdf)</li>
+      <li>Your Sin Affects Those Around You - 10/25/2023 (pdf)</li>
+      <li>Obey and Abide - 3/27/2024 (pdf)</li>
+      <li>Faith's Wings: Accountability, Peace, Compassion - 4/5/2024 (pdf)</li>
+    </ul>
+  </div>
+
 </body>
 </html>
