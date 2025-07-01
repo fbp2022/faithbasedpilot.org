@@ -23,11 +23,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      flex-wrap: wrap;
     }
 
     nav {
       display: flex;
       gap: 1rem;
+      font-size: 0.95rem;
     }
 
     nav a {
@@ -60,15 +62,23 @@
       padding: 0 2rem 2rem;
       font-size: 1.2rem;
       line-height: 1.6;
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html">FBP</a>
+      <a href="index.html">Home</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
@@ -79,8 +89,7 @@
   <h1>The Hangar</h1>
 
   <main>
-    <!-- Your content goes here -->
-    <p>Welcome to The Hangar – where thoughts, articles, and insight are stored for flight...</p>
+    <p>This section will include resources, thoughts, and additional content related to faith, flight, and everything in between. More to come.</p>
   </main>
 
   <script>
