@@ -47,8 +47,8 @@
     }
 
     #theme-toggle img {
-      height: 24px;
-      width: 24px;
+      height: 28px;
+      width: 28px;
     }
 
     h1 {
@@ -97,13 +97,12 @@
       <a href="fbp.html">FBP</a>
     </div>
     <button id="theme-toggle" onclick="toggleTheme()">
-      <img id="theme-icon" src="theme-toggle-logo.png" alt="Toggle Theme" />
+      <img id="theme-icon" src="images/theme-toggle-logo.png" alt="Toggle Theme" />
     </button>
   </nav>
 
   <h1>Logbook</h1>
 
-  <!-- YOUR SECTIONS AND LIST (unchanged) -->
   <div class="section">
     <h2>The Catholic Church</h2>
     <ul>
@@ -192,12 +191,6 @@
   <script>
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
-      const icon = document.getElementById('theme-icon');
-      if (document.body.classList.contains('dark-mode')) {
-        icon.src = 'assets/moon.png';
-      } else {
-        icon.src = 'assets/sun.png';
-      }
     }
   </script>
 </body>
