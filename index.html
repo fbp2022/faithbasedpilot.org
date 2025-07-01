@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Faith Based Pilot</title>
+  <title>Faith Based Pilot</title>
   <style>
     body {
       background-color: #111;
@@ -23,11 +23,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      flex-wrap: wrap;
     }
 
     nav {
       display: flex;
       gap: 1rem;
+      font-size: 0.95rem;
     }
 
     nav a {
@@ -53,46 +55,45 @@
 
     h1 {
       text-align: center;
-      margin-bottom: 3rem;
+      margin: 2rem 0;
     }
 
-    .section-container {
+    .about-section {
       display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      justify-content: space-around;
       gap: 2rem;
-      padding: 0 2rem 2rem;
+      margin: 2rem;
     }
 
-    .section {
-      flex: 1 1 30%;
+    .about-section div {
+      max-width: 300px;
       text-align: center;
-      max-width: 32%;
     }
 
-    .section img {
+    .about-section img {
       width: 100%;
       height: auto;
-      max-height: 350px;
-      object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 1rem;
     }
 
-    .section p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      text-align: left;
-    }
-
-    @media (max-width: 900px) {
-      .section {
-        max-width: 100%;
-      }
-
+    @media (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
+        padding-left: 1rem;
+      }
+
+      .about-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-section > div {
+        width: 90%;
+      }
+
+      .about-section img {
+        max-width: 100%;
       }
     }
   </style>
@@ -100,7 +101,7 @@
 <body>
   <header>
     <nav>
-      <a href="index.html">FBP</a>
+      <a href="index.html">Home</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
@@ -110,39 +111,29 @@
 
   <h1>About Faith Based Pilot</h1>
 
-  <div class="section-container">
-    <div class="section">
+  <section class="about-section">
+    <div>
       <h2>Welcome</h2>
       <img src="images/welcome.jpg" alt="Welcome Image">
-      <p>
-        Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
-      </p>
+      <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.</p>
     </div>
-    <div class="section">
+    <div>
       <h2>Mission</h2>
       <img src="images/mission.jpg" alt="Mission Image">
-      <p>
-        Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.
-      </p>
+      <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.</p>
     </div>
-    <div class="section">
+    <div>
       <h2>Why Anonymity</h2>
       <img src="images/anonymity.jpg" alt="Anonymity Image">
-      <p>
-        I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
-      </p>
+      <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.</p>
     </div>
-  </div>
+  </section>
 
   <script>
     const toggle = document.getElementById('themeToggle');
     const body = document.body;
-
-    // Apply saved theme on load
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.classList.add(savedTheme);
-
-    // Toggle theme on click
     toggle.addEventListener('click', () => {
       body.classList.toggle('dark');
       body.classList.toggle('light');
