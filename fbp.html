@@ -141,6 +141,27 @@
       }
     });
   </script>
+<section id="contact" style="padding: 40px 20px; text-align: center;">
+  <h2 style="color: var(--text-color);">Prayer Requests & Email Updates</h2>
+  <p style="max-width: 600px; margin: 0 auto 20px; color: var(--text-color);">
+    If you'd like to receive occasional email updates or share a prayer request, fill out the form below. We won't spam you.
+  </p>
+  <form action="https://formsubmit.co/aviationministries@faithbasedpilot.com" method="POST" style="max-width: 600px; margin: auto;">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New FBP Form Submission">
+    <input type="hidden" name="_template" value="table">
 
+    <label for="name" style="color: var(--text-color); display: block; text-align: left;">Name:</label>
+    <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 15px; background-color: var(--bg-color); color: var(--text-color); border: 1px solid #ccc; border-radius: 5px;">
+
+    <label for="email" style="color: var(--text-color); display: block; text-align: left;">Email:</label>
+    <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px; background-color: var(--bg-color); color: var(--text-color); border: 1px solid #ccc; border-radius: 5px;">
+
+    <label for="message" style="color: var(--text-color); display: block; text-align: left;">Prayer Request (optional):</label>
+    <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px; margin-bottom: 15px; background-color: var(--bg-color); color: var(--text-color); border: 1px solid #ccc; border-radius: 5px;"></textarea>
+
+    <button type="submit" style="padding: 10px 20px; background-color: var(--text-color); color: var(--bg-color); border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+  </form>
+</section>
 </body>
 </html>
