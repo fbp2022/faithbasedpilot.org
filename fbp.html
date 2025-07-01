@@ -1,56 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Faith Based Pilot</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css">
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --nav-bg: #ffffff;
+      --nav-text: #000000;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --nav-bg: #000000;
+      --nav-text: #ffffff;
+    }
+
     body {
-      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       transition: background-color 0.3s, color 0.3s;
     }
 
-    .dark-mode {
-      background-color: #121212;
-      color: #fff;
-    }
-
-    .navbar {
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #000;
-      padding: 10px 15px;
-      flex-wrap: nowrap;
+      background-color: var(--nav-bg);
+      padding: 10px 20px;
     }
 
-    .nav-links {
+    .nav-menu {
       display: flex;
       gap: 15px;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      flex-wrap: nowrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
-    .nav-links a {
-      color: white;
+    .nav-menu li a {
+      color: var(--nav-text);
       text-decoration: none;
       font-weight: bold;
+      white-space: nowrap;
     }
 
-    .theme-toggle {
+    #theme-toggle {
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0;
-      margin-left: auto;
     }
 
-    .theme-toggle img {
-      width: 32px;
-      height: 32px;
+    #theme-icon {
+      height: 30px;
+      width: 30px;
     }
 
     section {
@@ -59,54 +71,36 @@
     }
 
     section img {
-      width: 90%;
-      max-width: 500px;
+      max-width: 90%;
+      height: auto;
       border-radius: 10px;
-      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    section p {
+      max-width: 600px;
+      margin: 20px auto 0;
+      line-height: 1.6;
+      font-size: 1.05rem;
     }
 
     h2 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.1em;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 600px) {
-      .nav-links {
-        gap: 8px;
-        font-size: 0.8rem;
-      }
-
-      .theme-toggle img {
-        width: 28px;
-        height: 28px;
-      }
-
-      h2 {
-        font-size: 1.5em;
-      }
-
-      p {
-        font-size: 1em;
-      }
+      font-size: 1.8rem;
+      margin-bottom: 10px;
     }
   </style>
 </head>
-<body class="dark-mode">
-  <nav class="navbar">
-    <div class="nav-links">
-      <a href="fbp.html">FBP</a>
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
-    </div>
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <img src="images/theme-toggle-logo.png" alt="Toggle Theme" />
+<body>
+
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="index.html">FBP</a></li>
+      <li><a href="beliefs.html">Beliefs</a></li>
+      <li><a href="logbook.html">Logbook</a></li>
+      <li><a href="the-hangar.html">The Hangar</a></li>
+    </ul>
+    <button id="theme-toggle">
+      <img src="images/theme-toggle-logo.png" alt="Toggle Theme" id="theme-icon">
     </button>
   </nav>
 
@@ -122,22 +116,31 @@
     <h2>Mission</h2>
     <img src="images/mission.jpg" alt="Mission Image">
     <p>
-      Our mission is to glorify God through aviation, outreach, teaching, and testimony. We equip believers to live boldly and stand firm in truth in a world that often drifts.
+      Our mission is simple: to inspire and equip individuals to live with clarity, courage, and conviction. Whether in the cockpit or in daily life, we believe every journey should be guided by faith, purpose, and a sense of calling higher than ourselves.
     </p>
   </section>
 
   <section id="anonymity">
-  <h2>Why Anonymity</h2>
-  <img src="images/anonymity.jpg" alt="Anonymity Image">
-  <p>
-    I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
-  </p>
-</section>
+    <h2>Why Anonymity</h2>
+    <img src="images/anonymity.jpg" alt="Anonymity Image">
+    <p>
+      I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
+    </p>
+  </section>
 
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark-mode");
-    }
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
   </script>
+
 </body>
 </html>
