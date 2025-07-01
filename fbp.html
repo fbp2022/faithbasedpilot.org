@@ -3,186 +3,186 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Faith Based Pilot</title>
-
-   <head>
-  <meta charset="UTF-8">
-  <title>Faith Based Pilot</title>
-
-  <!-- ✅ Favicon: DO NOT put this inside <style> -->
-  <link rel="icon" type="image/png" href="fbp-logo-darkmode.png"> 
-   </head>
-     <style>
+  <title>Logbook | Faith Based Pilot</title>
+  <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
-    }
-
-    body.light {
-      background-color: #fff;
+      margin: 0;
+      padding: 1rem;
+      background-color: #f2f2f2;
       color: #000;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      flex-wrap: nowrap;
-      gap: 1rem;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     nav {
+      background-color: #333;
+      padding: 0.5rem;
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
     }
 
     nav a {
-      color: inherit;
+      color: white;
+      margin: 0.5rem 1rem;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-      white-space: nowrap;
+      font-size: 1rem;
     }
 
-    #themeToggle {
-      width: 32px;
-      height: 32px;
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      margin-right: 1rem;
+      padding: 0.3rem 0.6rem;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
-      transition: filter 0.3s ease;
-      flex-shrink: 0;
     }
 
-    body.light #themeToggle {
-      filter: invert(0);
+    h1, h2 {
+      color: #333;
     }
 
-    body.dark #themeToggle {
-      filter: invert(1);
+    ul {
+      list-style-type: none;
+      padding-left: 0;
     }
 
-    h1 {
-      text-align: center;
-      margin: 2rem 0 1rem;
+    li {
+      margin: 0.4rem 0;
     }
 
     .section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .section img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .card {
-      text-align: center;
       margin-bottom: 2rem;
     }
 
-    .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: #e2e2e2;
     }
 
-    @media (max-width: 768px) {
-      .card-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav {
-        justify-content: center;
-        width: 100%;
-      }
+    .dark-mode nav {
+      background-color: #111;
     }
 
-    .card-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+    .dark-mode nav a,
+    .dark-mode .theme-toggle {
+      color: #fff;
     }
 
-    .card {
-      max-width: 300px;
+    .dark-mode .theme-toggle {
+      background-color: #444;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="fbp.html">FBP</a>
+  <nav>
+    <div>
+      <a href="index.html">Home</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
-    </nav>
-    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Theme Toggle">
-  </header>
+      <a href="fbp.html">FBP</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </nav>
 
-  <h1>Faith Based Pilot</h1>
-  <div class="card-container section">
-    <div class="card"<div class="card">
-  <h2>Welcome</h2>
-  <img src="images/welcome.jpg" alt="Welcome Image" />
-  <p>Welcome to Faith Based Pilot, a platform dedicated to navigating life’s challenges and purpose through the lens of Christian faith, aviation discipline, and personal growth. Whether you're in the air or on the ground, you’ll find encouragement here to keep pushing forward.</p>
-</div>
-<div class="card">
-  <h2>Mission</h2>
-  <img src="images/mission.jpg" alt="Mission Image" />
-  <p>Using Faith Based Pilot, my mission is simple: to bring glory to God while inspiring, encouraging, and equipping others—especially men and young fathers—by sharing stories, resources, and reflections from both Scripture and the cockpit. It’s about living with intention and impact.</p>
-</div>
-<div class="card">
-  <h2>Why Anonymity</h2>
-  <img src="images/anonymity.jpg" alt="Anonymity Image" />
-  <p>I choose to remain anonymous not out of fear or secrecy, but to keep the focus where it belongs—on Christ. This isn’t about building a personal brand; it’s about letting the work speak, the Word guide, and the mission carry forward without distraction.</p>
-</div>
+  <h1>Logbook</h1>
+
+  <div class="section">
+    <h2>The Catholic Church</h2>
+    <ul>
+      <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
+      <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the ESV Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the KJV Bible Translation - 3/7/2025 (png)</li>
+      <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
+      <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
+    </ul>
   </div>
- <script>
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.add(savedTheme);
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      body.classList.toggle('light');
-      const theme = body.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
-    });
+
+  <div class="section">
+    <h2>Christian Living</h2>
+    <ul>
+      <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
+      <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
+      <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
+      <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
+      <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
+      <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
+      <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
+      <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Spiritual Discernment</h2>
+    <ul>
+      <li>Meaning of "Spirit of Elijah" (pdf)</li>
+      <li>Recognizing the Spirit of Elijah (pdf)</li>
+      <li>How to Accept Responsability of the Elijah Spirit (pdf)</li>
+      <li>What is an Ahab Spirit (pdf)</li>
+      <li>Recognizing an Ahab Spirit (pdf)</li>
+      <li>Guarding Against an Ahab Spirit (pdf)</li>
+      <li>Forgiving an Ahab Spirit (pdf)</li>
+      <li>What is a Jezebelian Spirit (pdf)</li>
+      <li>Recognizing a Jezebelian Spirit (pdf)</li>
+      <li>Guarding Against a Jezebelian Spirit (pdf)</li>
+      <li>Forgiving the Jezebelian Inhabited (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Biblical Studies</h2>
+    <ul>
+      <li>Book of Genesis- Chapter 1 Verses 1-5 - 10/25/2023 (pdf)</li>
+      <li>Book of Genesis Chapter 1 Verses 6-8 - 10/25/2023 (pdf)</li>
+      <li>Book of Genesis- Chapter 1:9-31 - 2/12/2025 (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Prophecy and Covenant</h2>
+    <ul>
+      <li>Prophecies and a Covenant - 11/15/2023:</li>
+      <li>Promised Land & Eschatology References (pdf)</li>
+      <li>Prophecy References and Resources (pdf)</li>
+      <li>A Covenant and Prophecies (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Foundations and Faith</h2>
+    <ul>
+      <li>The Pillars - 9/3/2024 (pdf)</li>
+      <li>Trusting in Christ: Foundations of Faith and Righteous Living - 7/18/2024 (pdf)</li>
+      <li>Acts 20:13-28 - 7/16/2024 (pdf)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Encouragement and Conviction</h2>
+    <ul>
+      <li>Forgiveness - 10/25/2023 (pdf)</li>
+      <li>Giving Praise Through Trials and Tribulation - 10/27/2023 (pdf)</li>
+      <li>God’s Blessings, Promises, and How He Keeps Us - 10/25/2023 (pdf)</li>
+      <li>Prayer - 10/25/2023 (pdf)</li>
+      <li>Who is Lucifer and How We Defend Ourselves Against Him - 10/25/2023 (pdf)</li>
+      <li>Your Sin Affects Those Around You - 10/25/2023 (pdf)</li>
+      <li>Obey and Abide - 3/27/2024 (pdf)</li>
+      <li>Faith's Wings: Accountability, Peace, Compassion - 4/5/2024 (pdf)</li>
+    </ul>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
   </script>
- <!-- Prayer Request and Update Signup Form -->
-<section id="prayer-form" style="max-width: 600px; margin: 40px auto; padding: 20px; box-sizing: border-box;">
-  <h2 style="text-align: center;">Submit a Prayer Request or Join Our Email List</h2>
-  <p style="text-align: center;">
-    We only send occasional updates — no spam, ever. You’re welcome to share a prayer request or just subscribe for updates and encouragement.
-  </p>
-
-  <form action="https://formsubmit.co/aviationministries@faithbasedpilot.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-
-    <!-- Prevent spam captcha & redirect -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://faithbasedpilot.org/thank-you.html">
-
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required style="padding: 10px; font-size: 16px; width: 100%;">
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required style="padding: 10px; font-size: 16px; width: 100%;">
-
-    <label for="message">Prayer Request (optional):</label>
-    <textarea id="message" name="message" rows="5" placeholder="Write your request here..." style="padding: 10px; font-size: 16px; width: 100%; resize: vertical;"></textarea>
-
-    <button type="submit" style="padding: 12px; font-size: 16px; background-color: #333; color: #fff; border: none; cursor: pointer;">
-      Let’s Fly!
-    </button>
-  </form>
-</section>
 </body>
 </html>
