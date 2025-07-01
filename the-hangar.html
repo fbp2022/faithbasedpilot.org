@@ -6,11 +6,11 @@
   <title>The Hangar - Faith Based Pilot</title>
   <style>
     body {
-      background-color: #111;
-      color: white;
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
     }
 
     body.light {
@@ -29,18 +29,20 @@
     nav {
       display: flex;
       gap: 1rem;
-      font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: inherit;
       text-decoration: none;
       font-weight: bold;
+      font-size: 0.9rem;
+      white-space: nowrap;
     }
 
     #themeToggle {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       cursor: pointer;
       transition: filter 0.3s ease;
     }
@@ -55,30 +57,22 @@
 
     h1 {
       text-align: center;
-      margin: 2rem 0;
+      margin: 2rem 0 1rem;
     }
 
     main {
       padding: 0 2rem 2rem;
+      max-width: 800px;
+      margin: auto;
       font-size: 1.2rem;
       line-height: 1.6;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 1rem;
-      }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="fbp.html">FBP</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
