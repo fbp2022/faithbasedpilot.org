@@ -23,11 +23,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      flex-wrap: wrap;
     }
 
     nav {
       display: flex;
       gap: 1rem;
+      font-size: 0.95rem;
     }
 
     nav a {
@@ -57,22 +59,26 @@
     }
 
     main {
-      padding: 1rem 2rem 2rem;
+      padding: 0 2rem 2rem;
       font-size: 1.2rem;
       line-height: 1.6;
-      width: 100%;
-      box-sizing: border-box;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    h2 {
-      margin-top: 2rem;
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html">FBP</a>
+      <a href="index.html">Home</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
@@ -83,7 +89,7 @@
   <h1>What I Believe</h1>
 
   <main>
-    <h2>About God:</h2>
+    <p><strong>About God:</strong></p>
     <p>I believe the Bible is the infallible Word of God, inspired by the Holy Spirit and profitable for teaching, correction, and instruction in righteousness. It is the ultimate authority for all matters of faith and practice.</p>
     <p>I believe in one God, eternally existent in three persons: Father, Son, and Holy Spirit. Jesus Christ, the Son, is fully God and fully man. He was born of a virgin, lived a sinless life, died on the cross as a substitutionary sacrifice, and rose again on the third day. He ascended to heaven and will one day return in glory.</p>
     <p>I believe that salvation is by grace through faith in Jesus Christ alone. It is not earned by works but is a gift from God. Those who place their faith in Christ are justified, born again by the Holy Spirit, and adopted into God’s family.</p>
