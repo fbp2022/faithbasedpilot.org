@@ -1,173 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Faith Based Pilot</title>
+  <meta charset="UTF-8">
+  <title>About Faith Based Pilot</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #fff;
-      color: #000;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    nav {
-      background-color: #f0f0f0;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-      color: inherit;
-      font-size: 14px;
-    }
-
-    .nav-left, .nav-right {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-right a {
-      font-size: 20px;
-      font-weight: normal;
-    }
-
-    .dark-mode {
       background-color: #121212;
-      color: #ffffff;
-    }
-
-    .dark-mode nav {
-      background-color: #1e1e1e;
-    }
-
-    main {
-      padding: 40px 60px;
-      box-sizing: border-box;
+      color: #fff;
+      font-family: Arial, sans-serif;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      margin-top: 40px;
+      font-size: 2.5rem;
     }
 
-    .sections {
+    .container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: center;
+      gap: 60px;
+      margin: 40px;
     }
 
     .section {
-      flex: 1 1 300px;
-      max-width: 32%;
-      box-sizing: border-box;
+      max-width: 500px;
+      text-align: center;
     }
 
     .section h2 {
-      text-align: center;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
     }
 
     .section img {
       width: 100%;
-      height: auto;
-      aspect-ratio: 4/3;
-      object-fit: contain;
-      border-radius: 6px;
-      display: block;
-      margin: 0 auto 10px auto;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
     }
 
-    @media (max-width: 900px) {
-      .section {
-        max-width: 100%;
-      }
+    .section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: left;
+    }
 
-      .sections {
+    @media screen and (max-width: 768px) {
+      .container {
         flex-direction: column;
         align-items: center;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav a {
-        font-size: 12px;
-        margin: 5px;
-      }
-
-      .nav-right a {
-        font-size: 18px;
-      }
-
-      main {
-        padding: 20px;
+        margin: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-left">
-      <a href="FBP.html">FBP</a>
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" onclick="themeToggle()" id="theme-icon">☀️</a>
-    </div>
-  </nav>
 
-  <main>
-    <h1>About Faith Based Pilot</h1>
-    <div class="sections">
-      <div class="section">
-        <h2>Welcome</h2>
-        <img src="images/1.jpg" alt="Welcome Image">
-        <p>Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.</p>
-      </div>
-      <div class="section">
-        <h2>Mission</h2>
-        <img src="images/sunrise 1.jpg" alt="Mission Image">
-        <p>Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.</p>
-      </div>
-      <div class="section">
-        <h2>Why Anonymity</h2>
-        <img src="images/fb_100878033034475_2048x2048-06d98a1.jpg" alt="Anonymity Image">
-        <p>I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.</p>
-      </div>
+  <h1>About Faith Based Pilot</h1>
+
+  <div class="container">
+
+    <div class="section">
+      <h2>Welcome</h2>
+      <img src="images/welcome.jpg" alt="Welcome Image">
+      <p>
+        Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
+      </p>
     </div>
-  </main>
 
-  <script>
-    function themeToggle() {
-      const body = document.body;
-      const icon = document.getElementById("theme-icon");
-      const isDark = body.classList.toggle("dark-mode");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      icon.textContent = isDark ? "🌙" : "☀️";
-    }
+    <div class="section">
+      <h2>Mission</h2>
+      <img src="images/mission.jpg" alt="Mission Image">
+      <p>
+        Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.
+      </p>
+    </div>
 
-    window.onload = () => {
-      const savedTheme = localStorage.getItem("theme");
-      const body = document.body;
-      const icon = document.getElementById("theme-icon");
-      if (savedTheme === "dark") {
-        body.classList.add("dark-mode");
-        icon.textContent = "🌙";
-      }
-    };
-  </script>
+    <div class="section">
+      <h2>Why Anonymity</h2>
+      <img src="images/anonymity.jpg" alt="Anonymity Image">
+      <p>
+        I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
+      </p>
+    </div>
+
+  </div>
+
 </body>
 </html>
