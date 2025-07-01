@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logbook | Faith Based Pilot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FBP | Faith Based Pilot</title>
   <style>
     body {
       margin: 0;
@@ -41,34 +41,33 @@
     }
 
     #theme-toggle {
-      background-color: #444;
-      color: white;
+      background: none;
       border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
       cursor: pointer;
     }
 
-    h1 {
+    #theme-toggle img {
+      height: 28px;
+      width: 28px;
+    }
+
+    h1, h2 {
       margin-top: 1.5rem;
     }
 
-    h2 {
-      margin-top: 2rem;
-      color: #444;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    li {
-      margin: 0.3rem 0;
-    }
-
     .section {
-      margin-bottom: 2rem;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 1rem;
     }
 
     .dark-mode {
@@ -80,13 +79,8 @@
       background-color: #000;
     }
 
-    .dark-mode .nav-links a,
-    .dark-mode #theme-toggle {
+    .dark-mode .nav-links a {
       color: #f0f0f0;
-    }
-
-    .dark-mode #theme-toggle {
-      background-color: #333;
     }
   </style>
 </head>
@@ -99,94 +93,29 @@
       <a href="the-hangar.html">The Hangar</a>
       <a href="fbp.html">FBP</a>
     </div>
-    <button id="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <button id="theme-toggle" onclick="toggleTheme()">
+      <img id="theme-icon" src="images/theme-toggle-logo.png" alt="Toggle Theme" />
+    </button>
   </nav>
 
-  <h1>Logbook</h1>
+  <h1>Faith Based Pilot</h1>
 
   <div class="section">
-    <h2>The Catholic Church</h2>
-    <ul>
-      <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
-      <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
-      <li>10 Commandments from the ESV Bible Translation - 3/7/2025 (png)</li>
-      <li>10 Commandments from the KJV Bible Translation - 3/7/2025 (png)</li>
-      <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
-      <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
-    </ul>
+    <h2>Welcome</h2>
+    <p>Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We’re here to lift others up, stay grounded in truth, and soar with purpose in everything we do.</p>
+    <img src="images/welcome.jpg" alt="Welcome image" />
   </div>
 
   <div class="section">
-    <h2>Christian Living</h2>
-    <ul>
-      <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
-      <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
-      <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
-      <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
-      <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
-      <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
-      <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
-      <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
-    </ul>
+    <h2>Mission</h2>
+    <p>Our mission is to glorify God through aviation, outreach, teaching, and testimony. We equip believers to live boldly and stand firm in truth in a world that often drifts.</p>
+    <img src="images/mission.jpg" alt="Mission image" />
   </div>
 
   <div class="section">
-    <h2>Spiritual Discernment</h2>
-    <ul>
-      <li>Meaning of "Spirit of Elijah" (pdf)</li>
-      <li>Recognizing the Spirit of Elijah (pdf)</li>
-      <li>How to Accept Responsability of the Elijah Spirit (pdf)</li>
-      <li>What is an Ahab Spirit (pdf)</li>
-      <li>Recognizing an Ahab Spirit (pdf)</li>
-      <li>Guarding Against an Ahab Spirit (pdf)</li>
-      <li>Forgiving an Ahab Spirit (pdf)</li>
-      <li>What is a Jezebelian Spirit (pdf)</li>
-      <li>Recognizing a Jezebelian Spirit (pdf)</li>
-      <li>Guarding Against a Jezebelian Spirit (pdf)</li>
-      <li>Forgiving the Jezebelian Inhabited (pdf)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Biblical Studies</h2>
-    <ul>
-      <li>Book of Genesis- Chapter 1 Verses 1-5 - 10/25/2023 (pdf)</li>
-      <li>Book of Genesis Chapter 1 Verses 6-8 - 10/25/2023 (pdf)</li>
-      <li>Book of Genesis- Chapter 1:9-31 - 2/12/2025 (pdf)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Prophecy and Covenant</h2>
-    <ul>
-      <li>Prophecies and a Covenant - 11/15/2023:</li>
-      <li>Promised Land & Eschatology References (pdf)</li>
-      <li>Prophecy References and Resources (pdf)</li>
-      <li>A Covenant and Prophecies (pdf)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Foundations and Faith</h2>
-    <ul>
-      <li>The Pillars - 9/3/2024 (pdf)</li>
-      <li>Trusting in Christ: Foundations of Faith and Righteous Living - 7/18/2024 (pdf)</li>
-      <li>Acts 20:13-28 - 7/16/2024 (pdf)</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Encouragement and Conviction</h2>
-    <ul>
-      <li>Forgiveness - 10/25/2023 (pdf)</li>
-      <li>Giving Praise Through Trials and Tribulation - 10/27/2023 (pdf)</li>
-      <li>God’s Blessings, Promises, and How He Keeps Us - 10/25/2023 (pdf)</li>
-      <li>Prayer - 10/25/2023 (pdf)</li>
-      <li>Who is Lucifer and How We Defend Ourselves Against Him - 10/25/2023 (pdf)</li>
-      <li>Your Sin Affects Those Around You - 10/25/2023 (pdf)</li>
-      <li>Obey and Abide - 3/27/2024 (pdf)</li>
-      <li>Faith's Wings: Accountability, Peace, Compassion - 4/5/2024 (pdf)</li>
-    </ul>
+    <h2>The Hangar</h2>
+    <p>Visit The Hangar for practical resources, teaching, real conversations, and lessons from the runway of life. It’s a place for believers to refuel and reset.</p>
+    <img src="images/hangar.jpg" alt="Hangar image" />
   </div>
 
   <script>
