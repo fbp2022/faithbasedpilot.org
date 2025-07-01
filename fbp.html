@@ -23,13 +23,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      gap: 1rem;
     }
 
     nav {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     nav a {
@@ -45,6 +47,7 @@
       height: 32px;
       cursor: pointer;
       transition: filter 0.3s ease;
+      flex-shrink: 0;
     }
 
     body.light #themeToggle {
