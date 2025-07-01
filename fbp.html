@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faith Based Pilot</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+    }
+
+    body.light {
+      background-color: #fff;
+      color: #000;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    #themeToggle {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: filter 0.3s ease;
+    }
+
+    body.light #themeToggle {
+      filter: invert(0);
+    }
+
+    body.dark #themeToggle {
+      filter: invert(1);
+    }
+
+    h1 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .section img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .card {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .card-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="fbp.html">FBP</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </nav>
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Theme Toggle">
+  </header>
+
+  <h1>About Faith Based Pilot</h1>
+  <div class="card-container section">
+    <div class="card">
+      <h2>Welcome</h2>
+      <img src="images/welcome.jpg" alt="Welcome Image" />
+      <p>Welcome to Faith Based Pilot, a platform dedicated to...</p>
+    </div>
+    <div class="card">
+      <h2>Mission</h2>
+      <img src="images/mission.jpg" alt="Mission Image" />
+      <p>Using Faith Based Pilot, my mission is simple: to bring...</p>
+    </div>
+    <div class="card">
+      <h2>Why Anonymity</h2>
+      <img src="images/anonymity.jpg" alt="Anonymity Image" />
+      <p>I choose to remain anonymous not out of fear or secrecy...</p>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.classList.add(savedTheme);
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+  </script>
+</body>
+</html>
