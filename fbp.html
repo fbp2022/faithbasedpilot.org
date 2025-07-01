@@ -150,26 +150,29 @@
     });
   </script>
   <!-- Prayer Request and Update Signup Form -->
-<section id="prayer-form" style="max-width: 600px; margin: auto; padding: 20px;">
-  <h2>Submit a Prayer Request or Join Our Email List</h2>
-  <p>We only send occasional updates — no spam, ever. You’re welcome to share a prayer request or just subscribe for updates and encouragement.</p>
+<section id="prayer-form" style="width: 100%; padding: 40px 20px;">
+  <h2 style="text-align: center;">Submit a Prayer Request or Join Our Email List</h2>
+  <p style="text-align: center;">
+    We only send occasional updates — no spam, ever.<br>
+    You’re welcome to share a prayer request or just subscribe for updates and encouragement.
+  </p>
 
-  <form action="https://formsubmit.co/aviationministries@faithbasedpilot.com" method="POST">
-    <!-- Prevent spam captcha & redirect -->
+  <form action="https://formsubmit.co/aviationministries@faithbasedpilot.com" method="POST" style="max-width: 800px; margin: auto; display: flex; flex-direction: column; gap: 1rem;">
+    <!-- Hidden fields for config -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://faithbasedpilot.org/thank-you.html">
     <input type="hidden" name="_template" value="table">
 
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required style="padding: 0.5rem; font-size: 1rem;">
 
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required style="padding: 0.5rem; font-size: 1rem;">
 
-    <label for="message">Prayer Request (optional):</label><br>
-    <textarea id="message" name="message" rows="5" placeholder="Write your request here..." style="width: 100%; padding: 0.5rem;"></textarea><br><br>
+    <label for="message">Prayer Request (optional):</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your request here..." style="padding: 0.5rem; font-size: 1rem;"></textarea>
 
-    <button type="submit" style="width: 100%; padding: 0.75rem; background-color: #444; color: white; border: none; font-weight: bold;">
+    <button type="submit" style="padding: 0.75rem; background-color: #444; color: white; font-size: 1rem; font-weight: bold; border: none; cursor: pointer;">
       Submit
     </button>
   </form>
