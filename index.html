@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Faith Based Pilot</title>
-  <link rel="stylesheet" href="style.css"> <!-- Keep this if you have a global stylesheet -->
-
   <style>
     body {
       background-color: #111;
@@ -15,17 +13,26 @@
       padding: 0;
     }
 
-    header, nav {
-      /* Keep your existing nav styles if in external CSS */
+    nav {
+      background-color: #222;
+      padding: 1rem;
+      text-align: center;
     }
 
-    main {
-      padding: 2rem;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 3rem;
+      margin: 2rem 0;
     }
 
     .section-container {
@@ -33,6 +40,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 2rem;
+      padding: 0 2rem 3rem;
     }
 
     .section {
@@ -43,15 +51,14 @@
 
     .section img {
       width: 100%;
-      height: auto;
-      max-height: 350px;
+      height: 300px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 1rem;
     }
 
     .section p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       text-align: left;
     }
@@ -60,43 +67,51 @@
       .section {
         max-width: 100%;
       }
+
+      .section-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="beliefs.html">Beliefs</a>
+    <a href="logbook.html">Logbook</a>
+    <a href="the-hangar.html">The Hangar</a>
+  </nav>
 
-  <!-- Include your existing menu/navigation here -->
-  <header>
-    <!-- If you use a separate nav.html file, use a server include -->
-    <!-- If it's hardcoded, paste your existing menu code here -->
-  </header>
+  <h1>About Faith Based Pilot</h1>
 
-  <main>
-    <h1>About Faith Based Pilot</h1>
-    <div class="section-container">
-      <div class="section">
-        <h2>Welcome</h2>
-        <img src="images/welcome.jpg" alt="Welcome Image">
-        <p>
-          Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
-        </p>
-      </div>
-      <div class="section">
-        <h2>Mission</h2>
-        <img src="images/mission.jpg" alt="Mission Image">
-        <p>
-          Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.
-        </p>
-      </div>
-      <div class="section">
-        <h2>Why Anonymity</h2>
-        <img src="images/anonymity.jpg" alt="Anonymity Image">
-        <p>
-          I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
-        </p>
-      </div>
+  <div class="section-container">
+    <div class="section">
+      <h2>Welcome</h2>
+      <img src="images/welcome.jpg" alt="Welcome Image">
+      <p>
+        Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
+      </p>
     </div>
-  </main>
-
+    <div class="section">
+      <h2>Mission</h2>
+      <img src="images/mission.jpg" alt="Mission Image">
+      <p>
+        Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.
+      </p>
+    </div>
+    <div class="section">
+      <h2>Why Anonymity</h2>
+      <img src="images/anonymity.jpg" alt="Anonymity Image">
+      <p>
+        I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
+      </p>
+    </div>
+  </div>
 </body>
 </html>
