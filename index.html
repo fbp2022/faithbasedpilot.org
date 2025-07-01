@@ -70,6 +70,7 @@
 
     .section {
       flex: 1 1 300px;
+      max-width: 32%;
       box-sizing: border-box;
     }
 
@@ -80,11 +81,23 @@
 
     .section img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: auto;
+      aspect-ratio: 4/3;
+      object-fit: contain;
       border-radius: 6px;
       display: block;
-      margin-bottom: 10px;
+      margin: 0 auto 10px auto;
+    }
+
+    @media (max-width: 900px) {
+      .section {
+        max-width: 100%;
+      }
+
+      .sections {
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
     @media (max-width: 600px) {
