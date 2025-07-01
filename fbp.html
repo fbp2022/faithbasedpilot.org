@@ -21,22 +21,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    .nav-links {
+    .nav-left {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 1rem;
     }
 
-    .nav-links a {
+    .nav-left a {
       color: white;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
-    .nav-links a:hover {
+    .nav-left a:hover {
       text-decoration: underline;
     }
 
@@ -44,6 +43,7 @@
       background: none;
       border: none;
       cursor: pointer;
+      padding: 0;
     }
 
     #theme-toggle img {
@@ -51,8 +51,14 @@
       width: 28px;
     }
 
-    h1, h2 {
-      margin-top: 1.5rem;
+    h1 {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2.5rem;
     }
 
     .section {
@@ -79,15 +85,14 @@
       background-color: #000;
     }
 
-    .dark-mode .nav-links a {
+    .dark-mode .nav-left a {
       color: #f0f0f0;
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
+    <div class="nav-left">
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
@@ -115,7 +120,7 @@
   <div class="section">
     <h2>The Hangar</h2>
     <p>Visit The Hangar for practical resources, teaching, real conversations, and lessons from the runway of life. It’s a place for believers to refuel and reset.</p>
-    <img src="images/hangar.jpg" alt="Hangar image" />
+    <img src="images/the-hangar.png" alt="The Hangar image" />
   </div>
 
   <script>
