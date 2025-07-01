@@ -1,93 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logbook</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #000;
       transition: background-color 0.3s, color 0.3s;
     }
-
-    .dark-mode {
-      background-color: #111;
-      color: white;
+    body.dark {
+      background-color: #121212;
+      color: #ffffff;
     }
-
     nav {
+      background-color: #000;
+      color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #000;
-      padding: 10px;
+      padding: 10px 15px;
+      flex-wrap: wrap;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 15px;
-      font-size: 14px;
+    nav.dark {
+      background-color: #fff;
+      color: #000;
     }
-
-    .nav-links a {
-      color: white;
+    nav a {
+      color: inherit;
       text-decoration: none;
+      margin-right: 15px;
+      font-size: 14px;
+      white-space: nowrap;
     }
-
+    .nav-left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
     .theme-toggle {
-      background: none;
-      border: none;
+      width: 24px;
+      height: 24px;
       cursor: pointer;
     }
-
-    .theme-toggle img {
-      height: 24px;
-      width: 24px;
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
     }
-
     h1 {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 10px;
     }
-
     h2 {
-      margin-top: 30px;
-      font-size: 20px;
+      font-size: 1.1rem;
+      margin-top: 2em;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 5px;
     }
-
     ul {
-      padding-left: 20px;
+      padding-left: 1.2em;
     }
-
     li {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    hr {
-      margin: 10px 0 20px 0;
+    @media (max-width: 600px) {
+      nav {
+        justify-content: space-between;
+        padding: 10px;
+      }
+      nav a {
+        font-size: 12px;
+        margin-right: 8px;
+      }
+      .theme-toggle {
+        width: 20px;
+        height: 20px;
+      }
+      main {
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-links">
-      <a href="fbp.html">FBP</a>
+  <nav id="navbar">
+    <div class="nav-left">
+      <a href="index.html">FBP</a>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <img src="compass.png" alt="Toggle Theme">
-    </button>
+    <img src="compass.jpeg" alt="Toggle Theme" class="theme-toggle" id="themeToggle" />
   </nav>
 
-  <h1>Logbook</h1>
+  <main>
+    <h1>Logbook</h1>
 
-  <section>
     <h2>The Catholic church</h2>
-    <hr>
     <ul>
       <li>Are Catholics Lost in the Law - 3/7/2025 (pdf)</li>
       <li>10 Commandments from the New Catholic Bible Translation - 3/7/2025 (png)</li>
@@ -96,111 +112,86 @@
       <li>10 Commandments from the LSB Bible Translation - 3/7/2025 (png)</li>
       <li>Catholic Catechism of the Ten Commandments - 3/7/2025 (png)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Specialized Topics</h2>
-    <hr>
     <ul>
       <li>No Other Way: The Narrow Gate of Rebirth - 5/21/2025 (pdf)</li>
-      <li>Take Every Thought Captive: A Call to Men to Live by Truth, Not Emotion - 5/15/2025 (pdf)</li>
-      <li>The Danger of Progressive Christianity and the Call to Biblical Truth - 3/10/2025 (pdf)</li>
-      <li>Guarding Your Heart: The Wellspring of Life - 2/12/2025 (pdf)</li>
-      <li>Vanity, Transhumanism, and the Eternal Soul: A Biblical Perspective - 1/12/2025 (pdf)</li>
+      <li>Take Every Thought Captive - 5/15/2025 (pdf)</li>
+      <li>The Danger of Progressive Christianity - 3/10/2025 (pdf)</li>
+      <li>Guarding Your Heart - 2/12/2025 (pdf)</li>
+      <li>Vanity, Transhumanism, and the Eternal Soul - 1/12/2025 (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Seasonal</h2>
-    <hr>
     <ul>
-      <li>The Significance of Christmas: The Profound Meaning of Jesus' Birth as a Baby - 12/25/2025 (pdf)</li>
+      <li>The Significance of Christmas - 12/25/2025 (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Have you turned away from the Lord?</h2>
-    <hr>
     <ul>
       <li>How to Know When You Have Turned Away From the Lord (pdf)</li>
-      <li>Reclaiming Your Relationship with God: A Bold Journey Back to the Lord (pdf)</li>
+      <li>Reclaiming Your Relationship with God (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Spirit of Elijah - 1/14/2024</h2>
-    <hr>
     <ul>
       <li>Meaning of "Spirit of Elijah" (pdf)</li>
       <li>Recognizing the Spirit of Elijah (pdf)</li>
       <li>How to Accept Responsibility of the Elijah Spirit (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>An Ahab Spirit - 2/12/2024</h2>
-    <hr>
     <ul>
       <li>What is an Ahab Spirit (pdf)</li>
       <li>Recognizing an Ahab Spirit (pdf)</li>
       <li>Guarding Against an Ahab Spirit (pdf)</li>
       <li>Forgiving an Ahab Spirit (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>A Jezebelian Spirit - 12/29/2024</h2>
-    <hr>
     <ul>
       <li>What is a Jezebelian Spirit (pdf)</li>
       <li>Recognizing a Jezebelian Spirit (pdf)</li>
       <li>Guarding Against a Jezebelian Spirit (pdf)</li>
       <li>Forgiving the Jezebelian Inhabited (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Creation</h2>
-    <hr>
     <ul>
-      <li>Book of Genesis- Chapter 1 Verses 1-5 - 10/25/2023 (pdf)</li>
-      <li>Book of Genesis Chapter 1 Verses 6-8 - 10/25/2023 (pdf)</li>
-      <li>Book of Genesis- Chapter 1:9-31 - 2/12/2025 (pdf)</li>
+      <li>Genesis 1:1–5 - 10/25/2023 (pdf)</li>
+      <li>Genesis 1:6–8 - 10/25/2023 (pdf)</li>
+      <li>Genesis 1:9–31 - 2/12/2025 (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Prophecies and a Covenant - 11/15/2023</h2>
-    <hr>
     <ul>
       <li>Promised Land & Eschatology References (pdf)</li>
       <li>Prophecy References and Resources (pdf)</li>
       <li>A Covenant and Prophecies (pdf)</li>
     </ul>
-  </section>
 
-  <section>
     <h2>Studies</h2>
-    <hr>
     <ul>
       <li>The Pillars - 9/3/2024 (pdf)</li>
-      <li>Trusting in Christ: Foundations of Faith and Righteous Living - 7/18/2024 (pdf)</li>
-      <li>Acts 20:13-28 - 7/16/2024 (pdf)</li>
+      <li>Trusting in Christ - 7/18/2024 (pdf)</li>
+      <li>Acts 20:13–28 - 7/16/2024 (pdf)</li>
       <li>Forgiveness - 10/25/2023 (pdf)</li>
-      <li>Giving Praise Through Trials and Tribulation - 10/27/2023 (pdf)</li>
+      <li>Giving Praise Through Trials - 10/27/2023 (pdf)</li>
       <li>God’s Blessings, Promises, and How He Keeps Us - 10/25/2023 (pdf)</li>
       <li>Prayer - 10/25/2023 (pdf)</li>
       <li>Who is Lucifer and How We Defend Ourselves Against Him - 10/25/2023 (pdf)</li>
       <li>Your Sin Affects Those Around You - 10/25/2023 (pdf)</li>
       <li>Obey and Abide - 3/27/2024 (pdf)</li>
-      <li>Faith's Wings: Accountability, Peace, Compassion - 4/5/2024 (pdf)</li>
+      <li>Faith’s Wings - 4/5/2024 (pdf)</li>
     </ul>
-  </section>
+  </main>
 
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-    }
+    const toggleButton = document.getElementById('themeToggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      document.getElementById('navbar').classList.toggle('dark');
+    });
   </script>
 </body>
 </html>
