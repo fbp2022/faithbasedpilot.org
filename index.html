@@ -1,70 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Faith Based Pilot</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      color: #fff;
+      background-color: #111;
+      color: white;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
     }
 
     h1 {
       text-align: center;
-      margin-top: 40px;
-      font-size: 2.5rem;
+      margin-bottom: 3rem;
     }
 
-    .container {
+    .section-container {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 60px;
-      margin: 40px;
+      gap: 2rem;
     }
 
     .section {
-      max-width: 500px;
+      flex: 1 1 30%;
       text-align: center;
-    }
-
-    .section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+      max-width: 32%;
     }
 
     .section img {
       width: 100%;
-      height: 300px;
+      height: auto;
+      max-height: 350px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 20px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
     }
 
     .section p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       text-align: left;
     }
 
-    @media screen and (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-        margin: 20px;
+    @media (max-width: 900px) {
+      .section {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
-
   <h1>About Faith Based Pilot</h1>
-
-  <div class="container">
-
+  <div class="section-container">
     <div class="section">
       <h2>Welcome</h2>
       <img src="images/welcome.jpg" alt="Welcome Image">
@@ -72,7 +63,6 @@
         Welcome to Faith Based Pilot, a platform dedicated to sharing the profound teachings of our Heavenly Father and what He calls us to do in accordance with His Word. My mission is to inspire, encourage, and minister to individuals helping them draw closer to the teachings of our Heavenly Father and the message of hope, love, and redemption found in the Bible.
       </p>
     </div>
-
     <div class="section">
       <h2>Mission</h2>
       <img src="images/mission.jpg" alt="Mission Image">
@@ -80,7 +70,6 @@
         Using Faith Based Pilot, my mission is simple: to bring God's Word to the world, one soul at a time. I aim to inspire, encourage, and enlighten individuals on their walk with the Lord, and help them draw closer to the teachings of Jesus Christ.
       </p>
     </div>
-
     <div class="section">
       <h2>Why Anonymity</h2>
       <img src="images/anonymity.jpg" alt="Anonymity Image">
@@ -88,8 +77,6 @@
         I choose to remain anonymous not out of fear or secrecy but to ensure the spotlight remains on God's message. I believe His teachings are the focus and that my identity is irrelevant in the face of His grace. Anonymity allows me to avoid any distractions or preconceived notions and ensures that His Word takes center stage.
       </p>
     </div>
-
   </div>
-
 </body>
 </html>
