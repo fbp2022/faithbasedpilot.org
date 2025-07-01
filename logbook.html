@@ -6,22 +6,85 @@
   <title>Logbook - Faith Based Pilot</title>
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+    }
+
+    .navbar {
+      background-color: var(--background);
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+
+    .nav-left a {
+      color: inherit;
+      text-decoration: none;
+      margin-right: 1.25rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .nav-right img {
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    section h2 {
+      border-bottom: 2px solid gray;
+      padding-bottom: 0.25rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    :root {
+      --background: #fff;
+      --text: #000;
+    }
+
+    [data-theme='dark'] {
+      --background: #121212;
+      --text: #f2f2f2;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
   <header class="navbar">
-    <nav class="nav-menu">
-      <div class="nav-left">
-        <a href="index.html">FBP</a>
-        <a href="beliefs.html">Beliefs</a>
-        <a href="logbook.html">Logbook</a>
-        <a href="the-hangar.html">The Hangar</a>
-      </div>
-      <div class="nav-right">
-        <button id="theme-toggle">
-          <img src="images/theme-toggle-logo.png" alt="Toggle Theme" height="30" />
-        </button>
-      </div>
-    </nav>
+    <div class="nav-left">
+      <a href="index.html">FBP</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+    </div>
+    <div class="nav-right">
+      <img src="images/theme-toggle-logo.png" id="theme-toggle" alt="Toggle Theme" />
+    </div>
   </header>
 
   <main class="content">
@@ -68,7 +131,7 @@
       <ul>
         <li>Meaning of "Spirit of Elijah" (pdf)</li>
         <li>Recognizing the Spirit of Elijah (pdf)</li>
-        <li>How to Accept Responsability of the Elijah Spirit (pdf)</li>
+        <li>How to Accept Responsibility of the Elijah Spirit (pdf)</li>
       </ul>
     </section>
 
@@ -127,5 +190,12 @@
       </ul>
     </section>
   </main>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.documentElement.toggleAttribute('data-theme');
+    });
+  </script>
 </body>
 </html>
