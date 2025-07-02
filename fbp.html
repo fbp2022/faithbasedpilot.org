@@ -88,11 +88,34 @@
     <img src="images/theme-toggle-logo.png" alt="Toggle Theme" class="theme-toggle" id="themeIcon" onclick="toggleTheme()">
   </nav>
 
-  <section>
-    <h2>Welcome</h2>
-    <img src="images/welcome.jpg" alt="Flying view" class="section-image">
-    <p>Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We're here to lift others by giving guidance to truth, and our own purpose is everything to do with it.</p>
-  </section>
+  <style>
+  .fbp-box {
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    font-family: 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  body.light-mode .fbp-box {
+    border-color: #000;
+    color: #000;
+  }
+
+  body.dark-mode .fbp-box {
+    border-color: #fff;
+    color: #fff;
+  }
+</style>
+
+<section>
+  <div class="fbp-box">Faith Based Pilot</div>
+  <img src="images/welcome.jpg" alt="Flying view" class="section-image">
+  <p>Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We're here to lift others by giving guidance to truth, and our own purpose is everything to do with it.</p>
+</section>
 
   <section>
     <h2>Mission</h2>
