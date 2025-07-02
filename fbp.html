@@ -4,62 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Faith Based Pilot</title>
-  <link rel="stylesheet" href="styles.css">
-    <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --nav-bg: #ffffff;
-      --nav-text: #000000;
-    }
-
-    body.dark-mode {
-      --bg-color: #121212;
-      --text-color: #ffffff;
-      --nav-bg: #000000;
-      --nav-text: #ffffff;
-    }
-
+  <style>
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
       font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
       margin: 0;
       padding: 0;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      background-color: var(--nav-bg);
-      padding: 10px 20px;
-      flex-wrap: wrap;
+      background-color: #222;
+      padding: 10px 0;
     }
 
-    .nav-menu {
-      display: flex;
-      gap: 15px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 0.95rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-menu li a {
-      color: var(--nav-text);
+    nav a {
+      color: #fff;
       text-decoration: none;
-      font-weight: bold;
-      white-space: nowrap;
+      margin: 0 15px;
+      font-size: 14px;
     }
 
-    #theme-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
+    nav a:hover {
+      text-decoration: underline;
     }
+
+    .theme-toggle {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      margin-left: 10px;
+    }
+
     section {
       max-width: 800px;
       margin: 30px auto;
@@ -83,6 +63,20 @@
       width: 100%;
       max-width: 100%;
     }
+
+    /* Light mode */
+    body.light-mode {
+      background-color: #f4f4f4;
+      color: #111;
+    }
+
+    body.light-mode nav {
+      background-color: #e0e0e0;
+    }
+
+    body.light-mode nav a {
+      color: #000;
+    }
   </style>
 </head>
 <body>
@@ -91,24 +85,24 @@
     <a href="beliefs.html">Beliefs</a>
     <a href="logbook.html">Logbook</a>
     <a href="the-hangar.html">The Hangar</a>
-    <img src="images/theme-toggle-logo.png" alt="Toggle Theme" class="theme-toggle" onclick="toggleTheme()">
+    <img src="compass-dark.png" alt="Toggle Theme" class="theme-toggle" id="themeIcon" onclick="toggleTheme()">
   </nav>
 
   <section>
     <h2>Welcome</h2>
-    <img src="images/welcome.jpg" alt="Flying view" class="section-image">
+    <img src="plane1.jpg" alt="Flying view" class="section-image">
     <p>Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We're here to lift others by giving guidance to truth, and our own purpose is everything to do with it.</p>
   </section>
 
   <section>
     <h2>Mission</h2>
-    <img src="images/mission.jpg" alt="Mission image" class="section-image">
+    <img src="sunset.jpg" alt="Mission image" class="section-image">
     <p>Our mission is simple: to inspire and equip individuals to live with clarity, courage, and conviction. Whether that purpose or mission is big or hidden, every journey should be uplifted by truth, guidance, and a sense of calling higher than oneself.</p>
   </section>
 
   <section>
     <h2>Why Anonymity</h2>
-    <img src="images/anonymity.jpg" alt="Clouds image" class="section-image">
+    <img src="clouds.jpg" alt="Clouds image" class="section-image">
     <p>We believe in the message more than the messenger. This platform exists to share truth and encouragement without seeking fame or recognition. Our anonymity allows the focus to remain where it belongs — on God's glory and your own calling in Him.</p>
   </section>
 
@@ -136,16 +130,15 @@
 
   <script>
     function toggleTheme() {
-      document.body.classList.toggle("light-mode");
-      const themeIcon = document.querySelector(".theme-toggle");
-      if (document.body.classList.contains("light-mode")) {
+      const body = document.body;
+      const themeIcon = document.getElementById("themeIcon");
+
+      body.classList.toggle("light-mode");
+
+      if (body.classList.contains("light-mode")) {
         themeIcon.src = "compass-light.png";
-        document.body.style.backgroundColor = "#f4f4f4";
-        document.body.style.color = "#111";
       } else {
         themeIcon.src = "compass-dark.png";
-        document.body.style.backgroundColor = "#111";
-        document.body.style.color = "#fff";
       }
     }
   </script>
