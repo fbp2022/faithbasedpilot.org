@@ -153,18 +153,44 @@
 </section>
 
   <script>
-    function toggleTheme() {
-      const body = document.body;
-      const themeIcon = document.getElementById("themeIcon");
+  function toggleTheme() {
+    const body = document.body;
+    const themeIcon = document.getElementById("themeIcon");
 
-      body.classList.toggle("light-mode");
+    body.classList.toggle("light-mode");
 
-      if (body.classList.contains("light-mode")) {
-        themeIcon.src = "images/theme-toggle-logo.png";
-      } else {
-        themeIcon.src = "images/theme-toggle-logo.png";
-      }
+    if (body.classList.contains("light-mode")) {
+      themeIcon.src = "images/theme-toggle-logo.png";
+    } else {
+      themeIcon.src = "images/theme-toggle-logo.png";
     }
+  }
+
+  // Abstract API Email Validation
+  const form = document.querySelector("form");
+  const emailInput = document.getElementById("email");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Block form submission until validation finishes
+
+    const email = emailInput.value.trim();
+    const apiKey = "ef813475bcdc4801b951071cc303861b";
+    const url = `https://emailvalidation.abstractapi.com/v1/?api_key=${apiKey}&email=${encodeURIComponent(email)}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (
+        data.deliverability === "DELIVERABLE" &&
+        data.is_disposable_email.value === false
+      ) {
+        // ✅ Email is valid and not disposable, submit the form
+        form.submit();
+      } else {
+        alert("Please enter a valid, real email address (not a temporary or fake one).");
+      }
+    } catch (error)
   </script>
   <footer>
   <p>Copyright © 2022 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
