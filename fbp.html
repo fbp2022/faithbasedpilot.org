@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Faith Based Pilot</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-    }
-
-    body.dark {
       background-color: #111;
       color: white;
+      text-align: center;
     }
 
     body.light {
@@ -43,65 +41,46 @@
       white-space: nowrap;
     }
 
-    #themeIcon {
+    #themeToggle {
       width: 32px;
       height: 32px;
       cursor: pointer;
       transition: filter 0.3s ease;
     }
 
-    body.light #themeIcon {
+    body.light #themeToggle {
       filter: invert(0);
     }
 
-    body.dark #themeIcon {
+    body.dark #themeToggle {
       filter: invert(1);
     }
 
-    h1 {
-      text-align: center;
-      margin: 2rem 0 1rem;
-    }
-
-    .logo-container {
-      text-align: center;
-      margin: 2rem 0;
-    }
-
-    .logo-container img {
-      max-width: 300px;
-      height: auto;
+    .main-logo {
+      max-width: 250px;
+      margin: 2rem auto 1rem;
+      display: block;
     }
 
     .section {
-      text-align: center;
-      margin: 2rem 0;
+      margin-bottom: 3rem;
     }
 
     .section img {
-      width: 300px;
+      max-width: 300px;
+      width: 100%;
       height: auto;
-      display: block;
-      margin: 0 auto;
     }
 
-    .section-title {
+    .caption {
+      margin-top: 0.5rem;
       font-weight: bold;
-      margin: 0.5rem 0;
-      padding: 0.25rem 0.75rem;
-      border: 1px solid white;
-      display: inline-block;
     }
 
-    body.light .section-title {
-      border-color: black;
-    }
-
-    .section-description {
-      max-width: 400px;
-      margin: 0.5rem auto 0;
+    .description {
       font-size: 0.9rem;
-      line-height: 1.4;
+      max-width: 500px;
+      margin: 0.5rem auto;
     }
   </style>
 </head>
@@ -113,44 +92,54 @@
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
     </nav>
-    <img id="themeIcon" src="images/theme-toggle-logo.png" alt="Theme Toggle">
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Theme Toggle">
   </header>
 
-  <div class="logo-container">
-    <img src="images/fbp-logo.png" alt="Faith Based Pilot Logo">
-  </div>
+  <img class="main-logo" src="images/fbp2022.png" alt="Faith Based Pilot Logo">
 
   <div class="section">
-    <div class="section-title">Faith Based Pilot</div>
-    <img src="images/fbp1.png" alt="Faith Based Pilot Photo">
-    <div class="section-description">
+    <div class="caption">Faith Based Pilot</div>
+    <img src="images/welcome.jpg" alt="Welcome">
+    <div class="description">
       Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We're here to lift others by giving guidance to truth, and our own purpose is everything to do with it.
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">Mission</div>
-    <img src="images/fbp2.png" alt="Mission Photo">
-    <div class="section-description">
-      Our mission is to encourage others through transparency. This platform exists to bring truth to light. We pursue it boldly and biblically, not for clicks or clout, but because He is worthy of our everything.
+    <div class="caption">Mission</div>
+    <img src="images/mission.jpg" alt="Mission">
+    <div class="description">
+      Our mission is to encourage others through transparency. This platform exists to boldly proclaim truth, offer support, and build a bridge between faith and flying.
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">Why Anonymity</div>
-    <img src="images/fbp3.png" alt="Why Anonymity Photo">
-    <div class="section-description">
-      We believe in the message more than the messenger. This platform exists to share truth and encouragement without seeking fame or recognition. Our anonymity allows the focus to remain where it belongs — on God’s glory and your own calling in Him.
+    <div class="caption">Witty Anonymity</div>
+    <img src="images/anonymity.jpg" alt="Witty Anonymity">
+    <div class="description">
+      We believe in the message above the messenger. Through creative expressions, anonymous contributions, and candid writing, we aim to reach hearts without distraction.
     </div>
   </div>
 
+<form action="https://formspree.io/f/mayvjyya" method="POST">
+      <h2>Subscribe for Updates</h2>
+      <input type="email" name="email" placeholder="Enter your email" required><br>
+      <input type="submit" value="Subscribe">
+    </form>
+
+    <footer>
+      Copyright © 2022 Faith Based Pilot – All Rights Reserved.<br>
+      All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws.<br>
+      Unauthorized use is strictly prohibited.
+    </footer>
+  
   <script>
-    const themeIcon = document.getElementById('themeIcon');
+    const toggle = document.getElementById('themeToggle');
     const body = document.body;
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.classList.add(savedTheme);
 
-    themeIcon.addEventListener('click', () => {
+    toggle.addEventListener('click', () => {
       body.classList.toggle('dark');
       body.classList.toggle('light');
       const theme = body.classList.contains('dark') ? 'dark' : 'light';
