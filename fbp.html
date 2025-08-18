@@ -143,35 +143,30 @@
     </p>
   </div>
 
-<section id="prayer-form" style="max-width: 600px; margin: 60px auto; padding: 20px; text-align: center;">
-  <h2>Submit a Prayer Request or Join Our Email List</h2>
-  <p style="margin-bottom: 30px;">We only send occasional updates — no spam, ever. You’re welcome to share a prayer request, subscribe for encouragement, or both!</p>
+<section id="subscribe" style="text-align: center; padding: 40px 20px;">
+  <h2 style="margin-bottom: 10px;">Submit a Message or Prayer Request</h2>
+  <p style="margin-bottom: 20px;">Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.</p>
+  
+  <form action="https://formspree.io/f/yourFormID" method="POST" style="max-width: 500px; margin: 0 auto;">
+    <!-- Redirect after submission -->
+    <input type="hidden" name="_redirect" value="https://faithbasedpilot.org/fbp.html">
 
-  <form action="https://formsubmit.co/aviationministries@faithbasedpilot.com" method="POST">
-    <!-- Enable CAPTCHA by removing _captcha=false -->
-    <input type="hidden" name="_next" value="https://faithbasedpilot.org/thank-you.html">
+    <!-- Email Field -->
+    <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Your Email</label>
+    <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px;">
 
-    <div style="margin-bottom: 15px;">
-      <input type="text" name="name" placeholder="Your Name" required
-        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--text-color); background-color: transparent; color: var(--text-color);">
-    </div>
+    <!-- Message Field -->
+    <label for="message" style="display: block; margin-bottom: 5px; font-weight: bold;">Message / Prayer Request</label>
+    <textarea id="message" name="message" required rows="5" style="width: 100%; padding: 10px; margin-bottom: 20px;"></textarea>
 
-    <div style="margin-bottom: 15px;">
-      <input type="email" name="email" placeholder="Your Email" required
-        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--text-color); background-color: transparent; color: var(--text-color);">
-    </div>
+    <!-- Google reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="your-site-key" style="margin-bottom: 20px;"></div>
 
-    <div style="margin-bottom: 25px;">
-      <textarea name="message" rows="5" placeholder="Prayer Request (optional)"
-        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--text-color); background-color: transparent; color: var(--text-color); resize: vertical;"></textarea>
-    </div>
-
-    <button type="submit"
-      style="padding: 12px 25px; background-color: var(--text-color); color: var(--background-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
-      Let’s Fly!
-    </button>
+    <!-- Submit Button -->
+    <button type="submit" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">Let's Fly!</button>
   </form>
 </section>
+
 
   <script>
     function toggleTheme() {
