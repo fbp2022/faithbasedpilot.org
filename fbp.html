@@ -34,13 +34,21 @@
       text-decoration: underline;
     }
 
-    .theme-toggle {
+     #themeToggle {
+      width: 32px;
+      height: 32px;
       cursor: pointer;
-      width: 24px;
-      height: 24px;
-      margin-left: 10px;
+      transition: filter 0.3s ease;
     }
 
+    body.light #themeToggle {
+      filter: invert(0);
+    }
+
+    body.dark #themeToggle {
+      filter: invert(1);
+    }
+    
     section {
       max-width: 800px;
       margin: 30px auto;
