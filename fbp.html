@@ -143,37 +143,29 @@
     </p>
   </div>
 
-<section id="subscribe" style="text-align: center; margin-top: 40px;">
-  <h2>Submit a Message or Prayer Request</h2>
-  <p>Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.</p>
+<h2 style="text-align: center;">Submit a Message or Prayer Request</h2>
+<p style="text-align: center;">
+  Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
+</p>
 
-  <form action="https://formspree.io/f/mgegpwoz" method="POST" style="display: inline-block; text-align: left; max-width: 500px; width: 90%;">
-    <label for="name">Your Name</label><br>
-    <input type="text" id="name" name="name" style="width: 100%; padding: 10px;" required><br><br>
+<form action="https://formspree.io/f/your_form_id" method="POST" style="max-width: 600px; margin: auto;">
+  <label for="name">Your Name</label>
+  <input type="text" id="name" name="name" required>
 
-    <label for="email">Your Email</label><br>
-    <input type="email" id="email" name="email" style="width: 100%; padding: 10px;" required><br><br>
+  <label for="email">Your Email</label>
+  <input type="email" id="email" name="_replyto" required>
 
-    <label for="message">Message / Prayer Request</label><br>
-    <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px;" required></textarea><br><br>
+  <label for="message">Message / Prayer Request</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
 
-    <!-- Google reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0Vsl_gxC96zTTWmyy6mI2TuOb"></div>
+  <!-- CAPTCHA -->
+  <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0VsI_gxC96zTTWmyy6mI2Tu0b" style="margin: 20px 0;"></div>
 
-    <!-- Redirect after submit -->
-    <input type="hidden" name="_redirect" value="https://faithbasedpilot.org/fbp.html">
+  <button type="submit">Let's Fly!</button>
+</form>
 
-    <!-- Submit Button -->
-    <div style="text-align: center;">
-      <button type="submit" style="padding: 10px 20px;">Let's Fly!</button>
-    </div>
-  </form>
-</section>
-
+<!-- reCAPTCHA Script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-
-
 
   <script>
     function toggleTheme() {
