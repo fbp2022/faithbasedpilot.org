@@ -66,26 +66,18 @@
     }
 
     /* Light mode */
-    body.light {
-  background-color: #fff;
-  color: #000;
-}
+     body.light #themeToggle {
+      filter: invert(0);
+    }
 
-body.light nav {
-  background-color: #e0e0e0;
-}
+    body.dark #themeToggle {
+      filter: invert(1);
+    }
 
-body.light nav a {
-  color: #000;
-}
-
-body.light #themeIcon {
-  filter: invert(0);
-}
-
-body.dark #themeIcon {
-  filter: invert(1);
-}
+    h1 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
 
   </style>
 </head>
