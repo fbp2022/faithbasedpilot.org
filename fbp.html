@@ -143,36 +143,33 @@
     </p>
   </div>
 
-<section id="subscribe" style="text-align: center; padding: 40px 20px;">
-  <h2 style="margin-bottom: 10px;">Submit a Message or Prayer Request</h2>
-  <p style="margin-bottom: 20px;">Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.</p>
+<section id="subscribe">
+  <h2>Submit a Message or Prayer Request</h2>
+  <p>Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.</p>
+  <form action="https://formspree.io/f/mgegpwoz" method="POST">
+    <label for="name">Your Name</label><br>
+    <input type="text" id="name" name="name" required><br><br>
 
-  <form action="https://formspree.io/f/yourFormID" method="POST" style="max-width: 500px; margin: 0 auto;">
-    <!-- Redirect after submission -->
+    <label for="email">Your Email</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="message">Message / Prayer Request</label><br>
+    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+    <!-- ✅ Google reCAPTCHA v2 box -->
+    <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0VsI_gxC96zTTWmyy6ml2Tu0b"></div><br>
+
+    <!-- ✅ Redirect after submission -->
     <input type="hidden" name="_redirect" value="https://faithbasedpilot.org/fbp.html">
 
-    <!-- Name Field -->
-    <label for="name" style="display: block; margin-bottom: 5px; font-weight: bold;">Your Name</label>
-    <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 15px;">
-
-    <!-- Email Field -->
-    <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Your Email</label>
-    <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px;">
-
-    <!-- Message Field -->
-    <label for="message" style="display: block; margin-bottom: 5px; font-weight: bold;">Message / Prayer Request</label>
-    <textarea id="message" name="message" required rows="5" style="width: 100%; padding: 10px; margin-bottom: 20px;"></textarea>
-
-    <!-- Google reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="your-site-key" style="margin-bottom: 20px;"></div>
-
-    <!-- Submit Button -->
-    <button type="submit" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">Let's Fly!</button>
+    <!-- ✅ Submit button -->
+    <button type="submit">Let's Fly!</button>
   </form>
 </section>
 
-<!-- Load Google reCAPTCHA Script -->
+<!-- ✅ Include the reCAPTCHA script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 
   <script>
