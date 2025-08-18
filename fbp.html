@@ -143,63 +143,35 @@
     </p>
   </div>
 
- <div class="subscription-container">
-  <h2>Subscribe for Updates</h2>
-  <form action="https://api.abstractapi.com/v1/newsletter/subscribe" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required />
-    <button type="submit">Subscribe</button>
+<section id="prayer-form" style="max-width: 600px; margin: 60px auto; padding: 20px; text-align: center;">
+  <h2>Submit a Prayer Request or Join Our Email List</h2>
+  <p style="margin-bottom: 30px;">We only send occasional updates — no spam, ever. You’re welcome to share a prayer request, subscribe for encouragement, or both.</p>
+
+  <form action="https://formsubmit.co/aviationministries@faithbasedpilot.com" method="POST">
+    <!-- Enable CAPTCHA by removing _captcha=false -->
+    <input type="hidden" name="_next" value="https://faithbasedpilot.org/thank-you.html">
+
+    <div style="margin-bottom: 15px;">
+      <input type="text" name="name" placeholder="Your Name" required
+        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--text-color); background-color: transparent; color: var(--text-color);">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <input type="email" name="email" placeholder="Your Email" required
+        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--text-color); background-color: transparent; color: var(--text-color);">
+    </div>
+
+    <div style="margin-bottom: 25px;">
+      <textarea name="message" rows="5" placeholder="Prayer Request (optional)"
+        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--text-color); background-color: transparent; color: var(--text-color); resize: vertical;"></textarea>
+    </div>
+
+    <button type="submit"
+      style="padding: 12px 25px; background-color: var(--text-color); color: var(--background-color); border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+      Let’s Fly
+    </button>
   </form>
-</div>
-
-<style>
-  .subscription-container {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-
-  .subscription-container h2 {
-    margin-bottom: 20px;
-    font-size: 1.8em;
-  }
-
-  .subscription-container input[type="email"] {
-    padding: 10px;
-    width: 250px;
-    max-width: 80%;
-    border: 1px solid var(--text-color);
-    border-radius: 5px;
-    margin-right: 10px;
-    background-color: transparent;
-    color: var(--text-color);
-  }
-
-  .subscription-container button {
-    padding: 10px 20px;
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .subscription-container button:hover {
-    opacity: 0.85;
-  }
-
-  @media (max-width: 600px) {
-    .subscription-container input[type="email"] {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .subscription-container button {
-      width: 100%;
-    }
-  }
-</style>
+</section>
 
   <script>
     function toggleTheme() {
