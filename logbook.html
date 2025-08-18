@@ -1,103 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Logbook - Faith Based Pilot</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faith Based Pilot – Logbook</title>
   <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --nav-bg: #ffffff;
-      --nav-text: #000000;
-    }
-
-    body.dark-mode {
-      --bg-color: #121212;
-      --text-color: #ffffff;
-      --nav-bg: #000000;
-      --nav-text: #ffffff;
-    }
-
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.3s, color 0.3s;
+      background-color: #f4f4f4;
+      color: #111;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--nav-bg);
-      padding: 10px 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-menu {
-      display: flex;
-      gap: 15px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 0.95rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-menu li a {
-      color: var(--nav-text);
-      text-decoration: none;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    #theme-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    #theme-icon {
-      height: 30px;
-      width: 30px;
-    }
-
-    main {
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      text-align: center;
-    }
-
-    h2 {
-      margin-top: 40px;
-      border-bottom: 1px solid var(--text-color);
-      padding-bottom: 5px;
-      font-size: 1.2rem;
+    h1, h2 {
+      color: #333;
     }
 
     a {
-      color: #0000EE;
+      color: blue;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
     a:visited {
-  color: #0000EE; /* Same as unvisited */
+      color: purple;
     }
 
-    ul {
-      list-style-type: disc;
-/* Begin paper links section */
+    .date {
+      color: black;
+      font-size: 0.9em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Logbook</h1>
+
+  <!-- 🔻 PASTE YOUR FULL PAPER LINKS SECTION HERE 🔻 -->
+  <!-- Begin paper links section -->
 
 <h2>The Catholic Church (3/7/2025)</h2>
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/76abb0d0-853e-47a9-9f6e-66bdb294677c/Are%20Catholics%20Lost%20in%20the%20Law.pdf?ver=1751215810224">Are Catholics Lost in the Law</a> (pdf)<br />
@@ -121,6 +65,7 @@
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/How%20to%20know%20when%20you%20turned%20away%20from%20the%20Lord.pdf?ver=1751215810333">How to Know When You Have Turned Away From the Lord</a> (pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Reclaiming%20Your%20Relationship%20with%20God%20-%20A%20Bold.pdf?ver=1751215810333">Reclaiming Your Relationship with God</a> (pdf)<br />
 
+<!-- Continues with Elijah, Ahab, Jezebel, Creation, Prophecies, Studies, etc. -->
 <h2>Spirit of Elijah (1/14/2024)</h2>
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Meaning%20of%20the%20Spirit%20of%20Elijah.pdf?ver=1751215810356">Meaning of "Spirit of Elijah"</a> (pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20the%20Spirit%20of%20Elijah.pdf?ver=1751215810356">Recognizing the Spirit of Elijah</a> (pdf)<br />
@@ -137,7 +82,6 @@
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">Recognizing a Jezebelian Spirit</a> (pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Guarding%20Against%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">Guarding Against a Jezebelian Spirit</a> (pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiving%20the%20Jezebelian%20Inhabited.pdf?ver=1751215810415">Forgiving the Jezebelian Inhabited</a> (pdf)<br />
-
 <h2>Creation</h2>
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Book%20of%20Genesis-%20Chapter%201%20Verses%201-5.pdf?ver=1751215810460">Book of Genesis - Chapter 1 Verses 1–5</a> (10/25/2023, pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Book%20of%20Genesis%20Chapter%201%20Verses%206-8.pdf?ver=1751215810460">Book of Genesis - Chapter 1 Verses 6–8</a> (10/25/2023, pdf)<br />
@@ -160,23 +104,9 @@
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Your%20Sin%20Affects%20Those%20Around%20You.pdf?ver=1751215810517">Your Sin Affects Those Around You</a> (10/25/2023, pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Obey%20and%20Abide.pdf?ver=1751215810517">Obey and Abide</a> (3/27/2024, pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Faiths%20Wings%20-%20Accountability%2C%20Peace%2C%20Compassi.pdf?ver=1751215810517">Faith's Wings: Accountability, Peace, Compassion</a> (4/5/2024, pdf)<br />
-/* End paper links section */
-    
-  </div>
-  </main>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
 
-    window.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
-    });
-  </script>
+  <!-- 🔺 END PAPER LINKS SECTION 🔺 -->
+
 </body>
 </html>
