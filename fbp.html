@@ -148,7 +148,12 @@
   Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
 </p>
 
-<form action="https://formspree.io/f/your_form_id" method="POST" style="max-width: 600px; margin: auto;">
+<h2 style="text-align: center;">Submit a Message or Prayer Request</h2>
+<p style="text-align: center;">
+  Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
+</p>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
   <label for="name">Your Name</label>
   <input type="text" id="name" name="name" required>
 
@@ -158,14 +163,14 @@
   <label for="message">Message / Prayer Request</label>
   <textarea id="message" name="message" rows="5" required></textarea>
 
-  <!-- CAPTCHA -->
-  <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0VsI_gxC96zTTWmyy6mI2Tu0b" style="margin: 20px 0;"></div>
+  <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0VsI_gxC96zTTWmyy6mI2Tu0b"></div>
 
-  <button type="submit">Let's Fly!</button>
+  <button type="submit" style="margin-top: 10px;">Let's Fly!</button>
 </form>
 
-<!-- reCAPTCHA Script -->
+<!-- reCAPTCHA script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
   <script>
     function toggleTheme() {
