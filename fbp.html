@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Faith Based Pilot</title>
   <style>
     body {
@@ -68,7 +68,8 @@
     }
 
     .section img {
-      max-width: 90%;
+      width: 80%;
+      max-width: 600px;
       height: auto;
       display: block;
       margin: 0 auto 1rem;
@@ -114,50 +115,49 @@
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
     </nav>
-    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme" onclick="toggleTheme()">
   </header>
 
   <h1>Welcome</h1>
 
   <div class="section">
-    <img src="images/welcome.jpg" alt="Welcome Image">
-    <p>Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We're here to lift others by giving guidance to truth, and our own purpose is everything to do with it.</p>
+    <img src="images/welcome.jpg" alt="Faith Based Pilot - Welcome">
+    <p>
+      Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We’re here to lift others by giving guidance to truth, and our own purpose is everything to do with it.
+    </p>
   </div>
 
   <div class="section">
     <h2>Mission</h2>
     <img src="images/mission.jpg" alt="Mission Image">
-    <p>Our mission is to encourage others into discovering their God-given calling while building up the body of Christ. We point toward identity in Christ and away from worldly confusion.</p>
+    <p>
+      Our mission is to equip others with lessons drawn from flying. Core principles include clarity, building skill, and the courage to act. These aren’t just flight lessons — they’re life lessons.
+    </p>
   </div>
 
   <div class="section">
     <h2>Why Anonymity</h2>
     <img src="images/anonymity.jpg" alt="Anonymity Image">
-    <p>We believe the message matters more than the messenger. This platform's content is shared for edification, not personal gain or fame. To know who we are, look to the words we’ve written and the life we lead beyond the screen.</p>
+    <p>
+      We believe in focusing on message before messenger. That’s why photos are anonymous, stories are universal, and the hope is simple: to reach people where they are and point toward something greater.
+    </p>
   </div>
 
-  <form action="https://formspree.io/f/your-form-id" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" required>
+  <form action="https://formspree.io/f/your-id" method="POST">
+    <label>
+      <input type="email" name="email" placeholder="Your email address" required />
+    </label>
     <input type="submit" value="Subscribe">
   </form>
 
   <div class="footer">
-    <p>Copyright © 2022 Faith Based Pilot - All Rights Reserved.<br>
-    All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
+    Copyright © 2022 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.
   </div>
 
   <script>
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.add(savedTheme);
-
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('light');
-      body.classList.toggle('dark');
-      const theme = body.classList.contains('light') ? 'light' : 'dark';
-      localStorage.setItem('theme', theme);
-    });
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
   </script>
 </body>
 </html>
