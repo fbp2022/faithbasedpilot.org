@@ -66,18 +66,27 @@
     }
 
     /* Light mode */
-    body.light-mode {
-      background-color: #f4f4f4;
-      color: #111;
-    }
+    body.light {
+  background-color: #fff;
+  color: #000;
+}
 
-    body.light-mode nav {
-      background-color: #e0e0e0;
-    }
+body.light nav {
+  background-color: #e0e0e0;
+}
 
-    body.light-mode nav a {
-      color: #000;
-    }
+body.light nav a {
+  color: #000;
+}
+
+body.light #themeIcon {
+  filter: invert(0);
+}
+
+body.dark #themeIcon {
+  filter: invert(1);
+}
+
   </style>
 </head>
 <body>
