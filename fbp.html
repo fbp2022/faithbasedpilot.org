@@ -143,32 +143,35 @@
     </p>
   </div>
 
-<section id="subscribe">
+<section id="subscribe" style="text-align: center; margin-top: 40px;">
   <h2>Submit a Message or Prayer Request</h2>
   <p>Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.</p>
-  <form action="https://formspree.io/f/mgegpwoz" method="POST">
+
+  <form action="https://formspree.io/f/mgegpwoz" method="POST" style="display: inline-block; text-align: left; max-width: 500px; width: 90%;">
     <label for="name">Your Name</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+    <input type="text" id="name" name="name" style="width: 100%; padding: 10px;" required><br><br>
 
     <label for="email">Your Email</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+    <input type="email" id="email" name="email" style="width: 100%; padding: 10px;" required><br><br>
 
     <label for="message">Message / Prayer Request</label><br>
-    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+    <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px;" required></textarea><br><br>
 
-    <!-- ✅ Google reCAPTCHA v2 box -->
-    <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0VsI_gxC96zTTWmyy6ml2Tu0b"></div><br>
+    <!-- Google reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="YOUR_NEW_SITE_KEY_HERE"></div><br>
 
-    <!-- ✅ Redirect after submission -->
+    <!-- Redirect after submit -->
     <input type="hidden" name="_redirect" value="https://faithbasedpilot.org/fbp.html">
 
-    <!-- ✅ Submit button -->
-    <button type="submit">Let's Fly!</button>
+    <!-- Submit Button -->
+    <div style="text-align: center;">
+      <button type="submit" style="padding: 10px 20px;">Let's Fly!</button>
+    </div>
   </form>
 </section>
 
-<!-- ✅ Include the reCAPTCHA script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 
 
