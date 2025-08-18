@@ -146,10 +146,14 @@
 <section id="subscribe" style="text-align: center; padding: 40px 20px;">
   <h2 style="margin-bottom: 10px;">Submit a Message or Prayer Request</h2>
   <p style="margin-bottom: 20px;">Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.</p>
-  
+
   <form action="https://formspree.io/f/yourFormID" method="POST" style="max-width: 500px; margin: 0 auto;">
     <!-- Redirect after submission -->
     <input type="hidden" name="_redirect" value="https://faithbasedpilot.org/fbp.html">
+
+    <!-- Name Field -->
+    <label for="name" style="display: block; margin-bottom: 5px; font-weight: bold;">Your Name</label>
+    <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 15px;">
 
     <!-- Email Field -->
     <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Your Email</label>
@@ -166,6 +170,9 @@
     <button type="submit" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">Let's Fly!</button>
   </form>
 </section>
+
+<!-- Load Google reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
   <script>
