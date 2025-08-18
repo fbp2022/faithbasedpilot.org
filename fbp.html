@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Faith Based Pilot</title>
   <style>
     body {
@@ -19,70 +19,90 @@
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background-color: #1a1a1a;
       padding: 1rem 2rem;
-      background-color: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    body.light header {
+      background-color: #f0f0f0;
     }
 
     nav {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     nav a {
       color: inherit;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
     }
 
     #themeToggle {
       width: 32px;
       height: 32px;
       cursor: pointer;
-      transition: filter 0.3s ease;
+      position: absolute;
+      right: 2rem;
+      top: 1rem;
+      filter: invert(1);
     }
 
     body.light #themeToggle {
       filter: invert(0);
     }
 
-    body.dark #themeToggle {
-      filter: invert(1);
+    h1 {
+      text-align: center;
+      margin: 2rem 0 1rem;
     }
 
     .section {
       text-align: center;
-      margin-bottom: 3rem;
+      margin: 3rem 0;
     }
 
     .section img {
-      width: 100%;
-      max-width: 800px;
+      max-width: 90%;
       height: auto;
       display: block;
+      margin: 0 auto 1rem;
+    }
+
+    .section p {
+      max-width: 700px;
       margin: 0 auto;
     }
 
     form {
       text-align: center;
-      margin: 2rem auto;
-      max-width: 600px;
+      margin: 4rem 0 2rem;
     }
 
-    form input,
-    form textarea {
-      display: block;
-      width: 100%;
-      margin-bottom: 1rem;
+    input[type="email"] {
       padding: 0.5rem;
+      font-size: 1rem;
+      width: 250px;
+      max-width: 80%;
     }
 
-    footer {
-      text-align: left;
+    input[type="submit"] {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+
+    .footer {
       font-size: 0.75rem;
-      padding: 1rem;
+      text-align: left;
+      padding: 2rem;
+      color: gray;
     }
   </style>
 </head>
@@ -97,36 +117,34 @@
     <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
   </header>
 
+  <h1>Welcome</h1>
+
   <div class="section">
-    <h2>Welcome</h2>
-    <img src="images/welcome.jpg" alt="Welcome">
+    <img src="images/welcome.jpg" alt="Welcome Image">
     <p>Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We're here to lift others by giving guidance to truth, and our own purpose is everything to do with it.</p>
   </div>
 
   <div class="section">
     <h2>Mission</h2>
-    <img src="images/mission.jpg" alt="Mission">
-    <p>Our mission is to encourage others toward deeper meaning. This platform exists to offer spiritual guidance, hope, and truth. Our goal is to direct others to God's intended plan for their life through encouragement, Scripture, and shared experience.</p>
+    <img src="images/mission.jpg" alt="Mission Image">
+    <p>Our mission is to encourage others into discovering their God-given calling while building up the body of Christ. We point toward identity in Christ and away from worldly confusion.</p>
   </div>
 
   <div class="section">
     <h2>Why Anonymity</h2>
-    <img src="images/anonymity.jpg" alt="Anonymity">
-    <p>We believe in the message more than the messenger. This platform exists to share truth and encouragement without seeking fame or recognition. Our anonymity allows the focus to remain where it belongs — on God’s glory and your own calling in Him.</p>
+    <img src="images/anonymity.jpg" alt="Anonymity Image">
+    <p>We believe the message matters more than the messenger. This platform's content is shared for edification, not personal gain or fame. To know who we are, look to the words we’ve written and the life we lead beyond the screen.</p>
   </div>
 
-  <form>
-    <h3>Submit a Prayer Request or Join Our Email List</h3>
-    <p>We only send occasional updates — no spam, ever. You’re welcome to share a prayer request or just subscribe for updates and encouragement.</p>
-    <input type="text" name="name" placeholder="Name:">
-    <input type="email" name="email" placeholder="Email:">
-    <textarea name="prayer" rows="4" placeholder="Prayer Request (optional)..."></textarea>
-    <button type="submit">Let’s Fly!</button>
+  <form action="https://formspree.io/f/your-form-id" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <input type="submit" value="Subscribe">
   </form>
 
-  <footer>
-    <p>Copyright © 2022 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-  </footer>
+  <div class="footer">
+    <p>Copyright © 2022 Faith Based Pilot - All Rights Reserved.<br>
+    All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
+  </div>
 
   <script>
     const toggle = document.getElementById('themeToggle');
@@ -135,9 +153,9 @@
     body.classList.add(savedTheme);
 
     toggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
       body.classList.toggle('light');
-      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      body.classList.toggle('dark');
+      const theme = body.classList.contains('light') ? 'light' : 'dark';
       localStorage.setItem('theme', theme);
     });
   </script>
