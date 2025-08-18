@@ -143,16 +143,63 @@
     </p>
   </div>
 
-  <form action="https://formspree.io/f/your-id" method="POST">
-    <label>
-      <input type="email" name="email" placeholder="Your email address" required />
-    </label>
-    <input type="submit" value="Subscribe">
+ <div class="subscription-container">
+  <h2>Subscribe for Updates</h2>
+  <form action="https://api.abstractapi.com/v1/newsletter/subscribe" method="POST">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Subscribe</button>
   </form>
+</div>
 
-  <div class="footer">
-    Copyright © 2022 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.
-  </div>
+<style>
+  .subscription-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .subscription-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
+
+  .subscription-container input[type="email"] {
+    padding: 10px;
+    width: 250px;
+    max-width: 80%;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: transparent;
+    color: var(--text-color);
+  }
+
+  .subscription-container button {
+    padding: 10px 20px;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .subscription-container button:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 600px) {
+    .subscription-container input[type="email"] {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .subscription-container button {
+      width: 100%;
+    }
+  }
+</style>
 
   <script>
     function toggleTheme() {
