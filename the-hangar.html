@@ -4,68 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Hangar - Faith Based Pilot</title>
+  <meta name="description" content="The Hangar: a running list of articles with quick previews across faith, flight, training, and more."/>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
+    :root{
+      --bg:#111; --ink:#fff; --muted:#cfcfcf; --panel:#161616; --border:rgba(255,255,255,.12); --panelHover:#1d1d1d;
+      --bg-light:#fff; --ink-light:#000; --muted-light:#333; --panel-light:#f7f7f7; --border-light:rgba(0,0,0,.12); --panelLightHover:#f0f0f0;
     }
 
-    body.light {
-      background-color: #fff;
-      color: #000;
-    }
+    /* Base */
+    body { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: var(--bg); color: var(--ink); }
+    body.light { background-color: var(--bg-light); color: var(--ink-light); }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      flex-wrap: wrap;
-    }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; flex-wrap: wrap; }
 
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+    nav a { color: inherit; text-decoration: none; font-weight: bold; font-size: 0.9rem; white-space: nowrap; }
 
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
+    #themeToggle { width: 32px; height: 32px; cursor: pointer; transition: filter 0.3s ease; }
+    body.light #themeToggle { filter: invert(0); }
+    body.dark #themeToggle { filter: invert(1); }
 
-    #themeToggle {
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      transition: filter 0.3s ease;
-    }
+    h1 { text-align: center; margin: 2rem 0 0.25rem; }
+    .sub { text-align:center; margin: 0 0 1.25rem; color: var(--muted); font-size: 0.95rem; }
+    body.light .sub { color: var(--muted-light); }
 
-    body.light #themeToggle {
-      filter: invert(0);
-    }
+    main { padding: 0 2rem 2rem; max-width: 980px; margin: auto; }
 
-    body.dark #themeToggle {
-      filter: invert(1);
-    }
+    /* Posts list */
+    .posts { display: grid; gap: 16px; margin-top: 18px; }
 
-    h1 {
-      text-align: center;
-      margin: 2rem 0 1rem;
-    }
+    .post { list-style: none; margin: 0; padding: 0; }
 
-    main {
-      padding: 0 2rem 2rem;
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: background .2s ease, border-color .2s ease, transform .15s ease;
+    }
+    .card:hover { background: var(--panelHover); transform: translateY(-1px); }
+
+    body.light .card { background: var(--panel-light); border-color: var(--border-light); }
+    body.light .card:hover { background: var(--panelLightHover); }
+
+    .kicker { text-transform: uppercase; letter-spacing: .16em; font-size: 12px; opacity: .75; margin-bottom: 6px; }
+
+    .title { margin: 0 0 6px; font-size: 1.1rem; line-height: 1.3; }
+    .title a { color: inherit; text-decoration: none; }
+    .title a:hover { text-decoration: underline; }
+
+    .excerpt { margin: 0 0 10px; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+    body.light .excerpt { color: var(--muted-light); }
+
+    .meta { display: flex; gap: 10px; align-items: center; font-size: .8rem; opacity: .8; }
+    .dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: .6; }
+
+    /* Small screen tweaks */
+    @media (max-width:560px){
+      header{padding: 0.75rem 1rem}
+      main{padding: 0 1rem 1.5rem}
     }
   </style>
 </head>
@@ -81,9 +78,336 @@
   </header>
 
   <h1>The Hangar</h1>
+  <p class="sub">A living index of posts. Click any title to read the full entry; each item shows a tight, current preview.</p>
 
   <main>
-    <p>This section will include resources, thoughts, and additional content related to faith, flight, and everything in between. More to come.</p>
+    <ol class="posts">
+      
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/02162023-god-will-strengthen-and-free-you">God Will Strengthen and Free You</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/who-are-you">Who Are You?</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/faith-and-forgiveness">Faith and Forgiveness</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/jesus-freak">Jesus Freak</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/guilt-shame">Guilt & Shame</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/christmas">Christmas</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/guidance-and-asking-for-help">Guidance and Asking for Help</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/defending-the-spirit">Defending the Spirit</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/trusting-god-amidst-jezebels-tactics">Trusting God Amidst Jezebel's Tactics</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/unapologetically-christian">Unapologetically Christian</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/unspoken-facing-the-uncomfortable-truths">Unspoken: Facing the Uncomfortable Truths</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/the-unyielding-path-of-a-christian-challenging-the-status-quo">The Unyielding Path of a Christian: Challenging the Status Quo</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/a-call-to-fortitude-reflecting-on-generational-strength">A Call to Fortitude: Reflecting on Generational Strength</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/growing-good-fruit-reflecting-on-spiritual-transformation">Growing Good Fruit: Reflecting on Spiritual Transformation</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/the-dynamic-dialogue-conscience-and-the-holy-spirit">The Dynamic Dialogue: Conscience and the Holy Spirit</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/discerning-the-divine-understanding-the-voice-of-god">Discerning the Divine: Understanding the Voice of God</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/7-deadly-sins">7 Deadly Sins</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/mark-driscoll-guest-speaker-kicked-off-the-stage">Mark Driscoll — Guest Speaker Kicked Off the Stage</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/patience">Patience</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/faith-strength-courage-community">Faith, Strength, Courage, Community</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/soft-society-hard-truths-undone-culture">Soft Society, Hard Truths: Undone Culture</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/god-wont-give-you-anything-he-cant-handle">God Won't Give You Anything He Can't Handle</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/tolerance-and-faith-how-to-walk-in-today%E2%80%99s-world">Tolerance and Faith: How to Walk in Today’s World</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/true-confidence-vs-false-security">True Confidence vs. False Security</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/when-help-is-refused-faith-based-guidance-for-the-unreachable">When Help Is Refused: Faith-Based Guidance for the Unreachable</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith • Flight</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/%E2%9C%88%EF%B8%8F-position-lights-and-the-christian-walk">✈️ Position Lights and the Christian Walk</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/tuning-out-the-noise">Tuning Out the Noise</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/do-not-stop-do-not-drop-and-do-not-roll">Do Not Stop, Do Not Drop, and Do Not Roll</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/the-spiritual-dangers-of-halloween">The Spiritual Dangers of Halloween</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/hello-i%E2%80%99ve-been-trying-to-you-about-your-car%E2%80%99s-extended-warranty">Hello — I’ve Been Trying to Reach You About Your Car’s Extended Warranty</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call">The Manna from Heaven and the Gift of Christmas: A Profound Call</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/stand-firm-a-call-to-integrity-and-biblical-morals">Stand Firm: A Call to Integrity and Biblical Morals</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/the-raven-and-the-dove">The Raven and the Dove</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/separated-to-reunite">Separated to Reunite</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/slave-to-christ">Slave to Christ</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+      <li class="post">
+        <article class="card">
+          <div class="kicker">Faith</div>
+          <h2 class="title"><a href="https://faithbasedpilot.com/the-hangar-1/f/the-strength-of-a-servant-killing-pride-and-leading-low">The Strength of a Servant: Killing Pride and Leading Low</a></h2>
+          <p class="excerpt">Preview coming soon.</p>
+          <div class="meta"><span>Article</span></div>
+        </article>
+      </li>
+
+    </ol>
   </main>
 
   <script>
