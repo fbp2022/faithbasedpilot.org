@@ -148,7 +148,14 @@
   Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
 </p>
 
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+<form id="contactForm"
+      action="https://formspree.io/f/YOUR_FORM_ID"   <!-- TODO: put your real Formspree ID -->
+      method="POST"
+      style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+
+  <!-- Honeypot (spam trap) -->
+  <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;" aria-hidden="true">
+
   <label for="name">Your Name</label>
   <input type="text" id="name" name="name" required>
 
@@ -158,29 +165,28 @@
   <label for="message">Message / Prayer Request</label>
   <textarea id="message" name="message" rows="5" required></textarea>
 
-  <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAAPH0VsI_gxC96zTTWmyy6mI2Tu0b"></div>
+  <!-- reCAPTCHA v2 Checkbox (single, correct include below) -->
+  <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div> <!-- TODO: replace with your real site key -->
 
   <button type="submit" style="margin-top: 10px;">Let's Fly!</button>
 </form>
 
-<!-- reCAPTCHA script -->
-  <head>
-    <title>reCAPTCHA demo: Simple page</title>
-    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-  </head>
-  <body>
-    <form action="" method="POST">
-      <div class="g-recaptcha" data-sitekey="6LdciKkrAAAAAPH0Vsl_gxC96zTTWmyy6mI2Tu0b" data-action="LOGIN"></div>
-      <br/>
-      <input type="submit" value="Submit">
-    </form>
-  </body>
+<!-- Load reCAPTCHA API ONCE -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle("light");
+<script>
+  // Simple client-side check to ensure captcha is solved before submit
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === '') {
+      e.preventDefault();
+      alert('Please complete the reCAPTCHA before submitting.');
     }
-  </script>
+  });
+
+  // Keep your theme toggle as-is
+  function toggleTheme() {
+    document.body.classList.toggle("light");
+  }
+</script>
 </body>
 </html>
