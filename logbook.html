@@ -25,7 +25,11 @@
       background: var(--bg);
       color: var(--ink);
     }
-    body.light { background: var(--bgL); color: var(--inkL); }
+
+    body.light {
+      background: var(--bgL);
+      color: var(--inkL);
+    }
 
     header {
       display: flex;
@@ -35,17 +39,44 @@
       flex-wrap: wrap;
     }
 
-    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-    nav a { color: inherit; text-decoration: none; font-weight: bold; font-size: .9rem; white-space: nowrap; }
-    nav a:visited { color: inherit; }
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-    #themeToggle { width: 32px; height: 32px; cursor: pointer; transition: filter .3s; }
-    body.light #themeToggle { filter: invert(0); }
-    body.dark  #themeToggle { filter: invert(1); }
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
 
-    h1 { text-align: center; margin: 2rem 0 1rem; }
+    nav a:visited {
+      color: inherit;
+    }
 
-    /* 🔥 Updated main to span full width 🔥 */
+    #themeToggle {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: filter 0.3s ease;
+    }
+
+    body.light #themeToggle {
+      filter: invert(0);
+    }
+
+    body.dark #themeToggle {
+      filter: invert(1);
+    }
+
+    h1 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+
     main {
       padding: 0 2rem 2rem;
       max-width: 100%;
@@ -53,30 +84,71 @@
       line-height: 1.6;
     }
 
-    /* Grid + cards */
+    /* 🔥 Masonry layout (fills gaps dynamically) 🔥 */
     .log-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 18px;
-      align-items: start;
+      column-width: 360px;
+      column-gap: 18px;
     }
+
     .log-card {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 18px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 14px 16px;
+      break-inside: avoid;
     }
-    body.light .log-card { background: var(--panelL); border-color: var(--borderL); }
 
-    .log-card h2 { margin: 0 0 .5rem; font-size: 1.05rem; line-height: 1.35; }
-    .log-card .card-content { font-size: 1.02rem; }
-    .log-card a { color: var(--link); text-decoration: none; }
-    .log-card a:hover { text-decoration: underline; }
+    body.light .log-card {
+      background: var(--panelL);
+      border-color: var(--borderL);
+    }
 
-    #raw { display: none; }
+    .log-card h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
 
-    @media (max-width:640px) {
-      main { padding: 0 1rem 1.5rem; }
+    .log-card .card-content {
+      font-size: 1.02rem;
+    }
+
+    .log-card a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .log-card a:hover {
+      text-decoration: underline;
+    }
+
+    #raw {
+      display: none;
+    }
+
+    @media (max-width: 1200px) {
+      .log-grid {
+        column-width: 320px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .log-grid {
+        column-width: 280px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 0 1rem 1.5rem;
+      }
+
+      .log-grid {
+        column-width: 100%;
+      }
     }
   </style>
 </head>
