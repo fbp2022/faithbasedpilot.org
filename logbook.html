@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logbook - Faith Based Pilot</title>
+
   <style>
     :root {
       --bg: #111;
@@ -44,7 +45,13 @@
 
     h1 { text-align: center; margin: 2rem 0 1rem; }
 
-    main { padding: 0 2rem 2rem; max-width: 1200px; margin: auto; line-height: 1.6; }
+    /* 🔥 Updated main to span full width 🔥 */
+    main {
+      padding: 0 2rem 2rem;
+      max-width: 100%;
+      margin: 0;
+      line-height: 1.6;
+    }
 
     /* Grid + cards */
     .log-grid {
@@ -173,62 +180,70 @@
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Obey%20and%20Abide.pdf?ver=1751215810517">Obey and Abide</a> (3/27/2024, pdf)<br />
 <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Faiths%20Wings%20-%20Accountability%2C%20Peace%2C%20Compassi.pdf?ver=1751215810517">Faith's Wings: Accountability, Peace, Compassion</a> (4/5/2024, pdf)<br />
 
-
     </div>
   </main>
 
   <script>
-    // Build cards from your raw H2 + links
-    (function() {
-      const raw = document.getElementById('raw');
-      const grid = document.getElementById('grid');
-      if (!raw || !grid) return;
+  document.addEventListener('DOMContentLoaded', () => {
+    const raw  = document.getElementById('raw');
+    const grid = document.getElementById('grid');
+    if (!raw || !grid) return;
 
-      const nodes = Array.from(raw.childNodes);
-      let i = 0;
+    const nodes = Array.from(raw.childNodes);
+    let i = 0;
 
-      while (i < nodes.length) {
-        const n = nodes[i];
+    while (i < nodes.length) {
+      const n = nodes[i];
 
-        if (n.nodeType === 1 && n.tagName === 'H2') {
-          const card = document.createElement('section');
-          card.className = 'log-card';
+      // start a card at each H2
+      if (n.nodeType === 1 && n.tagName === 'H2') {
+        const card = document.createElement('section');
+        card.className = 'log-card';
 
-          card.appendChild(n.cloneNode(true));
-          i++;
+        card.appendChild(n.cloneNode(true)); // title
+        i++;
 
-          const content = document.createElement('div');
-          content.className = 'card-content';
+        const content = document.createElement('div');
+        content.className = 'card-content';
 
-          while (i < nodes.length) {
-            const next = nodes[i];
-            if (next.nodeType === 1 && next.tagName === 'H2') break;
+        // collect until next H2
+        while (i < nodes.length) {
+          const next = nodes[i];
+          if (next.nodeType === 1 && next.tagName === 'H2') break;
+
+          // keep elements and non-empty text; this avoids weird gaps
+          if (
+            next.nodeType === 1 ||                             // elements (<a>, <br>, etc.)
+            (next.nodeType === 3 && next.textContent.trim())   // non-empty text
+          ) {
             content.appendChild(next.cloneNode(true));
-            i++;
           }
-
-          card.appendChild(content);
-          grid.appendChild(card);
-        } else {
           i++;
         }
+
+        card.appendChild(content);
+        grid.appendChild(card);
+      } else {
+        i++;
       }
+    }
 
-      raw.style.display = 'none';
-    })();
+    // always hide raw source
+    raw.style.display = 'none';
+  });
 
-    // Theme toggle
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.add(savedTheme);
+  // theme toggle (unchanged)
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  body.classList.add(savedTheme);
 
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      body.classList.toggle('light');
-      const theme = body.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
-    });
-  </script>
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
+    const theme = body.classList.contains('dark') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+  });
+</script>
 </body>
 </html>
