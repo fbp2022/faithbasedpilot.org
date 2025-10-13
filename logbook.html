@@ -26,10 +26,7 @@
       color: var(--ink);
     }
 
-    body.light {
-      background: var(--bgL);
-      color: var(--inkL);
-    }
+    body.light { background: var(--bgL); color: var(--inkL); }
 
     header {
       display: flex;
@@ -39,11 +36,7 @@
       flex-wrap: wrap;
     }
 
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     nav a {
       color: inherit;
@@ -53,9 +46,7 @@
       white-space: nowrap;
     }
 
-    nav a:visited {
-      color: inherit;
-    }
+    nav a:visited { color: inherit; }
 
     #themeToggle {
       width: 32px;
@@ -64,97 +55,84 @@
       transition: filter 0.3s ease;
     }
 
-    body.light #themeToggle {
-      filter: invert(0);
-    }
+    body.light #themeToggle { filter: invert(0); }
+    body.dark  #themeToggle { filter: invert(1); }
 
-    body.dark #themeToggle {
-      filter: invert(1);
-    }
-
-    h1 {
-      text-align: center;
-      margin: 2rem 0 1rem;
-    }
+    h1 { text-align: center; margin: 2rem 0 1.25rem; }
 
     main {
       padding: 0 2rem 2rem;
-      max-width: 100%;
-      margin: 0;
+      max-width: 1600px;
+      margin: 0 auto;
       line-height: 1.6;
     }
 
+    /* ===== Center the entire masonry collection ===== */
+    .masonry-ctr {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+    }
+
     /* Masonry-style layout (clean brick alignment) */
-.log-grid {
-  column-width: 360px;
-  column-gap: 20px;
-  padding-bottom: 40px;
-}
+    .log-grid {
+      column-width: 360px;
+      column-gap: 20px;
+      padding-bottom: 40px;
+      margin: 0 auto;
+      max-width: 1200px; /* keeps the columns centered nicely */
+    }
 
-/* “Cell” styling */
-.log-card {
-  display: inline-block;
-  width: 100%;
-  margin: 0 0 20px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 18px;
-  box-sizing: border-box;
-  
-  /* Prevent broken cells in columns */
-  break-inside: avoid-column;
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-  column-break-inside: avoid;
+    /* “Cell” styling */
+    .log-card {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-sizing: border-box;
 
-  /* Keeps the cell crisp (not overlapping rounded corners) */
-  overflow: visible;
-  position: relative;
-}
+      /* Prevent broken cells in columns */
+      break-inside: avoid-column;
+      -webkit-column-break-inside: avoid;
+      -moz-column-break-inside: avoid;
+      column-break-inside: avoid;
 
-body.light .log-card {
-  background: var(--panelL);
-  border-color: var(--borderL);
-}
+      /* Keeps the cell crisp (not overlapping rounded corners) */
+      overflow: visible;
+      position: relative;
+    }
 
-/* Headings and links inside cards */
-.log-card h2 {
-  margin: 0 0 0.4rem;
-  font-size: 1.05rem;
-  line-height: 1.35;
-}
+    body.light .log-card { background: var(--panelL); border-color: var(--borderL); }
 
-.log-card .card-content {
-  font-size: 1.02rem;
-  line-height: 1.5;
-}
+    /* Headings and links inside cards */
+    .log-card h2 {
+      margin: 0 0 0.4rem;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
 
-.log-card a {
-  color: var(--link);
-  text-decoration: none;
-}
+    .log-card .card-content { font-size: 1.02rem; line-height: 1.5; }
 
-.log-card a:hover {
-  text-decoration: underline;
-}
+    .log-card a { color: var(--link); text-decoration: none; }
+    .log-card a:hover { text-decoration: underline; }
 
-/* Responsive scaling */
-@media (max-width: 1200px) {
-  .log-grid { column-width: 320px; }
-}
+    #raw { display: none; }
 
-@media (max-width: 800px) {
-  .log-grid { column-width: 280px; }
-}
+    /* Responsive scaling */
+    @media (max-width: 1200px) {
+      .log-grid { column-width: 320px; max-width: 1000px; }
+    }
 
-@media (max-width: 640px) {
-  .log-grid { column-width: 100%; }
-}
+    @media (max-width: 800px) {
+      .log-grid { column-width: 280px; max-width: 90%; }
+    }
 
-      .log-grid {
-        column-width: 100%;
-      }
+    @media (max-width: 640px) {
+      .log-grid { column-width: 100%; max-width: 100%; }
+      main { padding: 0 1rem 1.5rem; }
     }
   </style>
 </head>
@@ -172,9 +150,12 @@ body.light .log-card {
   <h1>Logbook</h1>
 
   <main>
-    <div id="grid" class="log-grid"></div>
+    <div class="masonry-ctr">
+      <div id="grid" class="log-grid"></div>
+    </div>
 
-   <div id="raw">
+    <div id="raw">
+
 
      <!-- ============================ -->
 <!-- 📂 GROUP: The Catholic Church (3/7/2025) -->
