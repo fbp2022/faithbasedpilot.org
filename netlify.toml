@@ -1,0 +1,11 @@
+[build]
+  publish = "."                # serve HTML files from repo root
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"     # ensures modern JS bundling
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
