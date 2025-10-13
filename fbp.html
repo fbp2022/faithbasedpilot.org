@@ -180,53 +180,19 @@
     </p>
   </div>
 
-  <!-- Contact Form -->
-  <h2 style="text-align: center;">Submit a Message or Prayer Request</h2>
-  <p style="text-align: center;">
-    Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
-  </p>
+  <div class="section" id="contact">
+    <h2>Contact</h2>
+    <p>
+      If you’d like to reach out, share encouragement, or collaborate, you can contact me directly at:<br><br>
+      <a href="mailto:aviationministries@faithbasedpilot.com" style="color:#4da3ff; text-decoration:none; font-weight:bold;">
+        aviationministries@faithbasedpilot.com
+      </a>
+    </p>
+    <p style="margin-top: 1rem; font-style: italic; color: gray;">
+      — FBP (Faith Based Pilot)
+    </p>
+  </div>
 
-  <form id="contactForm"
-        action="/.netlify/functions/contact"
-        method="POST"
-        style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
-
-    <label for="name">Your Name</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email">Your Email</label>
-    <input type="email" id="email" name="_replyto" required>
-
-    <label for="message">Message / Prayer Request</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-
-    <!-- reCAPTCHA integrated button -->
-    <button class="g-recaptcha"
-            data-sitekey="6LcFj-grAAAAAHkCqd7KHorciNrbZmX81Tq4Fens"
-            data-callback="onRecaptcha"
-            data-action="contact">
-      Let's Fly!
-    </button>
-  </form>
-
-  <!-- reCAPTCHA callback handler -->
-  <script>
-    function onRecaptcha(token) {
-      const form = document.getElementById('contactForm');
-      let h = form.querySelector('input[name="g-recaptcha-response"]');
-      if (!h) {
-        h = document.createElement('input');
-        h.type = 'hidden';
-        h.name = 'g-recaptcha-response';
-        form.appendChild(h);
-      }
-      h.value = token;
-      form.submit();
-    }
-
-    // Theme toggle function (kept exactly as before)
-    function toggleTheme() {
-      document.body.classList.toggle("light");
     }
   </script>
 </body>
