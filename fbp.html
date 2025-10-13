@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Faith Based Pilot</title>
+
+  <!-- Load reCAPTCHA Enterprise -->
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcFj-grAAAAAHkCqd7KHorciNrbZmX81Tq4Fens" async defer></script>
+
   <style>
     body {
       margin: 0;
@@ -85,18 +89,42 @@
       margin: 4rem 0 2rem;
     }
 
-    input[type="email"] {
+    input[type="email"],
+    input[type="text"],
+    textarea {
       padding: 0.5rem;
       font-size: 1rem;
-      width: 250px;
-      max-width: 80%;
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      display: block;
+      background-color: #222;
+      border: 1px solid #444;
+      color: white;
     }
 
-    input[type="submit"] {
-      padding: 0.5rem 1rem;
+    body.light input[type="email"],
+    body.light input[type="text"],
+    body.light textarea {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 0.7rem 1.2rem;
       font-size: 1rem;
-      margin-left: 0.5rem;
+      margin-top: 1rem;
       cursor: pointer;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    body.light button {
+      background-color: #e0e0e0;
+      color: #000;
     }
 
     .footer {
@@ -107,7 +135,9 @@
     }
   </style>
 </head>
+
 <body>
+  <!-- Header & Navigation -->
   <header>
     <nav>
       <a href="fbp.html">FBP</a>
@@ -118,75 +148,86 @@
     <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme" onclick="toggleTheme()">
   </header>
 
+  <!-- Welcome Section -->
   <h1>Welcome</h1>
-
   <div class="section">
     <img src="images/welcome.jpg" alt="Faith Based Pilot - Welcome">
     <p>
-      Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect. We’re here to lift others by giving guidance to truth, and our own purpose is everything to do with it.
+      Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect.
+      We’re here to lift others by giving guidance to truth, and our own purpose is everything to do with it.
     </p>
   </div>
 
+  <!-- Mission Section -->
   <div class="section">
     <h2>Mission</h2>
     <img src="images/mission.jpg" alt="Mission Image">
     <p>
-      Our mission is to equip others with lessons drawn from flying. Core principles include clarity, building skill, and the courage to act. These aren’t just flight lessons — they’re life lessons.
+      Our mission is to equip others with lessons drawn from flying.
+      Core principles include clarity, building skill, and the courage to act.
+      These aren’t just flight lessons — they’re life lessons.
     </p>
   </div>
 
+  <!-- Anonymity Section -->
   <div class="section">
     <h2>Why Anonymity</h2>
     <img src="images/anonymity.jpg" alt="Anonymity Image">
     <p>
-      We believe in focusing on message before messenger. That’s why photos are anonymous, stories are universal, and the hope is simple: to reach people where they are and point toward something greater.
+      We believe in focusing on message before messenger.
+      That’s why photos are anonymous, stories are universal,
+      and the hope is simple: to reach people where they are and point toward something greater.
     </p>
   </div>
 
-<h2 style="text-align: center;">Submit a Message or Prayer Request</h2>
-<p style="text-align: center;">
-  Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
-</p>
+  <!-- Contact Form -->
+  <h2 style="text-align: center;">Submit a Message or Prayer Request</h2>
+  <p style="text-align: center;">
+    Whether it's for encouragement, support, or prayer — you're welcome to share. No spam, ever.
+  </p>
 
-<form id="contactForm"
-      action="https://formspree.io/f/YOUR_FORM_ID"   <!-- TODO: put your real Formspree ID -->
-      method="POST"
-      style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+  <form id="contactForm"
+        action="/.netlify/functions/contact"
+        method="POST"
+        style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
 
-  <!-- Honeypot (spam trap) -->
-  <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;" aria-hidden="true">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
 
-  <label for="name">Your Name</label>
-  <input type="text" id="name" name="name" required>
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="_replyto" required>
 
-  <label for="email">Your Email</label>
-  <input type="email" id="email" name="_replyto" required>
+    <label for="message">Message / Prayer Request</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
 
-  <label for="message">Message / Prayer Request</label>
-  <textarea id="message" name="message" rows="5" required></textarea>
+    <!-- reCAPTCHA integrated button -->
+    <button class="g-recaptcha"
+            data-sitekey="6LcFj-grAAAAAHkCqd7KHorciNrbZmX81Tq4Fens"
+            data-callback="onRecaptcha"
+            data-action="contact">
+      Let's Fly!
+    </button>
+  </form>
 
-  <!-- reCAPTCHA v2 Checkbox (single, correct include below) -->
-  <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div> <!-- TODO: replace with your real site key -->
-
-  <button type="submit" style="margin-top: 10px;">Let's Fly!</button>
-</form>
-
-<!-- Load reCAPTCHA API ONCE -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-<script>
-  // Simple client-side check to ensure captcha is solved before submit
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
-    if (typeof grecaptcha !== 'undefined' && grecaptcha.getResponse() === '') {
-      e.preventDefault();
-      alert('Please complete the reCAPTCHA before submitting.');
+  <!-- reCAPTCHA callback handler -->
+  <script>
+    function onRecaptcha(token) {
+      const form = document.getElementById('contactForm');
+      let h = form.querySelector('input[name="g-recaptcha-response"]');
+      if (!h) {
+        h = document.createElement('input');
+        h.type = 'hidden';
+        h.name = 'g-recaptcha-response';
+        form.appendChild(h);
+      }
+      h.value = token;
+      form.submit();
     }
-  });
 
-  // Keep your theme toggle as-is
-  function toggleTheme() {
-    document.body.classList.toggle("light");
-  }
-</script>
+    // Theme toggle function (kept exactly as before)
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+  </script>
 </body>
 </html>
