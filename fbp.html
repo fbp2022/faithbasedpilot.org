@@ -55,6 +55,7 @@
       right: 2rem;
       top: 1rem;
       filter: invert(1);
+      transition: filter 0.3s ease;
     }
 
     body.light #themeToggle {
@@ -145,7 +146,7 @@
       <a href="logbook.html">Logbook</a>
       <a href="the-hangar.html">The Hangar</a>
     </nav>
-    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme" onclick="toggleTheme()">
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
   </header>
 
   <!-- Welcome Section -->
@@ -180,10 +181,11 @@
     </p>
   </div>
 
+  <!-- Contact Section -->
   <div class="section" id="contact">
     <h2>Contact</h2>
     <p>
-      If you’d like to reach out, share encouragement, or collaborate, you can contact me directly at:<br><br>
+      If you’d like to reach out, share encouragement, collaborate, or request a prayer you can contact me directly at:<br><br>
       <a href="mailto:aviationministries@faithbasedpilot.com" style="color:#4da3ff; text-decoration:none; font-weight:bold;">
         aviationministries@faithbasedpilot.com
       </a>
@@ -193,7 +195,35 @@
     </p>
   </div>
 
-    }
+  <!-- Theme Toggle Script -->
+  <script>
+    (function () {
+      const body = document.body;
+      const toggleEl = document.getElementById('themeToggle');
+
+      // Set initial theme
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') body.classList.add('light');
+
+      // Toggle function
+      function toggleTheme() {
+        body.classList.toggle('light');
+        const mode = body.classList.contains('light') ? 'light' : 'dark';
+        localStorage.setItem('theme', mode);
+      }
+
+      // Attach event listeners
+      toggleEl.addEventListener('click', toggleTheme);
+      toggleEl.setAttribute('role', 'button');
+      toggleEl.setAttribute('aria-label', 'Toggle color theme');
+      toggleEl.setAttribute('tabindex', '0');
+      toggleEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleTheme();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
