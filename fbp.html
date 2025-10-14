@@ -12,7 +12,7 @@
     defer>
   </script>
 
-  <style>
+    <style>
     body {
       margin: 0;
       padding: 0;
@@ -26,184 +26,71 @@
       color: #000;
     }
 
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    #themeToggle {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: filter 0.3s ease;
+      filter: invert(1);
+    }
+
+    body.light #themeToggle {
+      filter: invert(0);
+    }
+
     h1 {
       text-align: center;
       margin: 2rem 0 1rem;
     }
 
-    .section {
-      text-align: center;
-      margin: 3rem 0;
-    }
-
-    .section img {
-      width: 80%;
-      max-width: 600px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem;
-    }
-
-    .section p {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    form {
-      text-align: center;
-      margin: 4rem 0 2rem;
-    }
-
-    input[type="email"],
-    input[type="text"],
-    textarea {
-      padding: 0.5rem;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 600px;
+    main {
+      padding: 0 2rem 2rem;
+      max-width: 1200px;
       margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    strong {
       display: block;
-      background-color: #222;
-      border: 1px solid #444;
-      color: white;
+      margin-top: 1.5rem;
     }
-
-    body.light input[type="email"],
-    body.light input[type="text"],
-    body.light textarea {
-      background-color: #fff;
-      color: #000;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      padding: 0.7rem 1.2rem;
-      font-size: 1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-      background-color: #444;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    body.light button {
-      background-color: #e0e0e0;
-      color: #000;
-    }
-
-    .footer {
-      font-size: 0.75rem;
-      text-align: left;
-      padding: 2rem;
-      color: gray;
-    }
-
-    /* ===== NAV BAR STYLES ===== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 12px 16px;
-      background: #1a1a1a;
-      color: #fff;
-    }
-    body.light .site-header {
-      background: #f0f0f0;
-      color: #000;
-    }
-
-    .brand {
-      font-weight: 700;
-      line-height: 1;
-      text-decoration: none;
-      color: inherit;
-      white-space: nowrap;
-      font-size: 1.05rem;
-      letter-spacing: 0.2px;
-    }
-
-    .site-nav {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      max-width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .site-nav a {
-      color: inherit;
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding: 6px 8px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-
-    .site-nav a:focus,
-    .site-nav a:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    body.light .site-nav a:focus,
-    body.light .site-nav a:hover {
-      background: rgba(0, 0, 0, 0.06);
-    }
-
-    @media (max-width: 480px) {
-      .site-header {
-        padding: 10px 12px;
-        gap: 0.5rem;
-      }
-      .brand {
-        font-size: 0.98rem;
-      }
-      .site-nav {
-        gap: 0.5rem;
-      }
-      .site-nav a {
-        font-size: 0.9rem;
-        padding: 6px 6px;
-      }
-    }
-
-    @media (min-width: 481px) and (max-width: 800px) {
-      .site-header {
-        padding: 12px 14px;
-      }
-      .brand {
-        font-size: 1.02rem;
-      }
-      .site-nav a {
-        font-size: 0.94rem;
-      }
-    }
-    /* ===== /NAV BAR STYLES ===== */
   </style>
 </head>
 
 <body>
-
-  <!-- ===== NAV BAR (FaithBasedPilot.org) ===== -->
-  <header class="site-header">
-    <a class="brand" href="https://faithbasedpilot.org">Faith Based Pilot</a>
-
-    <nav class="site-nav">
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
-      <a href="https://faithbasedpilot.net" target="_blank">FaithBasedPilot.net</a>
-    </nav>
-
-    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
-  </header>
-  <!-- ===== /NAV BAR ===== -->
+  <!-- Header & Navigation -->
+ <header>
+  <nav>
+    <a href="beliefs.html">Beliefs</a>
+    <a href="logbook.html">Logbook</a>
+    <a href="the-hangar.html">The Hangar</a>
+    <a href="https://faithbasedpilot.net" target="_blank">FaithBasedPilot.net</a>
+  </nav>
+  <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+</header>
 
   <!-- Welcome Section -->
   <h1>Welcome</h1>
