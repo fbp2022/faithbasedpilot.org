@@ -6,151 +6,128 @@
   <title>Logbook - Faith Based Pilot</title>
 
   <style>
-    :root {
-      --bg: #111;
-      --ink: #fff;
-      --panel: #161616;
-      --border: rgba(255,255,255,.12);
-      --bgL: #fff;
-      --inkL: #000;
-      --panelL: #f7f7f7;
-      --borderL: rgba(0,0,0,.12);
-      --link: #58a6ff;
+    :root{
+      --bg:#111; --ink:#fff; --panel:#161616; --border:rgba(255,255,255,.12);
+      --bgL:#fff; --inkL:#000; --panelL:#f7f7f7; --borderL:rgba(0,0,0,.12);
+      --link:#58a6ff;
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
+    body{
+      margin:0; padding:0; font-family:Arial, sans-serif;
+      background:var(--bg); color:var(--ink);
     }
+    body.light{ background:var(--bgL); color:var(--inkL); }
 
-    body.light { background: var(--bgL); color: var(--inkL); }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      flex-wrap: wrap;
+    /* ===== NAV BAR STYLES ===== */
+    .site-header{
+      position:sticky; top:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; padding:12px 16px;
+      background:#1a1a1a; color:#fff;
+      border-bottom:1px solid var(--border);
     }
-
-    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-      white-space: nowrap;
+    body.light .site-header{
+      background:#f0f0f0; color:#000; border-bottom:1px solid var(--borderL);
     }
-
-    nav a:visited { color: inherit; }
-
-    #themeToggle {
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      transition: filter 0.3s ease;
+    .brand{
+      font-weight:700; line-height:1; text-decoration:none; color:inherit;
+      white-space:nowrap; font-size:1.05rem; letter-spacing:.2px;
     }
+    .site-nav{
+      display:flex; align-items:center; gap:1rem;
+      flex-wrap:wrap; max-width:100%; overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    .site-nav a{
+      color:inherit; text-decoration:none; font-size:.95rem;
+      padding:6px 8px; border-radius:6px; white-space:nowrap;
+    }
+    .site-nav a:focus, .site-nav a:hover{ background:rgba(255,255,255,.08); }
+    body.light .site-nav a:focus, body.light .site-nav a:hover{ background:rgba(0,0,0,.06); }
 
-    body.light #themeToggle { filter: invert(0); }
-    body.dark  #themeToggle { filter: invert(1); }
+    #themeToggle{
+      width:32px; height:32px; cursor:pointer; flex:0 0 auto;
+      transition:filter .3s ease;
+      filter:invert(1);
+    }
+    body.light #themeToggle{ filter:invert(0); }
 
-    h1 { text-align: center; margin: 2rem 0 1.25rem; }
+    @media (max-width:480px){
+      .site-header{ padding:10px 12px; gap:.5rem; }
+      .brand{ font-size:.98rem; }
+      .site-nav{ gap:.5rem; }
+      .site-nav a{ font-size:.9rem; padding:6px 6px; }
+    }
+    @media (min-width:481px) and (max-width:800px){
+      .site-header{ padding:12px 14px; }
+      .brand{ font-size:1.02rem; }
+      .site-nav a{ font-size:.94rem; }
+    }
+    /* ===== /NAV BAR STYLES ===== */
 
-    main {
-      padding: 0 2rem 2rem;
-      max-width: 1600px;
-      margin: 0 auto;
-      line-height: 1.6;
+    h1{ text-align:center; margin:2rem 0 1.25rem; }
+
+    main{
+      padding:0 2rem 2rem; max-width:1600px; margin:0 auto; line-height:1.6;
     }
 
     /* ===== Center the entire masonry collection ===== */
-    .masonry-ctr {
-      display: flex;
-      justify-content: center;
-      padding: 0 16px;
+    .masonry-ctr{ display:flex; justify-content:center; padding:0 16px; }
+
+    /* Masonry-style layout */
+    .log-grid{
+      column-width:360px; column-gap:20px;
+      padding-bottom:40px; margin:0 auto; max-width:1200px;
     }
 
-    /* Masonry-style layout (clean brick alignment) */
-    .log-grid {
-      column-width: 360px;
-      column-gap: 20px;
-      padding-bottom: 40px;
-      margin: 0 auto;
-      max-width: 1200px; /* keeps the columns centered nicely */
+    /* Cards */
+    .log-card{
+      display:inline-block; width:100%; margin:0 0 20px;
+      background:var(--panel); border:1px solid var(--border);
+      border-radius:10px; padding:16px 18px; box-sizing:border-box;
+      break-inside:avoid-column; -webkit-column-break-inside:avoid;
+      -moz-column-break-inside:avoid; column-break-inside:avoid;
+      overflow:visible; position:relative;
     }
+    body.light .log-card{ background:var(--panelL); border-color:var(--borderL); }
 
-    /* “Cell” styling */
-    .log-card {
-      display: inline-block;
-      width: 100%;
-      margin: 0 0 20px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 18px;
-      box-sizing: border-box;
+    .log-card h2{ margin:0 0 .4rem; font-size:1.05rem; line-height:1.35; }
+    .log-card .card-content{ font-size:1.02rem; line-height:1.5; }
+    .log-card a{ color:var(--link); text-decoration:none; }
+    .log-card a:hover{ text-decoration:underline; }
 
-      /* Prevent broken cells in columns */
-      break-inside: avoid-column;
-      -webkit-column-break-inside: avoid;
-      -moz-column-break-inside: avoid;
-      column-break-inside: avoid;
+    #raw{ display:none; }
 
-      /* Keeps the cell crisp (not overlapping rounded corners) */
-      overflow: visible;
-      position: relative;
+    /* Responsive */
+    @media (max-width:1200px){
+      .log-grid{ column-width:320px; max-width:1000px; }
     }
-
-    body.light .log-card { background: var(--panelL); border-color: var(--borderL); }
-
-    /* Headings and links inside cards */
-    .log-card h2 {
-      margin: 0 0 0.4rem;
-      font-size: 1.05rem;
-      line-height: 1.35;
+    @media (max-width:800px){
+      .log-grid{ column-width:280px; max-width:90%; }
     }
-
-    .log-card .card-content { font-size: 1.02rem; line-height: 1.5; }
-
-    .log-card a { color: var(--link); text-decoration: none; }
-    .log-card a:hover { text-decoration: underline; }
-
-    #raw { display: none; }
-
-    /* Responsive scaling */
-    @media (max-width: 1200px) {
-      .log-grid { column-width: 320px; max-width: 1000px; }
-    }
-
-    @media (max-width: 800px) {
-      .log-grid { column-width: 280px; max-width: 90%; }
-    }
-
-    @media (max-width: 640px) {
-      .log-grid { column-width: 100%; max-width: 100%; }
-      main { padding: 0 1rem 1.5rem; }
+    @media (max-width:640px){
+      .log-grid{ column-width:100%; max-width:100%; }
+      main{ padding:0 1rem 1.5rem; }
     }
   </style>
 </head>
 <body class="dark">
- 
-  <header>
-  <nav>
-    <a href="fbp.html">Home</a>
-    <a href="beliefs.html">Beliefs</a>
-    <a href="logbook.html">Logbook</a>
-    <a href="the-hangar.html">The Hangar</a>
-    <a href="https://faithbasedpilot.net" target="_blank">FaithBasedPilot.net</a>
-  </nav>
-  <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
-</header>
-  </nav>
-  <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
-</header>
+
+  <!-- ===== NAV BAR (.org) ===== -->
+  <header class="site-header">
+    <a class="brand" href="https://faithbasedpilot.org">Faith Based Pilot</a>
+
+    <nav class="site-nav">
+      <a href="fbp.html">Home</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+      <a href="https://faithbasedpilot.net" target="_blank">FaithBasedPilot.net</a>
+    </nav>
+
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme" />
+  </header>
+  <!-- ===== /NAV BAR ===== -->
 
   <h1>Logbook</h1>
 
@@ -161,153 +138,163 @@
 
     <div id="raw">
 
+      <!-- ============================ -->
+      <!-- 📂 GROUP: The Catholic Church (3/7/2025) -->
+      <h2>The Catholic Church (3/7/2025)</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/76abb0d0-853e-47a9-9f6e-66bdb294677c/Are%20Catholics%20Lost%20in%20the%20Law.pdf?ver=1751215810224">Are Catholics Lost in the Law</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/8f5afe8d-6bc4-47ab-8f8d-580fd3badc97/5.png?ver=1751215810225">10 Commandments from the New Catholic Bible Translation</a> (png)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/4750e15b-78c9-4b21-aa7b-d2054a2e9d62/4.png?ver=1751215810225">10 Commandments from the ESV Bible Translation</a> (png)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/4969ad52-d89f-4fdb-81dd-ed9793a1a888/3.png?ver=1751215810225">10 Commandments from the KJV Bible Translation</a> (png)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/aa561657-ceba-475b-80e2-b753652e3625/2.png?ver=1751215810225">10 Commandments from the LSB Bible Translation</a> (png)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/1d432cab-71e8-45f9-9f2c-2a877cff5c14/1.png?ver=1751215810225">Catholic Catechism of the Ten Commandments</a> (png)<br />
 
-     <!-- ============================ -->
-<!-- 📂 GROUP: The Catholic Church (3/7/2025) -->
-<h2>The Catholic Church (3/7/2025)</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/76abb0d0-853e-47a9-9f6e-66bdb294677c/Are%20Catholics%20Lost%20in%20the%20Law.pdf?ver=1751215810224">Are Catholics Lost in the Law</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/8f5afe8d-6bc4-47ab-8f8d-580fd3badc97/5.png?ver=1751215810225">10 Commandments from the New Catholic Bible Translation</a> (png)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/4750e15b-78c9-4b21-aa7b-d2054a2e9d62/4.png?ver=1751215810225">10 Commandments from the ESV Bible Translation</a> (png)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/4969ad52-d89f-4fdb-81dd-ed9793a1a888/3.png?ver=1751215810225">10 Commandments from the KJV Bible Translation</a> (png)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/aa561657-ceba-475b-80e2-b753652e3625/2.png?ver=1751215810225">10 Commandments from the LSB Bible Translation</a> (png)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/1d432cab-71e8-45f9-9f2c-2a877cff5c14/1.png?ver=1751215810225">Catholic Catechism of the Ten Commandments</a> (png)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Specialized Topics -->
+      <h2>Specialized Topics</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/2018a4d7-5254-4d92-b2cb-b125d7ae59b1/No%20Other%20Way%20-%20The%20Narrow%20Gate%20of%20Rebirth.pdf?ver=1751215810266">No Other Way: The Narrow Gate of Rebirth</a> - 5/21/2025 (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/4370c35d-aa37-41b6-9166-b8628e8d9c3c/Take%20Every%20Thought%20Captive%20-%20A%20Call%20to%20Men%20to%20.pdf?ver=1751215810266">Take Every Thought Captive</a> - 5/15/2025 (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/9e336d66-2933-47fd-957e-5749bf702382/The%20Danger%20of%20Progressive%20Christianity%20and%20the.pdf?ver=1751215810266">The Danger of Progressive Christianity</a> - 3/10/2025 (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/3016ae2d-2d8a-4f60-90b3-b98dadad7756/Guarding%20Your%20Heart.pdf?ver=1751215810266">Guarding Your Heart</a> - 2/12/2025 (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/b2b3451f-e1b5-4a6d-a0a5-b7cb9653a694/Vanity%2C%20Transhumanism%2C%20and%20the%20Eternal%20Soul%20A%20.pdf?ver=1751215810266">Vanity, Transhumanism, and the Eternal Soul</a> - 1/12/2025 (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: Specialized Topics -->
-<h2>Specialized Topics</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/2018a4d7-5254-4d92-b2cb-b125d7ae59b1/No%20Other%20Way%20-%20The%20Narrow%20Gate%20of%20Rebirth.pdf?ver=1751215810266">No Other Way: The Narrow Gate of Rebirth</a> - 5/21/2025 (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/4370c35d-aa37-41b6-9166-b8628e8d9c3c/Take%20Every%20Thought%20Captive%20-%20A%20Call%20to%20Men%20to%20.pdf?ver=1751215810266">Take Every Thought Captive</a> - 5/15/2025 (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/9e336d66-2933-47fd-957e-5749bf702382/The%20Danger%20of%20Progressive%20Christianity%20and%20the.pdf?ver=1751215810266">The Danger of Progressive Christianity</a> - 3/10/2025 (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/3016ae2d-2d8a-4f60-90b3-b98dadad7756/Guarding%20Your%20Heart.pdf?ver=1751215810266">Guarding Your Heart</a> - 2/12/2025 (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/b2b3451f-e1b5-4a6d-a0a5-b7cb9653a694/Vanity%2C%20Transhumanism%2C%20and%20the%20Eternal%20Soul%20A%20.pdf?ver=1751215810266">Vanity, Transhumanism, and the Eternal Soul</a> - 1/12/2025 (pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Seasonal -->
+      <h2>Seasonal (12/25/2025)</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/db1ec8bd-5286-4093-b93d-387dc7abfee2/The%20Significance%20of%20Christmas.pdf?ver=1751215810308">The Significance of Christmas</a> (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: Seasonal -->
-<h2>Seasonal (12/25/2025)</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/db1ec8bd-5286-4093-b93d-387dc7abfee2/The%20Significance%20of%20Christmas.pdf?ver=1751215810308">The Significance of Christmas</a> (pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Have you turned away from the Lord? -->
+      <h2>Have you turned away from the Lord?</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/How%20to%20know%20when%20you%20turned%20away%20from%20the%20Lord.pdf?ver=1751215810333">How to Know When You Have Turned Away From the Lord</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Reclaiming%20Your%20Relationship%20with%20God%20-%20A%20Bold.pdf?ver=1751215810333">Reclaiming Your Relationship with God</a> (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: Have you turned away from the Lord? -->
-<h2>Have you turned away from the Lord?</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/How%20to%20know%20when%20you%20turned%20away%20from%20the%20Lord.pdf?ver=1751215810333">How to Know When You Have Turned Away From the Lord</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Reclaiming%20Your%20Relationship%20with%20God%20-%20A%20Bold.pdf?ver=1751215810333">Reclaiming Your Relationship with God</a> (pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Spirit of Elijah (1/14/2024) -->
+      <h2>Spirit of Elijah (1/14/2024)</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Meaning%20of%20the%20Spirit%20of%20Elijah.pdf?ver=1751215810356">Meaning of "Spirit of Elijah"</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20the%20Spirit%20of%20Elijah.pdf?ver=1751215810356">Recognizing the Spirit of Elijah</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/How%20to%20Accept%20Responsability%20of%20the%20Elijah%20Spi.pdf?ver=1751215810357">How to Accept Responsibility of the Elijah Spirit</a> (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: Spirit of Elijah (1/14/2024) -->
-<h2>Spirit of Elijah (1/14/2024)</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Meaning%20of%20the%20Spirit%20of%20Elijah.pdf?ver=1751215810356">Meaning of "Spirit of Elijah"</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20the%20Spirit%20of%20Elijah.pdf?ver=1751215810356">Recognizing the Spirit of Elijah</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/How%20to%20Accept%20Responsability%20of%20the%20Elijah%20Spi.pdf?ver=1751215810357">How to Accept Responsibility of the Elijah Spirit</a> (pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: An Ahab Spirit (2/12/2024) -->
+      <h2>An Ahab Spirit (2/12/2024)</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/What%20is%20an%20Ahab%20Spirit.pdf?ver=1751215810380">What is an Ahab Spirit</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20an%20Ahab%20Spirit.pdf?ver=1751215810380">Recognizing an Ahab Spirit</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Guarding%20Against%20an%20Ahab%20Spirit.pdf?ver=1751215810380">Guarding Against an Ahab Spirit</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiving%20an%20Ahab%20Spirit.pdf?ver=1751215810380">Forgiving an Ahab Spirit</a> (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: An Ahab Spirit (2/12/2024) -->
-<h2>An Ahab Spirit (2/12/2024)</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/What%20is%20an%20Ahab%20Spirit.pdf?ver=1751215810380">What is an Ahab Spirit</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20an%20Ahab%20Spirit.pdf?ver=1751215810380">Recognizing an Ahab Spirit</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Guarding%20Against%20an%20Ahab%20Spirit.pdf?ver=1751215810380">Guarding Against an Ahab Spirit</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiving%20an%20Ahab%20Spirit.pdf?ver=1751215810380">Forgiving an Ahab Spirit</a> (pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: A Jezebelian Spirit (12/29/2024) -->
+      <h2>A Jezebelian Spirit (12/29/2024)</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/What%20is%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">What is a Jezebelian Spirit</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">Recognizing a Jezebelian Spirit</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Guarding%20Against%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">Guarding Against a Jezebelian Spirit</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiving%20the%20Jezebelian%20Inhabited.pdf?ver=1751215810415">Forgiving the Jezebelian Inhabited</a> (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: A Jezebelian Spirit (12/29/2024) -->
-<h2>A Jezebelian Spirit (12/29/2024)</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/What%20is%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">What is a Jezebelian Spirit</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Recognizing%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">Recognizing a Jezebelian Spirit</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Guarding%20Against%20a%20Jezebelian%20Spirit.pdf?ver=1751215810415">Guarding Against a Jezebelian Spirit</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiving%20the%20Jezebelian%20Inhabited.pdf?ver=1751215810415">Forgiving the Jezebelian Inhabited</a> (pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Creation -->
+      <h2>Creation</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Book%20of%20Genesis-%20Chapter%201%20Verses%201-5.pdf?ver=1751215810460">Book of Genesis - Chapter 1 Verses 1–5</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Book%20of%20Genesis%20Chapter%201%20Verses%206-8.pdf?ver=1751215810460">Book of Genesis - Chapter 1 Verses 6–8</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/70d42439-caee-4aeb-a34f-ce08715ff888/Book%20of%20Genesis-%20Chapter%201_9-31.pdf?ver=1751215810460">Book of Genesis - Chapter 1:9–31</a> (2/12/2025, pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: Creation -->
-<h2>Creation</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Book%20of%20Genesis-%20Chapter%201%20Verses%201-5.pdf?ver=1751215810460">Book of Genesis - Chapter 1 Verses 1–5</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Book%20of%20Genesis%20Chapter%201%20Verses%206-8.pdf?ver=1751215810460">Book of Genesis - Chapter 1 Verses 6–8</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/70d42439-caee-4aeb-a34f-ce08715ff888/Book%20of%20Genesis-%20Chapter%201_9-31.pdf?ver=1751215810460">Book of Genesis - Chapter 1:9–31</a> (2/12/2025, pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Prophecies and a Covenant (11/15/2023) -->
+      <h2>Prophecies and a Covenant (11/15/2023)</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Promised%20Land%20%26%20Eschatology%20References.pdf?ver=1751215810486">Promised Land & Eschatology References</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Prophecy%20References%20and%20Sources.pdf?ver=1751215810486">Prophecy References and Resources</a> (pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/A%20Covenant%20and%20Prophecies.pdf?ver=1751215810486">A Covenant and Prophecies</a> (pdf)<br />
 
-<!-- ============================ -->
-<!-- 📂 GROUP: Prophecies and a Covenant (11/15/2023) -->
-<h2>Prophecies and a Covenant (11/15/2023)</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Promised%20Land%20%26%20Eschatology%20References.pdf?ver=1751215810486">Promised Land & Eschatology References</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Prophecy%20References%20and%20Sources.pdf?ver=1751215810486">Prophecy References and Resources</a> (pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/A%20Covenant%20and%20Prophecies.pdf?ver=1751215810486">A Covenant and Prophecies</a> (pdf)<br />
-
-<!-- ============================ -->
-<!-- 📂 GROUP: Studies -->
-<h2>Studies</h2>
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/The%20Pillars.pdf?ver=1751215810517">The Pillars</a> (9/3/2024, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Trusting%20in%20Christ%20Foundations%20of%20Faith%20and%20Ri.pdf?ver=1751215810517">Trusting in Christ</a> (7/18/2024, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Acts%2020.13-28.pdf?ver=1751215810517">Acts 20:13–28</a> (7/16/2024, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiveness.pdf?ver=1751215810517">Forgiveness</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Giving%20Praise%20Through%20Trials%20and%20Tribulation.pdf?ver=1751215810517">Giving Praise Through Trials and Tribulation</a> (10/27/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/God%E2%80%99s%20Blessings%2C%20Promises%2C%20and%20How%20He%20Keeps%20Us.pdf?ver=1751215810517">God’s Blessings and Promises</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/prayer.pdf?ver=1751215810517">Prayer</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Who%20is%20Lucifer%20and%20How%20We%20Defend%20Ourselves%20Aga.pdf?ver=1751215810517">Who is Lucifer and How We Defend Ourselves</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Your%20Sin%20Affects%20Those%20Around%20You.pdf?ver=1751215810517">Your Sin Affects Those Around You</a> (10/25/2023, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Obey%20and%20Abide.pdf?ver=1751215810517">Obey and Abide</a> (3/27/2024, pdf)<br />
-<a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Faiths%20Wings%20-%20Accountability%2C%20Peace%2C%20Compassi.pdf?ver=1751215810517">Faith's Wings: Accountability, Peace, Compassion</a> (4/5/2024, pdf)<br />
+      <!-- ============================ -->
+      <!-- 📂 GROUP: Studies -->
+      <h2>Studies</h2>
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/The%20Pillars.pdf?ver=1751215810517">The Pillars</a> (9/3/2024, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Trusting%20in%20Christ%20Foundations%20of%20Faith%20and%20Ri.pdf?ver=1751215810517">Trusting in Christ</a> (7/18/2024, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Acts%2020.13-28.pdf?ver=1751215810517">Acts 20:13–28</a> (7/16/2024, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Forgiveness.pdf?ver=1751215810517">Forgiveness</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Giving%20Praise%20Through%20Trials%20and%20Tribulation.pdf?ver=1751215810517">Giving Praise Through Trials and Tribulation</a> (10/27/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/God%E2%80%99s%20Blessings%2C%20Promises%2C%20and%20How%20He%20Keeps%20Us.pdf?ver=1751215810517">God’s Blessings and Promises</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/prayer.pdf?ver=1751215810517">Prayer</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Who%20is%20Lucifer%20and%20How%20We%20Defend%20Ourselves%20Aga.pdf?ver=1751215810517">Who is Lucifer and How We Defend Ourselves</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Your%20Sin%20Affects%20Those%20Around%20You.pdf?ver=1751215810517">Your Sin Affects Those Around You</a> (10/25/2023, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Obey%20and%20Abide.pdf?ver=1751215810517">Obey and Abide</a> (3/27/2024, pdf)<br />
+      <a href="https://img1.wsimg.com/blobby/go/539fe700-45a8-46e2-b643-f70b271d023b/downloads/Faiths%20Wings%20-%20Accountability%2C%20Peace%2C%20Compassi.pdf?ver=1751215810517">Faith's Wings: Accountability, Peace, Compassion</a> (4/5/2024, pdf)<br />
 
     </div>
   </main>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const raw  = document.getElementById('raw');
-    const grid = document.getElementById('grid');
-    if (!raw || !grid) return;
+    // Build masonry cards from #raw
+    document.addEventListener('DOMContentLoaded', () => {
+      const raw  = document.getElementById('raw');
+      const grid = document.getElementById('grid');
+      if (!raw || !grid) return;
 
-    const nodes = Array.from(raw.childNodes);
-    let i = 0;
+      const nodes = Array.from(raw.childNodes);
+      let i = 0;
 
-    while (i < nodes.length) {
-      const n = nodes[i];
+      while (i < nodes.length) {
+        const n = nodes[i];
 
-      // start a card at each H2
-      if (n.nodeType === 1 && n.tagName === 'H2') {
-        const card = document.createElement('section');
-        card.className = 'log-card';
+        // start a card at each H2
+        if (n.nodeType === 1 && n.tagName === 'H2') {
+          const card = document.createElement('section');
+          card.className = 'log-card';
 
-        card.appendChild(n.cloneNode(true)); // title
-        i++;
+          card.appendChild(n.cloneNode(true)); // title
+          i++;
 
-        const content = document.createElement('div');
-        content.className = 'card-content';
+          const content = document.createElement('div');
+          content.className = 'card-content';
 
-        // collect until next H2
-        while (i < nodes.length) {
-          const next = nodes[i];
-          if (next.nodeType === 1 && next.tagName === 'H2') break;
+          // collect until next H2
+          while (i < nodes.length) {
+            const next = nodes[i];
+            if (next.nodeType === 1 && next.tagName === 'H2') break;
 
-          // keep elements and non-empty text; this avoids weird gaps
-          if (
-            next.nodeType === 1 ||                             // elements (<a>, <br>, etc.)
-            (next.nodeType === 3 && next.textContent.trim())   // non-empty text
-          ) {
-            content.appendChild(next.cloneNode(true));
+            if (next.nodeType === 1 || (next.nodeType === 3 && next.textContent.trim())) {
+              content.appendChild(next.cloneNode(true));
+            }
+            i++;
           }
+
+          card.appendChild(content);
+          grid.appendChild(card);
+        } else {
           i++;
         }
-
-        card.appendChild(content);
-        grid.appendChild(card);
-      } else {
-        i++;
       }
-    }
 
-    // always hide raw source
-    raw.style.display = 'none';
-  });
+      raw.style.display = 'none';
+    });
 
-  // theme toggle (unchanged)
-  const toggle = document.getElementById('themeToggle');
-  const body = document.body;
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  body.classList.add(savedTheme);
+    // Theme toggle (persisted)
+    (function(){
+      const body = document.body;
+      const toggle = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('theme') || 'dark';
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    body.classList.toggle('light');
-    const theme = body.classList.contains('dark') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-  });
-</script>
+      body.classList.remove('light','dark');
+      body.classList.add(saved);
+
+      function setTheme(next){
+        body.classList.remove('light','dark');
+        body.classList.add(next);
+        localStorage.setItem('theme', next);
+      }
+
+      toggle.addEventListener('click', () => {
+        const next = body.classList.contains('dark') ? 'light' : 'dark';
+        setTheme(next);
+      });
+
+      toggle.setAttribute('role','button');
+      toggle.setAttribute('aria-label','Toggle color theme');
+      toggle.setAttribute('tabindex','0');
+      toggle.addEventListener('keydown', (e)=>{
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+      });
+    })();
+  </script>
 </body>
 </html>
