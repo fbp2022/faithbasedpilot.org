@@ -26,46 +26,6 @@
       color: #000;
     }
 
-    header {
-      background-color: #1a1a1a;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    body.light header {
-      background-color: #f0f0f0;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    #themeToggle {
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      position: absolute;
-      right: 2rem;
-      top: 1rem;
-      filter: invert(1);
-      transition: filter 0.3s ease;
-    }
-
-    body.light #themeToggle {
-      filter: invert(0);
-    }
-
     h1 {
       text-align: center;
       margin: 2rem 0 1rem;
@@ -138,20 +98,112 @@
       padding: 2rem;
       color: gray;
     }
+
+    /* ===== NAV BAR STYLES ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 12px 16px;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    body.light .site-header {
+      background: #f0f0f0;
+      color: #000;
+    }
+
+    .brand {
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      color: inherit;
+      white-space: nowrap;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .site-nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 6px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .site-nav a:focus,
+    .site-nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    body.light .site-nav a:focus,
+    body.light .site-nav a:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    @media (max-width: 480px) {
+      .site-header {
+        padding: 10px 12px;
+        gap: 0.5rem;
+      }
+      .brand {
+        font-size: 0.98rem;
+      }
+      .site-nav {
+        gap: 0.5rem;
+      }
+      .site-nav a {
+        font-size: 0.9rem;
+        padding: 6px 6px;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 800px) {
+      .site-header {
+        padding: 12px 14px;
+      }
+      .brand {
+        font-size: 1.02rem;
+      }
+      .site-nav a {
+        font-size: 0.94rem;
+      }
+    }
+    /* ===== /NAV BAR STYLES ===== */
   </style>
 </head>
 
 <body>
-  <!-- Header & Navigation -->
- <header>
-  <nav>
-    <a href="beliefs.html">Beliefs</a>
-    <a href="logbook.html">Logbook</a>
-    <a href="the-hangar.html">The Hangar</a>
-    <a href="https://faithbasedpilot.net" target="_blank">FaithBasedPilot.net</a>
-  </nav>
-  <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
-</header>
+
+  <!-- ===== NAV BAR (FaithBasedPilot.org) ===== -->
+  <header class="site-header">
+    <a class="brand" href="https://faithbasedpilot.org">Faith Based Pilot</a>
+
+    <nav class="site-nav">
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+      <a href="https://faithbasedpilot.net" target="_blank">FaithBasedPilot.net</a>
+    </nav>
+
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+  </header>
+  <!-- ===== /NAV BAR ===== -->
 
   <!-- Welcome Section -->
   <h1>Welcome</h1>
