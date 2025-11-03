@@ -1,1 +1,99 @@
-<h1 style="text-align:center;margin-top:3rem;">Under Development</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hangar 2 — Faith Based Pilot</title>
+
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111; color: white;
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+    body.light { background-color: #fff; color: #000; }
+
+    header {
+      background-color: #1a1a1a;
+      padding: 1rem 2rem;
+      display: flex; justify-content: center; align-items: center;
+      position: relative; padding-right: calc(2rem + 32px + 8px);
+    }
+    body.light header { background-color: #f0f0f0; }
+
+    nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav a { color: inherit; text-decoration: none; font-weight: bold; font-size: 1rem; }
+
+    #themeToggle {
+      width: 32px; height: 32px; cursor: pointer;
+      position: absolute; right: 2rem; top: 1rem;
+      filter: invert(1); transition: filter 0.3s ease;
+    }
+    body.light #themeToggle { filter: invert(0); }
+
+    main {
+      flex: 1; display: flex; justify-content: center; align-items: center;
+      text-align: center; padding: 2rem;
+    }
+    h1 { margin: 0; font-size: 2rem; }
+    .footer { text-align: center; padding: 1.5rem; color: gray; font-size: 0.85rem; }
+
+    @media (max-width: 600px) {
+      nav { gap: 1rem; }
+      nav a { font-size: 0.9rem; }
+      header { padding-right: calc(1rem + 32px + 6px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+      <a href="thehangar.html">The Hangar 2</a>
+      <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
+    </nav>
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+  </header>
+
+  <main>
+    <div>
+      <h1>🚧 The Hangar 2 — Under Development</h1>
+      <p style="font-size:1.1rem; color:gray; margin-top:0.5rem;">
+        Check back soon for updates.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2022</span> Faith Based Pilot</p>
+  </footer>
+
+  <script>
+  (function () {
+    const body = document.body;
+    const toggleEl = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') body.classList.add('light');
+
+    function toggleTheme() {
+      body.classList.toggle('light');
+      const mode = body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('theme', mode);
+    }
+    toggleEl.addEventListener('click', toggleTheme);
+    toggleEl.setAttribute('role', 'button');
+    toggleEl.setAttribute('aria-label', 'Toggle color theme');
+    toggleEl.setAttribute('tabindex', '0');
+    toggleEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
+    });
+
+    // Optional auto year:
+    // document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
