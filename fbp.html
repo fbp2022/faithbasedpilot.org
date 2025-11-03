@@ -156,7 +156,7 @@
     <nav>
       <a href="beliefs.html">Beliefs</a>
       <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
+      <a href="thehangar.html">The Hangar</a>
       <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
     </nav>
     <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
@@ -252,7 +252,7 @@
       </a>
     </div>
 
-    <p>© 2022 Faith Based Pilot</p>
+    <p>© <span id="year"></span> Faith Based Pilot</p>
   </footer>
 
   <!-- Theme Toggle Script -->
@@ -280,6 +280,10 @@
           toggleTheme();
         }
       });
+
+      // Auto year update
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
 </body>
