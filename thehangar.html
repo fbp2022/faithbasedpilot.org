@@ -4,37 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Hangar — Faith Based Pilot</title>
-
   <style>
-    /* Base + theme (match fbp.html) */
     body { margin:0; padding:0; font-family:Arial,sans-serif; background:#111; color:#fff; }
     body.light { background:#fff; color:#000; }
 
-    /* Header / Nav / Toggle */
-    header {
-      background:#1a1a1a; padding:1rem 2rem;
+    /* Full-width header with inner bar */
+    header { background:#1a1a1a; padding:0; }
+    body.light header { background:#f0f0f0; }
+    header .bar {
+      max-width:1100px; margin:0 auto; padding:1rem 2rem;
       display:flex; justify-content:center; align-items:center;
       position:relative; padding-right:calc(2rem + 32px + 8px);
     }
-    body.light header { background:#f0f0f0; }
+
     nav { display:flex; gap:1.5rem; flex-wrap:wrap; }
     nav a { color:inherit; text-decoration:none; font-weight:bold; font-size:1rem; }
+
     #themeToggle {
-      width:32px; height:32px; cursor:pointer; position:absolute; right:2rem; top:1rem;
+      width:32px; height:32px; cursor:pointer;
+      position:absolute; right:2rem; top:1rem;
       filter:invert(1); transition:filter .3s ease;
     }
     body.light #themeToggle { filter:invert(0); }
 
     .wrap { max-width:1100px; margin:0 auto; padding:0 16px; }
-
     h1 { text-align:center; margin:2rem 0 .25rem; }
     .lede { text-align:center; color:#bbb; margin:0 0 1.5rem; }
 
-    /* Grid */
     .grid { display:grid; grid-template-columns:1fr; gap:18px; }
     @media (min-width:1024px){ .grid { grid-template-columns:repeat(3,1fr); } }
 
-    /* Card as details/summary */
     details.card {
       border:1px solid rgba(255,255,255,.18);
       border-radius:12px; background:rgba(255,255,255,.03);
@@ -44,7 +43,7 @@
 
     details.card > summary {
       list-style:none; outline:none; cursor:pointer;
-      padding:14px 14px; display:flex; flex-direction:column; gap:6px;
+      padding:14px; display:flex; flex-direction:column; gap:6px;
     }
     details.card > summary::-webkit-details-marker { display:none; }
 
@@ -53,58 +52,91 @@
     .chev { margin-left:auto; font-weight:700; opacity:.65; }
 
     .content {
-      padding:14px;
-      border-top:1px solid rgba(255,255,255,.12);
+      padding:14px; border-top:1px solid rgba(255,255,255,.12);
     }
     body.light .content { border-top-color:#eee; }
-
     .content p { margin:.5rem 0; line-height:1.55; }
     .content a { color:#4da3ff; font-weight:bold; text-decoration:none; }
-
-    /* Optional image slot inside content */
     .thumb { width:100%; height:auto; border-radius:8px; margin-bottom:.6rem; display:block; }
 
-    /* Footer */
     .footer { text-align:center; padding:1.5rem; color:gray; font-size:.85rem; }
 
     @media (max-width:600px){
       nav { gap:1rem; }
       nav a { font-size:.9rem; }
-      header { padding-right:calc(1rem + 32px + 6px); }
+      header .bar { padding:1rem; padding-right:calc(1rem + 32px + 6px); }
+    }
+
+    /* ===== Modal overlay for full-screen post view ===== */
+    .modal {
+      position: fixed; inset: 0;
+      display: none;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,.6);
+      z-index: 10000;
+    }
+    .modal.open { display: flex; }
+
+    .modal .sheet{
+      width: min(920px, 94vw);
+      max-height: 92vh;
+      overflow: auto;
+      background: #1b1b1b; color: inherit;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px; padding: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
+    }
+    body.light .modal .sheet { background:#fff; border-color:#e2e2e2; }
+
+    .modal .close {
+      position: sticky; top: 0; float: right;
+      border: 1px solid rgba(255,255,255,.25);
+      background: transparent; color: inherit;
+      font-size: 20px; line-height: 1; padding: 6px 10px;
+      border-radius: 8px; cursor: pointer;
+    }
+    body.light .modal .close { border-color:#ddd; }
+
+    .modal h2 { margin: 0 0 .25rem; }
+    .modal .meta { font-size:.9rem; opacity:.75; margin-bottom: .75rem; }
+    .modal .sheet .thumb { width:100%; height:auto; border-radius:8px; margin: .4rem 0 .8rem; }
+
+    @media (max-width: 640px){
+      .modal .sheet { width: 96vw; max-height: 94vh; padding: 16px; }
     }
   </style>
 </head>
 <body>
-  <!-- Header & Navigation -->
-  <header class="wrap">
-    <nav>
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="the-hangar.html">The Hangar</a>
-      <a href="thehangar.html">The Hangar 2</a>
-      <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
-    </nav>
-    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+  <header>
+    <div class="bar">
+      <nav>
+        <a href="beliefs.html">Beliefs</a>
+        <a href="logbook.html">Logbook</a>
+        <a href="the-hangar.html">The Hangar</a>
+        <a href="thehangar.html">The Hangar 2</a>
+        <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
+      </nav>
+      <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+    </div>
   </header>
 
   <main class="wrap">
     <h1>The Hangar</h1>
-    <p class="lede">Click a card to read. Desktop: 3 columns · Mobile/iPad: 1 column.</p>
+    <p class="lede">Click a card to read. Desktop: 3 columns · Mobile/iPad: 1 column (opens full-screen).</p>
 
     <section class="grid">
-      <!-- ====== 36 POSTS (titles + dates from your doc). Paste full writing into each .content block ====== -->
 
-      <details class="card" id="post-strength-of-a-servant">
+      <details class="card" id="post-the-strength-of-a-servant-killing-pride-and-leading-low">
         <summary>
           <div class="title">The Strength of a Servant: Killing Pride and Leading Low</div>
           <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/strength-of-a-servant.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/the-strength-of-a-servant-killing-pride-and-leading-low.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-slave-to-christ">
         <summary>
           <div class="title">Slave to Christ</div>
@@ -112,10 +144,10 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/slave-to-christ.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-separated-to-reunite">
         <summary>
           <div class="title">Separated to Reunite</div>
@@ -123,153 +155,153 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/separated-to-reunite.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-raven-and-dove">
+    
+      <details class="card" id="post-the-raven-and-the-dove">
         <summary>
           <div class="title">The Raven and the Dove</div>
           <div class="meta">May 18, 2025 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/raven-and-dove.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/the-raven-and-the-dove.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-stand-firm">
+    
+      <details class="card" id="post-stand-firm-a-call-to-integrity-and-biblical-morals">
         <summary>
           <div class="title">Stand Firm: A Call to Integrity and Biblical Morals</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/stand-firm.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/stand-firm-a-call-to-integrity-and-biblical-morals.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-manna-and-christmas">
+    
+      <details class="card" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call">
         <summary>
           <div class="title">The Manna from Heaven and the Gift of Christmas: A Profound Call</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/manna-christmas.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-extended-warranty">
+    
+      <details class="card" id="post-hello-let-s-talk-about-your-car-s-extended-warranty">
         <summary>
           <div class="title">Hello, Let’s Talk About Your Car’s Extended Warranty</div>
           <div class="meta">December 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/extended-warranty.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/hello-let-s-talk-about-your-car-s-extended-warranty.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-halloween">
+    
+      <details class="card" id="post-the-spiritual-dangers-of-halloween">
         <summary>
           <div class="title">The Spiritual Dangers of Halloween</div>
           <div class="meta">October 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/halloween.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/the-spiritual-dangers-of-halloween.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-do-not-stop-drop-roll">
+    
+      <details class="card" id="post-do-not-stop-do-not-drop-and-do-not-roll">
         <summary>
           <div class="title">Do Not Stop, Do Not Drop, and Do Not Roll</div>
           <div class="meta">October 16, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/do-not-stop-drop-roll.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/do-not-stop-do-not-drop-and-do-not-roll.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-tuning-out-noise">
+    
+      <details class="card" id="post-tuning-out-the-noise">
         <summary>
           <div class="title">Tuning Out the Noise</div>
           <div class="meta">October 14, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/tuning-out-noise.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/tuning-out-the-noise.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-position-lights">
+    
+      <details class="card" id="post-position-lights-and-the-christian-walk">
         <summary>
           <div class="title">✈️ Position Lights and the Christian Walk</div>
           <div class="meta">August 27, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/position-lights.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/position-lights-and-the-christian-walk.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-when-help-refused">
+    
+      <details class="card" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable">
         <summary>
           <div class="title">When Help is Refused: Faith-Based Guidance for the Unreachable</div>
           <div class="meta">August 12, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/when-help-refused.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/when-help-is-refused-faith-based-guidance-for-the-unreachable.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-true-confidence">
+    
+      <details class="card" id="post-true-confidence-vs-false-security">
         <summary>
           <div class="title">True Confidence vs. False Security</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/true-confidence.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/true-confidence-vs-false-security.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-tolerance-and-faith">
+    
+      <details class="card" id="post-tolerance-and-faith-how-to-walk-in-today-s-world">
         <summary>
           <div class="title">Tolerance and Faith: How to Walk in Today’s World</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/tolerance-and-faith.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/tolerance-and-faith-how-to-walk-in-today-s-world.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-god-wont-give">
+    
+      <details class="card" id="post-god-won-t-give-you-anything-he-can-t-handle">
         <summary>
           <div class="title">God Won't Give You Anything He Can't Handle</div>
           <div class="meta">July 15, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/god-wont-give.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/god-won-t-give-you-anything-he-can-t-handle.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-soft-society">
+    
+      <details class="card" id="post-soft-society-hard-truths-undone-culture">
         <summary>
           <div class="title">Soft Society, Hard Truths: Undone Culture</div>
           <div class="meta">May 7, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/soft-society.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/soft-society-hard-truths-undone-culture.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-faith-strength-courage-community">
         <summary>
           <div class="title">Faith: Strength, Courage, Community</div>
@@ -277,10 +309,10 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/faith-strength-courage-community.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-patience">
         <summary>
           <div class="title">Patience</div>
@@ -288,98 +320,98 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/patience.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-mark-driscoll">
+    
+      <details class="card" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage">
         <summary>
           <div class="title">Mark Driscoll, Guest Speaker, Kicked Off the Stage</div>
           <div class="meta">April 17, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/mark-driscoll.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE (you can include the YouTube link) -->
+          <!-- <img class="thumb" src="images/mark-driscoll-guest-speaker-kicked-off-the-stage.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-seven-deadly-sins">
+    
+      <details class="card" id="post-7-deadly-sins">
         <summary>
           <div class="title">7 Deadly Sins</div>
           <div class="meta">March 25, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/seven-deadly-sins.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/7-deadly-sins.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-discerning-divine">
+    
+      <details class="card" id="post-discerning-the-divine-understanding-the-voice-of-god">
         <summary>
           <div class="title">Discerning the Divine: Understanding the Voice of God</div>
           <div class="meta">March 5, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/discerning-divine.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/discerning-the-divine-understanding-the-voice-of-god.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-conscience-holy-spirit">
+    
+      <details class="card" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit">
         <summary>
           <div class="title">The Dynamic Dialogue: Conscience and the Holy Spirit</div>
           <div class="meta">March 4, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/conscience-holy-spirit.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/the-dynamic-dialogue-conscience-and-the-holy-spirit.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-growing-good-fruit">
+    
+      <details class="card" id="post-growing-good-fruit-reflecting-on-spiritual-transformation">
         <summary>
           <div class="title">Growing Good Fruit: Reflecting on Spiritual Transformation</div>
           <div class="meta">February 8, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/growing-good-fruit.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/growing-good-fruit-reflecting-on-spiritual-transformation.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-call-to-fortitude">
+    
+      <details class="card" id="post-a-call-to-fortitude-reflecting-on-generational-strength">
         <summary>
           <div class="title">A Call to Fortitude: Reflecting on Generational Strength</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/call-to-fortitude.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/a-call-to-fortitude-reflecting-on-generational-strength.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-unyielding-path">
+    
+      <details class="card" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo">
         <summary>
           <div class="title">The Unyielding Path of a Christian: Challenging the Status Quo</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/unyielding-path.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/the-unyielding-path-of-a-christian-challenging-the-status-quo.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-unspoken">
+    
+      <details class="card" id="post-unspoken-facing-the-uncomfortable-truths">
         <summary>
           <div class="title">Unspoken: Facing the Uncomfortable Truths</div>
           <div class="meta">December 31, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/unspoken.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/unspoken-facing-the-uncomfortable-truths.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-unapologetically-christian">
         <summary>
           <div class="title">Unapologetically Christian</div>
@@ -387,21 +419,21 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/unapologetically-christian.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-trusting-god-jezebel">
+    
+      <details class="card" id="post-trusting-god-amidst-jezebel-s-tactics">
         <summary>
           <div class="title">Trusting God Amidst Jezebel's Tactics</div>
           <div class="meta">December 19, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/trusting-god-jezebel.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/trusting-god-amidst-jezebel-s-tactics.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-defending-the-spirit">
         <summary>
           <div class="title">Defending the Spirit</div>
@@ -409,21 +441,21 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/defending-the-spirit.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-guidance-asking-help">
+    
+      <details class="card" id="post-guidance-and-asking-for-help">
         <summary>
           <div class="title">Guidance and Asking for Help</div>
           <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/guidance-asking-help.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/guidance-and-asking-for-help.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-christmas">
         <summary>
           <div class="title">Christmas</div>
@@ -431,21 +463,21 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/christmas.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-guilt-and-shame">
+    
+      <details class="card" id="post-guilt-shame">
         <summary>
           <div class="title">Guilt & Shame</div>
           <div class="meta">November 27, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/guilt-and-shame.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/guilt-shame.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-jesus-freak">
         <summary>
           <div class="title">Jesus Freak</div>
@@ -453,10 +485,10 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/jesus-freak.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-faith-and-forgiveness">
         <summary>
           <div class="title">Faith and Forgiveness</div>
@@ -464,10 +496,10 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/faith-and-forgiveness.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
+    
       <details class="card" id="post-who-are-you">
         <summary>
           <div class="title">Who Are You?</div>
@@ -475,24 +507,33 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/who-are-you.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <details class="card" id="post-god-will-strengthen">
+    
+      <details class="card" id="post-god-will-strengthen-and-free-you">
         <summary>
           <div class="title">God Will Strengthen and Free You</div>
           <div class="meta">November 5, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/god-will-strengthen.jpg" alt=""> -->
-          <!-- PASTE FULL POST BODY HERE -->
+          <!-- <img class="thumb" src="images/god-will-strengthen-and-free-you.jpg" alt=""> -->
+          <!-- Writing content goes here -->
         </div>
       </details>
-
-      <!-- ====== end of 36 posts ====== -->
+    
     </section>
   </main>
+
+  <!-- Full-screen modal -->
+  <div id="postModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <button class="close" aria-label="Close">×</button>
+      <h2 id="modalTitle"></h2>
+      <div id="modalMeta" class="meta"></div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
 
   <footer class="footer">
     <p>© <span id="year">2022</span> Faith Based Pilot</p>
@@ -500,12 +541,10 @@
 
   <script>
   (function () {
-    // Theme toggle (same behavior as fbp.html)
     const body = document.body;
     const toggleEl = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
     if (saved === 'light') body.classList.add('light');
-
     function toggleTheme() {
       body.classList.toggle('light');
       localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
@@ -516,18 +555,46 @@
     toggleEl.setAttribute('tabindex','0');
     toggleEl.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggleTheme(); } });
 
-    // Optional auto year
-    // document.getElementById('year').textContent = new Date().getFullYear();
+    const modal = document.getElementById('postModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta  = document.getElementById('modalMeta');
+    const modalBody  = document.getElementById('modalBody');
+    const closeBtn   = modal.querySelector('.close');
+    let lastTrigger = null;
 
-    // Optional: close other cards when one opens (accordion behavior)
-    document.querySelectorAll('details.card').forEach(d => {
-      d.addEventListener('toggle', () => {
-        if (d.open) {
-          document.querySelectorAll('details.card').forEach(other => {
-            if (other !== d) other.removeAttribute('open');
-          });
+    document.querySelectorAll('details.card > summary').forEach(summary => {
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card  = summary.parentElement;
+        const title = summary.querySelector('.title')?.textContent?.trim() || '';
+        const metaEl = summary.querySelector('.meta');
+        let date = '';
+        if (metaEl) {
+          date = Array.from(metaEl.childNodes).filter(n => n.nodeType === Node.TEXT_NODE)
+                     .map(n => n.nodeValue.trim()).join(' ').trim();
         }
+        const contentHTML = card.querySelector('.content')?.innerHTML || '';
+        modalTitle.textContent = title;
+        modalMeta.textContent  = date;
+        modalBody.innerHTML    = contentHTML;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lastTrigger = summary;
       });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      modalBody.innerHTML = '';
+      if (lastTrigger) lastTrigger.focus();
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    document.querySelectorAll('details.card').forEach(d => {
+      d.addEventListener('toggle', () => { if (d.open) d.removeAttribute('open'); });
     });
   })();
   </script>
