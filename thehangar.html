@@ -4,36 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Hangar — Faith Based Pilot</title>
+
   <style>
+    /* Base + theme (match fbp.html) */
     body { margin:0; padding:0; font-family:Arial,sans-serif; background:#111; color:#fff; }
     body.light { background:#fff; color:#000; }
 
-    /* Full-width header with inner bar */
-    header { background:#1a1a1a; padding:0; }
-    body.light header { background:#f0f0f0; }
-    header .bar {
-      max-width:1100px; margin:0 auto; padding:1rem 2rem;
+    /* Header / Nav / Toggle */
+    header {
+      background:#1a1a1a; padding:1rem 2rem;
       display:flex; justify-content:center; align-items:center;
       position:relative; padding-right:calc(2rem + 32px + 8px);
     }
-
+    body.light header { background:#f0f0f0; }
     nav { display:flex; gap:1.5rem; flex-wrap:wrap; }
     nav a { color:inherit; text-decoration:none; font-weight:bold; font-size:1rem; }
-
     #themeToggle {
-      width:32px; height:32px; cursor:pointer;
-      position:absolute; right:2rem; top:1rem;
+      width:32px; height:32px; cursor:pointer; position:absolute; right:2rem; top:1rem;
       filter:invert(1); transition:filter .3s ease;
     }
     body.light #themeToggle { filter:invert(0); }
 
     .wrap { max-width:1100px; margin:0 auto; padding:0 16px; }
+
     h1 { text-align:center; margin:2rem 0 .25rem; }
     .lede { text-align:center; color:#bbb; margin:0 0 1.5rem; }
 
+    /* Grid */
     .grid { display:grid; grid-template-columns:1fr; gap:18px; }
     @media (min-width:1024px){ .grid { grid-template-columns:repeat(3,1fr); } }
 
+    /* Card as details/summary */
     details.card {
       border:1px solid rgba(255,255,255,.18);
       border-radius:12px; background:rgba(255,255,255,.03);
@@ -43,7 +44,7 @@
 
     details.card > summary {
       list-style:none; outline:none; cursor:pointer;
-      padding:14px; display:flex; flex-direction:column; gap:6px;
+      padding:14px 14px; display:flex; flex-direction:column; gap:6px;
     }
     details.card > summary::-webkit-details-marker { display:none; }
 
@@ -52,34 +53,38 @@
     .chev { margin-left:auto; font-weight:700; opacity:.65; }
 
     .content {
-      padding:14px; border-top:1px solid rgba(255,255,255,.12);
+      padding:14px;
+      border-top:1px solid rgba(255,255,255,.12);
     }
     body.light .content { border-top-color:#eee; }
+
     .content p { margin:.5rem 0; line-height:1.55; }
     .content a { color:#4da3ff; font-weight:bold; text-decoration:none; }
+
+    /* Optional image slot inside content */
     .thumb { width:100%; height:auto; border-radius:8px; margin-bottom:.6rem; display:block; }
 
+    /* Footer */
     .footer { text-align:center; padding:1.5rem; color:gray; font-size:.85rem; }
 
     @media (max-width:600px){
       nav { gap:1rem; }
       nav a { font-size:.9rem; }
-      header .bar { padding:1rem; padding-right:calc(1rem + 32px + 6px); }
+      header { padding-right:calc(1rem + 32px + 6px); }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="bar">
-      <nav>
-        <a href="beliefs.html">Beliefs</a>
-        <a href="logbook.html">Logbook</a>
-        <a href="the-hangar.html">The Hangar</a>
-        <a href="thehangar.html">The Hangar 2</a>
-        <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
-      </nav>
-      <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
-    </div>
+  <!-- Header & Navigation -->
+  <header class="wrap">
+    <nav>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="the-hangar.html">The Hangar</a>
+      <a href="thehangar.html">The Hangar 2</a>
+      <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
+    </nav>
+    <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
   </header>
 
   <main class="wrap">
@@ -87,19 +92,19 @@
     <p class="lede">Click a card to read. Desktop: 3 columns · Mobile/iPad: 1 column.</p>
 
     <section class="grid">
+      <!-- ====== 36 POSTS (titles + dates from your doc). Paste full writing into each .content block ====== -->
 
-      <details class="card" id="post-the-strength-of-a-servant-killing-pride-and-leading-low">
+      <details class="card" id="post-strength-of-a-servant">
         <summary>
           <div class="title">The Strength of a Servant: Killing Pride and Leading Low</div>
           <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/the-strength-of-a-servant-killing-pride-and-leading-low.jpg" alt=""> -->
-          <p></p>
-<p></p>
+          <!-- <img class="thumb" src="images/strength-of-a-servant.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
       <details class="card" id="post-slave-to-christ">
         <summary>
           <div class="title">Slave to Christ</div>
@@ -107,11 +112,10 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/slave-to-christ.jpg" alt=""> -->
-          <p></p>
-<p></p>
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
       <details class="card" id="post-separated-to-reunite">
         <summary>
           <div class="title">Separated to Reunite</div>
@@ -119,1154 +123,153 @@
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/separated-to-reunite.jpg" alt=""> -->
-          <p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>WHO ARE YOU?</p>
-<p></p>
-<p></p>
-<p>Who are you?</p>
-<p>Here is who you are not:</p>
-<p>1) You are not what you look like.</p>
-<p>2) You are not what you do.</p>
-<p>3) You are not what you have.</p>
-<p>4) You are not what others say about you.</p>
-<p>5) You are not what happened to you.</p>
-<p>6) You are not what was done to you.</p>
-<p>7) You are not what you have done.</p>
-<p>The only true simulacrum of you is found in God’s word.</p>
-<p>If you do not know who you are, you will not find your purpose. Pastor Tim Gilligan said it is like trying to paint with a screwdriver when you do not know who you are when you’re trying to find your purpose.</p>
-<p>How do you know who you are? How do you find yourself?</p>
-<p>You will find yourself when you open God’s word.</p>
-<p>In Him, you are complete.</p>
-<p>Colossians 2:8-10 NKJV</p>
-<p>[8] Beware lest anyone cheat you through philosophy and empty deceit, according to the tradition of men, according to the basic principles of the world, and not according to Christ. [9] For in Him dwells all the fullness of the Godhead bodily; [10] and you are complete in Him, who is the head of all principality and power.</p>
-<p>Jesus has not just decided to save us, but to comfort, bless, and love us. We can find ourselves in Jesus Christ.</p>
-<p>Jesus took the full punishment our sins deserved. PRAISE THE LORD!!! Thank you Jesus for doing this for us; for you have removed our judgment day. You payed a debt we are incapable of paying.</p>
-<p>If God is for you, who can be against you?</p>
-<p>Here is who you are:</p>
-<p>1) You are saved.</p>
-<p>2) You are a child of God.</p>
-<p>YOU. ARE. LOVED. BY. GOD.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>FAITH AND FORGIVENESS</p>
-<p></p>
-<p></p>
-<p>I will start this by saying that God loves you. He loves you more than anyone else in your life will love you.</p>
-<p>Never forget where you are able to go for help. When the 12 disciples were out in the storm on the boat they cried for help. Jesus came to them and Peter ASKED to join Him on the water. Jesus did not command Peter or anyone to join Him on the water. Do not be afraid to ask Jesus Christ to come help guide us when we take our steps of faith. Like Peter we take steps that grow our faith, but we get distracted by sin and we begin to sink, and become afraid like Peter. Do not be afraid, Jesus will help us when we call out. He does not want us to sink; He wants us to stand and embrace Him.</p>
-<p>Now for what I am wanting to share: FAITH AND FORGIVENESS</p>
-<p>Satan works against you every day and he has been working to demolish you before you were born. He wants you to be weak and wants you to not realize that God has a plan for you. Did you know what you might be going through might have been passed down to you? i.e. it is generational. Now before you start thinking it isn't let us look at Adam and Eve. Their mistake is G.E.N.E.R.A.T.I.O.N.A.L.</p>
-<p>Sounds sad, I know, but Jesus Christ, our Lord and Savior, has died for our sins. PRAISE BE HIS NAME!</p>
-<p>He has sanctified us. What is sanctification? According to Merriam-Webster the first two definitions are:</p>
-<p>To set apart to a sacred      purpose or to religious use.</p>
-<p>To free from sin</p>
-<p>Sanctification comes in three parts and Craig Caster, founder of Family Discipleship Ministries, explains it well:</p>
-<p>Initial Sanctification: The position God bestows upon every believer. All believers are redeemed, cleansed, forgiven, justified and made righteous through the blood of Jesus Christ at the moment of conversion. The Bible calls Christians saints, not because they are faultless or sinless, but because Jesus took their guilt upon Himself on the cross, rendering them blameless before God.</p>
-<p>Progressive Sanctification: Progressive sanctification is entirely dependent upon the believer's daily decision to abide in Christ and receive His Power. This is a ongoing process that requires a Christian's continual participation. We must be WILLING to surrender to God .</p>
-<p>Ultimate Sanctification: This absolute and final sanctification will occur when believers are fully conformed to the image of Jesus Christ at His second coming. Christians will be fully conformed to the image of Christ when they depart from this life and awaken in His presence.</p>
-<p>[end]</p>
-<p>Sanctification is a process. It is a process to step away from sin, so do not expect this to be an overnight change.</p>
-<p>Root of all our issues are SIN. Sin always breaks, depresses, poisons, and ruins. It broke our relationship with God, consequently with each other.</p>
-<p>Yell out, "I NEED HELP!" God has sent His only son to save us! Jesus has saved us from our sins (Matthew 2:21). As long as you think we sin has power over you, you will buckle from the weight, but Jesus has taken that weight from you so you do not have to bear it. Believe in this! John 3:16-18. Pastor Tim Gilligan said to replace the word condemn with the word drowning to understand the verses better.</p>
-<p>God is good, God does good, God works all things together for our good and our part is to believe that. - Tim Gilligan. All of this news, we block it but not by lacking faith, but by unforgiveness.</p>
-<p>Unforgiveness.</p>
-<p>Jesus is our savior. This is the victory that overcomes the world. Here are a list verses that talk about forgiveness before I get into this.</p>
-<p>Luke 6:35-37, Matthew 10:8, Colossians 3:12-13, Luke 12:34, Genesis 37-45, Hebrews 12:15, Ephesians 4:31-32, Matthew 18:21-35, Matthew 22:37-40, 1John 4:19-21, Mark 11:25, Romans 13:8-10, Matthew 5:43-48, 1Corinthians 6:20, Matthew 5:23-24, 1John 1:9, Ephesians 4:22-24, Philippians 1:6</p>
-<p>Why do we not want to forgive? We do not feel like forgiving, we want them to hurt, we are concerned that they might hurt us again, we want them to admit, we want them to pay back, we do not forgive because we can't forget, we don't want to forgive because what they did cannot be undone, we still feel pain and anger, sometimes we still want to feel pain and anger, we have conditions, they need to/should have, we are afraid that God will be merciful because He was merciful to us. However forgiveness has nothing to do with them. Forgiveness has to do with you. Let them go. This is adding to the dysfunction of your life. This is for your healing. This is a gift for yourself. Do not wait for them because you might be waiting from something that will never come. Forgive does not erase your memory and that is okay, but stop reliving it. You can't continue on to your future living in your past. - Pastor Tim Gilligan</p>
-<p>We must forgive because it cuts us off from others, and more importantly it cuts us off from God. When you forgive, you will begin to heal. If God can forgive us, we can forgive others. I am not saying it is easy to forgive and I know it may take time. However, you can not just pray to God to help you forgive and you can not try to forgive them by yourself. You must pray and be actively trying to forgive them. God will help you when you ask. Do not forget, forgive yourself too. We must be able to forgive ourselves as well as others.</p>
-<p>Jesus' last words before He died on the cross were, " Then said Jesus, Father, forgive them; for they know not what they do. And they parted his raiment, and cast lots" Luke 23:24. Give yourself the gift Jesus Christ died for. Forgiveness is not saying what happened is okay, but is allowing something new to grow in its place.</p>
-<p>Tim Gilligan said there's two places to pay for sin:</p>
-<p>The cross; Jesus paid it all.</p>
-<p>Hell, which is eternal      because we can never pay it off.</p>
-<p>Hell on earth where we try      and pay it off, but does not succeed.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-jesus-freak">
-        <summary>
-          <div class="title">Jesus Freak</div>
-          <div class="meta">November 20, 2023 <span class="chev">▾</span></div>
-        </summary>
-        <div class="content">
-          <!-- <img class="thumb" src="images/jesus-freak.jpg" alt=""> -->
-          <p></p>
-<p>In delving deeper into the concept of being a "Jesus freak," I've come to realize that the term carries profound meaning beyond its countercultural origins. It's not merely about being an enthusiastic outlier in society; it's about embodying a commitment to faith and walking with Christ in every aspect of life.</p>
-<p>The Jesus Movement, emphasizing personal conversion experiences and a more communal approach to Christianity, sought to break away from the rigid structures of traditional religious practices. "Jesus freaks" embraced this break from convention, choosing a path of intense truth.</p>
-<p>Initially, I wanted to avoid identifying with the term. Perhaps I thought that those labeled as "Jesus freaks" had their heads in the clouds, detached from the realities of the world. However, the events of this past year have reshaped my perspective. In navigating the challenges, uncertainties, and losses, my faith has not only endured but been reforged. It has become a source of strength, peace, and purpose amid chaos.</p>
-<p>Now, I can confidently say that I would love to be known as a "Jesus freak." It's not about conforming to society and what they deem acceptable; it's about standing out as someone whose life is marked by an unwavering commitment to Christ because Christ has called us to follow Him. In a world that often feels adrift, being a "Jesus freak" is a compass, pointing towards a higher purpose bearing a heading of north, God's true north.</p>
-<p>Embracing the label means recognizing that being a "Jesus freak" is, fundamentally, a good thing. It signifies a deep relationship with Christ that goes beyond mere religious observance. People notice when faith isn't just a Sunday ritual but a transformative force shaping every moment of our lives. It's a testimony that we are walking with Christ and that authenticity can draw others towards the same life-changing journey.</p>
-<p>In essence, being a "Jesus freak" is an invitation to pick up your cross and follow Christ. The label "Jesus freak" is a declaration that our anchor is firmly rooted in something greater than ourselves amid a turbulent world. So, call me a "Jesus freak" because I will wear this label with pride because it reflects a profound and purposeful way of life.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-        </div>
-      </details>
-    
-      <details class="card" id="post-guilt-shame">
-        <summary>
-          <div class="title">Guilt & Shame</div>
-          <div class="meta">November 27, 2023 <span class="chev">▾</span></div>
-        </summary>
-        <div class="content">
-          <!-- <img class="thumb" src="images/guilt-shame.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>I'll start off by sharing something that some may consider to be obvious. If you feel guilty about something and/or feeling ashamed about something in your life, this guilt and shame are holding you back. Give your guilt and shame to God. We all deal with guilt and shame, but here's the thing: you either have the presence or the sense of guilt and shame. Guilt and shame lead to fear, then to anger, then a sense of inferiority, then a sense of hopelessness. Problems and solutions are…</p>
-<p>SPIRITUAL.</p>
-<p>We must seek the root of our problems, and they are not at a physical level. They are at a spiritual level. You could have everything you need in the natural world and still have obstacles in your life. The slanderer, Satan, puts guilt and shame in your life, which obstructs who the Lord made us to be. Jesus bestows forgiveness and freedom. How many people don’t know that there is a Savior that brings love and forgiveness to us? Now, how many of those people are Christians who either have forgotten this or simply do not know this? This guilt and shame we may carry as children into our adult lives. BUT WAIT! In Romans 8:1 it says, “Therefore, there is now no condemnation for those who are in Christ Jesus.”</p>
-<p>When we belong to Christ Jesus, there is no guilt, shame, or condemnation. God doesn’t want us to feel guilt and shame but wants us to be in distress and go to Him. This is Godly sorrow, which leads to repentance. Let the guilt and shame go and go before Christ the Lord.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p>Let’s be honest. Serving is easy when it’s public, when people see it, and when we get praise or affirmation. But true servanthood begins where pride dies. And for most of us, pride doesn’t die quietly. It has to be crucified.</p>
-<p>This is where most people get stuck. We’ll serve, but only if we still feel respected. We’ll help only if it doesn’t make us look small. We’ll volunteer, but not if it costs us control. But Christ didn’t call us to manage appearances. He called us to follow His example.</p>
-<p>“Have this way of thinking in yourselves which was also in Christ Jesus, who, although existing in the form of God, did not regard equality with God a thing to be grasped, but emptied Himself, by taking the form of a slave, by being made in the likeness of men.” (Philippians 2:5-7, LSB)</p>
-<p>He emptied Himself. He chose the position of the lowest. He washed the feet of the men who would abandon Him, Peter, who denied Him, and Judas, who betrayed Him.</p>
-<p>“You call Me ‘Teacher’ and ‘Lord’; and you are right, for so I am If I then, the Lord and the Teacher, washed your feet, you also ought to wash one another’s feet.” (John 13:13–14, LSB)</p>
-<p>That’s not a metaphor. That’s a command. The King of Kings picked up a basin and a towel. What excuse do we have?</p>
-<p>Servanthood is not optional. It is obedience. But it can’t just be outward. It has to be inward. Because there is a kind of service that still protects pride: the kind that serves to be seen, the type that gives to feel important, the kind that hides ego behind effort, that is not Christlike. That is self-righteousness.</p>
-<p>What does authentic servanthood look like? “Do nothing from selfish ambition or vain glory, but with humility of mind regarding one another as more important than yourselves.” (Philippians 2:3, LSB)</p>
-<p>Not equal. More important. That’s the line most men won’t cross because it means putting others above your desires, schedule, name, and will. Jesus didn’t just do acts of service. He became a servant. And now we are called to walk that same path. But you cannot walk it carrying pride. You cannot wash your feet while trying to look impressive. You cannot bend low if you are obsessed with standing tall.</p>
-<p>“Whoever wishes to become great among you shall be your servant, and whoever wishes to be first among you shall be your slave. Just as the Son of Man did not come to be served, but to serve, and to give His life a ransom for many.” (Matthew 20:26-28, LSB)</p>
-<p>Jesus didn’t just serve. He gave up His life. That is the cost of following Him. That is the model of manhood we are called to. So what are you still holding onto? Your status? Your comfort? Your name? If we are going to follow Christ, then pride must die. And in its place rises something the world cannot explain. A man who leads by serving. A man who is strong enough to be low. A man who does not need credit, because his life belongs to Someone greater.</p>
-<p>This is not soft Christianity. This is Christlikeness. And it is time we return to it.</p>
-<p>When pride dies, something more substantial takes its place: responsibility. Not the kind that demands attention. The kind that shows up, regardless of who notices. That’s the heart of Biblical leadership. Not controlled. Not applause. Just obedience. Jesus didn’t just say "serve." He showed us how to lead from below.</p>
-<p>“If I then, the Lord and the Teacher, washed your feet, you also ought to wash one another’s feet.” (John 13:14, LSB)</p>
-<p>The Lord and Teacher stooped. The King of the universe bent His knees and touched the dirtiest parts of His followers. That was leadership. That was a strength. Men today chase influence. Jesus chased obedience. He didn’t fight for a seat at the table. He prepared the table, served the bread, and carried the cross.</p>
-<p>So what does this look like for us? In your home, it means leading your family by example. Not barking orders or demanding respect, but washing their feet metaphorically daily. You don’t lead your wife by dominating her. You lead by loving her as Christ loved the church—by sacrificing for her (Ephesians 5:25). You don’t raise your children with fear and frustration. You raise them with patience, correction, and constant prayer (Ephesians 6:4). You don’t make your home your throne. You make it your altar.</p>
-<p>In your church, it means not waiting to be handed a microphone. It means showing up early, staying late, picking up the trash, and praying when no one sees. In your community, it means choosing integrity when it costs you something. It means being the same man in public that you are in private. It means stepping up when others sit back. That is not weakness. That is war against the flesh.</p>
-<p>And here’s the truth most won’t admit. Being a servant is costly. You will be overlooked. You will be underappreciated. You will feel unseen. And that’s precisely where God wants to shape you. Because the more hidden you are from the world, the more usable you are to Him.</p>
-<p>“So, when you do what you are commanded, say, 'We are unworthy slaves; we have done only that which we ought to have done.'” (Luke 17:10, LSB)</p>
-<p>You aren’t owed recognition. You owe your life to the One who bought it. So lead. Lead by kneeling. Led by dying to pride. Lead by going last. Lead by taking hits for others and not needing credit. That is Biblical manhood. It doesn’t demand. It serves. It doesn’t self-promote. It self-denies. It doesn’t point fingers. It bears burdens. That is the strength of a servant. That is the leadership the world cannot copy. That is the image of Christ in you. And if you are willing to go low, God will do something great through your obedience.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p></p>
-        </div>
-      </details>
-    
-      <details class="card" id="post-the-raven-and-the-dove">
+
+      <details class="card" id="post-raven-and-dove">
         <summary>
           <div class="title">The Raven and the Dove</div>
           <div class="meta">May 18, 2025 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/the-raven-and-the-dove.jpg" alt=""> -->
-          <p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p>I’ve been thinking about how our culture has shaped the way we understand the words servant and slave, and how that can actually distort how we read Scripture.</p>
-<p>In today’s Western world, a servant is someone who chooses to help. Maybe they get paid, maybe they’re doing a good deed, but either way, they retain control. They can clock out. They can quit. They give, but they still belong to themselves.</p>
-<p>When we hear slave, our minds go straight to American history, forced labor, abuse, ownership without dignity. That history is real, and it’s brutal. But it’s not the framework Scripture is using when it calls us slaves of Christ.</p>
-<p>Biblically, the word most often used by Jesus and the apostles is <strong>doulos</strong>, slave. Not servant. Not helper. Slave. And not in the American sense of racial abuse, but in the Greco-Roman sense of total ownership, loyalty, and lifelong commitment. A <strong>doulos</strong> had no personal rights. They existed for the will of their master.</p>
-<p>Now, let’s talk about the difference between being a servant of Christ versus being His slave.</p>
-<p>A servant might help God’s cause. They might volunteer, show up to church, pray when it’s convenient. But at the end of the day, they still keep part of their life for themselves. They choose when and how to serve.</p>
-<p>A slave of Christ doesn’t get that luxury. A slave doesn’t bargain. A slave doesn’t say “I’ll give You Sunday, but not my relationships.” A slave is owned. Fully. Completely. And here’s the crazy part, Christ is the only Master who doesn’t exploit, but restores. The only One who gives freedom through surrender.</p>
-<p>Becoming a slave to Christ isn’t easy. No one said it would be. Denying your flesh is one of the hardest things you’ll ever do. This world tells you to chase your desires, but Christ calls you to crucify them.</p>
-<p>Still, turning yourself over to Christ, completely, is what we’re called to do. Look at Paul. He used to be Saul, the persecutor of Christians. But when he gave his life to Christ, even his name changed.</p>
-<p>Paul comes from the Latin Paulus, meaning “small” or “humble.”
-That wasn’t just a name change, it was a posture shift. From pride to humility. From power to submission. From Saul the self driven to Paul the Christ-owned.</p>
-<p>This is where I stand:
-I don’t want to just serve Christ.
-I want to belong to Him.
-I want to be a slave to Christ.
-Because in that slavery, unlike anything this world has ever known, there is peace, purpose, and life.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p></p>
-<p>The Raven and the Dove</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p><em>May 24, 2025 – A preview of a full paper currently being written</em></p>
-<p><em>   This short post introduces a concept I’m actively developing into a full-length paper.</em><em>
-  That upcoming study will go deeper into what happened when God created Eve from</em><em>
-  Adam, how that moment divided the fullness of humanity into two parts, and how</em><em>
-  marriage was designed to bring them back together. What you’re about to read is the</em><em>
-  foundation.</em></p>
-<p>I’ve been reflecting on the moment in Genesis when God created Eve. He didn’t form her from the dust like He did with Adam. And unlike Adam, God did not breathe the breath of life directly into her. Instead, He caused Adam to fall into a deep sleep, took something from his side, and formed a woman. That moment wasn’t just about the creation of Eve. It was about the separation of something whole.</p>
-<p>Adam originally held within himself what God had designed in full humanity—the strength and the sensitivity, the reason and the emotion, the masculine and the feminine. But when God created Eve, He removed part of Adam to place it into another. And He did it for a purpose: reunion.</p>
-<p>“So Yahweh God caused a deep sleep to fall upon the man, and he slept. Then He took one of his ribs and closed up the flesh at that place. And Yahweh God fashioned the rib which He had taken from the man into a woman and brought her to the man.” (Genesis 2:21–22, LSB)</p>
-<p>At that moment, man was no longer whole and on his own. What had been in him was now beside him. The capacity for emotion, relational depth, and nurturing care was removed and embodied in the woman. And this was not a flaw. It was intentional. God did not make man incomplete by mistake. He made man incomplete by design so that the reunion between man and woman would carry deep spiritual meaning.</p>
-<p>This is why marriage is sacred. It is not just about companionship. It is about restoration. It is about two becoming one again.</p>
-<p>“For this reason a man shall leave his father and his mother and cleave to his wife. And they shall become one flesh.” (Genesis 2:24, LSB)</p>
-<p>The world has lost sight of this truth. It tells men to embrace only emotion or to suppress it entirely. It tells women to become their own authority, to carry the burdens of both roles. The result is confusion, distortion, and disconnection from God’s original design. But when we look back to Eden, we see the clarity. We know the pattern. Man and woman were meant to reflect different aspects of God's image and reunite in covenant.</p>
-<p>Masculinity is not about oppression. Femininity is not about weakness. Each holds a distinct piece of God's reflection. Marriage is where they meet again. It is where strength finds grace. Where leadership meets compassion. Where one flesh becomes more than biology—it becomes testimony.</p>
-<p>This post is only the beginning. A full paper is coming soon, where I will explore how this design shapes identity, relationships, and the roles we were created to fulfill. What God separated in the garden, He now calls to be united in covenant, not just for companionship, but to mirror His glory.</p>
-<p>We were separated for a reason.
-We are reunited for a purpose.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>The Raven and the Dove</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>The Raven and the Dove</p>
-<p></p>
-<p>I found myself thinking about Noah’s Ark today, specifically about how Noah first sent out a raven and then, later, a dove. The raven never came back. It flew off into the distance and didn’t return. But the dove came back. Then I remembered something else. When Jesus was baptized, the Spirit of God descended like a dove.</p>
-<p><strong>"And after being baptized, Jesus came up immediately from the water; and behold, the heavens were opened, and he saw the Spirit of God descending like a dove and coming upon Him." Matthew 3:16 (LSB) </strong></p>
-<p>This wasn’t just about birds; it was about returning, about trust, about the difference between two kinds of people and the two kinds of responses to a broken world.</p>
-<p>The raven was the first bird Noah sent out, just like Adam was the first man God created. Both were given a world to engage with, but both represent a response that refuses to return. The raven never came back. It went out over the waters of judgment and disappeared. That is Adam. When sin entered the picture, he didn’t run back to God; he hid, covered himself, and blamed. And that pattern has never stopped.</p>
-<p>We have been acting like the raven ever since. We fly into chaos looking for rest and never find it. We run from God instead of returning to Him. We search the world for something that only the ark could offer: shelter, salvation, and restoration. But we never come back to the source.</p>
-<p>The dove is different; the dove returns. Even when there is nothing out there, the dove comes back. And when the time is right, it brings something with it. It returns with proof that the world has changed. A sign of peace. A promise of life.</p>
-<p>That is Jesus.</p>
-<p>Jesus, the Second Adam, did not flee from judgment; He entered it. He came down into the floodwaters of a broken world, but He returned. He ascended. And like the dove in Noah’s story, He brought with Him the promise of something new, a new creation, a restored relationship, and the olive branch of peace between God and man.</p>
-<p><strong>“For as through the one man’s disobedience the many were appointed sinners, even so through the obedience of the One the many will be appointed righteous.” Romans 5:19 (LSB)</strong></p>
-<p>Adam went out and stayed away. Christ returned and made a way.</p>
-<p>The story of the dove does not end there. The first time Noah sent the dove out, it found no resting place and came back. That reminds me of when Christ first came to earth. The world was not ready to receive Him. As John wrote, “He came to His own, and those who were His own did not receive Him.”</p>
-<p>The second time, the dove returned with an olive leaf in its beak. This was the sign that the floodwaters had begun to recede, a symbol of peace, hope, and restoration, just like Jesus, who, after His resurrection and ascension, brought us the message of reconciliation with the Father. He did not just come back. He came back bearing the sign of a new covenant.</p>
-<p>Then Noah sent the dove out a third and final time. This time, it did not return. That told Noah the dove had found a place to rest. The old world was gone. Something new was beginning.</p>
-<p>That points us to the second coming of Christ. The first time He came to offer peace. The second time He will come to dwell. Not to deal with sin again, but to establish His kingdom forever. Not just to offer an olive branch, but to make all things new.</p>
-<p><strong>“</strong><strong>So</strong><strong> Christ also, having been offered once to bear the sins of many, will appear a second time for salvation without reference to sin, to those who eagerly await Him.” Hebrews 9:28 (LSB) “Behold, I am making all things new.” Revelation 21:5 (LSB) </strong></p>
-<p>We live in that space between the flights. The first coming has already happened. The olive branch has already been brought. The promise has already been made. Now we wait for that final flight, the return of the King.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/raven-and-dove.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-stand-firm-a-call-to-integrity-and-biblical-morals">
+
+      <details class="card" id="post-stand-firm">
         <summary>
           <div class="title">Stand Firm: A Call to Integrity and Biblical Morals</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/stand-firm-a-call-to-integrity-and-biblical-morals.jpg" alt=""> -->
-          <p></p>
-<p>The team had just received some good news. During our brief celebration, someone let out a casual "G.D." There was a pause. And then, quietly but firmly, I looked directly at the person who said it and said, "I don't think God damned this."</p>
-<p></p>
-<p>The air felt heavier for a moment. No laughter followed, only silence. A minute or two later, another teammate called the situation for what it was—a blessing.</p>
-<p></p>
-<p>Let something be made crystal clear: I’m not apologizing for being Christian, and I never will.</p>
-<p></p>
-<p>Integrity and faith aren’t optional; they’re essential. There is no reason to compromise Biblical morals in a world that often tries to silence conviction under the pretense of tolerance. Truth demands to be spoken and defended without hesitation. Our beliefs are not fragile sentiments to be hidden when inconvenient. They are the bedrock that gives us the strength to act with purpose and conviction.</p>
-<p></p>
-<p>However, truth must always be accompanied by love. As Ephesians 4:15 says, "Instead, speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ." Truth without love can become harsh and unyielding, while love without truth can lead to compromise and complacency.</p>
-<p></p>
-<p>Jesus Himself perfectly embodied both. In John 1:14, it says, "The Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth." His grace didn’t diminish His truth, and His truth didn’t overshadow His grace.</p>
-<p></p>
-<p>Too often, it feels easier to stay quiet and to let things slide just to avoid tension. But we weren’t called to blend in. Words matter. Moments like this may seem small, but they carry weight. We don’t switch faith on and off, depending on the company. It shapes how we respond to every challenge, every opportunity, every interaction. When God’s name is misused, it matters to stand up. The God who brings peace and strength does not deserve to be reduced to a curse.</p>
-<p></p>
-<p>Revelation 3:16 couldn’t be clearer: "So, because you are lukewarm—neither hot nor cold—I am about to spit you out of my mouth." Lukewarm faith has no place here. We face opposition head-on as we hold fast to the truths that guide us. Standing firm in conviction might mean being labeled rigid or self-righteous, but it is better to bear the weight of those labels than to stand empty-handed before the Creator.</p>
-<p></p>
-<p>This is a call to arms—not in anger but unwavering integrity. Let it be known that I will stand unapologetically for Christ. If that makes some uncomfortable, so be it. If standing firm costs approval, it’s a price gladly paid. Only one opinion matters, and it isn’t the crowd’s.</p>
-<p></p>
-<p>I’m not apologizing for being Christian, and neither should you.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/stand-firm.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call">
+
+      <details class="card" id="post-manna-and-christmas">
         <summary>
           <div class="title">The Manna from Heaven and the Gift of Christmas: A Profound Call</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call.jpg" alt=""> -->
-          <p></p>
-<p>In Exodus 16, the Israelites, weary and hungry in the wilderness, experienced God’s miraculous provision as manna rained from heaven. This daily bread was not merely sustenance but a profound demonstration of God’s intimate care and faithfulness. Each morning, as they gathered what was needed, the Israelites encountered tangible evidence of a God who met the needs of His people.</p>
-<p></p>
-<p>As we approach Christmas, the parallels between the manna in the desert and the arrival of Christ become striking. Just as manna descended to sustain Israel, Jesus came down from heaven to offer Himself as the ultimate Bread of Life. But consider this—the Creator of the universe did not arrive as a mighty warrior or sovereign king. Instead, He came as a vulnerable, fragile infant born into humanity to walk the path that would lead to the cross. This reality should stir within us a profound and humbling sense of gratitude.</p>
-<p></p>
-<p>The Israelites relied on daily manna, teaching them dependence and trust. Similarly, Christ's arrival fulfills our deepest need, satisfying the hunger of the soul in ways no earthly provision ever could. His coming is not just a seasonal story but the foundation of our faith—the embodiment of God's love, mercy, and grace in its purest form.</p>
-<p></p>
-<p>Christmas reminds us that the greatest gift ever given was not wrapped in ribbons or placed under a tree but swaddled and laid in a manger. Jesus’ birth fulfills God’s promise to redeem humanity, and that realization should leave us awestruck. This is not a quaint or sentimental moment; it is the defining act of divine love, one that deserves our deepest reverence and gratitude.</p>
-<p></p>
-<p>In Exodus, God instructed the Israelites to gather manna with intentionality and reverence. They were to collect enough for each day, trusting that God would provide again tomorrow. In the same way, Christmas calls us to receive the gift of Christ with reverence, allowing gratitude to shape our lives. Reflecting on His birth invites us to recognize the blessings we often overlook and the grace that sustains us daily.</p>
-<p></p>
-<p>When we stand before the nativity, we are not simply looking at a child in a manger. We are witnessing the very heartbeat of God, made flesh for our sake. Such a reality compels a response—a life lived in gratitude, humility, and love.</p>
-<p></p>
-<p>Manna was given not to individuals but to the entire community, fostering unity and shared dependence on God. Christmas carries the same communal spirit. As we celebrate, we are called to extend Christ's love to those around us, reflecting His generosity through our words and deeds.</p>
-<p>The best way to honor the gift of Christ is by embodying His love—caring for the brokenhearted, serving the overlooked, and sharing the hope that His birth represents. In doing so, we become vessels of the very grace that first descended in Bethlehem.</p>
-<p></p>
-<p>The manna in Exodus points us to the ultimate gift of Christ, a gift that speaks to the very essence of who God is—a Provider, Redeemer, and Savior. This Christmas, may our hearts swell with gratitude as we reflect on the depth of God's love. Let us not take this gift lightly, for in the fragile form of a baby lies the hope of all humanity. May that truth transform us, and may our lives resound with thanksgiving, not just during this season but every day we draw breath.</p>
-<p></p>
-<p>Many blessings and Merry Christmas,</p>
-<p>FBP</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/manna-christmas.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-hello-let-s-talk-about-your-car-s-extended-warranty">
+
+      <details class="card" id="post-extended-warranty">
         <summary>
           <div class="title">Hello, Let’s Talk About Your Car’s Extended Warranty</div>
           <div class="meta">December 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/hello-let-s-talk-about-your-car-s-extended-warranty.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>We've all been there. The phone rings, and a cheerful voice says, "Hello, I've been trying to reach you about your car's extended warranty." Whether you politely hang up, laugh it off, or block the number, these calls have become a universal experience—persistent, sometimes annoying, and almost always ignored.</p>
-<p>What if I told you that this scenario has a spiritual parallel? Imagine God is on the other end of the line, patiently and persistently reaching out. How often do we treat His call like we treat that of a telemarketer? We dismiss it, assume it's not essential, or, worse, think it's some sales pitch we don't need.</p>
-<p>God's love for us is persistent. Scripture reminds us in Revelation 3:20: <em>"Behold, I stand at the door and knock. If anyone hears my voice and opens the door, I will come into him and eat with him, and he with me."</em> The imagery here is explicit—Jesus is calling, knocking, and waiting for us to respond. He's not forcing His way in but not giving up.</p>
-<p>Christ keeps trying to reach us like those persistent warranty calls. The difference? He's not offering a product or service; He's offering life—eternal life. In John 10:10, Jesus says, <em>"I came that they may have life and have it abundantly."</em> This isn't a sales pitch; it's an invitation to something far greater than we could ever imagine.</p>
-<p>So why do so many of us avoid or ignore the call? Perhaps we think we don't need what He's offering. Life might feel fine as it is—no significant breakdowns, no immediate crises. We might assume we can get back to Him later when it's more convenient.</p>
-<p>Or maybe we misunderstand His intentions. We think He's offering religion as a set of rules to follow or a transaction to complete. But Christ's invitation isn't about earning salvation or signing up for a "plan"; it's about relationships. In Matthew 11:28-30, He invites us with these comforting words: <em>"Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls."</em></p>
-<p>We avoid Christ because we misunderstand who He is and what He offers. He is not a salesman; He is a Savior. The Savior.</p>
-<p>The car warranty analogy may be humorous, but it carries a more profound truth. Just as a warranty protects us when something goes wrong with our car, Christ offers a "warranty" for our soul. Through His death and resurrection, He has paid the price for our sins and secured our eternity. In John 3:16, we're reminded: <em>"For God so loved the world, that He gave His only Son, that whoever believes in Him should not perish but have eternal life."</em></p>
-<p>Unlike an extended car warranty, this gift is not something we purchase. It's already been paid for and freely offered to anyone who accepts it. Ephesians 2:8-9 explains, <em>"For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast."</em></p>
-<p>If you've been screening God's calls, thinking it's just another obligation or something you don't need right now, consider this your wake-up call. God isn't trying to sell you something; He's trying to save you. His offer isn't limited by time or fine print, but our response shouldn't be delayed.</p>
-<p>Hebrews 3:15 warns us, <em>"Today, if you hear His voice, do not harden your hearts."</em> God's love remains steadfast, unlike car warranties that expire or calls that stop coming. However, our opportunity to respond is limited by the brevity of life itself.</p>
-<p>Next time you hear that infamous line, "Hello, I've been trying to reach you…," let it serve as a reminder. Think about the persistence of God's call to you—not as an annoyance but as an act of love. While ignoring a telemarketer might save you time, ignoring Christ's invitation could cost you eternity.</p>
-<p>So pick up the phone, open the door, or say the prayer. Respond to His call. Unlike a scam warranty pitch, Christ's invitation isn't about hidden fees or fine print—it's about giving you everything you've ever needed: peace, purpose, and the promise of everlasting life.</p>
-<p>And hey, ignoring the scam call is fair game, but when it comes to Christ's call? Don't let Him go to voicemail. After all, His message isn't "press 1 to opt out"—it's "Come to me and find rest!"</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/extended-warranty.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-the-spiritual-dangers-of-halloween">
+
+      <details class="card" id="post-halloween">
         <summary>
           <div class="title">The Spiritual Dangers of Halloween</div>
           <div class="meta">October 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/the-spiritual-dangers-of-halloween.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>Every year, as October 31st approaches, discussions arise about whether Christians should participate in Halloween. Some argue that it's fine to celebrate because the Catholic Church established <strong>All Hallows' Eve </strong>as a way to honor saints, suggesting it's a Christian holiday. But to fully understand why Christians should be cautious, we need to look at the roots of Halloween, the intentions of the Catholic Church, and what the Bible says about these practices.</p>
-<p><strong>The Attempt to "Christianize" Pagan Traditions</strong></p>
-<p>It's true that the Catholic Church designated <strong>All Hallows' Eve</strong> on October 31st as a prelude to <strong>All Saints' Day</strong> on November 1st. The intention was to replace the ancient Celtic festival of <strong>Samhain</strong>. This pagan celebration marked the end of the harvest and was associated with beliefs about spirits crossing into the living world. The Church hoped to shift focus from pagan practices to a Christian observance, honoring saints and martyrs.</p>
-<p>However, while the intention may have been to encourage Christian worship, <strong>the attempt to "Christianize" these pagan practices resulted in a blend, rather than a clear distinction.</strong> Many of the original customs—such as wearing costumes to ward off spirits and using symbols of the dead—continued under the guise of a new name. This blending of Christian and pagan practices is known as <strong>syncretism</strong>, and it's problematic because it can lead to confusion and spiritual compromise.</p>
-<p><strong>Historical Insight</strong>: Throughout history, the Catholic Church often tried to replace or assimilate pagan holidays by introducing Christian alternatives. For example, Christmas was aligned with the pagan festival of <strong>Saturnalia</strong>, and Easter incorporated elements of the spring festival honoring Eostre. These efforts often led to a mix of pagan and Christian elements rather than a complete shift to Christian observance. Halloween is a prime example of this syncretism.</p>
-<p><strong>Why Syncretism Is Dangerous: Mixing Pagan Practices with Christian Worship</strong></p>
-<p>The Bible warns against syncretism—mixing God's truth with elements of other religions or spiritual practices. God calls for complete devotion without incorporating practices that come from other belief systems. Consider the words of 2 Corinthians 6:14-17:</p>
-<p>"For what do righteousness and wickedness have in common? Or what fellowship can light have with darkness? What harmony is there between Christ and Belial? Or what does a believer have in common with an unbeliever? Therefore, 'Come out from them and be separate, says the Lord.'"</p>
-<p>When Christians participate in Halloween, they risk engaging with customs and themes that have clear pagan origins. Halloween, even if it has been historically linked to a church holiday, still carries the same imagery and practices that glorify darkness, death, and the occult. This is not just a matter of cultural tradition—it's a spiritual issue.</p>
-<p><strong>The Biblical Stance: Avoiding Practices Linked to Darkness</strong></p>
-<p>The Bible provides strong guidance on how believers should approach practices linked to the dead, spirits, and the occult. God's word is clear in Deuteronomy 18:10-12:</p>
-<p>"Let no one be found among you who... practices divination or sorcery, interprets omens, engages in witchcraft, or casts spells, or who is a medium or spiritist or who consults the dead. Anyone who does these things is detestable to the Lord."</p>
-<p>Despite the Catholic Church's efforts to offer a Christian alternative through All Hallows' Eve, the reality is that <strong>Halloween still draws from themes of the occult, which God clearly condemns.</strong> Costumes of ghosts, witches, and supernatural creatures, as well as horror themes, are not just harmless fun; they reflect practices that God commands us to avoid.</p>
-<p><strong>King Saul and the Witch of Endor: A Biblical Warning</strong></p>
-<p>One of the clearest biblical examples of the dangers of engaging with spirits or the dead is found in 1 Samuel 28. Desperate for guidance, King Saul sought out a medium to summon the spirit of the prophet Samuel despite knowing that God had forbidden such practices. This act of disobedience led to Saul's downfall, reinforcing that God does not condone any attempt to communicate with the dead or engage in practices associated with the occult.</p>
-<p>God's stance has always been firm: <strong>these practices are forbidden because they open the door to spiritual deception and rebellion.</strong> Halloween's origins in Samhain and its emphasis on spirits, the dead, and fear are rooted in the very things that God warns against.</p>
-<p><strong>Why Halloween Remains Problematic for Christians</strong></p>
-<p><strong>The Attempt to "Christianize" Didn't Remove the Pagan Roots</strong>: Despite the establishment of All Hallows' Eve by the Catholic Church, many of the original pagan customs persisted. This means that today's Halloween celebrations still echo the rituals of Samhain, which were rooted in beliefs that are incompatible with Christianity.</p>
-<p><strong>Participating in Halloween Can Be Seen as Engaging with Darkness</strong>: Ephesians 5:11      instructs believers to "Have nothing to do with the fruitless deeds of      darkness, but rather expose them." Halloween glorifies themes that are connected to witchcraft, fear, and the supernatural. Even if it's dressed up as innocent fun, the origins and continued emphasis on the occult make it spiritually hazardous.</p>
-<p><strong>God Calls Us to Be Separate, Not to Mix Light with Darkness</strong>: The principle of separation from practices that contradict God's truth is found throughout Scripture. Christians are called to stand apart, to reflect the light of Christ, not to blend with traditions that glorify what God rejects.</p>
-<p>It's important to understand that just because something has been integrated into culture doesn't make it right. While the Catholic Church attempted to transform Samhain by creating All Hallows' Eve, the practices and themes of Halloween have remained tied to darkness, fear, and the occult. <strong>Christians are called to walk in the light and to avoid any association with practices that open doors to spiritual darkness.</strong></p>
-<p>This isn't about being overly critical or rejecting all fun—it's about being discerning and choosing to honor God with our actions. Halloween's roots, symbolism, and continued practices are incompatible with the faith we profess. Instead of engaging with it, believers can use this time to reflect on God's truth, pray, and be a light to those around them.</p>
-<p>The Bible calls us to be set apart to avoid even the appearance of participating in deeds of darkness. <strong>Halloween, with its deep connections to paganism and the occult, should not be celebrated by those who seek to live in the light of Christ.</strong> Stand firm in your faith, and let the truth of God's Word guide your actions—not cultural norms or traditions.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/halloween.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-do-not-stop-do-not-drop-and-do-not-roll">
+
+      <details class="card" id="post-do-not-stop-drop-roll">
         <summary>
           <div class="title">Do Not Stop, Do Not Drop, and Do Not Roll</div>
           <div class="meta">October 16, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/do-not-stop-do-not-drop-and-do-not-roll.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>We all learned in school that the golden rule is: <strong>Stop, Drop, and Roll when you're on fire</strong>. But what if I told you that that's precisely what you shouldn't do when it comes to your faith?</p>
-<p>Imagine this: You're on fire for God, burning with passion, purpose, and conviction. You're like a spiritual wildfire, spreading light and warmth everywhere. And then suddenly, here comes the world, Satan, and all of life's distractions, trying to dump a big ol' bucket of water on your faith. The enemy wants nothing more than to make you stop, drop your faith, and roll into complacency.</p>
-<p>But here's the thing: God's not about that "extinguish-the-fire" life. He's calling you to stay ignited, no matter what! So, the next time you feel the world trying to snuff out your flame, remember: <strong>Do not stop, do not drop, and do not roll</strong>. It's time to burn brighter than ever.</p>
-<p><strong>Do Not Stop: Keep Pursuing God with Passion</strong></p>
-<p>Let's be honest; life is busy. Sometimes, it feels like there's not enough time in the day for everything, let alone for nurturing your relationship with God. Satan loves that. He loves when we get so wrapped up in the chaos of everyday life that we start to lose our focus on God. Distractions, stress, and even just plain exhaustion can make us slow down or, worse, come to a stop in our walk with God.</p>
-<p>But God's word says <strong>don't stop</strong>. In Philippians 3:13-14, Paul encourages us to press on toward the goal: "Forgetting what is behind and straining toward what is ahead, I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus." No matter what the world throws at us, we must keep pressing forward. Why? Because there's a divine purpose waiting for us that requires us to stay in motion, fueled by the fire of God.</p>
-<p>Here's the truth: Expect obstacles if you're on fire for God. Satan isn't going to sit back and let you grow in faith and purpose without a fight. But the beauty of being on fire for the Lord is that <strong>He gives us the strength to keep going</strong>, even when life gets tough. So, when you feel weary or like giving up, <strong>do not stop</strong>. Keep seeking Him, keep worshiping, keep pressing into His presence.</p>
-<p><strong>Do Not Drop: Hold On to Your Faith</strong></p>
-<p>The world loves to tell us that faith is optional, something we can "drop" when it gets complicated or inconvenient. It's easy to drop our faith when we're bombarded with doubt and negativity or when the culture around us pushes us in a completely different direction. Let's be real; sometimes, blending in with the crowd feels easier. But that's precisely what the enemy wants.</p>
-<p>Hebrews 10:23 says, "Let us hold unswervingly to the hope we profess, for He who promised is faithful." Did you catch that? <strong>Unswervingly</strong>. That means no matter how hard the road gets or how tempting it is to let go, we must hold fast to our faith.</p>
-<p>The enemy's goal is simple: make you drop your faith. Why? Because a believer who holds on, who clings to Jesus even in the most brutal storms, is unstoppable. But here's the best part: <strong>Jesus isn't just the One who saves us; He restores us</strong>. When the pressures of life try to break your grip, when the world says, "Let go, it's not worth it," Jesus is there to strengthen your hands and your heart.</p>
-<p>If you feel you've already let go or dropped the ball in your walk with God, guess what? Jesus is always ready to restore what's broken. Even if you've dropped your faith before, <strong>He is faithful to pick you back up </strong>and reignite the flame inside of you. <strong>Do not drop; </strong>hold on tight because God is holding on even tighter.</p>
-<p><strong>Do Not Roll: Resist Compromise and Apathy</strong></p>
-<p>We've all had those days when we want to "roll" with it. The problem is that rolling through life without intentionality leads to compromise. You start with small things, letting complacency creep in, compromising your time with God, and before you know it, the fire is barely a flicker.</p>
-<p>Jesus speaks directly to this in Revelation 3:16: "So, because you are lukewarm, neither hot nor cold, I am about to spit you out of my mouth." Ouch. But this isn't just a rebuke; it's a wake-up call. <strong>Jesus wants a passionate, on-fire relationship with us</strong>, not half-hearted or rolling through the motions.</p>
-<p>Satan doesn't always need to bring you down with one big temptation. Sometimes, all it takes is a slow, steady roll into complacency. But here's the truth: <strong>God has called you to stand firm, not to roll over</strong>. You weren't designed for a lukewarm life; you were created to burn with passion for Him.</p>
-<p>And if you find yourself in that place of apathy, where the fire has grown dim, know that Jesus is ready to reignite you. Just like He restored Peter after his denial, He can restore the fire in your heart, no matter how far you think you've rolled away. <strong>He is the restorer of our fire; </strong>He doesn't just save us; he revives us.</p>
-<p>Here's the deal: The world and the enemy will try to make you stop, drop, and roll at every turn. But when it comes to your faith and relationship with Jesus, it's time to do the opposite. <strong>Do not stop </strong>pursuing God, no matter how hard life gets. <strong>Do not drop</strong> your faith because Jesus is your anchor. And <strong>do not roll</strong> into complacency because He's called you to burn bright.</p>
-<p>So, here's the challenge: check your fire. Is it burning bright, or has the world's cares started to dim it? Wherever you are, know this—<strong>God is ready to reignite you</strong>. It's not over. Your best days of faith and fire are ahead. Keep going, keep burning, and don't let anything put out what God has started in you.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/do-not-stop-drop-roll.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-tuning-out-the-noise">
+
+      <details class="card" id="post-tuning-out-noise">
         <summary>
           <div class="title">Tuning Out the Noise</div>
           <div class="meta">October 14, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/tuning-out-the-noise.jpg" alt=""> -->
-          <p>The world today is relentless. There's a constant stream of information from the moment you wake up until the second your head hits the pillow. Everyone has an opinion, a truth, or an agenda that demands your attention. The volume is loud. <strong>How are we supposed to hear God in the middle of it all?</strong></p>
-<p><strong>The truth is, we're not.</strong> We're not meant to hear God through the chaos—we have to <em>choose </em>to turn the noise down. If we don't, we risk drowning in a sea of distractions and losing sight of the truth that's always been right before us.</p>
-<p><strong>A World Obsessed with Noise</strong></p>
-<p>Think about it—every second, we are bombarded with voices: social media posts telling us who to be, advertisements convincing us we aren't enough, news channels amplifying fear. The noise is carefully designed to overwhelm us, to stir us up. <em>And it works.</em> Anxiety, stress, confusion—they thrive in this loud, chaotic world.</p>
-<p>And here's the heartbreaking part: the louder the noise, the harder it becomes to hear the truth. In fact, it's easier to believe the loud lies. They're designed to be addictive, to fuel our fears and insecurities.</p>
-<p>However, as Kay Smith says in <em>Jesus Revolution,</em> <strong>"The truth is always quiet. It's the lies that are loud."</strong></p>
-<p>This is why we miss it. The truth doesn't fight for attention. It's not trending. It doesn't need to manipulate or overwhelm you. It's there, <em>waiting.</em> But quietness feels unnatural in a world that feeds off chaos—like something's missing.</p>
-<p><strong>Choosing to Hear God's Voice</strong></p>
-<p>Let's be honest: it's not that we <em>can't</em> hear the truth; we often <em>don't want</em> to. It's easier to scroll through social media or binge-watch our favorite shows than to sit in silence. We've become uncomfortable with Stillness. Why? Because Stillness requires us to face reality. And the fact is raw. Truth is raw.</p>
-<p>But it's also simple. When Jesus was asked what the most important commandment was, He didn't give a complicated, theological answer. He simply said, <em>"Love the Lord your God with all your heart and love your neighbor as yourself"</em> (Matthew 22:37-39). That's it. <strong>The truth is simple.</strong></p>
-<p><strong>We are the ones who complicate it.</strong></p>
-<p>We overthink, overanalyze, and drown in our own excuses. We look for answers in a million places instead of the one place we know we'll find them: at the feet of Jesus. The world tells us we need more money, recognition, and success. But Jesus says, <em>"Come to me, all you who are weary and burdened, and I will give you rest"</em> (Matthew 11:28).</p>
-<p>Think about that. Rest. Not more striving, not more pressure, not more noise. <strong>Just rest.</strong> That's what the truth offers.</p>
-<p><strong>The Simple Truth in a Complicated World</strong></p>
-<p>If the truth is so simple, why don't we hear it more often? Because it's <strong>quiet</strong>. It's like a whisper in a storm. You have to choose to listen to it. The world will keep screaming that you're not enough, need to hustle harder, and are falling behind. But the truth? The truth says: <em>"Be still and know that I am God" </em>(Psalm 46:10).</p>
-<p>In 2 Kings 5, Naaman, a mighty warrior, expected some grand ritual to heal his leprosy. But what did Elisha tell him? <strong>Go wash in the Jordan River—something simple, almost too simple.</strong> Naaman resisted at first because it didn't make sense to him. How could something so simple be the answer to his complex problem? It wasn't until he obeyed the simple truth that he found healing.</p>
-<p><strong>We are Naaman.</strong> We want the answers to be complicated because complicated things feel more important. But the truth is simple: trust God. Be still. Listen.</p>
-<p><strong>How to Find the Quiet in Today's World</strong></p>
-<p>It's time to make a choice. If we want to hear God's voice, we need to actively turn down the noise. We need to create intentional spaces where we can reconnect with Him. Here's how:</p>
-<p><strong>Step Away from the Noise</strong>: When did you last sit silently, without checking your phone or worrying about the next task? <strong>God's truth doesn't compete with the chaos—He's He'sing for you in the quiet.</strong></p>
-<p><strong>Simplify Your Focus</strong>: Instead of getting caught up in what the world says you should be or do, focus on what God says. His message is clear: <em>Love Me. Love </em><em>others.</em> (Matthew 22:37-39). That's fulfillment lies not in the endless noise of achievement.</p>
-<p><strong>Embrace Stillness as </strong><strong>a Practice</strong>: It's necessary to be still. Jesus regularly withdrew to quiet places to pray (Luke      5:16). If He needed time away from the crowds, so did we.</p>
-<p><strong>Trust the Simplicity of God</strong>: Life doesn't have to be as complicated as we make it. The truth is simple: we are loved, we are enough, and we find our purpose in God.</p>
-<p>God isn't talking over the noise to get our attention—He's <strong>Whispering, waiting</strong> for us to tune in. So, the next time the world feels too loud or confusing, remember Kay's Kay: <strong>"The truth is simple."</strong> And "It's there, ready to hear if you'll listen. "</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/tuning-out-noise.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-position-lights-and-the-christian-walk">
+
+      <details class="card" id="post-position-lights">
         <summary>
           <div class="title">✈️ Position Lights and the Christian Walk</div>
           <div class="meta">August 27, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/position-lights-and-the-christian-walk.jpg" alt=""> -->
-          <p></p>
-<p>In aviation, position lights are critical indicators that help pilots and observers determine an aircraft’s direction. These lights are always consistent—red on the left wing, green on the right wing, and white at the tail. Understanding them can help you avoid collisions, just like understanding God’s signs can help us navigate our spiritual journey.</p>
-<p>Here’s how it works:</p>
-<p>Scenario 1: White Light in the Center, Green Light on the Right, and Red Light on the Left</p>
-<p>Directions: The aircraft is moving away from you. You see the white taillight, with the red and green wing lights visible from behind. Spiritually, this represents a time when we may be drifting away from God. We can still see the signs of His presence, but we must turn back before the distance grows too far.</p>
-<p>Scenario 2: Red Light on the Right, Green Light on the Left</p>
-<p>Direction: The aircraft is approaching you, potentially on a collision course. This is the most critical warning in both aviation and faith. When you see red and green lights like this, it indicates that the aircraft is heading directly toward you. In our walk with God, this could symbolize a dangerous moment where we are on a collision course with temptation or straying from God’s guidance. It’s a strong signal to change direction and seek His protection.</p>
-<p>Scenario 3: Green Light on the Right, Red Light on the Left (Both Lights Visible but No White Light)</p>
-<p>Direction: The aircraft is passing from left to right. You are safe as the plane moves across your path rather than toward you. In spiritual terms, this is a sign of staying on the right path—neither drifting away nor heading into trouble. It’s a moment of peace and alignment with God’s will as you continue on your faith journey.</p>
-<p>Just as these position lights are vital for keeping the skies safe, God gives us spiritual "lights" to guide our journey. Whether moving closer to Him, drifting away, or heading into potential spiritual danger, the signs are always there—we need to know how to read them.</p>
-<p>"Let your eyes look straight ahead; fix your gaze directly before you." - Proverbs 4:25</p>
-<p>Are your spiritual "position lights" pointing toward God, or is it time to adjust your course?</p>
-<p></p>
-<p></p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/position-lights.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable">
+
+      <details class="card" id="post-when-help-refused">
         <summary>
           <div class="title">When Help is Refused: Faith-Based Guidance for the Unreachable</div>
           <div class="meta">August 12, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/when-help-is-refused-faith-based-guidance-for-the-unreachable.jpg" alt=""> -->
-          <p></p>
-<p>Imagine this: a doctor in the ER stands before a patient who was admitted for a compound fracture and asks how much alcohol they’ve consumed. The patient replies honestly, saying two dozen beers. The patient's liver is failing, and the only chance for recovery lies in immediate rehabilitation. The doctor, fully aware of the severity, urges the patient to seek help before it’s too late. The doctor finds the same patient at the bar in the evening, downing their eighth beer. It’s a heartbreaking scene that mirrors the frustration and helplessness we often feel when someone we care about refuses the help they desperately need.</p>
-<p>This scenario is not just about physical health; it relates to faith and accepting Christ as one’s Savior. What do we do when someone we love is on a path of self-destruction but refuses to accept the hand Jesus has extended to them?</p>
-<p>In the Bible, we see numerous examples of people who have hardened their hearts against God. Pharaoh, in the book of Exodus, is a prime example. Despite witnessing the miracles and power of God firsthand, Pharaoh repeatedly refused to let the Israelites go. His heart was hardened, leading to his downfall and the suffering of his people. Similarly, there are those today whose hearts are hardened against the message of the Gospel. They may be entrenched in their ways, rejecting Christ’s offer of salvation despite the dangers that loom over their spiritual well-being. This heart-hardening can be one of our most painful realities, especially involving someone we care about.</p>
-<p>As much as we want to reach these individuals and show them the love and truth of Christ, we must acknowledge our limitations. Sometimes, no matter what we say or do, we cannot break through the barrier of a hardened heart. It’s important to recognize that it isn’t always our place to intervene directly. Just as a doctor can offer advice and treatment, it’s ultimately the patient’s choice to listen and act. Similarly, accepting Jesus as Lord and Savior is a personal decision that each individual must make on their own. In these moments, we are reminded of the sovereignty of God.</p>
-<p>Isaiah 55:8-9 tells us, “For my thoughts are not your thoughts, neither are your ways my ways,” declares the Lord. “As the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts.” This passage reminds us that God’s plans and purposes are beyond our understanding. While we may not be able to reach someone, God can work in ways we cannot see or comprehend.</p>
-<p>Even when we encounter hardened hearts, our role remains to love unconditionally. Jesus exemplified this love when He prayed for those who crucified Him, saying, “Father, forgive them, for they do not know what they are doing” (Luke 23:34). We are called to demonstrate the same patience and compassion, even when our efforts seem futile.</p>
-<p>When our words and actions fail to reach someone, we must turn to prayer. Philippians 4:6 encourages us, “Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.” Through prayer, we entrust the situation to God, asking Him to intervene in ways we cannot. We pray for softened hearts, opportunities to share His love, and God’s will to be done, even if it’s not how we expect.</p>
-<p>Trusting that God is working is essential, even when we don’t see immediate results. Sometimes, the seeds we plant may take years to grow or not grow at all in our lifetime. However, we can find peace knowing God’s timing is perfect. If it is His will, He will reach them in His way and time. Proverbs 3:5-6 reminds us, “Trust in the Lord with all your heart and lean not on your understanding; in all your ways submit to him, and he will make your paths straight.” This verse encourages us to trust God’s plan and timing, knowing He is always in control.</p>
-<p>It’s challenging to step back and allow God to work when we desperately want to intervene. But sometimes, the most loving thing we can do is let go and let God take over. This doesn’t mean we stop caring or praying, but rather, we surrender the situation to God, trusting that He knows best. By letting go, we acknowledge that only God can change a heart. Ezekiel 36:26 says, “I will give you a new heart and put a new spirit in you; I will remove from you your heart of stone and give you a heart of flesh.” God alone can perform this miracle, transforming a hardened heart into one that is open and receptive to His love.</p>
-<p>When someone we love refuses help—whether in accepting Christ or making better life choices—it’s one of the most painful challenges we can face. Yet, our faith teaches us that while we may not be able to change their hearts, God can. Our role is to love, pray, and trust in God’s sovereignty, knowing that He is always working behind the scenes. As you reflect on your experiences with those who have hardened their hearts, remember to keep them in your prayers, entrusting their journey to God’s hands. While you may not see the desired outcome, you can have peace in knowing that God’s will is always good and His plans are perfect.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p><strong>Save</strong></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/when-help-refused.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-true-confidence-vs-false-security">
+
+      <details class="card" id="post-true-confidence">
         <summary>
           <div class="title">True Confidence vs. False Security</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/true-confidence-vs-false-security.jpg" alt=""> -->
-          <p></p>
-<p>Confidence is essential to our lives, shaping our decisions, actions, and overall outlook. However, the source of our confidence can significantly influence its impact on our lives. In this blog post, we'll explore the difference between having confidence in the Lord and having false confidence, delving into their foundations, implications, and outcomes.</p>
-<p>Confidence in the Lord is rooted in faith and trust in God's character, promises, and sovereignty. This type of confidence is not based on our abilities or circumstances but on the unchanging nature of God. Believing in the promises found in Scripture, such as God's provision, protection, and guidance (Psalm 46:1-3, Jeremiah 29:11), is crucial to having confidence in the Lord. This confidence involves acknowledging that God's plans are higher and better than our own (Isaiah 55:8-9) and recognizing our limitations while depending on God's strength (Philippians 4:13). It allows us to experience peace and assurance even in uncertain times, knowing that God is in control (Philippians 4:6-7).</p>
-<p>An excellent illustration of this confidence can be found in the way birds live. They do not worry about their next meal or where they will find shelter, yet they are always provided for. Jesus highlights this in Matthew 6:26, reminding us to trust God's provision just as the birds do. They rely entirely on the Lord, exemplifying the peace and assurance of trusting in His care.</p>
-<p>False confidence, on the other hand, is often based on unreliable or shifting foundations. This type of confidence can lead to disappointment, failure, and a misguided sense of security. Characteristics of false confidence include self-reliance, depending solely on one's abilities, intelligence, or resources (Proverbs 28:26), placing trust in financial stability or possessions (1 Timothy 6:17), seeking validation and confidence from others' opinions (Galatians 1:10), and feeling secure only when circumstances are favorable (Matthew 7:26-27).</p>
-<p>The outcomes of each type of confidence are starkly different. Confidence in the Lord leads to enduring peace, a deep and lasting peace that transcends understanding (John 14:27), and resilience in trials, enabling one to withstand challenges and grow through them (James 1:2-4). It provides purpose and direction in life's decisions (Proverbs 3:5-6) and brings joy and contentment that is not dependent on external circumstances (Philippians 4:11-13). In contrast, false confidence often results in disappointment when self-reliance or external sources fail (Jeremiah 17:5-6), anxiety and fear when facing challenges without a solid foundation (Matthew 6:19-21), a lack of fulfillment despite achieving worldly success (Ecclesiastes 2:10-11), and instability, leading to a life built on shifting sands, vulnerable to collapse (Matthew 7:26-27).</p>
-<p>Developing true confidence in the Lord involves intentional practices and a heart aligned with God's will. Daily prayer and meditation help build a relationship with God through regular communication (Philippians 4:6). Studying Scripture deepens our understanding of God's promises and character (2 Timothy 3:16-17). Worship and praise acknowledge God's greatness and sovereignty (Psalm 100:1-5), while community and fellowship with other believers encourage and support our faith (Hebrews 10:24-25). Serving others by demonstrating God's love through acts of service also reinforces our trust in Him (1 Peter 4:10).</p>
-<p>Confidence in the Lord provides a firm foundation that withstands life's challenges and uncertainties. In contrast, false confidence, based on unreliable sources, ultimately leads to disappointment and instability. By placing our trust in God and nurturing our relationship with Him, we can experience true peace, joy, and purpose. As we navigate our journey, let us continually seek to build our confidence on the unwavering rock of God's love and promises, just as the birds rely on Him without worry.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/true-confidence.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-tolerance-and-faith-how-to-walk-in-today-s-world">
+
+      <details class="card" id="post-tolerance-and-faith">
         <summary>
           <div class="title">Tolerance and Faith: How to Walk in Today’s World</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/tolerance-and-faith-how-to-walk-in-today-s-world.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>In today's world, tolerance is often heralded as a supreme virtue, essential for peaceful coexistence in our diverse societies. However, for those of us rooted in faith, there's a challenging tension between being tolerant and standing firm in our beliefs, especially when faced with apostasy. How do we navigate this fine line?</p>
-<p>Apostasy, simply put, is the abandonment or renunciation of one's faith or beliefs. It's not just a matter of questioning or doubting; apostasy involves deliberately rejecting the fundamental principles of one's faith. It can manifest in various forms, from outright denial of core doctrines to embracing beliefs or practices that contradict the teachings of Scripture.</p>
-<p>We don't just wake up one day and decide to be tolerant of sin, thereby choosing the path of apostasy. If you do, you're a special kind of person, and I'll pray for you, I'm kidding. More often than not, this journey begins subtly and innocuously. It usually starts with a friend or family member asking us to tolerate their sin. We begin bending the rules out of love or a desire to maintain peace. It's a slippery slope that can lead us away from the teachings of the Bible.</p>
-<p>This subtle shift often comes from wanting to avoid conflict and keep harmony in our relationships. However, when someone asks us to be tolerant of their sin because it offends them, it is important to remember that it offends us to be asked to compromise our faith and beliefs and walk with Jesus. This inner conflict highlights the delicate balance we must maintain.</p>
-<p>The Bible warns against compromising our beliefs. In 2 Timothy 4:3-4, Paul writes, "For the time will come when people will not put up with sound doctrine. Instead, to suit their desires, they will gather many teachers around them to say what their itching ears want to hear. They will turn their ears away from the truth and turn aside to myths." We must stand firm in our faith and not be swayed by societal pressures to tolerate sin. True love involves guiding others toward righteousness. In Ephesians 4:15, Paul advises, "Instead, speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ." This means lovingly yet firmly addressing sin and leading others towards God's truth.</p>
-<p>Here's why we shouldn't tolerate sin: God says it is sin and perverse if he didn't intend something. By tolerating sin, we are not worshipping the Lord; we are worshipping evil. This means we aren't leading the person to Heaven. Our ultimate goal should be to lead others to salvation. James 5:19-20 says, "My brothers and sisters if one of you should wander from the truth and someone should bring that person back, remember this: Whoever turns a sinner from the error of their way will save them from death and cover over a multitude of sins." By tolerating sin, we are failing in our biblical obligation to guide others towards the Lord.</p>
-<p>While tolerance is essential for peaceful coexistence, it should never come at the cost of compromising our faith. As Christians, we are responsible for lovingly guiding others towards God's truth. By standing firm in our beliefs and not tolerating sin, we not only uphold the teachings of the Bible but also help lead others toward salvation. Let's navigate this fine line with grace, love, and unwavering faith.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/tolerance-and-faith.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-god-won-t-give-you-anything-he-can-t-handle">
+
+      <details class="card" id="post-god-wont-give">
         <summary>
           <div class="title">God Won't Give You Anything He Can't Handle</div>
           <div class="meta">July 15, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/god-won-t-give-you-anything-he-can-t-handle.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>Life is full of challenges, and it’s natural to look for comfort and encouragement during tough times. However, one phrase often shared with good intentions is profoundly misleading: "God won’t give you more than you can handle." While it might sound comforting, this statement can leave us feeling overwhelmed and inadequate when facing insurmountable trials. The truth is, God won't give you anything that HE can't handle.</p>
-<p><strong>Looking to the Past: A Counterproductive Habit</strong></p>
-<p>It's tempting to look back at our past when life gets hard. We might reminisce about better days, regret missed opportunities, or dwell on past mistakes. However, this backward focus can trap us in a cycle of guilt, regret, and longing, preventing us from moving forward. The Bible reminds us of the dangers of looking back. In Philippians 3:13-14, Paul writes, "But one thing I do: Forgetting what is behind and straining toward what is ahead, I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus."</p>
-<p>God wants us to live in the present and trust Him with our future. By dwelling on the past, we can miss out on the new things God is doing in our lives (Isaiah 43:18-19). Instead of looking back, we should focus on God's promises and presence in our current struggles.</p>
-<p><strong>God Won't Give You Anything He Can't Handle</strong></p>
-<p>The misconception that God won’t give us more than we can handle comes from a misinterpretation of 1 Corinthians 10:13, which says, "No temptation has overtaken you except what is common to humanity. And God is faithful; he will not let you be tempted beyond what you can bear. But when you are tempted, he will also provide a way out so that you can endure it." This verse is about temptation, not the hardships and trials we face.</p>
-<p>The truth is that God often allows us to face situations that are beyond our capacity to handle. These moments drive us to rely on Him, deepening our faith and relationship. In 2 Corinthians 1:8-9, Paul shares his experience: "We were under great pressure, far beyond our ability to endure, so that we despaired of life itself. Indeed, we felt we had received the sentence of death. But this happened that we might not rely on ourselves but on God, who raises the dead."</p>
-<p><strong>Trusting in God's Strength</strong></p>
-<p>When we face trials, it's not about our ability to handle them; it's about trusting in God's strength and His ability to carry us through. Isaiah 41:10 reassures us, "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen and help you and uphold you with my righteous right hand." God doesn’t expect us to face our challenges alone. He is with us, providing the strength and support we need.</p>
-<p><strong>Moving Forward in Faith</strong></p>
-<p>Instead of looking to the past or relying on our strength, let’s fix our eyes on Jesus, the author and perfecter of our faith (Hebrews 12:2). By placing our trust in Him, we acknowledge that He is in control and capable of handling anything that comes our way. God’s grace is sufficient for us, and His power is perfect in our weakness (2 Corinthians 12:9).</p>
-<p>Remember, it's okay to feel overwhelmed and admit that we can't handle everything on our own. In those moments, let's turn to God, trusting He won't give us anything He can't handle. With Him, we can face the future with hope and confidence.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/god-wont-give.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-soft-society-hard-truths-undone-culture">
+
+      <details class="card" id="post-soft-society">
         <summary>
           <div class="title">Soft Society, Hard Truths: Undone Culture</div>
           <div class="meta">May 7, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/soft-society-hard-truths-undone-culture.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>In a world where truth is often sacrificed for the sake of preserving someone's feelings, we find ourselves navigating a delicate balance between honesty and compassion. This societal trend has diluted every aspect of our lives, from personal relationships to public discourse. As followers of Christ, we're called to embody the truth while demonstrating love and empathy. However, it's crucial to remember that our mission is not to engage in a battle of tearing down lies but rather to wield the truth with care and love. We must confront the uncomfortable reality that our society's penchant for sugarcoating the truth has weakened our moral fiber and distorted our understanding of integrity.</p>
-<p>Truth, in its purest form, is objective and unyielding. Yet, how we wield this truth can either bring about liberation or inflict profound harm. Throughout history and even in modern society, we witness truth being manipulated and weaponized to serve personal agendas or ideologies. Just as the Pharisees weaponized the law against Jesus, emphasizing legalism over love, we see individuals and groups today using truth as a blunt instrument to tear down others and justify their own biases. This harsh truth forces us to confront the reality that the misuse of truth not only fractures relationships but also erodes the very fabric of our humanity. However, if wielded with integrity and love, the truth can break free from manipulation and guide us toward the path of righteousness as outlined in the Bible.</p>
-<p>The Bible is our guidepost for navigating the intricate relationship between truth and compassion. Ephesians 4:15 admonishes believers to "speak the truth in love," highlighting the inseparable connection between honesty and empathy. Proverbs 12:22 reinforces this principle, denouncing lying lips as abominable to the Lord. These Biblical teachings underscore the importance of aligning our words with the truth while extending grace and empathy to others. However, embracing this truth also means acknowledging the discomfort it may bring, as it challenges us to confront our shortcomings and biases.</p>
-<p>In today's society, we witness a perverse avoidance of uncomfortable truths. This eschewing has contributed to the growth of a culture marked by emotional fragility and moral ambiguity; rather than grappling with complex realities, such as the demands of Christ's teachings, many retreat into societal or self-affirmation, seeking solace in confirmation bias. This harsh truth compels us to recognize that our society's reluctance to confront uncomfortable truths has resulted in a generation ill-equipped to navigate life. As Christians, we're called to counter this trend by courageously confronting the world's harsh realities with compassion, resilience, and love, which offers hope amidst adversity.</p>
-<p>While truth can be painful, it is also liberating. As followers of Christ, we're called to engage in honest dialogue with grace and humility. This means speaking the truth in love, even when it's difficult, and extending empathy to those who may disagree. Practical steps such as active listening, seeking to understand before being understood, and offering forgiveness are essential in fostering genuine connection and understanding. This harsh truth compels us to recognize that genuine dialogue requires vulnerability and a willingness to confront biases and preconceptions.</p>
-<p>In a world where agendas and comfort are often obscure truth, Christians are called to be beacons of honesty and compassion. By embracing the principles of truthfulness and kindness, we can counteract the softening of society and cultivate a culture of resilience and grace. Let us speak the truth boldly but always with love, mindful of our calling to reflect the character of Christ in all that we do. The harsh truth challenges us to be courageous in confronting the uncomfortable realities of the world, trusting in the power of genuine dialogue and compassionate action. In doing so, we honor our commitment to truth and uphold the teachings of Christ; I’m only speaking the truth.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/soft-society.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
       <details class="card" id="post-faith-strength-courage-community">
         <summary>
           <div class="title">Faith: Strength, Courage, Community</div>
@@ -1274,58 +277,10 @@ We are reunited for a purpose.</p>
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/faith-strength-courage-community.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>Deuteronomy 31:8 - "It is the Lord who goes before you. He will be with you; he will not leave you or forsake you. Do not fear or be dismayed."</p>
-<p>Joshua 1:9 - "Have I not commanded you? Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go."</p>
-<p>Psalm 18:2 - "The Lord is my rock and my fortress and my deliverer, my God, my rock, in whom I take refuge, my shield, and the horn of my salvation, my stronghold."</p>
-<p>Psalm 23:1 - "The Lord is my shepherd; I shall not want."</p>
-<p>Psalm 27:1 - "The Lord is my light and my salvation; whom shall I fear? The Lord is the stronghold of my life; of whom shall I be afraid?"</p>
-<p>Isaiah 41:10 - "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand."</p>
-<p>1 Corinthians 16:13-14 - "Be watchful, stand firm in the faith, act like men, be strong."</p>
-<p></p>
-<p>The overlapping themes in these verses, including strength, courage, protection, and faith in God's presence and power, hold significant relevance in our daily lives as Christians. They remind us of the foundational truths of our faith and offer guidance for navigating life's challenges. As believers, it is not just crucial but empowering to immerse ourselves in Scripture, continually reading, learning, and studying God's Word. Scripture serves as our spiritual nourishment, providing wisdom, insight, and direction for living as Christ's followers and has the power to transform our lives.</p>
-<p>Through regular engagement with Scripture, we deepen our understanding of who God is and what it means to follow Christ. We learn from Jesus' example, teachings, and interactions with others, gaining practical insights into how to live out our faith in the world. Scripture illuminates the path before us, guiding us to love God and others and empowering us to walk in obedience and faithfulness.</p>
-<p>However, despite the wealth of wisdom in Scripture, some claim to be Christians but fail to embody Christ's teachings. They may attend church, participate in religious activities, and even profess faith with their lips, but their actions do not align with the character and values of Christ. In Matthew 18, Jesus guides addressing such situations within the church community. He instructs us first to confront the individual privately, seeking to restore them in a spirit of gentleness and love. If they refuse to listen, further steps may be taken involving the support and accountability of the broader church community.</p>
-<p>As brothers and sisters in Christ, it is our responsibility and privilege to come alongside those struggling or straying from the path of discipleship. We are called to offer support, encouragement, and correction in a spirit of humility and grace. Our aim is not to condemn or judge but to help others grow in their relationship with God and live out their faith authentically. This sense of community and support is vital to our faith journey, making us feel valued and part of a more prominent spiritual family.</p>
-<p>It is essential, however, not to shrink back from speaking the truth in love. We cannot allow fear of how others might react to hinder us from sharing the Gospel or addressing issues of faith and discipleship. Just as Jesus fearlessly proclaimed the truth, even in the face of opposition and hostility, we, too, are called to follow His example. Let us not be afraid to lovingly confront those who may be straying from the path of discipleship or living inconsistently with their professed faith. Instead, let us approach them with humility, grace, and a genuine desire for their restoration and growth in Christ.</p>
-<p>Ultimately, our goal as Christians is to reflect the love and character of Christ to the world around us. We are to witness the Gospel's transformative power and extend God's grace and mercy to all through our words and actions. As we walk in obedience to God's Word and rely on the guidance of His Spirit, we become living testimonies to the reality of Christ's presence and power in our lives.</p>
-<p>As we walk in obedience to God's Word and rely on the guidance of His Spirit, we tap into a wellspring of strength, courage, and protection. Through Scripture, we are reminded of God's promises and His faithfulness to His people throughout history. This assurance empowers us to face life's challenges with boldness and confidence, knowing we are upheld by His strength and sheltered by His love. In reflecting the love and character of Christ to the world around us, we not only bear witness to the Gospel's transformative power but also embody the strength, courage, and protection that come from our unwavering faith in Him. Ultimately, our goal as Christians is to demonstrate this faith through our words and actions, thereby becoming living testimonies to the reality of Christ's presence and power in our lives.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
       <details class="card" id="post-patience">
         <summary>
           <div class="title">Patience</div>
@@ -1333,512 +288,98 @@ We are reunited for a purpose.</p>
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/patience.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>In a world of instant gratification and quick fixes, patience often feels like a lost virtue. Yet, as Christians, we are called to embrace patience as a cornerstone of our faith journey.</p>
-<p>Patience isn't just about waiting idly by; it's about actively trusting in God's timing and His plan for our lives. It's about surrendering our desires and ambitions to His will, knowing that He sees the bigger picture and knows what's best for us.</p>
-<p>When God calls us to wait, it's not a passive command but an invitation to grow in faith and character. It's during these seasons of waiting that we learn to lean on Him more fully, to seek His guidance and wisdom, and to deepen our relationship with Him.</p>
-<p>Scripture is filled with examples of patience and waiting on God. Abraham waited years for the fulfillment of God's promise of a son. Joseph endured years of trials and hardships before seeing the fulfillment of his dreams. And throughout it all, their faith remained unwavering because they trusted in God's faithfulness.</p>
-<p>Obedience and patience often go hand in hand. When God tells us to wait, it's not a suggestion but a command. And when we obey His command to wait, we position ourselves to receive His blessings in abundance.</p>
-<p>But waiting on God doesn't mean sitting around passively. It means actively seeking Him, praying, and listening for His voice. It means continuing to walk in obedience and faithfulness, even when the path ahead seems unclear.</p>
-<p>In a world that values instant results and immediate gratification, let us purposefully go against today's culture by embracing patience and waiting on God's timing. Let us trust in His faithfulness, knowing that He who promised is faithful to fulfill His promises in His perfect timing.</p>
-<p>So let us wait with hope, knowing that God is working behind the scenes, orchestrating His perfect plan for our lives. And as we wait, let us continue to obey and abide in Him, knowing that our patience will be rewarded beyond measure.</p>
-<p><em>"But they that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles; they shall </em><em>run, and</em><em> not be weary; and they shall walk, and not faint." - Isaiah 40:31</em></p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage">
+
+      <details class="card" id="post-mark-driscoll">
         <summary>
           <div class="title">Mark Driscoll, Guest Speaker, Kicked Off the Stage</div>
           <div class="meta">April 17, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/mark-driscoll-guest-speaker-kicked-off-the-stage.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>Mark Driscoll is a pastor at Trinity Church in Scottsdale, AZ. Pastor Mark Driscoll was invited to speak at James River Church’s Stronger Men’s Conference in Missouri. I am not telling you that you should believe what Mark Driscoll said, but I want to discuss my view. The head pastor of James River, John Lindell, can be heard from the audience, “You’re out of line, Mark…you’re done.” Pastor Mark replied, “Okay, Pastor John, I’ll receive that…thank you,” and walked off the stage. John Lindell then stepped on the stage and spoke on Matthew 18, a conversation he and Driscoll had before he walked on stage. Here’s what Lindell said:</p>
-<p></p>
-<p>Matthew 18—If your brother offends you, go to him privately.” Lindell said that he talked to Driscoll for 30 minutes before Driscoll took the stage and there was not one word of that. He’s out of line! If he wanted to say it, he can say it to me. You may not agree with me. You may not agree with him. But we are brothers in Christ, and there’s a right way to handle disagreement. I’m just telling you [that] I’m not going to sit back and watch someone do publicly what they should have done privately. And as a pastor and a man of God, I’ll call another man of God out. I love Mark, but he was out of line and I have a responsibility spiritually for this event, and we saw 530 people come to Christ. And we’ve exalted Jesus. And we’re going to conduct ourselves in a Christian manner, and we’re going to go according to the Bible, and the Bible tells us how that should have been resolved, and it wasn’t.</p>
-<p></p>
-<p>However, in John Lindell's reference to Matthew 18, he omitted a crucial aspect of the scripture. According to Matthew 18:15-17, if the privately confronted individual fails to change their behavior, the next step involves bringing a few others along to address the issue. Only if the individual refuses to listen should the matter be brought before the whole church. And if there is no repentance, even after this process, the church is responsible for removing the individual from its midst. Lindell skipped several steps outlined in Matthew 18 by publicly addressing Pastor Driscoll's behavior. This public decision, I believe, warranted public discussion, especially considering its impact on the men attending the conference. When spiritual leaders fail to adhere to the principles they preach, it becomes a matter of accountability within their immediate and broader Christian communities. Therefore, Pastor Driscoll had every right to discuss the situation publicly, as it affected those present at the conference and reflected on the integrity of the church leadership.</p>
-<p>In a world charged with public scrutiny and where the actions of leaders are closely watched, it's essential to critically examine decisions made within religious communities, particularly when they impact the spiritual well-being of congregants. Pastor Driscoll's decision to publicly address the actions of Pastor Lindell should be commended, as it sheds light on a matter that concerns not just the individuals involved but also the broader community of believers. By bringing attention to Lindell's deviation from Biblical principles of accountability and reconciliation, Driscoll has initiated a conversation that is vital for the spiritual health and integrity of the church. It's crucial to recognize that holding leaders accountable to Biblical standards is not an act of defiance but a demonstration of love for both the individuals involved and the community they serve. If Pastor Lindell acted in error, it's my hope that he will humbly seek repentance before the Lord and strive to rectify any harm caused. Transparency, humility, and a commitment to Biblical principles are essential for fostering trust and unity within the body of Christ, especially in times of disagreement or conflict.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/mark-driscoll.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE (you can include the YouTube link) -->
         </div>
       </details>
-    
-      <details class="card" id="post-7-deadly-sins">
+
+      <details class="card" id="post-seven-deadly-sins">
         <summary>
           <div class="title">7 Deadly Sins</div>
           <div class="meta">March 25, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/7-deadly-sins.jpg" alt=""> -->
-          <p></p>
-<p>It’s been a while since I wrote, mostly because I didn’t know what I wanted to talk about. However, having succumbed to two of the seven deadly sins, I knew what I wanted to discuss. Recently, I succumbed to greed and gluttony. Now, it wasn’t money, but it was stuff in general. Instead of investing and saving like I should have been, I just wanted these things. Now, you might be thinking, how does gluttony play into this? Well, gluttony isn’t just wanting more helpings of dessert that you do not need. Being gluttonous also pertains to substances of waste or detriment to health. By prioritizing what I wanted instead of saving for what I needed, I could’ve fallen for what most people fall into today… debt.</p>
-<p>This realization highlights a fundamental truth: none of us are immune to the allure of temptation. I share this not to profess perfection but to underscore the universal struggle against sin. The people in our lives may not necessarily lead us astray, but the devil, who knows our weaknesses all too well, seeks to exploit them. Whether it's a crack in our foundation or a chink in our armor, Satan will exploit it to hinder or destroy our relationship with the Lord if we're not vigilant.</p>
-<p>Envy, for instance, can corrode our souls, poisoning our relationships and breeding bitterness. Picture a scenario where a person, consumed by envy, fixates on the success and possessions of their neighbor, resenting rather than celebrating their achievements. This envy festers, leading to sabotage or slander as they covet what others have.</p>
-<p>Pride, too, can blind us to our faults and prevent us from seeking help or guidance. Imagine an individual so unwilling to admit their flaws that they alienate themselves from others, missing out on valuable opportunities for growth due to their arrogance.</p>
-<p>Wrath, the fiery anger simmering beneath the surface, can erupt into violence, causing irreparable harm to relationships and emotional well-being. Consider a scenario where unchecked wrath leads to a destructive outburst, leaving behind a trail of bitterness and regret.</p>
-<p>Slothfulness, the insidious sin of laziness and apathy, traps us in a cycle of inertia and stagnation. Picture someone habitually procrastinating, neglecting their responsibilities, and avoiding action until their problems become insurmountable.</p>
-<p>These examples underscore how the seven deadly sins can manifest in harsh and damaging ways in real life, leading to profound consequences for individuals and those around them. Recognizing and addressing these sins is crucial for personal growth and spiritual well-being.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p><strong>Save</strong></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/seven-deadly-sins.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-discerning-the-divine-understanding-the-voice-of-god">
+
+      <details class="card" id="post-discerning-divine">
         <summary>
           <div class="title">Discerning the Divine: Understanding the Voice of God</div>
           <div class="meta">March 5, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/discerning-the-divine-understanding-the-voice-of-god.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>This explores the intricate task of discerning the voice of God amid the mass of inner dialogues and spiritual influences that individuals encounter. Drawing from Biblical wisdom delves into the distinctions between the voices of conscience, demonic influences, and divine guidance, providing insights and practical strategies for those seeking clarity and spiritual discernment.</p>
-<p>In the pursuit of spiritual guidance and enlightenment, individuals often confront a cacophony of inner voices vying for attention. Proverbs 3:5-6 advises, "Trust in the LORD with all your heart and do not lean on your own understanding. In all your ways, acknowledge him, and he will make straight your paths." These words underscore the importance of discerning God's voice amidst the complexities of life's journey. This paper aims to delve into discerning God's voice amidst these varied influences.</p>
-<p><strong>The Voice of Conscience:</strong> This section examines the nature and origin of conscience, delving into its definition, characteristics, and insights from biblical teachings. Romans 2:15 speaks of how the conscience bears witness, affirming right and wrong. Furthermore, it discusses methods for discerning the authentic voice of conscience through moral consistency, integrity, and alignment with one's faith and morals as derived from divine teachings such as found in Psalms 119:105, "Your word is a lamp to my feet and a light to my path."</p>
-<p><strong>The Voice of Demons:</strong> Let’s delve into understanding malevolent influences, contextualizing them within historical, cultural, psychological, and spiritual frameworks, as outlined in Ephesians 6:12, "For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places." It explores signs of demonic influence, such as the distortion of truth and reality, as well as manipulative and destructive urges that can disrupt spiritual discernment.</p>
-<p><strong>Discerning God's Voice:</strong> This section focuses on cultivating spiritual awareness to discern God's voice. Psalm 46:10 advises, "Be still, and know that I am God. I will be exalted among the nations and exalted in the earth!" It discusses practices such as prayer, reflection, and developing sensitivity to the divine presence, guided by scriptures like James 1:5, "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him." Additionally, it outlines characteristics attributed to God's voice, including love, compassion, empathy, and consistency with sacred scriptures and teachings.</p>
-<p><strong>Practical Strategies for Discernment:</strong> This section emphasizes the importance of inner stillness and silence in quieting the mind and discerning divine promptings amidst the noise of life. 1 Thessalonians 5:21 encourages believers to "test everything; hold fast to what is good," highlighting the necessity of discernment. It also advocates for seeking wise counsel and guidance from trusted sources, including community support, spiritual mentorship, and discernment practices within various religious traditions.</p>
-<p>Navigating the labyrinth of spiritual discernment poses profound challenges. Yet, by honing awareness, cultivating inner stillness, and seeking guidance from reliable sources, individuals can journey toward hearing and understanding God's voice with clarity, purpose, and divine guidance.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/discerning-divine.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit">
+
+      <details class="card" id="post-conscience-holy-spirit">
         <summary>
           <div class="title">The Dynamic Dialogue: Conscience and the Holy Spirit</div>
           <div class="meta">March 4, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/the-dynamic-dialogue-conscience-and-the-holy-spirit.jpg" alt=""> -->
-          <p></p>
-<p>Have you ever pondered the source of that inner voice—the one that steers you toward righteousness and cautions you against doing the wrong thing? Is it solely your conscience speaking, or could it be the Holy Spirit guiding you? The truth is, it's both, and they are indeed capable of communication.</p>
-<p>Our conscience, often described as our internal moral compass, is a divine gift. It's that innate sense of right and wrong that influences our decisions and behaviors. Romans 2:15 speaks of this, stating, "They show that the requirements of the law are written on their hearts, their consciences also bearing witness, and their thoughts sometimes accusing them and at other times even defending them." Our conscience serves as a mechanism through which God's moral standards are impressed upon us, guiding our actions and prompting us to align with His will.</p>
-<p>Similarly, the Holy Spirit plays a pivotal role in our spiritual journey. Jesus promised His disciples in John 14:26, "But the Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things and will remind you of everything I have said to you." The Holy Spirit not only comforts and empowers believers but also convicts them of sin and guides them into truth (John 16:8).</p>
-<p>Indeed, the inner voice that guides us can often be the Holy Spirit speaking to our hearts. The Spirit communicates with believers through a deeper, spiritual connection. It transcends mere moral discernment and provides divine guidance and revelation. The Holy Spirit speaks to our hearts, aligning our desires with God's purposes and prompting us toward obedience and righteousness.</p>
-<p>While our conscience operates based on our innate understanding of morality, shaped by our upbringing, culture, and personal experiences, the Holy Spirit communicates with believers through a deeper, spiritual connection. When we nurture a sensitive conscience and cultivate a receptive spirit to the Holy Spirit's leading, we experience a profound alignment with God's will.</p>
-<p>So, the next time you feel that inner tug toward righteousness or a gentle conviction urging you to repent, recognize it as the dynamic dialogue between your conscience and the Holy Spirit. Embrace it, heed its guidance, and allow it to lead you closer to God's perfect plan for your life.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/conscience-holy-spirit.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-growing-good-fruit-reflecting-on-spiritual-transformation">
+
+      <details class="card" id="post-growing-good-fruit">
         <summary>
           <div class="title">Growing Good Fruit: Reflecting on Spiritual Transformation</div>
           <div class="meta">February 8, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/growing-good-fruit-reflecting-on-spiritual-transformation.jpg" alt=""> -->
-          <p></p>
-<p>Let’s take a moment to reflect on something crucial: the fruits we bear in our lives. You see, just as a tree is known by its fruit, we are recognized by the character and actions we display.</p>
-<p>First, let's ground ourselves in Scripture. In Galatians 5:22- 23, we are reminded of the fruits of the Spirit: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control. These qualities aren't just nice ideas—they are the essence of a life transformed by the Spirit of God.</p>
-<p>Now, let me be honest with you for a moment. I've witnessed firsthand the transformative power of these fruits in my life—moments where love moved me to forgive, times of joy amidst trials, and instances where patience triumphed over adversity. Yet, I've also confronted the reality of my own shortcomings, recognizing moments where I've allowed rottenness to infiltrate my heart and actions.</p>
-<p>This is where self-examination comes in. It's about looking honestly at our thoughts, words, and actions in light of God's Word and see how they compare to the way Jesus lived. Asking ourselves tough questions like, "Do my actions reflect the love of Christ?" or "Am I exercising self-control in my desires?" or “How does this glorify God?”</p>
-<p>But let's not stop there. We need divine feedback, too. Through prayer, meditation, and fasting on God's Word, I've found clarity and conviction in areas where I've needed to course-correct. It's amazing how God speaks to us when we take the time to listen and choose to walk home to Him, our Father in Heaven.</p>
-<p>And you know what? Bearing good fruit isn't just about us, it's about how it impacts others. I've seen firsthand how acts of love, kindness, and forgiveness can bring about transformation and reconciliation in our communities and relationships, but just as importantly, how they can transform a person’s life. I say this because the fruit of the spirit has transformed my life.</p>
-<p>Let me say that I’ve made some huge mistakes in my life, but hey, none of us are perfect. We all have our moments of weakness, our areas of rottenness that need addressing. The beauty of our faith lies in the opportunity for repentance and growth, for allowing God to prune away the dead branches and cultivate in us a character that reflects His love and grace.</p>
-<p>So, let's commit ourselves to this ongoing process of bearing good fruit and rooting out any areas of rottenness in our lives. Let's draw closer to God, allowing His Spirit to work in and through us, producing a harvest that glorifies Him and blesses those around us.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/growing-good-fruit.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-a-call-to-fortitude-reflecting-on-generational-strength">
+
+      <details class="card" id="post-call-to-fortitude">
         <summary>
           <div class="title">A Call to Fortitude: Reflecting on Generational Strength</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/a-call-to-fortitude-reflecting-on-generational-strength.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>When we compare generations, we see a big difference. Back in World War II, people were strong and brave, like Elijah from the stories. They didn't back down from tough times.</p>
-<p>But now, things look different. Today's generation seems weaker like they're not standing up for what's right. They're facing moral problems like they've lost their way. It feels like the fight between Elijah and Jezebel is happening today.</p>
-<p>In the past, people had strong beliefs and never gave up. But today, it seems like people are fragile. They used to be more assertive in their faith and morals.</p>
-<p>In the past, people had strong beliefs and never gave up. They were more open and willing to talk about God. But today, it seems like people are fragile. They used to be more assertive in their faith and morals.</p>
-<p>This change didn't just happen; it stems from leaders taking God out of school and government. It's like removing the solid ground that once held up the strength and faith of our past.</p>
-<p>The people from before faced hard times boldly, unlike what we see now. It looks like today’s generation lacks a strong foundation of faith and strength from God.</p>
-<p>This isn't just pointing fingers. It's a plea to find that strong faith again, the kind we saw in the past. It's about getting back that courage, that conviction, that steadfast faith from the older times, a hope that today's generation can rise above weaknesses and embrace the strength that once made them great.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p><strong>Save</strong></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p>A Call to Fortitude: Reflecting on Generational Strength</p>
-<p></p>
-<p></p>
-<p>When we compare generations, we see a big difference. Back in World War II, people were strong and brave, like Elijah from the stories. They didn't back down from tough times.</p>
-<p>But now, things look different. Today's generation seems weaker like they're not standing up for what's right. They're facing moral problems like they've lost their way. It feels like the fight between Elijah and Jezebel is happening today.</p>
-<p>In the past, people had strong beliefs and never gave up. But today, it seems like people are fragile. They used to be more assertive in their faith and morals.</p>
-<p>In the past, people had strong beliefs and never gave up. They were more open and willing to talk about God. But today, it seems like people are fragile. They used to be more assertive in their faith and morals.</p>
-<p>This change didn't just happen; it stems from leaders taking God out of school and government. It's like removing the solid ground that once held up the strength and faith of our past.</p>
-<p>The people from before faced hard times boldly, unlike what we see now. It looks like today’s generation lacks a strong foundation of faith and strength from God.</p>
-<p>This isn't just pointing fingers. It's a plea to find that strong faith again, the kind we saw in the past. It's about getting back that courage, that conviction, that steadfast faith from the older times, a hope that today's generation can rise above weaknesses and embrace the strength that once made them great.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/call-to-fortitude.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo">
+
+      <details class="card" id="post-unyielding-path">
         <summary>
           <div class="title">The Unyielding Path of a Christian: Challenging the Status Quo</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/the-unyielding-path-of-a-christian-challenging-the-status-quo.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>Being Christian isn’t a leisurely stroll, is it?  Being Christian isn’t about cozying up to society's ever-shifting moral compass. It’s about embracing a divine standard, discerning right from wrong as laid out by God and Jesus Christ. But hold on tight because being a Christian isn’t a joyride. It’s more like a rollercoaster through reality.</p>
-<p>Let's face it: it’s not all sunshine and rainbows. Jesus didn’t sugarcoat it, and in John 15:18-25, He dropped truth bombs. Yet, how many truly get it?</p>
-<p>Living authentically as a Christian means shaking hands with discomfort. It means standing against the tide and upholding values that society often sneers at. While the world sells you a dream of easy acceptance, being a Christian demands waking up to a fiercely different reality.</p>
-<p>Oh, the irony! Society whispers seductive lies of ease and acceptance, yet the truth Jesus spoke? It’s uncomfortable, disruptive, and doesn’t fit society's ‘like’ button.</p>
-<p>So here’s the reality check: being a Christian isn’t about blending in or finding a cozy spot in the crowd. It’s about embracing the unpopular, being ready to be the odd one out, and facing the daggers society throws at you for standing firm.</p>
-<p>But you know what? In that discomfort, in that defiance of the norm, lies an incredible truth—Jesus promised a different kind of reward. Living in truth, following Him, is not just about discomfort but a deeper fulfillment. It’s about experiencing joy, peace, and love that surpasses the discomforts of the world.</p>
-<p>So, in the end, it’s not just about embracing discomfort; it’s about embracing a journey where living in truth and following Jesus leads to a richness of spirit that the world could never provide.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/unyielding-path.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-unspoken-facing-the-uncomfortable-truths">
+
+      <details class="card" id="post-unspoken">
         <summary>
           <div class="title">Unspoken: Facing the Uncomfortable Truths</div>
           <div class="meta">December 31, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/unspoken-facing-the-uncomfortable-truths.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>There's this thing we all do—ignore stuff that feels weird or awkward. We act like if everyone knows, why bother talking about it, right? But that silence? It's loud. It's like a room full of secrets nobody wants to spill.</p>
-<p>Think about it: we're pros at hiding truths that make us uneasy. We cover them up with what's normal or expected, scared to rock the boat. You know, stuff like rules society makes that we're too nervous to question.</p>
-<p>Then there are these topics we call off-limits. We keep them quiet because we're afraid of what people might say. These truths sit in the back of our minds, begging to be noticed.</p>
-<p>But why do we dodge them? Is it 'cause we don't wanna mess up our comfy bubble? Or is it 'cause we're freaked out about dealing with the mess that comes after we spill the beans?</p>
-<p>So, here we are, stuck. Truths are out there, but we prefer to pretend they don’t exist. We hide them away, forget about them, act like they're not important. And it's all 'cause we're uncomfortable.</p>
-<p>But hey, in that discomfort, there's a chance. A chance to peel off the cover, face the weirdness, and deal with the truth. 'Cause in that awkwardness, in that quiet, there's a chance to learn, to understand, and to really change things up.</p>
-<p>Ready to dive into the weirdness and bring those hidden truths to light? The quiet's calling—it's asking us to stop ignoring what's uncomfortable and start talking. But what about those who claim the mantle of truth and courage yet find themselves paralyzed when their beliefs clash with the uncomfortable?</p>
-<p>Let’s talk about the silence within the ranks of those who profess to live by Christian morals. There's a contradiction when the principles of truth and integrity espoused by these beliefs don’t align with the discomfort of addressing harsh realities.</p>
-<p>The discomfort surfaces when mental health battles or societal prejudices challenge the supposed moral high ground. In a world that often fails to prioritize integrity, Christians advocating for compassion and justice sometimes falter when confronting these uncomfortable truths. The readiness to speak the truth becomes clouded by fear, discomfort, or the worry of contradicting deeply held beliefs. Society's lack of emphasis on integrity can weigh heavily, causing our moral compasses to waver and allowing discomfort to override the courage needed to address these challenging realities.</p>
-<p>But here’s the rub: integrity isn’t just about comfortable conversations. It’s about taking those morals and facing the discomfort head-on, even when it’s easier to stay silent.</p>
-<p>The call to action isn’t just for society; it's for those within religious communities, too. It's a nudge to bridge the gap between preached values and the often-muted realities. Integrity blossoms not solely in comfortable conversations but in the courage to confront discomfort and speak up despite the unease.</p>
-<p>The quiet beckons, not for more silence, but for voices unafraid to embrace the discomfort. It's time to align actions with the preached values, step beyond fear, and bring the uncomfortable truths into the light.</p>
-<p>It's time to shed fear, stand boldly in the armor of God, and let truth, not discomfort, guide our voices.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/unspoken.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
       <details class="card" id="post-unapologetically-christian">
         <summary>
           <div class="title">Unapologetically Christian</div>
@@ -1846,220 +387,43 @@ We are reunited for a purpose.</p>
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/unapologetically-christian.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p></p>
-<p>In the archives of history, echoes resonate of those unyielding souls who, unapologetically, carried the mantle of faith, unwavering in their commitment to truth. Among them stand Paul, Peter, and the embodiment of love, Jesus Himself—beacons who refused to dilute the truth to appease the world.</p>
-<p>Paul, the unyielding messenger, fearlessly proclaimed the Gospel, unapologetically challenging the comfortable ideologies of society. He didn’t water down the truth to suit the masses; instead, he wielded the Gospel like a double-edged sword, slicing through complacency and ruffling feathers wherever he tread.</p>
-<p>Peter, the unmovable rock, stood firm amidst the storms, refusing to bow to societal pressures or the political circus of his era. His teachings were the unfiltered truth, often discomforting, yet the very source of transformation for countless souls seeking something beyond the mundane.</p>
-<p>And then, there was Jesus—the disruptor of norms, the radical voice of truth and love. He didn’t tiptoe around hard teachings; instead, He thundered them, shaking the foundations of convention and ruffling the feathers of the establishment, all while embodying a love that was both unwavering and unapologetic.</p>
-<p>Their legacy, an unyielding challenge to the status quo, echoes through the corridors of time—a challenge that beckons us not to conform, not to sugarcoat, not to bow to the tyrannical whims of societal pressure or politically correct platitudes.</p>
-<p>We find ourselves amidst a landscape where the call to compromise our Christian convictions grows louder by the day. The pressure to dilute the Gospel, to kneel before societal expectations, and to conform to politically charged ideologies becomes increasingly insistent.</p>
-<p>But in the footsteps of these uncompromising giants, we find the courage to stand tall. We mustn't apologize for the discomfort our beliefs may cause, for the unadulterated Gospel isn't meant to coddle; it’s meant to challenge, disrupt, and confront.</p>
-<p>Let us be unapologetically Christian—not to fit into the world's mold, not to blend in with the crowd, but to stand boldly with the hard teachings that stir discomfort, provoke thought, and, yes, even ruffle feathers.</p>
-<p>For in the unapologetic assertion of these truths lies the transformative power to challenge the very fabric of society, to shake the foundations of comfort, and to awaken a generation to the audacious beauty of unwavering faith.</p>
-<p>Unapologetically Christian—a bold declaration that refuses to conform, challenges the norm, and disrupts the prevailing currents, even if it means ruffling feathers along the way.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p><strong>Save</strong></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-trusting-god-amidst-jezebel-s-tactics">
+
+      <details class="card" id="post-trusting-god-jezebel">
         <summary>
           <div class="title">Trusting God Amidst Jezebel's Tactics</div>
           <div class="meta">December 19, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/trusting-god-amidst-jezebel-s-tactics.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>understanding the relationship between Psalm 18 and the characteristics associated with a "Jezebel spirit" involves drawing parallels between the themes of trust in God's protection and the traits commonly attributed to the Jezebelian influence.</p>
-<p><strong>Psalm 18: Trust in God's Deliverance and the Jezebel Spirit</strong>:</p>
-<p><em>The Jezebel spirit</em> embodies traits of manipulation, control, and spiritual opposition, drawing parallels to the enemies David faced in Psalm 18. Exploring this connection reveals insights into relying on God's protection amidst spiritual threats:</p>
-<p><strong>God as Defender</strong>: David's acknowledgment of God as a fortress and shield against adversaries (Psalm 18:2) parallels the need for spiritual protection against the manipulative and deceptive nature of a Jezebelian influence.</p>
-<p><strong>Deliverance from Opposition</strong>: Just as David experienced God's rescue from enemies, individuals encountering a Jezebel spirit seek deliverance from its manipulative tactics and spiritual hostility through God's intervention.</p>
-<p><strong>God's Justice and Righteousness</strong>: The Psalm highlights God's righteousness in defending the upright against adversaries. Trusting in God's justice becomes crucial when combating deceptive and controlling forces akin to the Jezebel spirit.</p>
-<p><strong>Developing Trust in the Lord Amidst a Jezebelian Spirit</strong>:</p>
-<p><strong>Understanding God's Character</strong>: Building trust involves recognizing God's unwavering faithfulness, goodness, and authority. This understanding serves as a foundation when facing manipulative influences.</p>
-<p><strong>Dependence and Prayer</strong>: Similar to David's plea for assistance in Psalm 18, developing trust necessitates a reliant, prayerful relationship with God, seeking His guidance and protection.</p>
-<p><strong>Anchoring in God's Word</strong>: Trusting the Lord involves grounding oneself in His Word to discern and combat deceitful tactics characteristic of a Jezebel spirit.</p>
-<p><strong>Resilience Against Manipulation</strong>: Trusting God empowers individuals to discern and withstand manipulative influences by aligning with His truth and wisdom.</p>
-<p><strong>Community Support</strong>: Just as David acknowledges God's support, seeking the solidarity of a faithful community strengthens trust when facing the challenges posed by a Jezebelian influence.</p>
-<p>Understanding Psalm 18's depiction of God's deliverance from physical enemies can be paralleled with spiritual battles against the manipulation and opposition associated with a Jezebel spirit. Trusting in the Lord involves recognizing His attributes and relying on His guidance and protection in the face of deceptive and controlling influences.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/trusting-god-jezebel.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
-      <details class="card" id="post-guidance-and-asking-for-help">
+
+      <details class="card" id="post-defending-the-spirit">
+        <summary>
+          <div class="title">Defending the Spirit</div>
+          <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <!-- <img class="thumb" src="images/defending-the-spirit.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
+        </div>
+      </details>
+
+      <details class="card" id="post-guidance-asking-help">
         <summary>
           <div class="title">Guidance and Asking for Help</div>
           <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
         </summary>
         <div class="content">
-          <!-- <img class="thumb" src="images/guidance-and-asking-for-help.jpg" alt=""> -->
-          <p></p>
-<p></p>
-<p>Sometimes, our reluctance to seek help stems from a fear of vulnerability or a misconception that asking for assistance is a sign of weakness. Yet, it takes great courage and strength to admit when we need support. Jesus taught the importance of humility and reaching out to others in need. Remember the stories of how he compassionately helped those who sought him out?</p>
-<p>Asking for help isn't just about our relationship with Jesus; it's also about fostering connections with those around us. Often, God works through people—friends, family, counselors—who are there to offer support and guidance. They might answer our prayers, serving as instruments of His love and care.</p>
-<p>Pride can cloud our judgment and hinder our growth, but recognizing this and taking steps to overcome it is a journey that aligns with spiritual teachings about humility and self-awareness. By acknowledging our limitations and seeking help, we open ourselves to valuable opportunities for growth, learning, and deeper connections with our faith and those around us.</p>
-<p>Remember, seeking help isn't a sign of weakness; it's a courageous step toward healing, growth, and a deeper connection with God and others.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p>Navigating relationships with narcissistic individuals or those who embody traits associated with the Biblical figure of Jezebel can be challenging. Both personalities often exhibit manipulative behaviors, a desire for control, and a lack of empathy, causing turmoil in relationships. Here's an exploration of these personalities and strategies for self-defense and spiritual resilience.</p>
-<p><strong>Narcissists: </strong>Narcissists typically display an excessive sense of self-importance, a constant need for admiration, and a lack of empathy for others. They may manipulate situations to their advantage and exploit those around them for personal gain. In relationships, they often seek to dominate and can be emotionally abusive.</p>
-<p>Defending against narcissistic behavior involves setting firm personal boundaries. It is crucial to recognize their manipulation tactics, stay firm in your convictions, and refuse to enable their harmful conduct. Seeking support from trusted friends, family, or a therapist can provide guidance and validation as you navigate these challenging relationships.</p>
-<p>Living for God amidst interactions with narcissistic individuals may involve practicing forgiveness, setting healthy boundaries, and seeking spiritual guidance. Emphasizing love, compassion, and understanding while prioritizing your mental and emotional well-being can help maintain your faith and inner peace.</p>
-<p><strong>Jezebel-Like Figures: </strong>Jezebel, as depicted in the Bible, symbolizes manipulation, deceit, and a thirst for power. Those embodying Jezebel-like characteristics often use seduction, manipulation, and control to achieve their goals. They may undermine others and instigate division to maintain their influence.</p>
-<p>Defending against Jezebel-like personalities involves staying rooted in your values and faith. Awareness of their tactics, maintaining clarity of purpose, and avoiding being swayed by their deceitful tactics are essential. Building a solid support network and seeking counsel from spiritual mentors or leaders can provide strength and guidance.</p>
-<p>Living for God while encountering Jezebel-like figures might involve discernment and prayer. Staying steadfast in your faith, practicing discernment to identify manipulation, and seeking God's guidance in decision-making can help you navigate situations where these individuals are present.</p>
-<p>Remember, while it's essential to defend yourself against toxic behaviors, it's equally important to approach these individuals with compassion. Praying for their well-being and seeking opportunities for reconciliation, if safe and appropriate, can align with spiritual teachings.</p>
-<p>Ultimately, finding a balance between protecting oneself from harmful influences and embodying God's teachings of love, forgiveness, and compassion is a continual journey that requires resilience, discernment, and reliance on spiritual guidance.</p>
-<p><strong>Identification:</strong></p>
-<p><strong>     Narcissistic Individuals:</strong></p>
-<p><strong>Excessive Self-Importance:</strong> They often exhibit an inflated sense of self-worth, constantly seeking admiration and validation from others. They might talk incessantly about their achievements and belittle others' accomplishments.</p>
-<p><strong>Lack of Empathy:</strong> One of the key traits is a notable lack of empathy. They might disregard or invalidate others' feelings, showing little concern for the emotions or experiences of those around them.</p>
-<p><strong>Manipulative Behavior:</strong> Narcissists often manipulate situations and people to serve their own interests. They might use charm, guilt-tripping, or even aggression to control others or gain advantage in various situations.</p>
-<p><strong>Difficulty Accepting Criticism:</strong> They have a fragile ego and are extremely sensitive to criticism. Instead of acknowledging faults, they may deflect blame onto others or become defensive.</p>
-<p><strong>Sense of Entitlement:</strong> They expect special treatment and feel entitled to privileges or recognition without necessarily deserving it. This entitlement often extends to exploiting others to fulfill their own needs.</p>
-<p><strong>     Jezebel-Like Figures:</strong></p>
-<p><strong>Manipulative and Controlling:</strong> Similar to Jezebel in the Bible, these individuals are often manipulative and seek to control others through deceit, manipulation, or coercion. They might use seduction or influence to achieve their goals.</p>
-<p><strong>Promotes Division:</strong> They thrive on causing discord and division among people. They may sow seeds of distrust and create rifts between individuals or groups to maintain their control or power.</p>
-<p><strong>Lack of Integrity:</strong> Jezebel-like personalities may lack moral integrity. They might be deceitful, dishonest, and willing to go to any lengths to achieve their objectives, even if it means disregarding ethical principles.</p>
-<p><strong>Reluctance to Accept Responsibility:</strong> Much like narcissists, they often deflect blame and avoid taking responsibility for their actions. They might shift blame onto others or circumstances, refusing to acknowledge their role in any negative outcomes.</p>
-<p><strong>Power-Hungry:</strong> These individuals crave power and influence. They may pursue positions of authority or use their existing authority to further their agendas, often at the expense of others.</p>
-<p>Recognizing these traits can serve as a guide to identify potential narcissistic or Jezebel-like behavior. However, it's important to approach these observations with empathy and caution, as labeling someone in such a manner should be done judiciously and with an understanding of the complexity of human behavior.</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
-<p></p>
-<p>Faith Based Pilot</p>
-<p></p>
-<p></p>
-<p></p>
-<p>The Hangar</p>
-<p></p>
+          <!-- <img class="thumb" src="images/guidance-asking-help.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
       <details class="card" id="post-christmas">
         <summary>
           <div class="title">Christmas</div>
@@ -2067,39 +431,66 @@ We are reunited for a purpose.</p>
         </summary>
         <div class="content">
           <!-- <img class="thumb" src="images/christmas.jpg" alt=""> -->
-          <p></p>
-<p>With Christmas coming up, I’d like to discuss its history and significance from a Christian standpoint. The celebration of Christmas traces back to the birth of Jesus Christ, which is documented in the New Testament, primarily in the books of Matthew and Luke. The actual date of Jesus' birth isn't explicitly mentioned in the Bible. However, December 25th was chosen by early Christians to celebrate Christ's birth. This date was likely selected to coincide with existing pagan winter solstice festivals, aiming to repurpose these celebrations with a focus on the birth of Jesus. The nativity story, describing the birth of Jesus in Bethlehem, is a pivotal event in Christian belief and is detailed in the Gospels of Matthew and Luke. The shepherds' visitation, the angelic proclamation of "good news of great joy," and the birth of Jesus in a manger are foundational aspects of Christmas. Throughout the centuries, the celebration of Christmas evolved, adopting various traditions and customs from different cultures. It became more widely recognized as a Christian holiday, commemorating the birth of Jesus Christ, and gradually gained significance worldwide. In terms of becoming an officially recognized holiday, it was in the 4th century AD that Christmas began to be observed more widely. The Roman Emperor Constantine officially recognized Christianity, which eventually led to the recognition and celebration of Christmas within the Christian calendar. This celebration has since evolved, incorporating diverse cultural practices and traditions while still holding its core significance as a Christian holiday honoring the birth of Jesus Christ.</p>
-<p>The celebration of Christmas should hold a deep religious significance for Christians, mainly since it is centered around the birth of Jesus Christ, who is the Son of God and the Savior of man. While the exchange of gifts has become a prominent part of modern Christmas celebrations, the essence of the holiday must remain rooted in the commemoration of Christ's birth. We are encouraged to reflect on the spiritual importance of this event and its profound impact on our faith. What is truly unique is that gift-giving can be traced back to the Biblical narrative of the Magi presenting gifts of gold, frankincense, and myrrh to the infant Jesus. However, the emphasis remains on the religious significance rather than the materialistic aspect of gift-giving. Standing firm in celebrating the birth of Christ allows us to refocus on the core values of our faith. It's an opportunity to deepen one's relationship with God, reflect on Christ's teachings, and express gratitude for the gift of salvation that we believe was made possible through Jesus' birth, life, death, and resurrection. If we hold steadfast to the religious aspect, this will help us to maintain the true meaning of Christmas despite the over-commercialization of the day. Christmas should encourage a sense of spiritual fulfillment and foster a deeper understanding of our faith. Ultimately, while the exchange of gifts can be a joyful part of Christmas celebrations, it's vital for Christians to prioritize the spiritual significance of the day, emphasizing the birth of Christ as the central focus. This practice can serve as a reminder of the foundational beliefs and values that define the Christian faith.</p>
-<p>When the true essence of Christmas becomes overshadowed by the commercial aspects, there's a risk of losing sight of the holiday's spiritual significance. The commercialization of Christmas often emphasizes materialism, consumerism, and extravagance, diverting attention away from the religious roots of the celebration. When the focus shifts primarily to buying and receiving gifts, elaborate decorations, and indulgent festivities, there's a danger of neglecting the core teachings of Christianity. This shift may lead individuals to prioritize material possessions over spiritual values, inadvertently distancing themselves from the teachings and principles of Christ. If the emphasis on material aspects persists, it can subtly reshape priorities, values, and attitudes, potentially steering individuals away from a deeper connection with their faith. The distraction caused by the commercialization of Christmas might hinder the spiritual growth and understanding that comes from reflecting on the birth of Christ and its significance in Christian belief. Furthermore, the emphasis on consumerism during Christmas may create a sense of superficiality, fostering a culture where the true message of love, compassion, and selflessness that Jesus preached might get obscured. However, it's important to note that while the commercialization of Christmas poses these risks, it doesn't necessarily mean individuals will automatically turn their backs on Christ. Rather, it might lead to a gradual erosion of the deeper spiritual connection and understanding of the significance of Jesus' birth. To prevent this potential detachment from Christ, it's crucial for Christians to prioritize and cultivate the spiritual aspects of the holiday consciously. This includes intentional reflection on the nativity story, engaging in acts of kindness and generosity, and emphasizing the values of love, compassion, and humility Christ exemplified. By refocusing on the essence of Christmas - the birth of Jesus Christ, as the central reason for celebration - individuals can guard against the overshadowing effects of commercialization, thereby fostering a more meaningful and spiritually enriching holiday experience.</p>
-<p>Top of Form</p>
-<p><strong>Share this post:</strong></p>
-<p>Sign up for blog updates!</p>
-<p>Join my email list to receive updates and information.</p>
-<p>Top of Form</p>
-<p>Sign up</p>
-<p>Bottom of Form</p>
-<p>Recent Posts</p>
-<p></p>
-<p>The Strength of a Servant: Killing Pride and Leading Low</p>
-<p></p>
-<p></p>
-<p>Slave to Christ</p>
-<p></p>
-<p></p>
-<p>Separated to Reunite</p>
-<p></p>
-<p>If You Have Enjoyed What You've Read, Consider Subscribing</p>
-<p>Join me on this flight with Christ!</p>
-<p></p>
-<p>Copyright © 2025 Faith Based Pilot - All Rights Reserved. All logos, branding, and trademarks are the property of Faith Based Pilot and are protected under applicable trademark laws. Unauthorized use is strictly prohibited.</p>
-<p>Powered by</p>
-<p>This website uses cookies.</p>
-<p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-<p></p>
-<p></p>
+          <!-- PASTE FULL POST BODY HERE -->
         </div>
       </details>
-    
+
+      <details class="card" id="post-guilt-and-shame">
+        <summary>
+          <div class="title">Guilt & Shame</div>
+          <div class="meta">November 27, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <!-- <img class="thumb" src="images/guilt-and-shame.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
+        </div>
+      </details>
+
+      <details class="card" id="post-jesus-freak">
+        <summary>
+          <div class="title">Jesus Freak</div>
+          <div class="meta">November 20, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <!-- <img class="thumb" src="images/jesus-freak.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
+        </div>
+      </details>
+
+      <details class="card" id="post-faith-and-forgiveness">
+        <summary>
+          <div class="title">Faith and Forgiveness</div>
+          <div class="meta">November 13, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <!-- <img class="thumb" src="images/faith-and-forgiveness.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
+        </div>
+      </details>
+
+      <details class="card" id="post-who-are-you">
+        <summary>
+          <div class="title">Who Are You?</div>
+          <div class="meta">November 6, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <!-- <img class="thumb" src="images/who-are-you.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
+        </div>
+      </details>
+
+      <details class="card" id="post-god-will-strengthen">
+        <summary>
+          <div class="title">God Will Strengthen and Free You</div>
+          <div class="meta">November 5, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <!-- <img class="thumb" src="images/god-will-strengthen.jpg" alt=""> -->
+          <!-- PASTE FULL POST BODY HERE -->
+        </div>
+      </details>
+
+      <!-- ====== end of 36 posts ====== -->
     </section>
   </main>
 
@@ -2109,6 +500,7 @@ We are reunited for a purpose.</p>
 
   <script>
   (function () {
+    // Theme toggle (same behavior as fbp.html)
     const body = document.body;
     const toggleEl = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
@@ -2124,15 +516,19 @@ We are reunited for a purpose.</p>
     toggleEl.setAttribute('tabindex','0');
     toggleEl.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggleTheme(); } });
 
-    // Accordion: close others when one opens
-    document.querySelectorAll('details.card').forEach(d => {
-      d.addEventListener('toggle', () => {
-        if (d.open) document.querySelectorAll('details.card').forEach(o => { if (o!==d) o.removeAttribute('open'); });
-      });
-    });
-
     // Optional auto year
     // document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Optional: close other cards when one opens (accordion behavior)
+    document.querySelectorAll('details.card').forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          document.querySelectorAll('details.card').forEach(other => {
+            if (other !== d) other.removeAttribute('open');
+          });
+        }
+      });
+    });
   })();
   </script>
 </body>
