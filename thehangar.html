@@ -99,11 +99,22 @@
 
     .modal h2 { margin: 0 0 .25rem; }
     .modal .meta { font-size:.9rem; opacity:.75; margin-bottom: .75rem; }
-    .modal .sheet .thumb { width:100%; height:auto; border-radius:8px; margin: .4rem 0 .8rem; }
 
-    @media (max-width: 640px){
-      .modal .sheet { width: 96vw; max-height: 94vh; padding: 16px; }
+    /* Share bar */
+    .sharebar {
+      display:flex; flex-wrap:wrap; gap:10px;
+      border-top:1px solid rgba(255,255,255,.12);
+      margin-top: 1rem; padding-top: .75rem;
     }
+    body.light .sharebar { border-top-color:#eee; }
+    .sharebar button, .sharebar a {
+      border:1px solid rgba(255,255,255,.25);
+      background:transparent; color:inherit;
+      padding:6px 10px; border-radius:8px;
+      cursor:pointer; text-decoration:none; font-size:.95rem;
+    }
+    body.light .sharebar button, body.light .sharebar a { border-color:#ddd; }
+    .sharebar .copy-ok { font-size:.85rem; opacity:.75; }
   </style>
 </head>
 <body>
@@ -126,7 +137,7 @@
 
     <section class="grid">
 
-      <details class="card" id="post-the-strength-of-a-servant-killing-pride-and-leading-low">
+      <details class="card" id="post-the-strength-of-a-servant-killing-pride-and-leading-low" data-slug="the-strength-of-a-servant-killing-pride-and-leading-low" data-title="The Strength of a Servant: Killing Pride and Leading Low" data-date="May 26, 2025">
         <summary>
           <div class="title">The Strength of a Servant: Killing Pride and Leading Low</div>
           <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
@@ -137,7 +148,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-slave-to-christ">
+      <details class="card" id="post-slave-to-christ" data-slug="slave-to-christ" data-title="Slave to Christ" data-date="May 26, 2025">
         <summary>
           <div class="title">Slave to Christ</div>
           <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
@@ -148,7 +159,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-separated-to-reunite">
+      <details class="card" id="post-separated-to-reunite" data-slug="separated-to-reunite" data-title="Separated to Reunite" data-date="May 24, 2025">
         <summary>
           <div class="title">Separated to Reunite</div>
           <div class="meta">May 24, 2025 <span class="chev">▾</span></div>
@@ -159,7 +170,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-raven-and-the-dove">
+      <details class="card" id="post-the-raven-and-the-dove" data-slug="the-raven-and-the-dove" data-title="The Raven and the Dove" data-date="May 18, 2025">
         <summary>
           <div class="title">The Raven and the Dove</div>
           <div class="meta">May 18, 2025 <span class="chev">▾</span></div>
@@ -170,7 +181,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-stand-firm-a-call-to-integrity-and-biblical-morals">
+      <details class="card" id="post-stand-firm-a-call-to-integrity-and-biblical-morals" data-slug="stand-firm-a-call-to-integrity-and-biblical-morals" data-title="Stand Firm: A Call to Integrity and Biblical Morals" data-date="December 23, 2024">
         <summary>
           <div class="title">Stand Firm: A Call to Integrity and Biblical Morals</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
@@ -181,7 +192,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call">
+      <details class="card" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-slug="the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-title="The Manna from Heaven and the Gift of Christmas: A Profound Call" data-date="December 23, 2024">
         <summary>
           <div class="title">The Manna from Heaven and the Gift of Christmas: A Profound Call</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
@@ -192,7 +203,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-hello-let-s-talk-about-your-car-s-extended-warranty">
+      <details class="card" id="post-hello-let-s-talk-about-your-car-s-extended-warranty" data-slug="hello-let-s-talk-about-your-car-s-extended-warranty" data-title="Hello, Let’s Talk About Your Car’s Extended Warranty" data-date="December 18, 2024">
         <summary>
           <div class="title">Hello, Let’s Talk About Your Car’s Extended Warranty</div>
           <div class="meta">December 18, 2024 <span class="chev">▾</span></div>
@@ -203,7 +214,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-spiritual-dangers-of-halloween">
+      <details class="card" id="post-the-spiritual-dangers-of-halloween" data-slug="the-spiritual-dangers-of-halloween" data-title="The Spiritual Dangers of Halloween" data-date="October 18, 2024">
         <summary>
           <div class="title">The Spiritual Dangers of Halloween</div>
           <div class="meta">October 18, 2024 <span class="chev">▾</span></div>
@@ -214,7 +225,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-do-not-stop-do-not-drop-and-do-not-roll">
+      <details class="card" id="post-do-not-stop-do-not-drop-and-do-not-roll" data-slug="do-not-stop-do-not-drop-and-do-not-roll" data-title="Do Not Stop, Do Not Drop, and Do Not Roll" data-date="October 16, 2024">
         <summary>
           <div class="title">Do Not Stop, Do Not Drop, and Do Not Roll</div>
           <div class="meta">October 16, 2024 <span class="chev">▾</span></div>
@@ -225,7 +236,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-tuning-out-the-noise">
+      <details class="card" id="post-tuning-out-the-noise" data-slug="tuning-out-the-noise" data-title="Tuning Out the Noise" data-date="October 14, 2024">
         <summary>
           <div class="title">Tuning Out the Noise</div>
           <div class="meta">October 14, 2024 <span class="chev">▾</span></div>
@@ -236,7 +247,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-position-lights-and-the-christian-walk">
+      <details class="card" id="post-position-lights-and-the-christian-walk" data-slug="position-lights-and-the-christian-walk" data-title="✈️ Position Lights and the Christian Walk" data-date="August 27, 2024">
         <summary>
           <div class="title">✈️ Position Lights and the Christian Walk</div>
           <div class="meta">August 27, 2024 <span class="chev">▾</span></div>
@@ -247,7 +258,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable">
+      <details class="card" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable" data-slug="when-help-is-refused-faith-based-guidance-for-the-unreachable" data-title="When Help is Refused: Faith-Based Guidance for the Unreachable" data-date="August 12, 2024">
         <summary>
           <div class="title">When Help is Refused: Faith-Based Guidance for the Unreachable</div>
           <div class="meta">August 12, 2024 <span class="chev">▾</span></div>
@@ -258,7 +269,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-true-confidence-vs-false-security">
+      <details class="card" id="post-true-confidence-vs-false-security" data-slug="true-confidence-vs-false-security" data-title="True Confidence vs. False Security" data-date="July 18, 2024">
         <summary>
           <div class="title">True Confidence vs. False Security</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
@@ -269,7 +280,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-tolerance-and-faith-how-to-walk-in-today-s-world">
+      <details class="card" id="post-tolerance-and-faith-how-to-walk-in-today-s-world" data-slug="tolerance-and-faith-how-to-walk-in-today-s-world" data-title="Tolerance and Faith: How to Walk in Today’s World" data-date="July 18, 2024">
         <summary>
           <div class="title">Tolerance and Faith: How to Walk in Today’s World</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
@@ -280,7 +291,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-god-won-t-give-you-anything-he-can-t-handle">
+      <details class="card" id="post-god-won-t-give-you-anything-he-can-t-handle" data-slug="god-won-t-give-you-anything-he-can-t-handle" data-title="God Won't Give You Anything He Can't Handle" data-date="July 15, 2024">
         <summary>
           <div class="title">God Won't Give You Anything He Can't Handle</div>
           <div class="meta">July 15, 2024 <span class="chev">▾</span></div>
@@ -291,7 +302,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-soft-society-hard-truths-undone-culture">
+      <details class="card" id="post-soft-society-hard-truths-undone-culture" data-slug="soft-society-hard-truths-undone-culture" data-title="Soft Society, Hard Truths: Undone Culture" data-date="May 7, 2024">
         <summary>
           <div class="title">Soft Society, Hard Truths: Undone Culture</div>
           <div class="meta">May 7, 2024 <span class="chev">▾</span></div>
@@ -302,7 +313,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-faith-strength-courage-community">
+      <details class="card" id="post-faith-strength-courage-community" data-slug="faith-strength-courage-community" data-title="Faith: Strength, Courage, Community" data-date="April 29, 2024">
         <summary>
           <div class="title">Faith: Strength, Courage, Community</div>
           <div class="meta">April 29, 2024 <span class="chev">▾</span></div>
@@ -313,7 +324,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-patience">
+      <details class="card" id="post-patience" data-slug="patience" data-title="Patience" data-date="April 24, 2024">
         <summary>
           <div class="title">Patience</div>
           <div class="meta">April 24, 2024 <span class="chev">▾</span></div>
@@ -324,7 +335,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage">
+      <details class="card" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage" data-slug="mark-driscoll-guest-speaker-kicked-off-the-stage" data-title="Mark Driscoll, Guest Speaker, Kicked Off the Stage" data-date="April 17, 2024">
         <summary>
           <div class="title">Mark Driscoll, Guest Speaker, Kicked Off the Stage</div>
           <div class="meta">April 17, 2024 <span class="chev">▾</span></div>
@@ -335,7 +346,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-7-deadly-sins">
+      <details class="card" id="post-7-deadly-sins" data-slug="7-deadly-sins" data-title="7 Deadly Sins" data-date="March 25, 2024">
         <summary>
           <div class="title">7 Deadly Sins</div>
           <div class="meta">March 25, 2024 <span class="chev">▾</span></div>
@@ -346,7 +357,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-discerning-the-divine-understanding-the-voice-of-god">
+      <details class="card" id="post-discerning-the-divine-understanding-the-voice-of-god" data-slug="discerning-the-divine-understanding-the-voice-of-god" data-title="Discerning the Divine: Understanding the Voice of God" data-date="March 5, 2024">
         <summary>
           <div class="title">Discerning the Divine: Understanding the Voice of God</div>
           <div class="meta">March 5, 2024 <span class="chev">▾</span></div>
@@ -357,7 +368,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit">
+      <details class="card" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit" data-slug="the-dynamic-dialogue-conscience-and-the-holy-spirit" data-title="The Dynamic Dialogue: Conscience and the Holy Spirit" data-date="March 4, 2024">
         <summary>
           <div class="title">The Dynamic Dialogue: Conscience and the Holy Spirit</div>
           <div class="meta">March 4, 2024 <span class="chev">▾</span></div>
@@ -368,7 +379,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-growing-good-fruit-reflecting-on-spiritual-transformation">
+      <details class="card" id="post-growing-good-fruit-reflecting-on-spiritual-transformation" data-slug="growing-good-fruit-reflecting-on-spiritual-transformation" data-title="Growing Good Fruit: Reflecting on Spiritual Transformation" data-date="February 8, 2024">
         <summary>
           <div class="title">Growing Good Fruit: Reflecting on Spiritual Transformation</div>
           <div class="meta">February 8, 2024 <span class="chev">▾</span></div>
@@ -379,7 +390,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-a-call-to-fortitude-reflecting-on-generational-strength">
+      <details class="card" id="post-a-call-to-fortitude-reflecting-on-generational-strength" data-slug="a-call-to-fortitude-reflecting-on-generational-strength" data-title="A Call to Fortitude: Reflecting on Generational Strength" data-date="January 3, 2024">
         <summary>
           <div class="title">A Call to Fortitude: Reflecting on Generational Strength</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
@@ -390,7 +401,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo">
+      <details class="card" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo" data-slug="the-unyielding-path-of-a-christian-challenging-the-status-quo" data-title="The Unyielding Path of a Christian: Challenging the Status Quo" data-date="January 3, 2024">
         <summary>
           <div class="title">The Unyielding Path of a Christian: Challenging the Status Quo</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
@@ -401,7 +412,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-unspoken-facing-the-uncomfortable-truths">
+      <details class="card" id="post-unspoken-facing-the-uncomfortable-truths" data-slug="unspoken-facing-the-uncomfortable-truths" data-title="Unspoken: Facing the Uncomfortable Truths" data-date="December 31, 2023">
         <summary>
           <div class="title">Unspoken: Facing the Uncomfortable Truths</div>
           <div class="meta">December 31, 2023 <span class="chev">▾</span></div>
@@ -412,7 +423,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-unapologetically-christian">
+      <details class="card" id="post-unapologetically-christian" data-slug="unapologetically-christian" data-title="Unapologetically Christian" data-date="December 29, 2023">
         <summary>
           <div class="title">Unapologetically Christian</div>
           <div class="meta">December 29, 2023 <span class="chev">▾</span></div>
@@ -423,7 +434,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-trusting-god-amidst-jezebel-s-tactics">
+      <details class="card" id="post-trusting-god-amidst-jezebel-s-tactics" data-slug="trusting-god-amidst-jezebel-s-tactics" data-title="Trusting God Amidst Jezebel's Tactics" data-date="December 19, 2023">
         <summary>
           <div class="title">Trusting God Amidst Jezebel's Tactics</div>
           <div class="meta">December 19, 2023 <span class="chev">▾</span></div>
@@ -434,7 +445,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-defending-the-spirit">
+      <details class="card" id="post-defending-the-spirit" data-slug="defending-the-spirit" data-title="Defending the Spirit" data-date="December 11, 2023">
         <summary>
           <div class="title">Defending the Spirit</div>
           <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
@@ -445,7 +456,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-guidance-and-asking-for-help">
+      <details class="card" id="post-guidance-and-asking-for-help" data-slug="guidance-and-asking-for-help" data-title="Guidance and Asking for Help" data-date="December 11, 2023">
         <summary>
           <div class="title">Guidance and Asking for Help</div>
           <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
@@ -456,7 +467,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-christmas">
+      <details class="card" id="post-christmas" data-slug="christmas" data-title="Christmas" data-date="December 4, 2023">
         <summary>
           <div class="title">Christmas</div>
           <div class="meta">December 4, 2023 <span class="chev">▾</span></div>
@@ -467,7 +478,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-guilt-shame">
+      <details class="card" id="post-guilt-shame" data-slug="guilt-shame" data-title="Guilt & Shame" data-date="November 27, 2023">
         <summary>
           <div class="title">Guilt & Shame</div>
           <div class="meta">November 27, 2023 <span class="chev">▾</span></div>
@@ -478,7 +489,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-jesus-freak">
+      <details class="card" id="post-jesus-freak" data-slug="jesus-freak" data-title="Jesus Freak" data-date="November 20, 2023">
         <summary>
           <div class="title">Jesus Freak</div>
           <div class="meta">November 20, 2023 <span class="chev">▾</span></div>
@@ -489,7 +500,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-faith-and-forgiveness">
+      <details class="card" id="post-faith-and-forgiveness" data-slug="faith-and-forgiveness" data-title="Faith and Forgiveness" data-date="November 13, 2023">
         <summary>
           <div class="title">Faith and Forgiveness</div>
           <div class="meta">November 13, 2023 <span class="chev">▾</span></div>
@@ -500,7 +511,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-who-are-you">
+      <details class="card" id="post-who-are-you" data-slug="who-are-you" data-title="Who Are You?" data-date="November 6, 2023">
         <summary>
           <div class="title">Who Are You?</div>
           <div class="meta">November 6, 2023 <span class="chev">▾</span></div>
@@ -511,7 +522,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-god-will-strengthen-and-free-you">
+      <details class="card" id="post-god-will-strengthen-and-free-you" data-slug="god-will-strengthen-and-free-you" data-title="God Will Strengthen and Free You" data-date="November 5, 2023">
         <summary>
           <div class="title">God Will Strengthen and Free You</div>
           <div class="meta">November 5, 2023 <span class="chev">▾</span></div>
@@ -532,6 +543,16 @@
       <h2 id="modalTitle"></h2>
       <div id="modalMeta" class="meta"></div>
       <div id="modalBody"></div>
+
+      <div class="sharebar">
+        <button id="btnWebShare" type="button">Share…</button>
+        <a id="btnCopyLink" href="#" role="button">Copy link</a>
+        <a id="btnFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
+        <a id="btnX" href="#" target="_blank" rel="noopener">X</a>
+        <a id="btnEmail" href="#" target="_blank" rel="noopener">Email</a>
+        <a id="btnSMS" href="#" target="_blank" rel="noopener">SMS</a>
+        <span id="copyStatus" class="copy-ok" aria-live="polite"></span>
+      </div>
     </div>
   </div>
 
@@ -541,6 +562,7 @@
 
   <script>
   (function () {
+    // Theme toggle
     const body = document.body;
     const toggleEl = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
@@ -555,46 +577,151 @@
     toggleEl.setAttribute('tabindex','0');
     toggleEl.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggleTheme(); } });
 
+    // Modal behavior (desktop + mobile) + share
     const modal = document.getElementById('postModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalMeta  = document.getElementById('modalMeta');
     const modalBody  = document.getElementById('modalBody');
     const closeBtn   = modal.querySelector('.close');
+    const btnWebShare = document.getElementById('btnWebShare');
+    const btnCopyLink = document.getElementById('btnCopyLink');
+    const btnFacebook = document.getElementById('btnFacebook');
+    const btnX        = document.getElementById('btnX');
+    const btnEmail    = document.getElementById('btnEmail');
+    const btnSMS      = document.getElementById('btnSMS');
+    const copyStatus  = document.getElementById('copyStatus');
     let lastTrigger = null;
+    let currentSlug = null;
 
+    function buildShareURL(slug) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('post', slug);
+      url.hash = '';
+      return url.toString();
+    }
+
+    function updateShareLinks(title, date, slug) {
+      const shareUrl = buildShareURL(slug);
+      const text = title + (date ? ' — ' + date : '');
+
+      // Web Share API
+      btnWebShare.onclick = async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: title, text: text, url: shareUrl });
+          } catch(e) {}
+        } else {
+          // Fallback: copy link
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            copyStatus.textContent = 'Link copied';
+            setTimeout(() => copyStatus.textContent = '', 2000);
+          } catch(e) {}
+        }
+      };
+
+      // Copy Link
+      btnCopyLink.onclick = async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          copyStatus.textContent = 'Link copied';
+          setTimeout(() => copyStatus.textContent = '', 2000);
+        } catch(e) {}
+      };
+
+      // Facebook sharer
+      btnFacebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl);
+
+      // X (Twitter)
+      btnX.href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(shareUrl);
+
+      // Email
+      btnEmail.href = "mailto:?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(text + "\n\n" + shareUrl);
+
+      // SMS (may vary by device)
+      btnSMS.href = "sms:?&body=" + encodeURIComponent(text + " " + shareUrl);
+    }
+
+    function openFromCard(card) {
+      const summary = card.querySelector('summary');
+      const title = summary.querySelector('.title')?.textContent?.trim() || '';
+      const metaEl = summary.querySelector('.meta');
+      let date = '';
+      if (metaEl) {
+        date = Array.from(metaEl.childNodes).filter(n => n.nodeType === Node.TEXT_NODE)
+                    .map(n => n.nodeValue.trim()).join(' ').trim();
+      }
+      const contentHTML = card.querySelector('.content')?.innerHTML || '';
+      const slug = card.getAttribute('data-slug') || '';
+
+      modalTitle.textContent = title;
+      modalMeta.textContent  = date;
+      modalBody.innerHTML    = contentHTML;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lastTrigger = summary;
+      currentSlug = slug;
+
+      // push state for deep link
+      const shareUrl = buildShareURL(slug);
+      history.pushState({ post: slug }, '', shareUrl);
+
+      updateShareLinks(title, date, slug);
+    }
+
+    // Attach click to all cards
     document.querySelectorAll('details.card > summary').forEach(summary => {
       summary.addEventListener('click', (e) => {
         e.preventDefault();
-        const card  = summary.parentElement;
-        const title = summary.querySelector('.title')?.textContent?.trim() || '';
-        const metaEl = summary.querySelector('.meta');
-        let date = '';
-        if (metaEl) {
-          date = Array.from(metaEl.childNodes).filter(n => n.nodeType === Node.TEXT_NODE)
-                     .map(n => n.nodeValue.trim()).join(' ').trim();
-        }
-        const contentHTML = card.querySelector('.content')?.innerHTML || '';
-        modalTitle.textContent = title;
-        modalMeta.textContent  = date;
-        modalBody.innerHTML    = contentHTML;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        lastTrigger = summary;
+        const card = summary.parentElement;
+        openFromCard(card);
       });
     });
 
-    function closeModal() {
+    function closeModal(popHistory=true) {
       modal.classList.remove('open');
       document.body.style.overflow = '';
       modalBody.innerHTML = '';
       if (lastTrigger) lastTrigger.focus();
+      if (popHistory) {
+        // remove ?post= param
+        const url = new URL(window.location.href);
+        url.searchParams.delete('post');
+        history.pushState(null, '', url.toString());
+      }
+      currentSlug = null;
     }
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    closeBtn.addEventListener('click', () => closeModal(true));
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(true); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(true); });
 
+    // Prevent native details opening
     document.querySelectorAll('details.card').forEach(d => {
       d.addEventListener('toggle', () => { if (d.open) d.removeAttribute('open'); });
+    });
+
+    // Deep-link: open if ?post=slug exists
+    const params = new URLSearchParams(window.location.search);
+    const initialSlug = params.get('post');
+    if (initialSlug) {
+      const card = document.querySelector('details.card[data-slug="' + initialSlug + '"]');
+      if (card) openFromCard(card);
+    }
+
+    // Handle back/forward
+    window.addEventListener('popstate', (evt) => {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('post');
+      if (slug) {
+        if (!modal.classList.contains('open') || slug !== currentSlug) {
+          const card = document.querySelector('details.card[data-slug="' + slug + '"]');
+          if (card) openFromCard(card);
+        }
+      } else {
+        if (modal.classList.contains('open')) closeModal(false);
+      }
     });
   })();
   </script>
