@@ -13,6 +13,14 @@
   </script>
 
   <style>
+    :root{
+      --accent:#4da3ff;
+      --rule-dark:rgba(255,255,255,.12);
+      --rule-light:rgba(0,0,0,.12);
+      --panel:#1a1a1a;
+      --panelL:#f7f7f7;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -20,12 +28,12 @@
       background-color: #111;
       color: white;
     }
-
     body.light {
       background-color: #fff;
       color: #000;
     }
 
+    /* Header & Nav */
     header {
       background-color: #1a1a1a;
       padding: 1rem 2rem;
@@ -35,117 +43,100 @@
       position: relative;
       padding-right: calc(2rem + 32px + 8px);
     }
+    body.light header { background-color: #f0f0f0; }
 
-    body.light header {
-      background-color: #f0f0f0;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
+    nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     nav a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
+      color: inherit; text-decoration: none; font-weight: bold; font-size: 1rem; position: relative;
     }
+    /* subtle hover underline */
+    nav a::after{
+      content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0%;
+      background:var(--accent); transition:width .25s ease;
+    }
+    nav a:hover::after, nav a:focus::after{ width:100%; }
 
     #themeToggle {
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      position: absolute;
-      right: 2rem;
-      top: 1rem;
-      filter: invert(1);
-      transition: filter 0.3s ease;
+      width: 32px; height: 32px; cursor: pointer;
+      position: absolute; right: 2rem; top: 1rem;
+      filter: invert(1); transition: filter 0.3s ease;
     }
+    body.light #themeToggle { filter: invert(0); }
 
-    body.light #themeToggle {
-      filter: invert(0);
+    /* Page headings */
+    h1 { text-align: center; margin: 2rem 0 1rem; }
+
+    /* 3-up card grid */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 2rem auto 3rem;
     }
-
-    h1 {
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--rule-dark);
+      border-radius: 12px;
+      padding: 16px;
       text-align: center;
-      margin: 2rem 0 1rem;
+    }
+    body.light .card {
+      background: var(--panelL);
+      border-color: var(--rule-light);
+    }
+    .card h2 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+    .card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 0 0 0.75rem;
+    }
+    .card p {
+      margin: 0 auto;
+      max-width: 60ch;
     }
 
+    /* Contact section stays full-width */
     .section {
       text-align: center;
       margin: 3rem 0;
     }
+    .section p { max-width: 700px; margin: 0 auto; }
 
-    .section img {
-      width: 80%;
-      max-width: 600px;
-      height: auto;
-      display: block;
-      margin: 0 auto 1rem;
-    }
-
-    .section p {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
+    /* Footer */
     .footer {
       text-align: center;
       padding: 2rem;
       color: gray;
       font-size: 0.85rem;
+      border-top: 1px solid var(--rule-dark);
     }
+    body.light .footer { border-top-color: var(--rule-light); }
 
-    /* --- Social Media Icons --- */
-    .social {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
+    /* Socials (placeholder retained) */
+    .social { display:flex; gap:1rem; justify-content:center; align-items:center; margin-bottom:1rem; flex-wrap:wrap; }
     .social a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      color: currentColor;
-      opacity: 0.9;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:50%; color: currentColor;
+      opacity:.9; transition: opacity .2s ease, transform .2s ease;
     }
-
-    .social a:hover {
-      opacity: 1;
-      transform: translateY(-2px);
-    }
-
-    .social svg {
-      width: 22px;
-      height: 22px;
-    }
-
+    .social a:hover { opacity:1; transform: translateY(-2px); }
+    .social svg { width:22px; height:22px; }
     .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
 
+    /* Responsive: stack to 1 or 2 columns on smaller screens */
+    @media (max-width: 900px){
+      .cards{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
     @media (max-width: 600px) {
       nav { gap: 1rem; }
       nav a { font-size: 0.9rem; }
       header { padding-right: calc(1rem + 32px + 6px); }
+      .cards{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -162,40 +153,60 @@
     <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
   </header>
 
-  <!-- Welcome Section -->
+  <!-- Page Title -->
   <h1>Welcome</h1>
-  <div class="section">
-    <img src="images/welcome.jpg" alt="Faith Based Pilot - Welcome">
-    <p>
-      Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect.
-      We’re here to lift others by giving guidance to truth, and our own purpose
-      is everything to do with it.
-    </p>
+
+  <!-- Three-up cards (Welcome / Mission / Why Anonymity) -->
+  <div class="container">
+    <section class="cards" aria-label="Highlights">
+      <!-- Welcome -->
+      <article class="card">
+        <img
+          src="images/welcome.jpg"
+          alt="Faith Based Pilot - Welcome"
+          loading="lazy"
+          decoding="async" />
+        <h2>Welcome</h2>
+        <p>
+          Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect.
+          We’re here to lift others by giving guidance to truth, and our own purpose
+          is everything to do with it.
+        </p>
+      </article>
+
+      <!-- Mission -->
+      <article class="card">
+        <img
+          src="images/mission.jpg"
+          alt="Mission Image"
+          loading="lazy"
+          decoding="async" />
+        <h2>Mission</h2>
+        <p>
+          Our mission is to equip others with lessons drawn from flying.
+          Core principles include clarity, building skill, and the courage to act.
+          These aren’t just flight lessons — they’re life lessons.
+        </p>
+      </article>
+
+      <!-- Why Anonymity -->
+      <article class="card">
+        <img
+          src="images/anonymity.jpg"
+          alt="Anonymity Image"
+          loading="lazy"
+          decoding="async" />
+        <h2>Why Anonymity</h2>
+        <p>
+          We believe in focusing on message before messenger.
+          That’s why photos are anonymous, stories are universal, and the hope is simple:
+          to reach people where they are and point toward something greater.
+        </p>
+      </article>
+    </section>
   </div>
 
-  <!-- Mission Section -->
-  <div class="section">
-    <h2>Mission</h2>
-    <img src="images/mission.jpg" alt="Mission Image">
-    <p>
-      Our mission is to equip others with lessons drawn from flying.
-      Core principles include clarity, building skill, and the courage to act.
-      These aren’t just flight lessons — they’re life lessons.
-    </p>
-  </div>
-
-  <!-- Anonymity Section -->
-  <div class="section">
-    <h2>Why Anonymity</h2>
-    <img src="images/anonymity.jpg" alt="Anonymity Image">
-    <p>
-      We believe in focusing on message before messenger.
-      That’s why photos are anonymous, stories are universal, and the hope is simple:
-      to reach people where they are and point toward something greater.
-    </p>
-  </div>
-
-  <!-- Contact Section -->
+  <!-- Contact (full width) -->
   <div class="section" id="contact">
     <h2>Contact</h2>
     <p>
@@ -217,7 +228,6 @@
     <div class="social" aria-label="Social Links">
       <!-- (your existing social icons stay here exactly as before) -->
     </div>
-
     <p>© 2022 Faith Based Pilot</p>
   </footer>
 
@@ -250,3 +260,4 @@
   </script>
 </body>
 </html>
+
