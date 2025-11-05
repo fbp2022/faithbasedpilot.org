@@ -7,8 +7,8 @@
   <meta name="color-scheme" content="dark light" />
 
   <!-- reCAPTCHA Enterprise -->
-  <script
-    src="https://www.google.com/recaptcha/enterprise.js?render=6LcFj-grAAAAAHkCqd7KHorciNrbZmX81Tq4Fens"
+  <script 
+    src="https://www.google.com/recaptcha/enterprise.js?render=6LcFj-grAAAAAHkCqd7KHorciNrbZmX81Tq4Fens" 
     async defer></script>
 
   <style>
@@ -23,76 +23,77 @@
     body{margin:0;padding:0;font-family:Arial, sans-serif;background:#111;color:#fff;}
     body.light{background:#fff;color:#000;}
 
-    /* Header & Nav */
+    /* Header */
     header{
-      background:#1a1a1a; padding:1rem 2rem; display:flex; justify-content:center; align-items:center;
-      position:relative; padding-right:calc(2rem + 32px + 8px);
+      background:#1a1a1a;padding:1rem 2rem;display:flex;justify-content:center;align-items:center;
+      position:relative;padding-right:calc(2rem + 32px + 8px);
       border-bottom:1px solid rgba(255,255,255,.08);
     }
-    body.light header{ background:#f0f0f0; border-bottom-color:rgba(0,0,0,.08); }
-
-    nav{ display:flex; gap:1.5rem; flex-wrap:wrap; }
-    nav a{ color:inherit; text-decoration:none; font-weight:bold; font-size:1rem; position:relative; }
+    body.light header{background:#f0f0f0;border-bottom-color:rgba(0,0,0,.08);}
+    nav{display:flex;gap:1.5rem;flex-wrap:wrap;}
+    nav a{color:inherit;text-decoration:none;font-weight:bold;font-size:1rem;position:relative;}
     nav a::after{
-      content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0%;
-      background:var(--accent); transition:width .25s ease;
+      content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0%;
+      background:var(--accent);transition:width .25s ease;
     }
-    nav a:hover::after, nav a:focus::after{ width:100%; }
-
+    nav a:hover::after,nav a:focus::after{width:100%;}
     #themeToggle{
-      width:32px; height:32px; cursor:pointer; position:absolute; right:2rem; top:1rem;
-      filter:invert(1); transition:filter .3s ease;
+      width:32px;height:32px;cursor:pointer;position:absolute;right:2rem;top:1rem;
+      filter:invert(1);transition:filter .3s ease;
     }
-    body.light #themeToggle{ filter:invert(0); }
+    body.light #themeToggle{filter:invert(0);}
 
-    h1{ text-align:center; margin:2rem 0 1rem; }
+    h1{text-align:center;margin:2rem 0 1rem;}
 
-    /* Wide container (fills most of the viewport on desktop) */
-    .container{ width:min(1600px, 98vw); margin:0 auto; padding:0 16px; }
-
-    /* 3-up grid */
+    /* Cards grid */
+    .container{width:min(1600px,98vw);margin:0 auto;padding:0 16px;}
     .cards{
-      display:grid; grid-template-columns:repeat(3, minmax(280px,1fr)); gap:24px;
+      display:grid;grid-template-columns:repeat(3,minmax(280px,1fr));gap:24px;
       margin:2rem auto 3rem;
     }
     .card{
-      background:var(--panel); border:1px solid var(--rule-dark); border-radius:14px; padding:16px;
-      text-align:center; box-shadow:0 2px 10px rgba(0,0,0,.15);
+      background:var(--panel);border:1px solid var(--rule-dark);border-radius:14px;padding:18px;
+      text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.15);
+      display:flex;flex-direction:column;justify-content:flex-start;align-items:center;
     }
-    body.light .card{ background:var(--panelL); border-color:var(--rule-light); box-shadow:0 2px 10px rgba(0,0,0,.06); }
-    .card img{ display:block; width:100%; height:auto; border-radius:10px; margin:0 0 .75rem; }
-    .card h2{ margin:.5rem 0 .5rem; }
-    .card p{ margin:0 auto; max-width:65ch; }
+    body.light .card{background:var(--panelL);border-color:var(--rule-light);box-shadow:0 2px 10px rgba(0,0,0,.06);}
+    .card img{
+      display:block;width:100%;height:220px;object-fit:cover;border-radius:10px;
+      margin:0 0 0.9rem;
+    }
+    .card h2{margin:.4rem 0 .6rem;font-size:1.25rem;}
+    .card p{margin:0 auto;max-width:65ch;line-height:1.55;font-size:1.05rem;}
 
     /* Contact */
-    .section{ text-align:center; margin:3rem 0; }
-    .section p{ max-width:700px; margin:0 auto; }
+    .section{text-align:center;margin:3rem 0;}
+    .section p{max-width:700px;margin:0 auto;font-size:1.05rem;line-height:1.6;}
 
     /* Footer + Socials */
-    .footer{ text-align:center; padding:2rem 0 3rem; color:gray; font-size:.85rem; border-top:1px solid var(--rule-dark); }
-    body.light .footer{ border-top-color:var(--rule-light); }
-    .social{ display:flex; gap:1rem; justify-content:center; align-items:center; margin-bottom:1rem; flex-wrap:wrap; }
+    .footer{text-align:center;padding:2rem 0 3rem;color:gray;font-size:.85rem;border-top:1px solid var(--rule-dark);}
+    body.light .footer{border-top-color:var(--rule-light);}
+    .social{display:flex;gap:1rem;justify-content:center;align-items:center;margin-bottom:1rem;flex-wrap:wrap;}
     .social a{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:36px; height:36px; border-radius:50%; color: currentColor;
-      opacity:.9; transition: opacity .2s ease, transform .2s ease;
+      display:inline-flex;align-items:center;justify-content:center;
+      width:36px;height:36px;border-radius:50%;color:currentColor;
+      opacity:.9;transition:opacity .2s ease,transform .2s ease;
     }
-    .social a:hover{ opacity:1; transform: translateY(-2px); }
-    .social svg{ width:22px; height:22px; display:block; }
-    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .social a:hover{opacity:1;transform:translateY(-2px);}
+    .social svg{width:22px;height:22px;display:block;}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
     /* Responsive */
-    @media (max-width: 1100px){ .cards{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 600px){
-      nav{ gap:1rem; } nav a{ font-size:.9rem; }
-      header{ padding-right:calc(1rem + 32px + 6px); }
-      .cards{ grid-template-columns:1fr; }
+    @media(max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media(max-width:600px){
+      nav{gap:1rem;}nav a{font-size:.9rem;}
+      header{padding-right:calc(1rem + 32px + 6px);}
+      .cards{grid-template-columns:1fr;}
+      .card img{height:200px;}
     }
   </style>
 </head>
 
 <body>
-  <!-- Header & Navigation -->
+  <!-- Header -->
   <header>
     <nav>
       <a href="beliefs.html">Beliefs</a>
@@ -105,11 +106,9 @@
 
   <h1>Welcome</h1>
 
-  <!-- Wide container -->
+  <!-- Cards -->
   <div class="container">
-    <!-- Three-up cards -->
     <section class="cards" aria-label="Highlights">
-      <!-- Welcome -->
       <article class="card">
         <img src="images/welcome.jpg" alt="Faith Based Pilot - Welcome" loading="lazy" decoding="async">
         <h2>Welcome</h2>
@@ -120,7 +119,6 @@
         </p>
       </article>
 
-      <!-- Mission -->
       <article class="card">
         <img src="images/mission.jpg" alt="Mission Image" loading="lazy" decoding="async">
         <h2>Mission</h2>
@@ -131,7 +129,6 @@
         </p>
       </article>
 
-      <!-- Why Anonymity -->
       <article class="card">
         <img src="images/anonymity.jpg" alt="Anonymity Image" loading="lazy" decoding="async">
         <h2>Why Anonymity</h2>
@@ -150,95 +147,73 @@
     <p>
       If you’d like to reach out, share encouragement, collaborate, or request a prayer,
       you can contact me directly at:<br><br>
-      <a href="mailto:aviationministries@faithbasedpilot.com"
-         style="color:#4da3ff; text-decoration:none; font-weight:bold;">
+      <a href="mailto:aviationministries@faithbasedpilot.com" style="color:#4da3ff;text-decoration:none;font-weight:bold;">
         aviationministries@faithbasedpilot.com
       </a>
     </p>
-    <p style="margin-top:1rem; font-style:italic; color:gray;">
-      — FBP (Faith Based Pilot)
-    </p>
+    <p style="margin-top:1rem;font-style:italic;color:gray;">— FBP (Faith Based Pilot)</p>
   </div>
 
-  <!-- Footer with Social Icons -->
+  <!-- Footer -->
   <footer class="footer">
     <nav class="social" aria-label="Social Links">
-      <!-- Instagram -->
       <a href="https://www.instagram.com/faithbasedpilot/" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/>
-          <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/>
-        </svg>
+          <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
         <span class="sr-only">Instagram</span>
       </a>
-      <!-- Facebook -->
       <a href="https://www.facebook.com/profile.php?id=100093368342398" target="_blank" rel="noopener" aria-label="Facebook">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/><path d="M13 8h-1.2A2.8 2.8 0 0 0 9 10.8V19"/><path d="M10 13h3.2"/>
-        </svg>
+          <circle cx="12" cy="12" r="10"/><path d="M13 8h-1.2A2.8 2.8 0 0 0 9 10.8V19"/><path d="M10 13h3.2"/></svg>
         <span class="sr-only">Facebook</span>
       </a>
-      <!-- X (Twitter) -->
       <a href="https://x.com/FaithBasedPilot" target="_blank" rel="noopener" aria-label="X (Twitter)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4l16 16M20 4L4 20"/>
-        </svg>
+          <path d="M4 4l16 16M20 4L4 20"/></svg>
         <span class="sr-only">X (Twitter)</span>
       </a>
-      <!-- Truth Social -->
       <a href="https://truthsocial.com/@FaithBasedPilot" target="_blank" rel="noopener" aria-label="Truth Social">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/><path d="M8 8h8M12 8v8"/>
-        </svg>
+          <circle cx="12" cy="12" r="10"/><path d="M8 8h8M12 8v8"/></svg>
         <span class="sr-only">Truth Social</span>
       </a>
-      <!-- YouTube -->
       <a href="https://www.youtube.com/@FaithBasedPilot" target="_blank" rel="noopener" aria-label="YouTube">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="7" width="18" height="10" rx="4"/><path d="M11 10l4 2-4 2v-4z" fill="currentColor" stroke="none"/>
-        </svg>
+          <rect x="3" y="7" width="18" height="10" rx="4"/><path d="M11 10l4 2-4 2v-4z" fill="currentColor" stroke="none"/></svg>
         <span class="sr-only">YouTube</span>
       </a>
-      <!-- Rumble -->
       <a href="https://rumble.com/c/c-7796604" target="_blank" rel="noopener" aria-label="Rumble">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/>
-        </svg>
+          <circle cx="12" cy="12" r="9.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
         <span class="sr-only">Rumble</span>
       </a>
     </nav>
-
     <p>© <span id="year"></span> Faith Based Pilot</p>
   </footer>
 
-  <!-- Theme + Year Script -->
+  <!-- Theme + Year -->
   <script>
-    (function () {
-      const body = document.body;
-      const toggleEl = document.getElementById('themeToggle');
-
-      // Restore theme
-      const saved = localStorage.getItem('theme');
-      if (saved === 'light') body.classList.add('light');
-
-      function toggleTheme() {
+    (function(){
+      const body=document.body;
+      const toggleEl=document.getElementById('themeToggle');
+      const saved=localStorage.getItem('theme');
+      if(saved==='light') body.classList.add('light');
+      function toggleTheme(){
         body.classList.toggle('light');
-        const mode = body.classList.contains('light') ? 'light' : 'dark';
-        localStorage.setItem('theme', mode);
+        const mode=body.classList.contains('light')?'light':'dark';
+        localStorage.setItem('theme',mode);
       }
-
-      if (toggleEl){
-        toggleEl.addEventListener('click', toggleTheme);
+      if(toggleEl){
+        toggleEl.addEventListener('click',toggleTheme);
         toggleEl.setAttribute('role','button');
         toggleEl.setAttribute('aria-label','Toggle color theme');
         toggleEl.setAttribute('tabindex','0');
         toggleEl.addEventListener('keydown',(e)=>{
-          if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleTheme(); }
+          if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleTheme();}
         });
       }
-
-      // Auto-update copyright year
-      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent=new Date().getFullYear();
     })();
   </script>
 </body>
