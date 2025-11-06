@@ -2,301 +2,1714 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Hangar - Faith Based Pilot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hangar — Faith Based Pilot</title>
   <style>
-    :root {
-      --bg: #111;
-      --ink: #fff;
-      --bgL: #fff;
-      --inkL: #000;
-      --border: rgba(255, 255, 255, .12);
-      --borderL: rgba(0, 0, 0, .12);
+    body { margin:0; padding:0; font-family:Arial,sans-serif; background:#111; color:#fff; }
+    body.light { background:#fff; color:#000; }
+
+    /* Full-width header with inner bar */
+    header { background:#1a1a1a; padding:0; }
+    body.light header { background:#f0f0f0; }
+    header .bar {
+      max-width:1100px; margin:0 auto; padding:1rem 2rem;
+      display:flex; justify-content:center; align-items:center;
+      position:relative; padding-right:calc(2rem + 32px + 8px);
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-    }
-    body.light {
-      background: var(--bgL);
-      color: var(--inkL);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      background-color: #1a1a1a;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    body.light header {
-      background-color: #f0f0f0;
-      border-color: var(--borderL);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    nav a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
+    nav { display:flex; gap:1.5rem; flex-wrap:wrap; }
+    nav a { color:inherit; text-decoration:none; font-weight:bold; font-size:1rem; }
 
     #themeToggle {
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      filter: invert(1);
+      width:32px; height:32px; cursor:pointer;
+      position:absolute; right:2rem; top:1rem;
+      filter:invert(1); transition:filter .3s ease;
     }
-    body.light #themeToggle {
-      filter: invert(0);
+    body.light #themeToggle { filter:invert(0); }
+
+    .wrap { max-width:1100px; margin:0 auto; padding:0 16px; }
+    h1 { text-align:center; margin:2rem 0 .25rem; }
+    .lede { text-align:center; color:#bbb; margin:0 0 1.5rem; }
+
+    .grid { display:grid; grid-template-columns:1fr; gap:18px; }
+    @media (min-width:1024px){ .grid { grid-template-columns:repeat(3,1fr); } }
+
+    details.card {
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px; background:rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    body.light details.card:not([data-category]){
+  background:var(--panelL);
+  border-color:var(--borderL);
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+
+    details.card > summary {
+      list-style:none; outline:none; cursor:pointer;
+      padding:14px; display:flex; flex-direction:column; gap:6px;
+    }
+    details.card > summary::-webkit-details-marker { display:none; }
+
+    .title { font-weight:700; line-height:1.3; }
+    .meta { font-size:.85rem; opacity:.75; }
+    .chev { margin-left:auto; font-weight:700; opacity:.65; }
+
+    .content {
+      padding:14px; border-top:1px solid rgba(255,255,255,.12);
+    }
+    body.light .content { border-top-color:#eee; }
+    .content p { margin:.5rem 0; line-height:1.55; }
+    .content a { color:#4da3ff; font-weight:bold; text-decoration:none; }
+    .thumb { width:100%; height:auto; border-radius:8px; margin-bottom:.6rem; display:block; }
+
+    .footer { text-align:center; padding:1.5rem; color:gray; font-size:.85rem; }
+
+    @media (max-width:600px){
+      nav { gap:1rem; }
+      nav a { font-size:.9rem; }
+      header .bar { padding:1rem; padding-right:calc(1rem + 32px + 6px); }
     }
 
-    h1 {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .subheader {
-      text-align: center;
-      font-size: 1.05rem;
-      max-width: 800px;
-      margin: 0.5rem auto 2rem;
-      color: var(--ink);
-    }
-    body.light .subheader {
-      color: #000;
-    }
-
-    .filters {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 1rem auto 2rem;
-    }
-    .filters button {
-      background: none;
-      border: 1px solid currentColor;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-
-    .filters .active {
-      background: currentColor;
-      color: var(--bg);
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.25rem;
-      padding: 0 1.5rem 2rem;
-    }
-    .card {
-      width: 280px;
-      padding: 1rem;
-      border-radius: 10px;
-      box-sizing: border-box;
-      color: white;
-      cursor: pointer;
-    }
-    .card[data-topic='Faith'] { background: #4da3ff; }
-    .card[data-topic='Culture'] { background: #ff5e5e; }
-    .card[data-topic='Men'] { background: #9c59d1; }
-    .card[data-topic='Spiritual'] { background: #28b485; }
-    .card[data-topic='Reflection'] { background: #f39c12; }
-
-    body.light .card {
-      color: white !important;
-    }
-
+    /* ===== Modal overlay for full-screen post view ===== */
     .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      color: #fff;
+      position: fixed; inset: 0;
       display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      z-index: 1000;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,.6);
+      z-index: 10000;
     }
-    .modal-content {
-      background: #222;
-      max-width: 600px;
-      width: 100%;
-      padding: 2rem;
-      border-radius: 12px;
-      position: relative;
-    }
-    .modal button.close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      cursor: pointer;
-    }
-    .modal button.audio {
-      margin-top: 1rem;
-      background: #444;
-      border: none;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+    .modal.open { display: flex; }
 
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: gray;
-      padding: 2rem 1rem;
+    .modal .sheet{
+      width: min(920px, 94vw);
+      max-height: 92vh;
+      overflow: auto;
+      background: #1b1b1b; color: inherit;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px; padding: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
     }
-  </style>
+    body.light .modal .sheet { background:#fff; border-color:#e2e2e2; }
+
+    .modal .close {
+      position: sticky; top: 0; float: right;
+      border: 1px solid rgba(255,255,255,.25);
+      background: transparent; color: inherit;
+      font-size: 20px; line-height: 1; padding: 6px 10px;
+      border-radius: 8px; cursor: pointer;
+    }
+    body.light .modal .close { border-color:#ddd; }
+
+    .modal h2 { margin: 0 0 .25rem; }
+    .modal .meta { font-size:.9rem; opacity:.75; margin-bottom: .75rem; }
+
+    /* Share bar */
+    .sharebar {
+      display:flex; flex-wrap:wrap; gap:10px;
+      border-top:1px solid rgba(255,255,255,.12);
+      margin-top: 1rem; padding-top: .75rem;
+    }
+    body.light .sharebar { border-top-color:#eee; }
+    .sharebar button, .sharebar a {
+      border:1px solid rgba(255,255,255,.25);
+      background:transparent; color:inherit;
+      padding:6px 10px; border-radius:8px;
+      cursor:pointer; text-decoration:none; font-size:.95rem;
+    }
+    body.light .sharebar button, body.light .sharebar a { border-color:#ddd; }
+    .sharebar .copy-ok { font-size:.85rem; opacity:.75; }
+  
+    /* Full-card color coding */
+    details.card[data-category="faith"]      { background:var(--faith);      color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="leadership"] { background:var(--leadership); color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="culture"]    { background:var(--culture);    color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="warfare"]    { background:var(--warfare);    color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="reflection"] { background:var(--reflection); color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category] .content{ border-top-color:rgba(255,255,255,.35); }
+    /* Legend + controls base styles (fallback if missing) */
+    .legend-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;margin:10px auto 18px;}
+    .legend{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+    .key{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .6rem;border-radius:999px;font-weight:bold;font-size:.9rem;border:1px solid var(--border);}
+    .sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+    .controls{display:flex;gap:8px}
+    .btn{appearance:none;border:1px solid var(--border);background:#202020;color:#fff;padding:.45rem .8rem;border-radius:8px;font-size:.9rem;cursor:pointer;}
+    .btn:hover{filter:brightness(1.08)}
+    body.light .btn{background:#f5f5f5;color:#000;border-color:var(--borderL)}
+
+
+/* Color coding – keep these last for highest specificity */
+details.card[data-category="faith"]{
+  background-color:var(--faith) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="leadership"]{
+  background-color:var(--leadership) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="culture"]{
+  background-color:var(--culture) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="warfare"]{
+  background-color:var(--warfare) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="reflection"]{
+  background-color:var(--reflection) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category] .content{
+  border-top-color:rgba(255,255,255,.35) !important;
+}
+
+</style>
 </head>
-<body class="dark">
-
+<body>
   <header>
-    <nav>
-      <a href="fbp.html">Home</a>
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="thehangar.html">The Hangar</a>
-      <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
-    </nav>
-    <div style="display:flex; align-items:center; gap:1rem;">
-      <img src="images/clickme.png" alt="Click Me" height="32"/>
-      <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme"/>
+    <div class="bar">
+      <nav>
+        <a href="fbp.html">Home</a>
+        <a href="beliefs.html">Beliefs</a>
+        <a href="logbook.html">Logbook</a>
+        <a href="thehangar.html">The Hangar</a>
+        <a href="https://faithbasedpilot.net" target="_blank">Videos</a>
+      </nav>
+      <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
     </div>
   </header>
 
-  <h1>The Hangar</h1>
-  <div class="subheader">
-    The Hangar is a runway for faith-filled thought — where devotion, courage, and truth are grounded before they soar. Click a title card to read!
-  </div>
+  <main class="wrap">
+    <h1>The Hangar</h1>
 
-  <div class="filters">
-    <button data-topic="Faith">Faith</button>
-    <button data-topic="Culture">Culture</button>
-    <button data-topic="Men">Men’s Leadership</button>
-    <button data-topic="Spiritual">Spiritual Warfare</button>
-    <button data-topic="Reflection">Reflection</button>
-    <button id="groupToggle">Group by Topic</button>
-  </div>
+    <!-- Legend + Grouping control -->
+    <div class="legend-row">
+      <div class="legend" aria-label="Topic Legend">
+        <span class="key"><span class="sw" style="background:var(--faith)"></span> Faith</span>
+        <span class="key"><span class="sw" style="background:var(--leadership)"></span> Men’s Leadership</span>
+        <span class="key"><span class="sw" style="background:var(--culture)"></span> Culture</span>
+        <span class="key"><span class="sw" style="background:var(--warfare)"></span> Spiritual Warfare</span>
+        <span class="key"><span class="sw" style="background:var(--reflection)"></span> Reflection</span>
+      </div>
+      <div class="controls">
+        <button id="groupToggle" class="btn" aria-pressed="false">Group by topic</button>
+      </div>
+    </div>
 
-  <div class="grid" id="postGrid">
-    <!-- JS will populate cards -->
-  </div>
+    <p class="lede"> The Hangar is a runway for faith-filled thought — where devotion, courage, and truth are grounded before they soar. <break>Click a title card to read! </break></p>
+   
 
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <button class="close">&times;</button>
-      <div id="modalText"></div>
-      <button class="audio" onclick="speakContent()">🔊 Read Aloud</button>
+    <section class="grid">
+
+      <details class="card" data-category="leadership" id="post-the-strength-of-a-servant-killing-pride-and-leading-low" data-slug="the-strength-of-a-servant-killing-pride-and-leading-low" data-title="The Strength of a Servant: Killing Pride and Leading Low" data-date="May 26, 2025">
+        <summary>
+          <div class="title">The Strength of a Servant: Killing Pride and Leading Low</div>
+          <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/The Strength of a Servant.jpg" alt="">
+  <p>Let’s be honest. Serving is easy when it’s public, when people see it, and when we get praise or affirmation. But true servanthood begins where pride dies. And for most of us, pride doesn’t die quietly. It has to be crucified.</p>
+
+    <p>This is where most people get stuck. We’ll serve, but only if we still feel respected. We’ll help only if it doesn’t make us look small. We’ll volunteer, but not if it costs us control. But Christ didn’t call us to manage appearances. He called us to follow His example.</p>
+
+    <p><em>“Have this way of thinking in yourselves which was also in Christ Jesus, who, although existing in the form of God, did not regard equality with God a thing to be grasped, but emptied Himself, by taking the form of a slave, by being made in the likeness of men.”</em> (<strong>Philippians 2:5–7, LSB</strong>)</p>
+
+    <p>He emptied Himself. He chose the position of the lowest. He washed the feet of the men who would abandon Him — Peter, who denied Him, and Judas, who betrayed Him.</p>
+
+    <p><em>“You call Me ‘Teacher’ and ‘Lord’; and you are right, for so I am. If I then, the Lord and the Teacher, washed your feet, you also ought to wash one another’s feet.”</em> (<strong>John 13:13–14, LSB</strong>)</p>
+
+    <p>That’s not a metaphor. That’s a command. The King of Kings picked up a basin and a towel. What excuse do we have?</p>
+
+    <p>Servanthood is not optional. It is obedience. But it can’t just be outward. It has to be inward. Because there is a kind of service that still protects pride: the kind that serves to be seen, the type that gives to feel important, the kind that hides ego behind effort. That is not Christlike. That is self-righteousness.</p>
+
+    <p>What does authentic servanthood look like? <em>“Do nothing from selfish ambition or vain glory, but with humility of mind regarding one another as more important than yourselves.”</em> (<strong>Philippians 2:3, LSB</strong>)</p>
+
+    <p>Not equal. More important. That’s the line most men won’t cross because it means putting others above your desires, schedule, name, and will. Jesus didn’t just do acts of service. He became a servant. And now we are called to walk that same path. But you cannot walk it carrying pride. You cannot wash feet while trying to look impressive. You cannot bend low if you are obsessed with standing tall.</p>
+
+    <p><em>“Whoever wishes to become great among you shall be your servant, and whoever wishes to be first among you shall be your slave. Just as the Son of Man did not come to be served, but to serve, and to give His life a ransom for many.”</em> (<strong>Matthew 20:26–28, LSB</strong>)</p>
+
+    <p>Jesus didn’t just serve. He gave up His life. That is the cost of following Him. That is the model of manhood we are called to. So what are you still holding onto? Your status? Your comfort? Your name? If we are going to follow Christ, then pride must die. And in its place rises something the world cannot explain: a man who leads by serving, who is strong enough to be low, who does not need credit because his life belongs to Someone greater.</p>
+
+    <p>This is not soft Christianity. This is Christlikeness. And it is time we return to it.</p>
+
+    <p>When pride dies, something more substantial takes its place: responsibility. Not the kind that demands attention, but the kind that shows up regardless of who notices. That’s the heart of Biblical leadership — not control, not applause, just obedience. Jesus didn’t just say “serve.” He showed us how to lead from below.</p>
+
+    <p><em>“If I then, the Lord and the Teacher, washed your feet, you also ought to wash one another’s feet.”</em> (<strong>John 13:14, LSB</strong>)</p>
+
+    <p>The Lord and Teacher stooped. The King of the universe bent His knees and touched the dirtiest parts of His followers. That was leadership. That was strength. Men today chase influence. Jesus chased obedience. He didn’t fight for a seat at the table — He prepared the table, served the bread, and carried the cross.</p>
+
+    <p>So what does this look like for us? In your home, it means leading your family by example — not barking orders or demanding respect, but washing their feet metaphorically daily. You don’t lead your wife by dominating her; you lead by loving her as Christ loved the church — by sacrificing for her (<strong>Ephesians 5:25</strong>). You don’t raise your children with fear and frustration; you raise them with patience, correction, and constant prayer (<strong>Ephesians 6:4</strong>). You don’t make your home your throne. You make it your altar.</p>
+
+    <p>In your church, it means not waiting to be handed a microphone. It means showing up early, staying late, picking up the trash, and praying when no one sees. In your community, it means choosing integrity when it costs you something. It means being the same man in public that you are in private. It means stepping up when others sit back. That is not weakness. That is war against the flesh.</p>
+
+    <p>And here’s the truth most won’t admit: being a servant is costly. You will be overlooked. You will be underappreciated. You will feel unseen. And that’s precisely where God wants to shape you. Because the more hidden you are from the world, the more usable you are to Him.</p>
+
+    <p><em>“So, when you do what you are commanded, say, ‘We are unworthy slaves; we have done only that which we ought to have done.’”</em> (<strong>Luke 17:10, LSB</strong>)</p>
+
+    <p>You aren’t owed recognition. You owe your life to the One who bought it. So lead. Lead by kneeling. Lead by dying to pride. Lead by going last. Lead by taking hits for others and not needing credit. That is Biblical manhood. It doesn’t demand — it serves. It doesn’t self-promote — it self-denies. It doesn’t point fingers — it bears burdens. That is the strength of a servant. That is the leadership the world cannot copy. That is the image of Christ in you. And if you are willing to go low, God will do something great through your obedience.</p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-slave-to-christ" data-slug="slave-to-christ" data-title="Slave to Christ" data-date="May 26, 2025">
+        <summary>
+          <div class="title">Slave to Christ</div>
+          <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+      <img class="thumb" src="images/Slave to Christ.jpg" alt="">
+             <p>I’ve been thinking about how our culture has shaped the way we understand the words <strong>servant</strong> and <strong>slave</strong>, and how that can actually distort how we read Scripture.</p>
+
+    <p>In today’s Western world, a servant is someone who chooses to help. Maybe they get paid, maybe they’re doing a good deed, but either way, they retain control. They can clock out. They can quit. They give, but they still belong to themselves.</p>
+
+    <p>When we hear slave, our minds go straight to American history—forced labor, abuse, ownership without dignity. That history is real, and it’s brutal. But it’s not the framework Scripture is using when it calls us <em>slaves of Christ</em>.</p>
+
+    <p>Biblically, the word most often used by Jesus and the apostles is <em>doulos</em> — <strong>slave</strong>. Not servant. Not helper. Slave. And not in the American sense of racial abuse, but in the Greco-Roman sense of total ownership, loyalty, and lifelong commitment. A <em>doulos</em> had no personal rights. They existed for the will of their master.</p>
+
+    <p>Now, let’s talk about the difference between being a servant of Christ versus being His slave.</p>
+
+    <p>A servant might help God’s cause. They might volunteer, show up to church, pray when it’s convenient. But at the end of the day, they still keep part of their life for themselves. They choose when and how to serve.</p>
+
+    <p>A slave of Christ doesn’t get that luxury. A slave doesn’t bargain. A slave doesn’t say “I’ll give You Sunday, but not my relationships.” A slave is owned. Fully. Completely. And here’s the crazy part — Christ is the only Master who doesn’t exploit, but restores. The only One who gives freedom through surrender.</p>
+
+    <p>Becoming a slave to Christ isn’t easy. No one said it would be. Denying your flesh is one of the hardest things you’ll ever do. This world tells you to chase your desires, but Christ calls you to crucify them.</p>
+
+    <p>Still, turning yourself over to Christ completely is what we’re called to do. Look at Paul. He used to be Saul, the persecutor of Christians. But when he gave his life to Christ, even his name changed.</p>
+
+    <p><strong>Paul</strong> comes from the Latin <em>Paulus</em>, meaning “small” or “humble.” That wasn’t just a name change—it was a posture shift. From pride to humility. From power to submission. From Saul the self-driven to Paul the Christ-owned.</p>
+
+    <p>This is where I stand:</p>
+
+    <p>I don’t want to just serve Christ.<br>
+    I want to belong to Him.<br>
+    I want to be a slave to Christ.<br>
+    Because in that slavery—unlike anything this world has ever known—there is peace, purpose, and life.</p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="leadership" id="post-separated-to-reunite" data-slug="separated-to-reunite" data-title="Separated to Reunite" data-date="May 24, 2025">
+        <summary>
+          <div class="title">Separated to Reunite</div>
+          <div class="meta">May 24, 2025 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/Separated to Reunite.jpg" alt="">
+         <p><em>May 24, 2025 – A preview of a full paper currently being written.</em></p>
+
+    <p>This short post introduces a concept I’m actively developing into a full-length paper. That upcoming study will go deeper into what happened when God created Eve from Adam, how that moment divided the fullness of humanity into two parts, and how marriage was designed to bring them back together. What you’re about to read is the foundation.</p>
+
+    <p>I’ve been reflecting on the moment in Genesis when God created Eve. He didn’t form her from the dust like He did with Adam. And unlike Adam, God did not breathe the breath of life directly into her. Instead, He caused Adam to fall into a deep sleep, took something from his side, and formed a woman. That moment wasn’t just about the creation of Eve. It was about the separation of something whole.</p>
+
+    <p>Adam originally held within himself what God had designed in full humanity — the strength and the sensitivity, the reason and the emotion, the masculine and the feminine. But when God created Eve, He removed part of Adam to place it into another. And He did it for a purpose: reunion.</p>
+
+    <p><em>“So Yahweh God caused a deep sleep to fall upon the man, and he slept. Then He took one of his ribs and closed up the flesh at that place. And Yahweh God fashioned the rib which He had taken from the man into a woman and brought her to the man.”</em> (<strong>Genesis 2:21–22, LSB</strong>)</p>
+
+    <p>At that moment, man was no longer whole and on his own. What had been in him was now beside him. The capacity for emotion, relational depth, and nurturing care was removed and embodied in the woman. And this was not a flaw. It was intentional. God did not make man incomplete by mistake. He made man incomplete by design so that the reunion between man and woman would carry deep spiritual meaning.</p>
+
+    <p>This is why marriage is sacred. It is not just about companionship. It is about restoration. It is about two becoming one again.</p>
+
+    <p><em>“For this reason a man shall leave his father and his mother and cleave to his wife. And they shall become one flesh.”</em> (<strong>Genesis 2:24, LSB</strong>)</p>
+
+    <p>The world has lost sight of this truth. It tells men to embrace only emotion or to suppress it entirely. It tells women to become their own authority, to carry the burdens of both roles. The result is confusion, distortion, and disconnection from God’s original design. But when we look back to Eden, we see the clarity. We know the pattern. Man and woman were meant to reflect different aspects of God's image and reunite in covenant.</p>
+
+    <p>Masculinity is not about oppression. Femininity is not about weakness. Each holds a distinct piece of God's reflection. Marriage is where they meet again. It is where strength finds grace. Where leadership meets compassion. Where one flesh becomes more than biology — it becomes testimony.</p>
+
+    <p>This post is only the beginning. A full paper is coming soon, where I will explore how this design shapes identity, relationships, and the roles we were created to fulfill. What God separated in the garden, He now calls to be united in covenant — not just for companionship, but to mirror His glory.</p>
+
+    <p><strong>We were separated for a reason.<br>
+    We are reunited for a purpose.</strong></p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-the-raven-and-the-dove" data-slug="the-raven-and-the-dove" data-title="The Raven and the Dove" data-date="May 18, 2025">
+        <summary>
+          <div class="title">The Raven and the Dove</div>
+          <div class="meta">May 18, 2025 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/The Raven and the Dove.jpg" alt=""> 
+         <p>I found myself thinking about Noah’s Ark today, specifically about how Noah first sent out a raven and then, later, a dove. The raven never came back. It flew off into the distance and didn’t return. But the dove came back. Then I remembered something else. When Jesus was baptized, the Spirit of God descended like a dove.</p>
+
+    <p><em>“And after being baptized, Jesus came up immediately from the water; and behold, the heavens were opened, and he saw the Spirit of God descending like a dove and coming upon Him.”</em> (<strong>Matthew 3:16, LSB</strong>)</p>
+
+    <p>This wasn’t just about birds; it was about returning, about trust, about the difference between two kinds of people and the two kinds of responses to a broken world.</p>
+
+    <p>The raven was the first bird Noah sent out, just like Adam was the first man God created. Both were given a world to engage with, but both represent a response that refuses to return. The raven never came back. It went out over the waters of judgment and disappeared. That is Adam. When sin entered the picture, he didn’t run back to God; he hid, covered himself, and blamed. And that pattern has never stopped.</p>
+
+    <p>We have been acting like the raven ever since. We fly into chaos looking for rest and never find it. We run from God instead of returning to Him. We search the world for something that only the ark could offer: shelter, salvation, and restoration. But we never come back to the source.</p>
+
+    <p>The dove is different; the dove returns. Even when there is nothing out there, the dove comes back. And when the time is right, it brings something with it. It returns with proof that the world has changed. A sign of peace. A promise of life.</p>
+
+    <p>That is Jesus.</p>
+
+    <p>Jesus, the Second Adam, did not flee from judgment; He entered it. He came down into the floodwaters of a broken world, but He returned. He ascended. And like the dove in Noah’s story, He brought with Him the promise of something new, a new creation, a restored relationship, and the olive branch of peace between God and man.</p>
+
+    <p><em>“For as through the one man’s disobedience the many were appointed sinners, even so through the obedience of the One the many will be appointed righteous.”</em> (<strong>Romans 5:19, LSB</strong>)</p>
+
+    <p>Adam went out and stayed away. Christ returned and made a way.</p>
+
+    <p>The story of the dove does not end there. The first time Noah sent the dove out, it found no resting place and came back. That reminds me of when Christ first came to earth. The world was not ready to receive Him. As John wrote, <em>“He came to His own, and those who were His own did not receive Him.”</em></p>
+
+    <p>The second time, the dove returned with an olive leaf in its beak. This was the sign that the floodwaters had begun to recede, a symbol of peace, hope, and restoration—just like Jesus, who, after His resurrection and ascension, brought us the message of reconciliation with the Father. He did not just come back. He came back bearing the sign of a new covenant.</p>
+
+    <p>Then Noah sent the dove out a third and final time. This time, it did not return. That told Noah the dove had found a place to rest. The old world was gone. Something new was beginning.</p>
+
+    <p>That points us to the second coming of Christ. The first time He came to offer peace. The second time He will come to dwell. Not to deal with sin again, but to establish His kingdom forever. Not just to offer an olive branch, but to make all things new.</p>
+
+    <p><em>“So Christ also, having been offered once to bear the sins of many, will appear a second time for salvation without reference to sin, to those who eagerly await Him.”</em> (<strong>Hebrews 9:28, LSB</strong>)<br>
+    <em>“Behold, I am making all things new.”</em> (<strong>Revelation 21:5, LSB</strong>)</p>
+
+    <p>We live in that space between the flights. The first coming has already happened. The olive branch has already been brought. The promise has already been made. Now we wait for that final flight, the return of the King.</p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="faith" id="post-stand-firm-a-call-to-integrity-and-biblical-morals" data-slug="stand-firm-a-call-to-integrity-and-biblical-morals" data-title="Stand Firm: A Call to Integrity and Biblical Morals" data-date="December 23, 2024">
+        <summary>
+          <div class="title">Stand Firm: A Call to Integrity and Biblical Morals</div>
+          <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/Stand Firm.jpg" alt="">
+           <p>The team had just received some good news. During our brief celebration, someone let out a casual “G.D.” There was a pause. And then, quietly but firmly, I looked directly at the person who said it and said, “I don’t think God damned this.”</p>
+
+    <p>The air felt heavier for a moment. No laughter followed, only silence. A minute or two later, another teammate called the situation for what it was — a blessing.</p>
+
+    <p>Let something be made crystal clear: I’m not apologizing for being Christian, and I never will.</p>
+
+    <p>Integrity and faith aren’t optional; they’re essential. There is no reason to compromise Biblical morals in a world that often tries to silence conviction under the pretense of tolerance. Truth demands to be spoken and defended without hesitation. Our beliefs are not fragile sentiments to be hidden when inconvenient. They are the bedrock that gives us the strength to act with purpose and conviction.</p>
+
+    <p>However, truth must always be accompanied by love. As <strong>Ephesians 4:15</strong> says, <em>“Instead, speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ.”</em> Truth without love can become harsh and unyielding, while love without truth can lead to compromise and complacency.</p>
+
+    <p>Jesus Himself perfectly embodied both. In <strong>John 1:14</strong>, it says, <em>“The Word became flesh and made His dwelling among us. We have seen His glory, the glory of the one and only Son, who came from the Father, full of grace and truth.”</em> His grace didn’t diminish His truth, and His truth didn’t overshadow His grace.</p>
+
+    <p>Too often, it feels easier to stay quiet and to let things slide just to avoid tension. But we weren’t called to blend in. Words matter. Moments like this may seem small, but they carry weight. We don’t switch faith on and off depending on the company. It shapes how we respond to every challenge, every opportunity, every interaction. When God’s name is misused, it matters to stand up. The God who brings peace and strength does not deserve to be reduced to a curse.</p>
+
+    <p><strong>Revelation 3:16</strong> couldn’t be clearer: <em>“So, because you are lukewarm — neither hot nor cold — I am about to spit you out of My mouth.”</em> Lukewarm faith has no place here. We face opposition head-on as we hold fast to the truths that guide us. Standing firm in conviction might mean being labeled rigid or self-righteous, but it is better to bear the weight of those labels than to stand empty-handed before the Creator.</p>
+
+    <p>This is a call to arms — not in anger but in unwavering integrity. Let it be known that I will stand unapologetically for Christ. If that makes some uncomfortable, so be it. If standing firm costs approval, it’s a price gladly paid. Only one opinion matters, and it isn’t the crowd’s.</p>
+
+    <p><strong>I’m not apologizing for being Christian, and neither should you.</strong></p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-slug="the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-title="The Manna from Heaven and the Gift of Christmas: A Profound Call" data-date="December 23, 2024">
+        <summary>
+          <div class="title">The Manna from Heaven and the Gift of Christmas: A Profound Call</div>
+          <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/The Manna from Heaven.jpg" alt
+          <p>In <strong>Exodus 16</strong>, the Israelites, weary and hungry in the wilderness, experienced God’s miraculous provision as manna rained from heaven. This daily bread was not merely sustenance but a profound demonstration of God’s intimate care and faithfulness. Each morning, as they gathered what was needed, the Israelites encountered tangible evidence of a God who met the needs of His people.</p>
+
+    <p>As we approach Christmas, the parallels between the manna in the desert and the arrival of Christ become striking. Just as manna descended to sustain Israel, Jesus came down from heaven to offer Himself as the ultimate Bread of Life. But consider this — the Creator of the universe did not arrive as a mighty warrior or sovereign king. Instead, He came as a vulnerable, fragile infant born into humanity to walk the path that would lead to the cross. This reality should stir within us a profound and humbling sense of gratitude.</p>
+
+    <p>The Israelites relied on daily manna, teaching them dependence and trust. Similarly, Christ's arrival fulfills our deepest need, satisfying the hunger of the soul in ways no earthly provision ever could. His coming is not just a seasonal story but the foundation of our faith — the embodiment of God's love, mercy, and grace in its purest form.</p>
+
+    <p>Christmas reminds us that the greatest gift ever given was not wrapped in ribbons or placed under a tree but swaddled and laid in a manger. Jesus’ birth fulfills God’s promise to redeem humanity, and that realization should leave us awestruck. This is not a quaint or sentimental moment; it is the defining act of divine love, one that deserves our deepest reverence and gratitude.</p>
+
+    <p>In Exodus, God instructed the Israelites to gather manna with intentionality and reverence. They were to collect enough for each day, trusting that God would provide again tomorrow. In the same way, Christmas calls us to receive the gift of Christ with reverence, allowing gratitude to shape our lives. Reflecting on His birth invites us to recognize the blessings we often overlook and the grace that sustains us daily.</p>
+
+    <p>When we stand before the nativity, we are not simply looking at a child in a manger. We are witnessing the very heartbeat of God, made flesh for our sake. Such a reality compels a response — a life lived in gratitude, humility, and love.</p>
+
+    <p>Manna was given not to individuals but to the entire community, fostering unity and shared dependence on God. Christmas carries the same communal spirit. As we celebrate, we are called to extend Christ's love to those around us, reflecting His generosity through our words and deeds.</p>
+
+    <p>The best way to honor the gift of Christ is by embodying His love — caring for the brokenhearted, serving the overlooked, and sharing the hope that His birth represents. In doing so, we become vessels of the very grace that first descended in Bethlehem.</p>
+
+    <p>The manna in Exodus points us to the ultimate gift of Christ, a gift that speaks to the very essence of who God is — a Provider, Redeemer, and Savior. This Christmas, may our hearts swell with gratitude as we reflect on the depth of God's love. Let us not take this gift lightly, for in the fragile form of a baby lies the hope of all humanity. May that truth transform us, and may our lives resound with thanksgiving, not just during this season but every day we draw breath.</p>
+
+    <p><strong>Many blessings and Merry Christmas,</strong><br>
+    <em>FBP</em></p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="faith" id="post-hello-let-s-talk-about-your-car-s-extended-warranty" data-slug="hello-let-s-talk-about-your-car-s-extended-warranty" data-title="Hello, Let’s Talk About Your Car’s Extended Warranty" data-date="December 18, 2024">
+        <summary>
+          <div class="title">Hello, Let’s Talk About Your Car’s Extended Warranty</div>
+          <div class="meta">December 18, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/Cars Extended Warranty.jpg" alt=""> 
+          <p>We've all been there. The phone rings, and a cheerful voice says, “Hello, I’ve been trying to reach you about your car’s extended warranty.” Whether you politely hang up, laugh it off, or block the number, these calls have become a universal experience — persistent, sometimes annoying, and almost always ignored.</p>
+
+    <p>What if I told you that this scenario has a spiritual parallel? Imagine God is on the other end of the line, patiently and persistently reaching out. How often do we treat His call like we treat that of a telemarketer? We dismiss it, assume it’s not essential, or, worse, think it’s some sales pitch we don’t need.</p>
+
+    <p>God’s love for us is persistent. Scripture reminds us in <strong>Revelation 3:20</strong>: <em>“Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come in to him and eat with him, and he with Me.”</em> The imagery here is explicit — Jesus is calling, knocking, and waiting for us to respond. He’s not forcing His way in but not giving up.</p>
+
+    <p>Christ keeps trying to reach us like those persistent warranty calls. The difference? He’s not offering a product or service; He’s offering life — eternal life. In <strong>John 10:10</strong>, Jesus says, <em>“I came that they may have life and have it abundantly.”</em> This isn’t a sales pitch; it’s an invitation to something far greater than we could ever imagine.</p>
+
+    <p>So why do so many of us avoid or ignore the call? Perhaps we think we don’t need what He’s offering. Life might feel fine as it is — no significant breakdowns, no immediate crises. We might assume we can get back to Him later when it’s more convenient.</p>
+
+    <p>Or maybe we misunderstand His intentions. We think He’s offering religion as a set of rules to follow or a transaction to complete. But Christ’s invitation isn’t about earning salvation or signing up for a “plan”; it’s about relationship. In <strong>Matthew 11:28-30</strong>, He invites us with these comforting words: <em>“Come to Me, all who labor and are heavy laden, and I will give you rest. Take My yoke upon you, and learn from Me, for I am gentle and lowly in heart, and you will find rest for your souls.”</em></p>
+
+    <p>We avoid Christ because we misunderstand who He is and what He offers. He is not a salesman; He is a Savior. <strong>The</strong> Savior.</p>
+
+    <p>The car-warranty analogy may be humorous, but it carries a more profound truth. Just as a warranty protects us when something goes wrong with our car, Christ offers a “warranty” for our soul. Through His death and resurrection, He has paid the price for our sins and secured our eternity. In <strong>John 3:16</strong>, we’re reminded: <em>“For God so loved the world, that He gave His only Son, that whoever believes in Him should not perish but have eternal life.”</em></p>
+
+    <p>Unlike an extended car warranty, this gift is not something we purchase. It’s already been paid for and freely offered to anyone who accepts it. <strong>Ephesians 2:8-9</strong> explains, <em>“For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.”</em></p>
+
+    <p>If you’ve been screening God’s calls, thinking it’s just another obligation or something you don’t need right now, consider this your wake-up call. God isn’t trying to sell you something; He’s trying to save you. His offer isn’t limited by time or fine print, but our response shouldn’t be delayed.</p>
+
+    <p><strong>Hebrews 3:15</strong> warns us, <em>“Today, if you hear His voice, do not harden your hearts.”</em> God’s love remains steadfast, unlike car warranties that expire or calls that stop coming. However, our opportunity to respond is limited by the brevity of life itself.</p>
+
+    <p>Next time you hear that infamous line, “Hello, I’ve been trying to reach you…,” let it serve as a reminder. Think about the persistence of God’s call to you — not as an annoyance but as an act of love. While ignoring a telemarketer might save you time, ignoring Christ’s invitation could cost you eternity.</p>
+
+    <p>So pick up the phone, open the door, or say the prayer. Respond to His call. Unlike a scam warranty pitch, Christ’s invitation isn’t about hidden fees or fine print — it’s about giving you everything you’ve ever needed: peace, purpose, and the promise of everlasting life.</p>
+
+    <p>And hey, ignoring the scam call is fair game, but when it comes to Christ’s call? Don’t let Him go to voicemail. After all, His message isn’t “press 1 to opt out” — it’s <strong>“Come to Me and find rest!”</strong></p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-the-spiritual-dangers-of-halloween" data-slug="the-spiritual-dangers-of-halloween" data-title="The Spiritual Dangers of Halloween" data-date="October 18, 2024">
+        <summary>
+          <div class="title">The Spiritual Dangers of Halloween</div>
+          <div class="meta">October 18, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/Spiritual Dangers of Halloween.jpg" alt="">
+         <p>Every year, as October 31st approaches, discussions arise about whether Christians should participate in Halloween. Some argue that it's fine to celebrate because the Catholic Church established All Hallows’ Eve as a way to honor saints, suggesting it’s a Christian holiday. But to fully understand why Christians should be cautious, we need to look at the roots of Halloween, the intentions of the Catholic Church, and what the Bible says about these practices.</p>
+
+    <h3>The Attempt to "Christianize" Pagan Traditions</h3>
+
+    <p>It's true that the Catholic Church designated All Hallows’ Eve on October 31st as a prelude to All Saints’ Day on November 1st. The intention was to replace the ancient Celtic festival of Samhain. This pagan celebration marked the end of the harvest and was associated with beliefs about spirits crossing into the living world. The Church hoped to shift focus from pagan practices to a Christian observance, honoring saints and martyrs.</p>
+
+    <p>However, while the intention may have been to encourage Christian worship, the attempt to "Christianize" these pagan practices resulted in a blend, rather than a clear distinction. Many of the original customs—such as wearing costumes to ward off spirits and using symbols of the dead—continued under the guise of a new name. This blending of Christian and pagan practices is known as <strong>syncretism</strong>, and it's problematic because it can lead to confusion and spiritual compromise.</p>
+
+    <h3>Historical Insight</h3>
+    <p>Throughout history, the Catholic Church often tried to replace or assimilate pagan holidays by introducing Christian alternatives. For example, Christmas was aligned with the pagan festival of Saturnalia, and Easter incorporated elements of the spring festival honoring Eostre. These efforts often led to a mix of pagan and Christian elements rather than a complete shift to Christian observance. Halloween is a prime example of this syncretism.</p>
+
+    <h3>Why Syncretism Is Dangerous: Mixing Pagan Practices with Christian Worship</h3>
+
+    <p>The Bible warns against syncretism—mixing God’s truth with elements of other religions or spiritual practices. God calls for complete devotion without incorporating practices that come from other belief systems. Consider the words of <strong>2 Corinthians 6:14-17</strong>:</p>
+
+    <p><em>“For what do righteousness and wickedness have in common? Or what fellowship can light have with darkness? What harmony is there between Christ and Belial? Or what does a believer have in common with an unbeliever? Therefore, ‘Come out from them and be separate,’ says the Lord.”</em></p>
+
+    <p>When Christians participate in Halloween, they risk engaging with customs and themes that have clear pagan origins. Halloween, even if it has been historically linked to a church holiday, still carries the same imagery and practices that glorify darkness, death, and the occult. This is not just a matter of cultural tradition—it’s a spiritual issue.</p>
+
+    <h3>The Biblical Stance: Avoiding Practices Linked to Darkness</h3>
+
+    <p>The Bible provides strong guidance on how believers should approach practices linked to the dead, spirits, and the occult. God’s Word is clear in <strong>Deuteronomy 18:10–12</strong>:</p>
+
+    <p><em>“Let no one be found among you who… practices divination or sorcery, interprets omens, engages in witchcraft, or casts spells, or who is a medium or spiritist or who consults the dead. Anyone who does these things is detestable to the Lord.”</em></p>
+
+    <p>Despite the Catholic Church’s efforts to offer a Christian alternative through All Hallows’ Eve, the reality is that Halloween still draws from themes of the occult, which God clearly condemns. Costumes of ghosts, witches, and supernatural creatures, as well as horror themes, are not just harmless fun; they reflect practices that God commands us to avoid.</p>
+
+    <h3>King Saul and the Witch of Endor: A Biblical Warning</h3>
+
+    <p>One of the clearest biblical examples of the dangers of engaging with spirits or the dead is found in <strong>1 Samuel 28</strong>. Desperate for guidance, King Saul sought out a medium to summon the spirit of the prophet Samuel despite knowing that God had forbidden such practices. This act of disobedience led to Saul’s downfall, reinforcing that God does not condone any attempt to communicate with the dead or engage in practices associated with the occult.</p>
+
+    <p>God’s stance has always been firm: these practices are forbidden because they open the door to spiritual deception and rebellion. Halloween’s origins in Samhain and its emphasis on spirits, the dead, and fear are rooted in the very things that God warns against.</p>
+
+    <h3>Why Halloween Remains Problematic for Christians</h3>
+
+    <ol>
+      <li><strong>The Attempt to “Christianize” Didn’t Remove the Pagan Roots:</strong> Despite the establishment of All Hallows’ Eve by the Catholic Church, many of the original pagan customs persisted. This means that today’s Halloween celebrations still echo the rituals of Samhain, which were rooted in beliefs incompatible with Christianity.</li>
+
+      <li><strong>Participating in Halloween Can Be Seen as Engaging with Darkness:</strong> <strong>Ephesians 5:11</strong> instructs believers to <em>“Have nothing to do with the fruitless deeds of darkness, but rather expose them.”</em> Halloween glorifies themes connected to witchcraft, fear, and the supernatural. Even if it’s dressed up as innocent fun, the origins and continued emphasis on the occult make it spiritually hazardous.</li>
+
+      <li><strong>God Calls Us to Be Separate, Not to Mix Light with Darkness:</strong> The principle of separation from practices that contradict God’s truth is found throughout Scripture. Christians are called to stand apart, to reflect the light of Christ, not to blend with traditions that glorify what God rejects.</li>
+    </ol>
+
+    <p>It’s important to understand that just because something has been integrated into culture doesn’t make it right. While the Catholic Church attempted to transform Samhain by creating All Hallows’ Eve, the practices and themes of Halloween have remained tied to darkness, fear, and the occult. Christians are called to walk in the light and to avoid any association with practices that open doors to spiritual darkness.</p>
+
+    <p>This isn’t about being overly critical or rejecting all fun — it’s about being discerning and choosing to honor God with our actions. Halloween’s roots, symbolism, and continued practices are incompatible with the faith we profess. Instead of engaging with it, believers can use this time to reflect on God’s truth, pray, and be a light to those around them.</p>
+
+    <p>The Bible calls us to be set apart — to avoid even the appearance of participating in deeds of darkness. Halloween, with its deep connections to paganism and the occult, should not be celebrated by those who seek to live in the light of Christ. Stand firm in your faith, and let the truth of God’s Word guide your actions — not cultural norms or traditions.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="warfare" id="post-do-not-stop-do-not-drop-and-do-not-roll" data-slug="do-not-stop-do-not-drop-and-do-not-roll" data-title="Do Not Stop, Do Not Drop, and Do Not Roll" data-date="October 16, 2024">
+        <summary>
+          <div class="title">Do Not Stop, Do Not Drop, and Do Not Roll</div>
+          <div class="meta">October 16, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/stopdroproll.jpg" alt=""> 
+             <p>We all learned in school that the golden rule is: Stop, Drop, and Roll when you're on fire. But what if I told you that that's precisely what you shouldn't do when it comes to your faith?</p>
+
+    <p>Imagine this: You're on fire for God, burning with passion, purpose, and conviction. You're like a spiritual wildfire, spreading light and warmth everywhere. And then suddenly, here comes the world, Satan, and all of life's distractions, trying to dump a big ol' bucket of water on your faith. The enemy wants nothing more than to make you stop, drop your faith, and roll into complacency.</p>
+
+    <p>But here's the thing: God's not about that "extinguish-the-fire" life. He's calling you to stay ignited, no matter what! So, the next time you feel the world trying to snuff out your flame, remember: <strong>Do not stop, do not drop, and do not roll.</strong> It's time to burn brighter than ever.</p>
+
+    <h3>Do Not Stop: Keep Pursuing God with Passion</h3>
+
+    <p>Let's be honest; life is busy. Sometimes, it feels like there's not enough time in the day for everything, let alone for nurturing your relationship with God. Satan loves that. He loves when we get so wrapped up in the chaos of everyday life that we start to lose our focus on God. Distractions, stress, and even just plain exhaustion can make us slow down or, worse, come to a stop in our walk with God.</p>
+
+    <p>But God's word says don't stop. In <strong>Philippians 3:13–14</strong>, Paul encourages us to press on toward the goal: <em>"Forgetting what is behind and straining toward what is ahead, I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus."</em> No matter what the world throws at us, we must keep pressing forward. Why? Because there's a divine purpose waiting for us that requires us to stay in motion, fueled by the fire of God.</p>
+
+    <p>Here's the truth: Expect obstacles if you're on fire for God. Satan isn't going to sit back and let you grow in faith and purpose without a fight. But the beauty of being on fire for the Lord is that He gives us the strength to keep going, even when life gets tough. So, when you feel weary or like giving up, do not stop. Keep seeking Him, keep worshiping, keep pressing into His presence.</p>
+
+    <h3>Do Not Drop: Hold On to Your Faith</h3>
+
+    <p>The world loves to tell us that faith is optional, something we can "drop" when it gets complicated or inconvenient. It's easy to drop our faith when we're bombarded with doubt and negativity or when the culture around us pushes us in a completely different direction. Let's be real; sometimes, blending in with the crowd feels easier. But that's precisely what the enemy wants.</p>
+
+    <p><strong>Hebrews 10:23</strong> says, <em>"Let us hold unswervingly to the hope we profess, for He who promised is faithful."</em> Did you catch that? <strong>Unswervingly.</strong> That means no matter how hard the road gets or how tempting it is to let go, we must hold fast to our faith.</p>
+
+    <p>The enemy's goal is simple: make you drop your faith. Why? Because a believer who holds on—who clings to Jesus even in the most brutal storms—is unstoppable. But here's the best part: Jesus isn't just the One who saves us; He restores us. When the pressures of life try to break your grip, when the world says, "Let go, it's not worth it," Jesus is there to strengthen your hands and your heart.</p>
+
+    <p>If you feel you've already let go or dropped the ball in your walk with God, guess what? Jesus is always ready to restore what's broken. Even if you've dropped your faith before, He is faithful to pick you back up and reignite the flame inside of you. Do not drop; hold on tight because God is holding on even tighter.</p>
+
+    <h3>Do Not Roll: Resist Compromise and Apathy</h3>
+
+    <p>We've all had those days when we want to "roll" with it. The problem is that rolling through life without intentionality leads to compromise. You start with small things, letting complacency creep in, compromising your time with God, and before you know it, the fire is barely a flicker.</p>
+
+    <p>Jesus speaks directly to this in <strong>Revelation 3:16</strong>: <em>"So, because you are lukewarm—neither hot nor cold—I am about to spit you out of my mouth."</em> Ouch. But this isn't just a rebuke; it's a wake-up call. Jesus wants a passionate, on-fire relationship with us, not half-hearted or rolling through the motions.</p>
+
+    <p>Satan doesn't always need to bring you down with one big temptation. Sometimes, all it takes is a slow, steady roll into complacency. But here's the truth: God has called you to stand firm, not to roll over. You weren't designed for a lukewarm life; you were created to burn with passion for Him.</p>
+
+    <p>And if you find yourself in that place of apathy, where the fire has grown dim, know that Jesus is ready to reignite you. Just like He restored Peter after his denial, He can restore the fire in your heart, no matter how far you think you've rolled away. He is the restorer of our fire; He doesn't just save us; He revives us.</p>
+
+    <p>Here's the deal: The world and the enemy will try to make you stop, drop, and roll at every turn. But when it comes to your faith and relationship with Jesus, it's time to do the opposite. Do not stop pursuing God, no matter how hard life gets. Do not drop your faith because Jesus is your anchor. And do not roll into complacency because He's called you to burn bright.</p>
+
+    <p>So, here's the challenge: check your fire. Is it burning bright, or have the world's cares started to dim it? Wherever you are, know this—God is ready to reignite you. It's not over. Your best days of faith and fire are ahead. Keep going, keep burning, and don't let anything put out what God has started in you.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="faith" id="post-tuning-out-the-noise" data-slug="tuning-out-the-noise" data-title="Tuning Out the Noise" data-date="October 14, 2024">
+        <summary>
+          <div class="title">Tuning Out the Noise</div>
+          <div class="meta">October 14, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+<img class="thumb" src="images/main.jpg" alt="">
+           <p>The world today is relentless. There's a constant stream of information from the moment you wake up until the second your head hits the pillow. Everyone has an opinion, a truth, or an agenda that demands your attention. The volume is loud. How are we supposed to hear God in the middle of it all?</p>
+
+    <p>The truth is, we’re not. We’re not meant to hear God through the chaos—we have to choose to turn the noise down. If we don’t, we risk drowning in a sea of distractions and losing sight of the truth that’s always been right before us.</p>
+
+    <h3>A World Obsessed with Noise</h3>
+
+    <p>Think about it—every second, we are bombarded with voices: social media posts telling us who to be, advertisements convincing us we aren’t enough, news channels amplifying fear. The noise is carefully designed to overwhelm us, to stir us up. And it works. Anxiety, stress, confusion—they thrive in this loud, chaotic world.</p>
+
+    <p>And here’s the heartbreaking part: the louder the noise, the harder it becomes to hear the truth. In fact, it’s easier to believe the loud lies. They’re designed to be addictive, to fuel our fears and insecurities.</p>
+
+    <p>However, as Kay Smith says in <em>Jesus Revolution</em>, “The truth is always quiet. It’s the lies that are loud.”</p>
+
+    <p>This is why we miss it. The truth doesn’t fight for attention. It’s not trending. It doesn’t need to manipulate or overwhelm you. It’s there, waiting. But quietness feels unnatural in a world that feeds off chaos—like something’s missing.</p>
+
+    <h3>Choosing to Hear God’s Voice</h3>
+
+    <p>Let’s be honest: it’s not that we can’t hear the truth; we often don’t want to. It’s easier to scroll through social media or binge-watch our favorite shows than to sit in silence. We’ve become uncomfortable with stillness. Why? Because stillness requires us to face reality. And the fact is raw. Truth is raw.</p>
+
+    <p>But it’s also simple. When Jesus was asked what the most important commandment was, He didn’t give a complicated, theological answer. He simply said, <em>“Love the Lord your God with all your heart and love your neighbor as yourself”</em> (<strong>Matthew 22:37–39</strong>). That’s it. The truth is simple.</p>
+
+    <p>We are the ones who complicate it.</p>
+
+    <p>We overthink, overanalyze, and drown in our own excuses. We look for answers in a million places instead of the one place we know we’ll find them: at the feet of Jesus. The world tells us we need more money, recognition, and success. But Jesus says, <em>“Come to me, all you who are weary and burdened, and I will give you rest.”</em> (<strong>Matthew 11:28</strong>).</p>
+
+    <p>Think about that. Rest. Not more striving, not more pressure, not more noise. Just rest. That’s what the truth offers.</p>
+
+    <h3>The Simple Truth in a Complicated World</h3>
+
+    <p>If the truth is so simple, why don’t we hear it more often? Because it’s quiet. It’s like a whisper in a storm. You have to choose to listen to it. The world will keep screaming that you’re not enough, need to hustle harder, and are falling behind. But the truth? The truth says: <em>“Be still and know that I am God.”</em> (<strong>Psalm 46:10</strong>).</p>
+
+    <p>In <strong>2 Kings 5</strong>, Naaman, a mighty warrior, expected some grand ritual to heal his leprosy. But what did Elisha tell him? Go wash in the Jordan River—something simple, almost too simple. Naaman resisted at first because it didn’t make sense to him. How could something so simple be the answer to his complex problem? It wasn’t until he obeyed the simple truth that he found healing.</p>
+
+    <p>We are Naaman. We want the answers to be complicated because complicated things feel more important. But the truth is simple: trust God. Be still. Listen.</p>
+
+    <h3>How to Find the Quiet in Today’s World</h3>
+
+    <p>It’s time to make a choice. If we want to hear God’s voice, we need to actively turn down the noise. We need to create intentional spaces where we can reconnect with Him. Here’s how:</p>
+
+    <ol>
+      <li><strong>Step Away from the Noise:</strong> When did you last sit silently, without checking your phone or worrying about the next task? God’s truth doesn’t compete with the chaos—He’s waiting for you in the quiet.</li>
+
+      <li><strong>Simplify Your Focus:</strong> Instead of getting caught up in what the world says you should be or do, focus on what God says. His message is clear: <em>Love Me. Love others.</em> (<strong>Matthew 22:37–39</strong>). Fulfillment isn’t found in the endless noise of achievement.</li>
+
+      <li><strong>Embrace Stillness as a Practice:</strong> It’s necessary to be still. Jesus regularly withdrew to quiet places to pray (<strong>Luke 5:16</strong>). If He needed time away from the crowds, so do we.</li>
+
+      <li><strong>Trust the Simplicity of God:</strong> Life doesn’t have to be as complicated as we make it. The truth is simple: we are loved, we are enough, and we find our purpose in God.</li>
+    </ol>
+
+    <p>God isn’t shouting over the noise to get our attention—He’s whispering, waiting for us to tune in. So, the next time the world feels too loud or confusing, remember Kay’s words: “The truth is simple.” It’s there, ready to be heard if you’ll just listen.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-position-lights-and-the-christian-walk" data-slug="position-lights-and-the-christian-walk" data-title="✈️ Position Lights and the Christian Walk" data-date="August 27, 2024">
+        <summary>
+          <div class="title">✈️ Position Lights and the Christian Walk</div>
+          <div class="meta">August 27, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+       <img class="thumb" src="images/Position Lights.jpg" alt="">
+           <p>In aviation, position lights are critical indicators that help pilots and observers determine an aircraft’s direction. These lights are always consistent—red on the left wing, green on the right wing, and white at the tail. Understanding them can help you avoid collisions, just like understanding God’s signs can help us navigate our spiritual journey.</p>
+
+    <h3>Here’s how it works:</h3>
+
+    <h4>Scenario 1: White Light in the Center, Green Light on the Right, and Red Light on the Left</h4>
+    <p><strong>Direction:</strong> The aircraft is moving away from you. You see the white taillight, with the red and green wing lights visible from behind. Spiritually, this represents a time when we may be drifting away from God. We can still see the signs of His presence, but we must turn back before the distance grows too far.</p>
+
+    <h4>Scenario 2: Red Light on the Right, Green Light on the Left</h4>
+    <p><strong>Direction:</strong> The aircraft is approaching you, potentially on a collision course. This is the most critical warning in both aviation and faith. When you see red and green lights like this, it indicates that the aircraft is heading directly toward you. In our walk with God, this could symbolize a dangerous moment where we are on a collision course with temptation or straying from God’s guidance. It’s a strong signal to change direction and seek His protection.</p>
+
+    <h4>Scenario 3: Green Light on the Right, Red Light on the Left (Both Lights Visible but No White Light)</h4>
+    <p><strong>Direction:</strong> The aircraft is passing from left to right. You are safe as the plane moves across your path rather than toward you. In spiritual terms, this is a sign of staying on the right path—neither drifting away nor heading into trouble. It’s a moment of peace and alignment with God’s will as you continue on your faith journey.</p>
+
+    <p>Just as these position lights are vital for keeping the skies safe, God gives us spiritual “lights” to guide our journey. Whether moving closer to Him, drifting away, or heading into potential spiritual danger, the signs are always there—we need to know how to read them.</p>
+
+    <p><strong>“Let your eyes look straight ahead; fix your gaze directly before you.”</strong> <em>– Proverbs 4:25</em></p>
+
+    <p>Are your spiritual “position lights” pointing toward God, or is it time to adjust your course?</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable" data-slug="when-help-is-refused-faith-based-guidance-for-the-unreachable" data-title="When Help is Refused: Faith-Based Guidance for the Unreachable" data-date="August 12, 2024">
+        <summary>
+          <div class="title">When Help is Refused: Faith-Based Guidance for the Unreachable</div>
+          <div class="meta">August 12, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/main.jpg" alt=""> 
+          <p>Imagine this: a doctor in the ER stands before a patient who was admitted for a compound fracture and asks how much alcohol they’ve consumed. The patient replies honestly, saying two dozen beers. The patient's liver is failing, and the only chance for recovery lies in immediate rehabilitation. The doctor, fully aware of the severity, urges the patient to seek help before it’s too late. The doctor finds the same patient at the bar in the evening, downing their eighth beer. It’s a heartbreaking scene that mirrors the frustration and helplessness we often feel when someone we care about refuses the help they desperately need.</p>
+
+    <p>This scenario is not just about physical health; it relates to faith and accepting Christ as one’s Savior. What do we do when someone we love is on a path of self-destruction but refuses to accept the hand Jesus has extended to them?</p>
+
+    <p>In the Bible, we see numerous examples of people who have hardened their hearts against God. Pharaoh, in the book of Exodus, is a prime example. Despite witnessing the miracles and power of God firsthand, Pharaoh repeatedly refused to let the Israelites go. His heart was hardened, leading to his downfall and the suffering of his people. Similarly, there are those today whose hearts are hardened against the message of the Gospel. They may be entrenched in their ways, rejecting Christ’s offer of salvation despite the dangers that loom over their spiritual well-being. This heart-hardening can be one of our most painful realities, especially involving someone we care about.</p>
+
+    <p>As much as we want to reach these individuals and show them the love and truth of Christ, we must acknowledge our limitations. Sometimes, no matter what we say or do, we cannot break through the barrier of a hardened heart. It’s important to recognize that it isn’t always our place to intervene directly. Just as a doctor can offer advice and treatment, it’s ultimately the patient’s choice to listen and act. Similarly, accepting Jesus as Lord and Savior is a personal decision that each individual must make on their own. In these moments, we are reminded of the sovereignty of God.</p>
+
+    <p><strong>Isaiah 55:8-9</strong> tells us, <em>“For my thoughts are not your thoughts, neither are your ways my ways,”</em> declares the Lord. <em>“As the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts.”</em> This passage reminds us that God’s plans and purposes are beyond our understanding. While we may not be able to reach someone, God can work in ways we cannot see or comprehend.</p>
+
+    <p>Even when we encounter hardened hearts, our role remains to love unconditionally. Jesus exemplified this love when He prayed for those who crucified Him, saying, <em>“Father, forgive them, for they do not know what they are doing.”</em> (<strong>Luke 23:34</strong>). We are called to demonstrate the same patience and compassion, even when our efforts seem futile.</p>
+
+    <p>When our words and actions fail to reach someone, we must turn to prayer. <strong>Philippians 4:6</strong> encourages us, <em>“Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.”</em> Through prayer, we entrust the situation to God, asking Him to intervene in ways we cannot. We pray for softened hearts, opportunities to share His love, and God’s will to be done, even if it’s not how we expect.</p>
+
+    <p>Trusting that God is working is essential, even when we don’t see immediate results. Sometimes, the seeds we plant may take years to grow or not grow at all in our lifetime. However, we can find peace knowing God’s timing is perfect. If it is His will, He will reach them in His way and time. <strong>Proverbs 3:5-6</strong> reminds us, <em>“Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.”</em> This verse encourages us to trust God’s plan and timing, knowing He is always in control.</p>
+
+    <p>It’s challenging to step back and allow God to work when we desperately want to intervene. But sometimes, the most loving thing we can do is let go and let God take over. This doesn’t mean we stop caring or praying, but rather, we surrender the situation to God, trusting that He knows best. By letting go, we acknowledge that only God can change a heart. <strong>Ezekiel 36:26</strong> says, <em>“I will give you a new heart and put a new spirit in you; I will remove from you your heart of stone and give you a heart of flesh.”</em> God alone can perform this miracle, transforming a hardened heart into one that is open and receptive to His love.</p>
+
+    <p>When someone we love refuses help—whether in accepting Christ or making better life choices—it’s one of the most painful challenges we can face. Yet, our faith teaches us that while we may not be able to change their hearts, God can. Our role is to love, pray, and trust in God’s sovereignty, knowing that He is always working behind the scenes. As you reflect on your experiences with those who have hardened their hearts, remember to keep them in your prayers, entrusting their journey to God’s hands. While you may not see the desired outcome, you can have peace in knowing that God’s will is always good and His plans are perfect.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-true-confidence-vs-false-security" data-slug="true-confidence-vs-false-security" data-title="True Confidence vs. False Security" data-date="July 18, 2024">
+        <summary>
+          <div class="title">True Confidence vs. False Security</div>
+          <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+<img class="thumb" src="images/main.jpg" alt=""> 
+          <p>Confidence is essential to our lives, shaping our decisions, actions, and overall outlook. However, the source of our confidence can significantly influence its impact on our lives. In this post, we’ll explore the difference between having confidence in the Lord and having false confidence, examining their foundations, implications, and outcomes.</p>
+
+    <h3>Confidence in the Lord</h3>
+    <p>Confidence in the Lord is rooted in faith and trust in God’s character, promises, and sovereignty. This type of confidence is not based on our abilities or circumstances but on the unchanging nature of God. Believing in the promises found in Scripture, such as God’s provision, protection, and guidance (<strong>Psalm 46:1–3</strong>, <strong>Jeremiah 29:11</strong>), is crucial to having confidence in the Lord. This confidence involves acknowledging that God’s plans are higher and better than our own (<strong>Isaiah 55:8–9</strong>) and recognizing our limitations while depending on God’s strength (<strong>Philippians 4:13</strong>). It allows us to experience peace and assurance even in uncertain times, knowing that God is in control (<strong>Philippians 4:6–7</strong>).</p>
+
+    <p>An excellent illustration of this confidence can be found in the way birds live. They do not worry about their next meal or where they will find shelter, yet they are always provided for. Jesus highlights this in <strong>Matthew 6:26</strong>, reminding us to trust God’s provision just as the birds do. They rely entirely on the Lord, exemplifying the peace and assurance of trusting in His care.</p>
+
+    <h3>False Confidence</h3>
+    <p>False confidence, on the other hand, is often based on unreliable or shifting foundations. This type of confidence can lead to disappointment, failure, and a misguided sense of security. Characteristics of false confidence include:</p>
+    <ul>
+      <li>Self-reliance—depending solely on one’s abilities, intelligence, or resources (<strong>Proverbs 28:26</strong>).</li>
+      <li>Placing trust in financial stability or possessions (<strong>1 Timothy 6:17</strong>).</li>
+      <li>Seeking validation and confidence from others’ opinions (<strong>Galatians 1:10</strong>).</li>
+      <li>Feeling secure only when circumstances are favorable (<strong>Matthew 7:26–27</strong>).</li>
+    </ul>
+
+    <h3>The Outcomes</h3>
+    <p>The outcomes of each type of confidence are starkly different:</p>
+
+    <p><strong>Confidence in the Lord</strong> leads to:</p>
+    <ul>
+      <li><strong>Enduring peace</strong>—a deep and lasting peace that transcends understanding (<strong>John 14:27</strong>).</li>
+      <li><strong>Resilience in trials</strong>—the ability to withstand challenges and grow through them (<strong>James 1:2–4</strong>).</li>
+      <li><strong>Purpose and direction</strong>—clarity in life’s decisions (<strong>Proverbs 3:5–6</strong>).</li>
+      <li><strong>Joy and contentment</strong>—independent of external circumstances (<strong>Philippians 4:11–13</strong>).</li>
+    </ul>
+
+    <p><strong>False confidence</strong> often results in:</p>
+    <ul>
+      <li><strong>Disappointment</strong> when self-reliance or external sources fail (<strong>Jeremiah 17:5–6</strong>).</li>
+      <li><strong>Anxiety and fear</strong> when facing challenges without a solid foundation (<strong>Matthew 6:19–21</strong>).</li>
+      <li><strong>Lack of fulfillment</strong> despite achieving worldly success (<strong>Ecclesiastes 2:10–11</strong>).</li>
+      <li><strong>Instability</strong>—a life built on shifting sands, vulnerable to collapse (<strong>Matthew 7:26–27</strong>).</li>
+    </ul>
+
+    <h3>Developing True Confidence in the Lord</h3>
+    <p>Developing true confidence in the Lord involves intentional practices and a heart aligned with His will:</p>
+    <ul>
+      <li><strong>Daily prayer and meditation</strong>—building a relationship with God through regular communication (<strong>Philippians 4:6</strong>).</li>
+      <li><strong>Studying Scripture</strong>—deepening our understanding of His promises and character (<strong>2 Timothy 3:16–17</strong>).</li>
+      <li><strong>Worship and praise</strong>—acknowledging God’s greatness and sovereignty (<strong>Psalm 100:1–5</strong>).</li>
+      <li><strong>Community and fellowship</strong>—encouragement and support among believers (<strong>Hebrews 10:24–25</strong>).</li>
+      <li><strong>Serving others</strong>—demonstrating God’s love through action (<strong>1 Peter 4:10</strong>).</li>
+    </ul>
+
+    <p>Confidence in the Lord provides a firm foundation that withstands life’s challenges and uncertainties. In contrast, false confidence, based on unreliable sources, ultimately leads to disappointment and instability. By placing our trust in God and nurturing our relationship with Him, we can experience true peace, joy, and purpose. As we navigate our journey, let us continually seek to build our confidence on the unwavering rock of God’s love and promises—just as the birds rely on Him without worry.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-tolerance-and-faith-how-to-walk-in-today-s-world" data-slug="tolerance-and-faith-how-to-walk-in-today-s-world" data-title="Tolerance and Faith: How to Walk in Today’s World" data-date="July 18, 2024">
+        <summary>
+          <div class="title">Tolerance and Faith: How to Walk in Today’s World</div>
+          <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt=""> 
+            <p>In today's world, tolerance is often heralded as a supreme virtue, essential for peaceful coexistence in our diverse societies. However, for those of us rooted in faith, there's a challenging tension between being tolerant and standing firm in our beliefs, especially when faced with apostasy. How do we navigate this fine line?</p>
+
+    <p><strong>Apostasy</strong>, simply put, is the abandonment or renunciation of one's faith or beliefs. It's not just a matter of questioning or doubting; apostasy involves deliberately rejecting the fundamental principles of one's faith. It can manifest in various forms, from outright denial of core doctrines to embracing beliefs or practices that contradict the teachings of Scripture.</p>
+
+    <p>We don't just wake up one day and decide to be tolerant of sin, thereby choosing the path of apostasy. (If you do, you're a special kind of person—and I'll pray for you. I'm kidding.) More often than not, this journey begins subtly and innocuously. It usually starts with a friend or family member asking us to tolerate their sin. We begin bending the rules out of love or a desire to maintain peace. It's a slippery slope that can lead us away from the teachings of the Bible.</p>
+
+    <p>This subtle shift often comes from wanting to avoid conflict and keep harmony in our relationships. However, when someone asks us to be tolerant of their sin because it offends them, it is important to remember that it offends us to be asked to compromise our faith and walk with Jesus. This inner conflict highlights the delicate balance we must maintain.</p>
+
+    <p>The Bible warns against compromising our beliefs. In <strong>2 Timothy 4:3–4</strong>, Paul writes, <em>“For the time will come when people will not put up with sound doctrine. Instead, to suit their desires, they will gather many teachers around them to say what their itching ears want to hear. They will turn their ears away from the truth and turn aside to myths.”</em> We must stand firm in our faith and not be swayed by societal pressures to tolerate sin.</p>
+
+    <p>True love involves guiding others toward righteousness. In <strong>Ephesians 4:15</strong>, Paul advises, <em>“Instead, speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ.”</em> This means lovingly yet firmly addressing sin and leading others towards God’s truth.</p>
+
+    <p>Here’s why we shouldn’t tolerate sin: God says it is sin and perverse if He didn’t intend something. By tolerating sin, we are not worshipping the Lord; we are worshipping evil. This means we aren't leading the person to Heaven. Our ultimate goal should be to lead others to salvation. <strong>James 5:19–20</strong> says, <em>“My brothers and sisters, if one of you should wander from the truth and someone should bring that person back, remember this: Whoever turns a sinner from the error of their way will save them from death and cover over a multitude of sins.”</em> By tolerating sin, we are failing in our biblical obligation to guide others towards the Lord.</p>
+
+    <p>While tolerance is essential for peaceful coexistence, it should never come at the cost of compromising our faith. As Christians, we are responsible for lovingly guiding others towards God's truth. By standing firm in our beliefs and not tolerating sin, we not only uphold the teachings of the Bible but also help lead others toward salvation. Let's navigate this fine line with grace, love, and unwavering faith.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="faith" id="post-god-won-t-give-you-anything-he-can-t-handle" data-slug="god-won-t-give-you-anything-he-can-t-handle" data-title="God Won't Give You Anything He Can't Handle" data-date="July 15, 2024">
+        <summary>
+          <div class="title">God Won't Give You Anything He Can't Handle</div>
+          <div class="meta">July 15, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt=""> 
+          <p>Life is full of challenges, and it’s natural to look for comfort and encouragement during tough times. However, one phrase often shared with good intentions is profoundly misleading: <em>“God won’t give you more than you can handle.”</em> While it might sound comforting, this statement can leave us feeling overwhelmed and inadequate when facing insurmountable trials. The truth is, <strong>God won’t give you anything that He can’t handle.</strong></p>
+
+    <h3>Looking to the Past: A Counterproductive Habit</h3>
+    <p>It's tempting to look back at our past when life gets hard. We might reminisce about better days, regret missed opportunities, or dwell on past mistakes. However, this backward focus can trap us in a cycle of guilt, regret, and longing, preventing us from moving forward. The Bible reminds us of the dangers of looking back. In <strong>Philippians 3:13–14</strong>, Paul writes, <em>“But one thing I do: Forgetting what is behind and straining toward what is ahead, I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus.”</em></p>
+
+    <p>God wants us to live in the present and trust Him with our future. By dwelling on the past, we can miss out on the new things God is doing in our lives (<strong>Isaiah 43:18–19</strong>). Instead of looking back, we should focus on God's promises and His presence in our current struggles.</p>
+
+    <h3>God Won’t Give You Anything He Can’t Handle</h3>
+    <p>The misconception that God won’t give us more than we can handle comes from a misinterpretation of <strong>1 Corinthians 10:13</strong>, which says, <em>“No temptation has overtaken you except what is common to humanity. And God is faithful; he will not let you be tempted beyond what you can bear. But when you are tempted, he will also provide a way out so that you can endure it.”</em> This verse is about <strong>temptation</strong>, not the hardships and trials we face.</p>
+
+    <p>The truth is that God often allows us to face situations that are beyond our capacity to handle. These moments drive us to rely on Him, deepening our faith and relationship. In <strong>2 Corinthians 1:8–9</strong>, Paul shares his experience: <em>“We were under great pressure, far beyond our ability to endure, so that we despaired of life itself. Indeed, we felt we had received the sentence of death. But this happened that we might not rely on ourselves but on God, who raises the dead.”</em></p>
+
+    <h3>Trusting in God’s Strength</h3>
+    <p>When we face trials, it's not about our ability to handle them; it's about trusting in God's strength and His ability to carry us through. <strong>Isaiah 41:10</strong> reassures us, <em>“So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen and help you and uphold you with my righteous right hand.”</em> God doesn’t expect us to face our challenges alone. He is with us, providing the strength and support we need.</p>
+
+    <h3>Moving Forward in Faith</h3>
+    <p>Instead of looking to the past or relying on our strength, let’s fix our eyes on Jesus, the author and perfecter of our faith (<strong>Hebrews 12:2</strong>). By placing our trust in Him, we acknowledge that He is in control and capable of handling anything that comes our way. God’s grace is sufficient for us, and His power is perfect in our weakness (<strong>2 Corinthians 12:9</strong>).</p>
+
+    <p>Remember, it’s okay to feel overwhelmed and admit that we can’t handle everything on our own. In those moments, let’s turn to God, trusting that He won’t give us anything <strong>He</strong> can’t handle. With Him, we can face the future with hope and confidence.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-soft-society-hard-truths-undone-culture" data-slug="soft-society-hard-truths-undone-culture" data-title="Soft Society, Hard Truths: Undone Culture" data-date="May 7, 2024">
+        <summary>
+          <div class="title">Soft Society, Hard Truths: Undone Culture</div>
+          <div class="meta">May 7, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+         <img class="thumb" src="images/main.jpg" alt="">
+            <p>In a world where truth is often sacrificed for the sake of preserving someone's feelings, we find ourselves navigating a delicate balance between honesty and compassion. This societal trend has diluted every aspect of our lives, from personal relationships to public discourse. As followers of Christ, we're called to embody the truth while demonstrating love and empathy. However, it's crucial to remember that our mission is not to engage in a battle of tearing down lies but rather to wield the truth with care and love. We must confront the uncomfortable reality that our society's penchant for sugarcoating the truth has weakened our moral fiber and distorted our understanding of integrity.</p>
+
+    <p>Truth, in its purest form, is objective and unyielding. Yet, how we wield this truth can either bring about liberation or inflict profound harm. Throughout history and even in modern society, we witness truth being manipulated and weaponized to serve personal agendas or ideologies. Just as the Pharisees weaponized the law against Jesus, emphasizing legalism over love, we see individuals and groups today using truth as a blunt instrument to tear down others and justify their own biases. This harsh truth forces us to confront the reality that the misuse of truth not only fractures relationships but also erodes the very fabric of our humanity. However, if wielded with integrity and love, the truth can break free from manipulation and guide us toward the path of righteousness as outlined in the Bible.</p>
+
+    <p>The Bible is our guidepost for navigating the intricate relationship between truth and compassion. <strong>Ephesians 4:15</strong> admonishes believers to “speak the truth in love,” highlighting the inseparable connection between honesty and empathy. <strong>Proverbs 12:22</strong> reinforces this principle, denouncing lying lips as abominable to the Lord. These Biblical teachings underscore the importance of aligning our words with the truth while extending grace and empathy to others. However, embracing this truth also means acknowledging the discomfort it may bring, as it challenges us to confront our shortcomings and biases.</p>
+
+    <p>In today's society, we witness a perverse avoidance of uncomfortable truths. This eschewing has contributed to the growth of a culture marked by emotional fragility and moral ambiguity; rather than grappling with complex realities, such as the demands of Christ's teachings, many retreat into societal or self-affirmation, seeking solace in confirmation bias. This harsh truth compels us to recognize that our society's reluctance to confront uncomfortable truths has resulted in a generation ill-equipped to navigate life. As Christians, we're called to counter this trend by courageously confronting the world's harsh realities with compassion, resilience, and love, which offers hope amidst adversity.</p>
+
+    <p>While truth can be painful, it is also liberating. As followers of Christ, we're called to engage in honest dialogue with grace and humility. This means speaking the truth in love, even when it's difficult, and extending empathy to those who may disagree. Practical steps such as active listening, seeking to understand before being understood, and offering forgiveness are essential in fostering genuine connection and understanding. This harsh truth compels us to recognize that genuine dialogue requires vulnerability and a willingness to confront biases and preconceptions.</p>
+
+    <p>In a world where agendas and comfort often obscure truth, Christians are called to be beacons of honesty and compassion. By embracing the principles of truthfulness and kindness, we can counteract the softening of society and cultivate a culture of resilience and grace. Let us speak the truth boldly but always with love, mindful of our calling to reflect the character of Christ in all that we do. The harsh truth challenges us to be courageous in confronting the uncomfortable realities of the world, trusting in the power of genuine dialogue and compassionate action. In doing so, we honor our commitment to truth and uphold the teachings of Christ; I’m only speaking the truth.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="warfare" id="post-faith-strength-courage-community" data-slug="faith-strength-courage-community" data-title="Faith: Strength, Courage, Community" data-date="April 29, 2024">
+        <summary>
+          <div class="title">Faith: Strength, Courage, Community</div>
+          <div class="meta">April 29, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+         <img class="thumb" src="images/main.jpg" alt="">
+           <blockquote>
+      <p><strong>Deuteronomy 31:8</strong> — “It is the Lord who goes before you. He will be with you; he will not leave you or forsake you. Do not fear or be dismayed.”</p>
+      <p><strong>Joshua 1:9</strong> — “Have I not commanded you? Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go.”</p>
+      <p><strong>Psalm 18:2</strong> — “The Lord is my rock and my fortress and my deliverer, my God, my rock, in whom I take refuge, my shield, and the horn of my salvation, my stronghold.”</p>
+      <p><strong>Psalm 23:1</strong> — “The Lord is my shepherd; I shall not want.”</p>
+      <p><strong>Psalm 27:1</strong> — “The Lord is my light and my salvation; whom shall I fear? The Lord is the stronghold of my life; of whom shall I be afraid?”</p>
+      <p><strong>Isaiah 41:10</strong> — “Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.”</p>
+      <p><strong>1 Corinthians 16:13–14</strong> — “Be watchful, stand firm in the faith, act like men, be strong.”</p>
+    </blockquote>
+
+    <p>The overlapping themes in these verses—strength, courage, protection, and faith in God’s presence and power—hold significant relevance in our daily lives as Christians. They remind us of the foundational truths of our faith and offer guidance for navigating life’s challenges. As believers, it is empowering to immerse ourselves in Scripture, continually reading, learning, and studying God’s Word. Scripture is our spiritual nourishment, providing wisdom, insight, and direction for living as Christ’s followers and has the power to transform our lives.</p>
+
+    <p>Through regular engagement with Scripture, we deepen our understanding of who God is and what it means to follow Christ. We learn from Jesus’ example, teachings, and interactions with others, gaining practical insights into how to live out our faith in the world. Scripture illuminates the path before us, guiding us to love God and others and empowering us to walk in obedience and faithfulness.</p>
+
+    <p>However, despite the wealth of wisdom in Scripture, some claim to be Christians but fail to embody Christ’s teachings. They may attend church, participate in religious activities, and even profess faith with their lips, but their actions do not align with the character and values of Christ. In Matthew 18, Jesus gives guidance for addressing such situations within the church community—beginning with private, gentle confrontation and, if needed, involving the wider church for support and accountability.</p>
+
+    <p>As brothers and sisters in Christ, it is our responsibility and privilege to come alongside those struggling or straying from the path of discipleship. We are called to offer support, encouragement, and correction in a spirit of humility and grace. Our aim is not to condemn or judge but to help others grow in their relationship with God and live out their faith authentically. This sense of community and support is vital to our faith journey.</p>
+
+    <p>It is essential not to shrink back from speaking the truth in love. We cannot allow fear of reactions to hinder us from sharing the Gospel or addressing issues of faith and discipleship. Just as Jesus fearlessly proclaimed the truth, even in the face of opposition, we are called to follow His example—approaching others with humility, grace, and a genuine desire for their restoration and growth in Christ.</p>
+
+    <p>Ultimately, our goal as Christians is to reflect the love and character of Christ to the world around us. As we walk in obedience to God’s Word and rely on the guidance of His Spirit, we become living testimonies to the reality of Christ’s presence and power in our lives.</p>
+
+    <p>Walking in obedience and dependence on the Spirit taps into a wellspring of strength, courage, and protection. Through Scripture, we are reminded of God’s promises and His faithfulness to His people throughout history. This assurance empowers us to face life’s challenges with boldness and confidence, upheld by His strength and sheltered by His love. In reflecting Christ to the world, we not only bear witness to the Gospel’s transformative power but embody the strength, courage, and protection that come from unwavering faith in Him.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-patience" data-slug="patience" data-title="Patience" data-date="April 24, 2024">
+        <summary>
+          <div class="title">Patience</div>
+          <div class="meta">April 24, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt="">
+         <p>In a world of instant gratification and quick fixes, patience often feels like a lost virtue. Yet, as Christians, we are called to embrace patience as a cornerstone of our faith journey.</p>
+
+    <p>Patience isn't just about waiting idly by; it's about actively trusting in God's timing and His plan for our lives. It's about surrendering our desires and ambitions to His will, knowing that He sees the bigger picture and knows what's best for us.</p>
+
+    <p>When God calls us to wait, it's not a passive command but an invitation to grow in faith and character. It's during these seasons of waiting that we learn to lean on Him more fully, to seek His guidance and wisdom, and to deepen our relationship with Him.</p>
+
+    <p>Scripture is filled with examples of patience and waiting on God. Abraham waited years for the fulfillment of God's promise of a son. Joseph endured years of trials and hardships before seeing the fulfillment of his dreams. And throughout it all, their faith remained unwavering because they trusted in God's faithfulness.</p>
+
+    <p>Obedience and patience often go hand in hand. When God tells us to wait, it's not a suggestion but a command. And when we obey His command to wait, we position ourselves to receive His blessings in abundance.</p>
+
+    <p>But waiting on God doesn't mean sitting around passively. It means actively seeking Him, praying, and listening for His voice. It means continuing to walk in obedience and faithfulness, even when the path ahead seems unclear.</p>
+
+    <p>In a world that values instant results and immediate gratification, let us purposefully go against today's culture by embracing patience and waiting on God's timing. Let us trust in His faithfulness, knowing that He who promised is faithful to fulfill His promises in His perfect timing.</p>
+
+    <p>So let us wait with hope, knowing that God is working behind the scenes, orchestrating His perfect plan for our lives. And as we wait, let us continue to obey and abide in Him, knowing that our patience will be rewarded beyond measure.</p>
+
+    <blockquote><strong>"But they that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint."</strong> — Isaiah 40:31</blockquote>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="leadership" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage" data-slug="mark-driscoll-guest-speaker-kicked-off-the-stage" data-title="Mark Driscoll, Guest Speaker, Kicked Off the Stage" data-date="April 17, 2024">
+        <summary>
+          <div class="title">Mark Driscoll, Guest Speaker, Kicked Off the Stage</div>
+          <div class="meta">April 17, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/main.jpg" alt=""> 
+           <p><a href="https://www.youtube.com/watch?v=CmVRWJA3wSk" target="_blank" rel="noopener">Video reference 1</a></p>
+           <p><a href="https://www.youtube.com/watch?v=_4W_qOLb7xE" target="_blank" rel="noopener">Video reference 2</a></p>
+
+    <p>Mark Driscoll is a pastor at Trinity Church in Scottsdale, AZ. Pastor Mark Driscoll was invited to speak at James River Church’s Stronger Men’s Conference in Missouri. I am not telling you that you should believe what Mark Driscoll said, but I want to discuss my view. The head pastor of James River, John Lindell, can be heard from the audience, “You’re out of line, Mark…you’re done.” Pastor Mark replied, “Okay, Pastor John, I’ll receive that…thank you,” and walked off the stage. John Lindell then stepped on the stage and spoke on Matthew 18, a conversation he and Driscoll had before he walked on stage. Here’s what Lindell said:</p>
+
+    <blockquote>
+      <p><strong>Matthew 18—</strong> “If your brother offends you, go to him privately.” Lindell said that he talked to Driscoll for 30 minutes before Driscoll took the stage and there was not one word of that. “He’s out of line! If he wanted to say it, he can say it to me. You may not agree with me. You may not agree with him. But we are brothers in Christ, and there’s a right way to handle disagreement. I’m just telling you I’m not going to sit back and watch someone do publicly what they should have done privately. And as a pastor and a man of God, I’ll call another man of God out. I love Mark, but he was out of line and I have a responsibility spiritually for this event, and we saw 530 people come to Christ. And we’ve exalted Jesus. And we’re going to conduct ourselves in a Christian manner, and we’re going to go according to the Bible, and the Bible tells us how that should have been resolved, and it wasn’t.”</p>
+    </blockquote>
+
+    <p>However, in John Lindell’s reference to Matthew 18, he omitted a crucial aspect of the scripture. According to Matthew 18:15–17, if the privately confronted individual fails to change their behavior, the next step involves bringing a few others along to address the issue. Only if the individual refuses to listen should the matter be brought before the whole church. And if there is no repentance even after this process, the church is responsible for removing the individual from its midst.</p>
+
+    <p>Lindell skipped several steps outlined in Matthew 18 by publicly addressing Pastor Driscoll’s behavior. This public decision, I believe, warranted public discussion, especially considering its impact on the men attending the conference. When spiritual leaders fail to adhere to the principles they preach, it becomes a matter of accountability within their immediate and broader Christian communities. Therefore, Pastor Driscoll had every right to discuss the situation publicly, as it affected those present at the conference and reflected on the integrity of the church leadership.</p>
+
+    <p>In a world charged with public scrutiny and where the actions of leaders are closely watched, it’s essential to critically examine decisions made within religious communities, particularly when they impact the spiritual well-being of congregants. Pastor Driscoll’s decision to publicly address the actions of Pastor Lindell should be commended, as it sheds light on a matter that concerns not just the individuals involved but also the broader community of believers.</p>
+
+    <p>By bringing attention to Lindell’s deviation from Biblical principles of accountability and reconciliation, Driscoll has initiated a conversation that is vital for the spiritual health and integrity of the church. It’s crucial to recognize that holding leaders accountable to Biblical standards is not an act of defiance but a demonstration of love for both the individuals involved and the community they serve. If Pastor Lindell acted in error, it’s my hope that he will humbly seek repentance before the Lord and strive to rectify any harm caused. Transparency, humility, and a commitment to Biblical principles are essential for fostering trust and unity within the body of Christ, especially in times of disagreement or conflict.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-7-deadly-sins" data-slug="7-deadly-sins" data-title="7 Deadly Sins" data-date="March 25, 2024">
+        <summary>
+          <div class="title">7 Deadly Sins</div>
+          <div class="meta">March 25, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+         <img class="thumb" src="images/main.jpg" alt=""> 
+        <p>It’s been a while since I wrote, mostly because I didn’t know what I wanted to talk about. However, having succumbed to two of the seven deadly sins, I knew what I wanted to discuss. Recently, I succumbed to greed and gluttony. Now, it wasn’t money, but it was stuff in general. Instead of investing and saving like I should have been, I just wanted these things. Now, you might be thinking, how does gluttony play into this? Well, gluttony isn’t just wanting more helpings of dessert that you do not need. Being gluttonous also pertains to substances of waste or detriment to health. By prioritizing what I wanted instead of saving for what I needed, I could’ve fallen for what most people fall into today… debt.</p>
+
+    <p>This realization highlights a fundamental truth: none of us are immune to the allure of temptation. I share this not to profess perfection but to underscore the universal struggle against sin. The people in our lives may not necessarily lead us astray, but the devil, who knows our weaknesses all too well, seeks to exploit them. Whether it's a crack in our foundation or a chink in our armor, Satan will exploit it to hinder or destroy our relationship with the Lord if we're not vigilant.</p>
+
+    <p><strong>Envy</strong>, for instance, can corrode our souls, poisoning our relationships and breeding bitterness. Picture a scenario where a person, consumed by envy, fixates on the success and possessions of their neighbor, resenting rather than celebrating their achievements. This envy festers, leading to sabotage or slander as they covet what others have.</p>
+
+    <p><strong>Pride</strong>, too, can blind us to our faults and prevent us from seeking help or guidance. Imagine an individual so unwilling to admit their flaws that they alienate themselves from others, missing out on valuable opportunities for growth due to their arrogance.</p>
+
+    <p><strong>Wrath</strong>, the fiery anger simmering beneath the surface, can erupt into violence, causing irreparable harm to relationships and emotional well-being. Consider a scenario where unchecked wrath leads to a destructive outburst, leaving behind a trail of bitterness and regret.</p>
+
+    <p><strong>Slothfulness</strong>, the insidious sin of laziness and apathy, traps us in a cycle of inertia and stagnation. Picture someone habitually procrastinating, neglecting their responsibilities, and avoiding action until their problems become insurmountable.</p>
+
+    <p>These examples underscore how the seven deadly sins can manifest in harsh and damaging ways in real life, leading to profound consequences for individuals and those around them. Recognizing and addressing these sins is crucial for personal growth and spiritual well-being.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="warfare" id="post-discerning-the-divine-understanding-the-voice-of-god" data-slug="discerning-the-divine-understanding-the-voice-of-god" data-title="Discerning the Divine: Understanding the Voice of God" data-date="March 5, 2024">
+        <summary>
+          <div class="title">Discerning the Divine: Understanding the Voice of God</div>
+          <div class="meta">March 5, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/main.jpg" alt=""> 
+            <p>This explores the intricate task of discerning the voice of God amid the mass of inner dialogues and spiritual influences that individuals encounter. Drawing from biblical wisdom, it delves into distinctions between the voices of conscience, demonic influences, and divine guidance—offering insights and practical strategies for those seeking clarity and discernment.</p>
+
+    <p><strong>Orientation from Scripture.</strong> <em>“Trust in the LORD with all your heart and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.”</em> — <strong>Proverbs 3:5–6</strong>. These words frame the need to discern God’s voice amid life’s complexity.</p>
+
+    <h3>The Voice of Conscience</h3>
+    <p>Conscience testifies to moral reality. <strong>Romans 2:15</strong> describes how it “bears witness,” affirming right and wrong. Its reliability grows as it’s formed by God’s Word: <em>“Your word is a lamp to my feet and a light to my path.”</em> — <strong>Psalm 119:105</strong>. Look for moral consistency, integrity, and alignment with revealed truth.</p>
+
+    <h3>The Voice of Demons</h3>
+    <p>Scripture situates malevolent influence within a real spiritual conflict: <em>“We do not wrestle against flesh and blood… but against the spiritual forces of evil.”</em> — <strong>Ephesians 6:12</strong>. Signs include distortion of truth, manipulation, accusation, division, and urges toward destruction or despair that disrupt clear discernment.</p>
+
+    <h3>Discerning God’s Voice</h3>
+    <p>God’s voice is recognized in stillness, communion, and alignment with Scripture. <em>“Be still, and know that I am God.”</em> — <strong>Psalm 46:10</strong>. Ask for wisdom: <strong>James 1:5</strong>. Hallmarks include love, peace, clarity, humility, and coherence with the whole counsel of God; it draws toward Christlikeness and obedience, not self-exaltation.</p>
+
+    <h3>Practical Strategies for Discernment</h3>
+    <ul>
+      <li><strong>Practice inner stillness.</strong> Create rhythms of silence, prayer, and reflection to quiet internal noise.</li>
+      <li><strong>Test impressions.</strong> <em>“Test everything; hold fast to what is good.”</em> — <strong>1 Thessalonians 5:21</strong>. Weigh against Scripture, the fruit produced, and godly wisdom.</li>
+      <li><strong>Seek wise counsel.</strong> Involve mature believers, spiritual mentors, and your church community for confirmation and correction.</li>
+      <li><strong>Watch the fruit.</strong> God’s leading bears the fruit of the Spirit over time—love, joy, peace, patience, etc.</li>
+    </ul>
+
+    <p>Navigating spiritual discernment is challenging, yet possible. By honing awareness, cultivating stillness, testing everything by Scripture, and seeking wise counsel, we can grow in hearing and following God’s voice with clarity, purpose, and grace.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit" data-slug="the-dynamic-dialogue-conscience-and-the-holy-spirit" data-title="The Dynamic Dialogue: Conscience and the Holy Spirit" data-date="March 4, 2024">
+        <summary>
+          <div class="title">The Dynamic Dialogue: Conscience and the Holy Spirit</div>
+          <div class="meta">March 4, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+        <img class="thumb" src="images/main.jpg" alt=""> 
+          <p>Have you ever pondered the source of that inner voice—the one that steers you toward righteousness and cautions you against doing the wrong thing? Is it solely your conscience speaking, or could it be the Holy Spirit guiding you? The truth is, it's both, and they are indeed capable of communication.</p>
+
+    <p>Our conscience, often described as our internal moral compass, is a divine gift. It's that innate sense of right and wrong that influences our decisions and behaviors. <strong>Romans 2:15</strong> speaks of this, stating, <em>“They show that the requirements of the law are written on their hearts, their consciences also bearing witness, and their thoughts sometimes accusing them and at other times even defending them.”</em> Our conscience serves as a mechanism through which God's moral standards are impressed upon us, guiding our actions and prompting us to align with His will.</p>
+
+    <p>Similarly, the Holy Spirit plays a pivotal role in our spiritual journey. Jesus promised His disciples in <strong>John 14:26</strong>, <em>“But the Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things and will remind you of everything I have said to you.”</em> The Holy Spirit not only comforts and empowers believers but also convicts them of sin and guides them into truth (<strong>John 16:8</strong>).</p>
+
+    <p>Indeed, the inner voice that guides us can often be the Holy Spirit speaking to our hearts. The Spirit communicates with believers through a deeper, spiritual connection. It transcends mere moral discernment and provides divine guidance and revelation. The Holy Spirit speaks to our hearts, aligning our desires with God's purposes and prompting us toward obedience and righteousness.</p>
+
+    <p>While our conscience operates based on our innate understanding of morality—shaped by upbringing, culture, and experience—the Holy Spirit communicates through divine conviction and spiritual revelation. When we nurture a sensitive conscience and cultivate a receptive spirit to the Holy Spirit’s leading, we experience a profound alignment with God’s will.</p>
+
+    <p>So, the next time you feel that inner tug toward righteousness or a gentle conviction urging you to repent, recognize it as the dynamic dialogue between your conscience and the Holy Spirit. Embrace it, heed its guidance, and allow it to lead you closer to God’s perfect plan for your life.</p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-growing-good-fruit-reflecting-on-spiritual-transformation" data-slug="growing-good-fruit-reflecting-on-spiritual-transformation" data-title="Growing Good Fruit: Reflecting on Spiritual Transformation" data-date="February 8, 2024">
+        <summary>
+          <div class="title">Growing Good Fruit: Reflecting on Spiritual Transformation</div>
+          <div class="meta">February 8, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+      <img class="thumb" src="images/main.jpg" alt="">
+           <p>Let’s take a moment to reflect on something crucial: the fruits we bear in our lives. You see, just as a tree is known by its fruit, we are recognized by the character and actions we display.</p>
+
+    <p>First, let's ground ourselves in Scripture. In <strong>Galatians 5:22–23</strong>, we are reminded of the fruits of the Spirit: <em>love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.</em> These qualities aren't just nice ideas—they are the essence of a life transformed by the Spirit of God.</p>
+
+    <p>Now, let me be honest with you for a moment. I've witnessed firsthand the transformative power of these fruits in my life—moments where love moved me to forgive, times of joy amidst trials, and instances where patience triumphed over adversity. Yet, I've also confronted the reality of my own shortcomings, recognizing moments where I've allowed rottenness to infiltrate my heart and actions.</p>
+
+    <p>This is where self-examination comes in. It's about looking honestly at our thoughts, words, and actions in light of God's Word and seeing how they compare to the way Jesus lived. Asking ourselves tough questions like, “Do my actions reflect the love of Christ?” or “Am I exercising self-control in my desires?” or “How does this glorify God?”</p>
+
+    <p>But let's not stop there. We need divine feedback, too. Through prayer, meditation, and fasting on God's Word, I've found clarity and conviction in areas where I've needed to course-correct. It's amazing how God speaks to us when we take the time to listen and choose to walk home to Him, our Father in Heaven.</p>
+
+    <p>And you know what? Bearing good fruit isn't just about us; it's about how it impacts others. I've seen firsthand how acts of love, kindness, and forgiveness can bring about transformation and reconciliation in our communities and relationships—but just as importantly, how they can transform a person’s life. I say this because the fruit of the Spirit has transformed my life.</p>
+
+    <p>Let me say that I’ve made some huge mistakes in my life, but hey, none of us are perfect. We all have our moments of weakness, our areas of rottenness that need addressing. The beauty of our faith lies in the opportunity for repentance and growth—for allowing God to prune away the dead branches and cultivate in us a character that reflects His love and grace.</p>
+
+    <p>So, let's commit ourselves to this ongoing process of bearing good fruit and rooting out any areas of rottenness in our lives. Let's draw closer to God, allowing His Spirit to work in and through us, producing a harvest that glorifies Him and blesses those around us.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="warfare" id="post-a-call-to-fortitude-reflecting-on-generational-strength" data-slug="a-call-to-fortitude-reflecting-on-generational-strength" data-title="A Call to Fortitude: Reflecting on Generational Strength" data-date="January 3, 2024">
+        <summary>
+          <div class="title">A Call to Fortitude: Reflecting on Generational Strength</div>
+          <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+       <img class="thumb" src="images/main.jpg" alt="">
+         <p>When we compare generations, we see a big difference. Back in World War II, people were strong and brave, like Elijah from the stories. They didn’t back down from tough times or compromise their convictions when life got difficult.</p>
+
+    <p>But now, things look different. Today’s generation seems weaker, like they’re not standing up for what’s right. They’re facing moral confusion as though they’ve lost their way. It feels like the spiritual battle between Elijah and Jezebel is playing out once again in our modern age.</p>
+
+    <p>In the past, people had strong beliefs and never gave up. They were more open about their faith and more willing to stand boldly for truth. But today, many seem fragile, hesitant to defend what they know is right, and afraid to speak openly about God. The boldness that once defined believers has been replaced with caution and fear of offense.</p>
+
+    <p>This change didn’t just happen overnight—it began when leaders took God out of schools and government. In doing so, they removed the very foundation that upheld our nation’s moral strength. It’s like tearing away the cornerstone of faith that once grounded our courage and unity.</p>
+
+    <p>The generations before us faced hardship with conviction and trust in God. They persevered through wars, poverty, and uncertainty, yet their faith didn’t waver. Today, it often feels as though we’ve lost that foundation of strength that only comes from a deep relationship with God.</p>
+
+    <p>But this isn’t about blaming anyone—it’s a heartfelt plea. A call to rediscover that same unwavering faith, courage, and conviction that sustained those before us. It’s a reminder that the same God who strengthened Elijah, who guided our ancestors through adversity, is still with us today.</p>
+
+    <p><strong>2 Timothy 1:7</strong> says, <em>“For God gave us a spirit not of fear but of power and love and self-control.”</em> That same Spirit still empowers us to rise above complacency, to live boldly for Christ, and to stand firm in truth.</p>
+
+    <p>Let us reclaim that strength. Let us rebuild our foundation of faith. Let us be the generation that chooses courage over comfort, conviction over compromise, and faith over fear—so that those who come after us may once again see what it means to live fully for God.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo" data-slug="the-unyielding-path-of-a-christian-challenging-the-status-quo" data-title="The Unyielding Path of a Christian: Challenging the Status Quo" data-date="January 3, 2024">
+        <summary>
+          <div class="title">The Unyielding Path of a Christian: Challenging the Status Quo</div>
+          <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt=""> 
+         Being Christian isn’t a leisurely stroll, is it?  Being Christian isn’t about cozying up to society's ever-shifting moral compass. It’s about embracing a divine standard, discerning right from wrong as laid out by God and Jesus Christ. But hold on tight because being a Christian isn’t a joyride. It’s more like a rollercoaster through reality.
+
+Let's face it: it’s not all sunshine and rainbows. Jesus didn’t sugarcoat it, and in John 15:18-25, He dropped truth bombs. Yet, how many truly get it?
+
+Living authentically as a Christian means shaking hands with discomfort. It means standing against the tide and upholding values that society often sneers at. While the world sells you a dream of easy acceptance, being a Christian demands waking up to a fiercely different reality.
+
+Oh, the irony! Society whispers seductive lies of ease and acceptance, yet the truth Jesus spoke? It’s uncomfortable, disruptive, and doesn’t fit society's ‘like’ button.
+
+So here’s the reality check: being a Christian isn’t about blending in or finding a cozy spot in the crowd. It’s about embracing the unpopular, being ready to be the odd one out, and facing the daggers society throws at you for standing firm.
+
+But you know what? In that discomfort, in that defiance of the norm, lies an incredible truth—Jesus promised a different kind of reward. Living in truth, following Him, is not just about discomfort but a deeper fulfillment. It’s about experiencing joy, peace, and love that surpasses the discomforts of the world.
+
+So, in the end, it’s not just about embracing discomfort; it’s about embracing a journey where living in truth and following Jesus leads to a richness of spirit that the world could never provide.
+
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-unspoken-facing-the-uncomfortable-truths" data-slug="unspoken-facing-the-uncomfortable-truths" data-title="Unspoken: Facing the Uncomfortable Truths" data-date="December 31, 2023">
+        <summary>
+          <div class="title">Unspoken: Facing the Uncomfortable Truths</div>
+          <div class="meta">December 31, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt=""> 
+           <p>There’s this thing we all do—ignore stuff that feels weird or awkward. We act like if everyone knows, why bother talking about it, right? But that silence? It’s loud. It’s like a room full of secrets nobody wants to spill.</p>
+
+    <p>Think about it: we’re pros at hiding truths that make us uneasy. We cover them up with what’s normal or expected, scared to rock the boat. You know, stuff like rules society makes that we’re too nervous to question.</p>
+
+    <p>Then there are these topics we call off-limits. We keep them quiet because we’re afraid of what people might say. These truths sit in the back of our minds, begging to be noticed.</p>
+
+    <p>But why do we dodge them? Is it because we don’t wanna mess up our comfy bubble? Or because we’re freaked out about dealing with the mess that comes after we spill the beans?</p>
+
+    <p>So here we are, stuck. Truths are out there, but we prefer to pretend they don’t exist. We hide them away, forget about them, act like they’re not important. And it’s all because we’re uncomfortable.</p>
+
+    <p>But hey, in that discomfort, there’s a chance—a chance to peel off the cover, face the weirdness, and deal with the truth. Because in that awkwardness, in that quiet, there’s a chance to learn, to understand, and to really change things up.</p>
+
+    <p>Ready to dive into the weirdness and bring those hidden truths to light? The quiet’s calling—it’s asking us to stop ignoring what’s uncomfortable and start talking. But what about those who claim the mantle of truth and courage yet find themselves paralyzed when their beliefs clash with the uncomfortable?</p>
+
+    <p>Let’s talk about the silence within the ranks of those who profess to live by Christian morals. There’s a contradiction when the principles of truth and integrity espoused by these beliefs don’t align with the discomfort of addressing harsh realities.</p>
+
+    <p>The discomfort surfaces when mental health battles or societal prejudices challenge the supposed moral high ground. In a world that often fails to prioritize integrity, Christians advocating for compassion and justice sometimes falter when confronting these uncomfortable truths. The readiness to speak the truth becomes clouded by fear, discomfort, or the worry of contradicting deeply held beliefs. Society’s lack of emphasis on integrity can weigh heavily, causing our moral compasses to waver and allowing discomfort to override the courage needed to address these challenging realities.</p>
+
+    <p>But here’s the rub: integrity isn’t just about comfortable conversations. It’s about taking those morals and facing the discomfort head-on, even when it’s easier to stay silent.</p>
+
+    <p>The call to action isn’t just for society—it’s for those within religious communities, too. It’s a nudge to bridge the gap between preached values and the often-muted realities. Integrity blossoms not solely in comfortable conversations but in the courage to confront discomfort and speak up despite the unease.</p>
+
+    <p>The quiet beckons, not for more silence, but for voices unafraid to embrace the discomfort. It’s time to align actions with the preached values, step beyond fear, and bring the uncomfortable truths into the light.</p>
+
+    <p>It’s time to shed fear, stand boldly in the armor of God, and let truth—not discomfort—guide our voices.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-unapologetically-christian" data-slug="unapologetically-christian" data-title="Unapologetically Christian" data-date="December 29, 2023">
+        <summary>
+          <div class="title">Unapologetically Christian</div>
+          <div class="meta">December 29, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/main.jpg" alt="">
+        <p>In the archives of history, echoes resonate of those unyielding souls who, unapologetically, carried the mantle of faith, unwavering in their commitment to truth. Among them stand Paul, Peter, and the embodiment of love, Jesus Himself—beacons who refused to dilute the truth to appease the world.</p>
+
+    <p><strong>Paul</strong>, the unyielding messenger, fearlessly proclaimed the Gospel, unapologetically challenging the comfortable ideologies of society. He didn’t water down the truth to suit the masses; instead, he wielded the Gospel like a double-edged sword, slicing through complacency and ruffling feathers wherever he tread.</p>
+
+    <p><strong>Peter</strong>, the unmovable rock, stood firm amidst the storms, refusing to bow to societal pressures or the political circus of his era. His teachings were the unfiltered truth, often discomforting, yet the very source of transformation for countless souls seeking something beyond the mundane.</p>
+
+    <p>And then, there was <strong>Jesus</strong>—the disruptor of norms, the radical voice of truth and love. He didn’t tiptoe around hard teachings; instead, He thundered them, shaking the foundations of convention and ruffling the feathers of the establishment, all while embodying a love that was both unwavering and unapologetic.</p>
+
+    <p>Their legacy, an unyielding challenge to the status quo, echoes through the corridors of time—a challenge that beckons us not to conform, not to sugarcoat, not to bow to the tyrannical whims of societal pressure or politically correct platitudes.</p>
+
+    <p>We find ourselves amidst a landscape where the call to compromise our Christian convictions grows louder by the day. The pressure to dilute the Gospel, to kneel before societal expectations, and to conform to politically charged ideologies becomes increasingly insistent.</p>
+
+    <p>But in the footsteps of these uncompromising giants, we find the courage to stand tall. We mustn’t apologize for the discomfort our beliefs may cause, for the unadulterated Gospel isn’t meant to coddle—it’s meant to challenge, disrupt, and confront.</p>
+
+    <p>Let us be <strong>unapologetically Christian</strong>—not to fit into the world’s mold, not to blend in with the crowd, but to stand boldly with the hard teachings that stir discomfort, provoke thought, and, yes, even ruffle feathers.</p>
+
+    <p>For in the unapologetic assertion of these truths lies the transformative power to challenge the very fabric of society, to shake the foundations of comfort, and to awaken a generation to the audacious beauty of unwavering faith.</p>
+
+    <p><strong>Unapologetically Christian</strong>—a bold declaration that refuses to conform, challenges the norm, and disrupts the prevailing currents, even if it means ruffling feathers along the way.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="warfare" id="post-trusting-god-amidst-jezebel-s-tactics" data-slug="trusting-god-amidst-jezebel-s-tactics" data-title="Trusting God Amidst Jezebel's Tactics" data-date="December 19, 2023">
+        <summary>
+          <div class="title">Trusting God Amidst Jezebel's Tactics</div>
+          <div class="meta">December 19, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+        <img class="thumb" src="images/main.jpg" alt="">
+          <p>Understanding the relationship between <strong>Psalm 18</strong> and the characteristics associated with a <em>"Jezebel spirit"</em> involves drawing parallels between the themes of trust in God’s protection and the traits commonly attributed to Jezebelian influence.</p>
+
+    <h4>Psalm 18: Trust in God’s Deliverance and the Jezebel Spirit</h4>
+
+    <p><em>The Jezebel spirit</em> embodies traits of manipulation, control, and spiritual opposition, drawing parallels to the enemies David faced in Psalm 18. Exploring this connection reveals insights into relying on God’s protection amidst spiritual threats:</p>
+
+    <ol>
+      <li><strong>God as Defender:</strong> David’s acknowledgment of God as a fortress and shield against adversaries (Psalm 18:2) parallels the need for spiritual protection against the manipulative and deceptive nature of a Jezebelian influence.</li>
+      <li><strong>Deliverance from Opposition:</strong> Just as David experienced God’s rescue from enemies, individuals encountering a Jezebel spirit seek deliverance from its manipulative tactics and spiritual hostility through God’s intervention.</li>
+      <li><strong>God’s Justice and Righteousness:</strong> The Psalm highlights God’s righteousness in defending the upright against adversaries. Trusting in God’s justice becomes crucial when combating deceptive and controlling forces akin to the Jezebel spirit.</li>
+    </ol>
+
+    <h4>Developing Trust in the Lord Amidst a Jezebelian Spirit</h4>
+
+    <ol>
+      <li><strong>Understanding God’s Character:</strong> Building trust involves recognizing God’s unwavering faithfulness, goodness, and authority. This understanding serves as a foundation when facing manipulative influences.</li>
+      <li><strong>Dependence and Prayer:</strong> Similar to David’s plea for assistance in Psalm 18, developing trust necessitates a reliant, prayerful relationship with God, seeking His guidance and protection.</li>
+      <li><strong>Anchoring in God’s Word:</strong> Trusting the Lord involves grounding oneself in His Word to discern and combat deceitful tactics characteristic of a Jezebel spirit.</li>
+      <li><strong>Resilience Against Manipulation:</strong> Trusting God empowers individuals to discern and withstand manipulative influences by aligning with His truth and wisdom.</li>
+      <li><strong>Community Support:</strong> Just as David acknowledges God’s support, seeking the solidarity of a faithful community strengthens trust when facing the challenges posed by Jezebelian influence.</li>
+    </ol>
+
+    <p>Understanding Psalm 18’s depiction of God’s deliverance from physical enemies can be paralleled with spiritual battles against the manipulation and opposition associated with a Jezebel spirit. Trusting in the Lord involves recognizing His attributes and relying on His guidance and protection in the face of deceptive and controlling influences.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="warfare" id="post-defending-the-spirit" data-slug="defending-the-spirit" data-title="Defending the Spirit" data-date="December 11, 2023">
+        <summary>
+          <div class="title">Defending the Spirit</div>
+          <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+         <img class="thumb" src="images/main.jpg" alt=""> 
+           <p>Navigating relationships with narcissistic individuals or those who embody traits associated with the Biblical figure of Jezebel can be challenging. Both personalities often exhibit manipulative behaviors, a desire for control, and a lack of empathy, causing turmoil in relationships. Here’s an exploration of these personalities and strategies for self-defense and spiritual resilience.</p>
+
+    <h4>Narcissists</h4>
+    <p>Narcissists typically display an excessive sense of self-importance, a constant need for admiration, and a lack of empathy for others. They may manipulate situations to their advantage and exploit those around them for personal gain. In relationships, they often seek to dominate and can be emotionally abusive.</p>
+
+    <p>Defending against narcissistic behavior involves setting firm personal boundaries. It is crucial to recognize their manipulation tactics, stay firm in your convictions, and refuse to enable their harmful conduct. Seeking support from trusted friends, family, or a therapist can provide guidance and validation as you navigate these challenging relationships.</p>
+
+    <p>Living for God amidst interactions with narcissistic individuals may involve practicing forgiveness, setting healthy boundaries, and seeking spiritual guidance. Emphasizing love, compassion, and understanding while prioritizing your mental and emotional well-being can help maintain your faith and inner peace.</p>
+
+    <h4>Jezebel-Like Figures</h4>
+    <p>Jezebel, as depicted in the Bible, symbolizes manipulation, deceit, and a thirst for power. Those embodying Jezebel-like characteristics often use seduction, manipulation, and control to achieve their goals. They may undermine others and instigate division to maintain their influence.</p>
+
+    <p>Defending against Jezebel-like personalities involves staying rooted in your values and faith. Awareness of their tactics, maintaining clarity of purpose, and avoiding being swayed by deceitful behavior are essential. Building a solid support network and seeking counsel from spiritual mentors or leaders can provide strength and guidance.</p>
+
+    <p>Living for God while encountering Jezebel-like figures might involve discernment and prayer. Staying steadfast in your faith, practicing discernment to identify manipulation, and seeking God’s guidance in decision-making can help you navigate situations where these individuals are present.</p>
+
+    <p>Remember, while it’s essential to defend yourself against toxic behaviors, it’s equally important to approach these individuals with compassion. Praying for their well-being and seeking opportunities for reconciliation, if safe and appropriate, aligns with Christ’s teachings.</p>
+
+    <p>Ultimately, finding a balance between protecting oneself from harmful influences and embodying God’s teachings of love, forgiveness, and compassion is a continual journey that requires resilience, discernment, and reliance on spiritual guidance.</p>
+
+    <h4>Identification</h4>
+
+    <h5>Narcissistic Individuals</h5>
+    <ul>
+      <li><strong>Excessive Self-Importance:</strong> They often exhibit an inflated sense of self-worth, constantly seeking admiration and validation from others while belittling others’ accomplishments.</li>
+      <li><strong>Lack of Empathy:</strong> A notable hallmark of narcissism is disregard for others’ feelings. They may invalidate emotions and show little concern for others’ experiences.</li>
+      <li><strong>Manipulative Behavior:</strong> Narcissists manipulate situations and people to serve their own interests, often using charm, guilt, or aggression to control others.</li>
+      <li><strong>Difficulty Accepting Criticism:</strong> They have a fragile ego and are highly sensitive to criticism. Rather than acknowledge faults, they deflect blame or become defensive.</li>
+      <li><strong>Sense of Entitlement:</strong> They expect special treatment and feel entitled to privileges or recognition without merit, often exploiting others to fulfill their own needs.</li>
+    </ul>
+
+    <h5>Jezebel-Like Figures</h5>
+    <ul>
+      <li><strong>Manipulative and Controlling:</strong> Similar to Jezebel in the Bible, these individuals use deceit, coercion, or seduction to control others and achieve their goals.</li>
+      <li><strong>Promotes Division:</strong> They thrive on sowing discord, creating rifts between people or groups to maintain influence and power.</li>
+      <li><strong>Lack of Integrity:</strong> Jezebel-like personalities often disregard ethics and principles, lying or deceiving to achieve their objectives.</li>
+      <li><strong>Reluctance to Accept Responsibility:</strong> Much like narcissists, they deflect blame, refusing accountability for their actions or outcomes.</li>
+      <li><strong>Power-Hungry:</strong> They crave influence and authority, often seeking or exploiting positions of power for personal agendas.</li>
+    </ul>
+
+    <p>Recognizing these traits can serve as a guide to identify potential narcissistic or Jezebel-like behavior. However, it’s important to approach these observations with empathy and caution. Labeling others must be done with discernment and understanding, as human behavior is complex and multifaceted.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-guidance-and-asking-for-help" data-slug="guidance-and-asking-for-help" data-title="Guidance and Asking for Help" data-date="December 11, 2023">
+        <summary>
+          <div class="title">Guidance and Asking for Help</div>
+          <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt="">
+           <p>Sometimes, our reluctance to seek help stems from a fear of vulnerability or a misconception that asking for assistance is a sign of weakness. Yet, it takes great courage and strength to admit when we need support. Jesus taught the importance of humility and reaching out to others in need. Remember the stories of how He compassionately helped those who sought Him out?</p>
+
+    <p>Asking for help isn't just about our relationship with Jesus; it's also about fostering connections with those around us. Often, God works through people—friends, family, counselors—who are there to offer support and guidance. They might answer our prayers, serving as instruments of His love and care.</p>
+
+    <p>Pride can cloud our judgment and hinder our growth, but recognizing this and taking steps to overcome it is a journey that aligns with spiritual teachings about humility and self-awareness. By acknowledging our limitations and seeking help, we open ourselves to valuable opportunities for growth, learning, and deeper connections with our faith and those around us.</p>
+
+    <p>Remember, seeking help isn't a sign of weakness; it's a courageous step toward healing, growth, and a deeper connection with God and others.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-christmas" data-slug="christmas" data-title="Christmas" data-date="December 4, 2023">
+        <summary>
+          <div class="title">Christmas</div>
+          <div class="meta">December 4, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+           <img class="thumb" src="images/main.jpg" alt=""> 
+ <p>The celebration of Christmas traces back to the birth of Jesus Christ, which is documented in the New Testament, primarily in the books of <strong>Matthew</strong> and <strong>Luke</strong>. The exact date of Jesus’ birth is not explicitly mentioned in Scripture; however, <strong>December 25th</strong> was chosen by early Christians as the day to commemorate Christ’s birth. This date was likely selected to coincide with pagan winter solstice festivals, repurposing these events to focus on the coming of the <strong>Light of the World</strong>—Jesus Christ.</p>
+
+    <p>The nativity story, describing the birth of Jesus in Bethlehem, is foundational to the Christian faith. The shepherds’ visitation, the angelic proclamation of “good news of great joy,” and the humble birth of Christ in a manger reveal the heart of God’s redemptive plan for humanity. As Christianity spread, the observance of Christmas grew, becoming widely recognized by the 4th century AD when Emperor <strong>Constantine</strong> officially recognized Christianity. Since then, Christmas has evolved to incorporate various cultural traditions while remaining centered on celebrating the birth of Jesus Christ.</p>
+
+    <h4>Spiritual Significance of Christmas</h4>
+    <p>Christmas holds deep religious meaning for Christians, as it celebrates the incarnation of <strong>Jesus Christ—the Son of God and Savior of mankind</strong>. While gift-giving has become a prominent part of modern celebrations, the roots of this tradition can be traced to the <strong>Magi</strong> who presented gifts of gold, frankincense, and myrrh to the newborn King. These gifts symbolized worship, reverence, and acknowledgment of Jesus’ divine mission.</p>
+
+    <p>Yet, the essence of Christmas lies not in the exchange of material goods but in the reflection on the <strong>gift of salvation</strong> that God gave through Christ’s birth, life, death, and resurrection. By keeping our focus on Jesus, we are reminded of God’s love, grace, and faithfulness. The celebration should inspire gratitude, humility, and renewed commitment to living out the teachings of Christ.</p>
+
+    <h4>Guarding Against Commercialization</h4>
+    <p>When the true essence of Christmas becomes overshadowed by consumerism and extravagance, its spiritual significance is at risk. The commercialization of Christmas emphasizes materialism and indulgence, often diverting attention from its sacred roots. This shift in focus can lead to misplaced priorities—valuing possessions and appearance over compassion, worship, and faith.</p>
+
+    <p>While participating in holiday traditions can be joyful, Christians are encouraged to <strong>remain anchored in faith</strong> and ensure their celebrations honor Christ. This can be done by engaging in acts of kindness, serving those in need, reading the nativity story, and reflecting on the profound truth of Emmanuel—“God with us.” By refocusing on the spiritual purpose of the season, believers can reclaim Christmas as a time of worship, gratitude, and love.</p>
+
+    <h4>Living Out the Message of Christmas</h4>
+    <p>To preserve the true meaning of Christmas, Christians are called to embody Christ’s values throughout the season. Acts of <strong>love, humility, and generosity</strong> reflect the heart of God’s gift to humanity. Sharing the Gospel, helping the less fortunate, and cultivating peace within our homes and communities allow the message of Christmas to come alive beyond decorations and festivities.</p>
+
+    <p>Ultimately, the celebration of Christmas is a reminder of <strong>God’s greatest gift—His Son, Jesus Christ</strong>. By keeping our hearts centered on Him, we can find joy and fulfillment far deeper than any material gift could bring. May we each approach this season not merely as a time of celebration, but as an opportunity to draw closer to God, reflect on His love, and share that love with others.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="faith" id="post-guilt-shame" data-slug="guilt-shame" data-title="Guilt & Shame" data-date="November 27, 2023">
+        <summary>
+          <div class="title">Guilt & Shame</div>
+          <div class="meta">November 27, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+         <img class="thumb" src="images/main.jpg" alt="">
+        <p>I’ll start off by sharing something that some may consider obvious: if you feel guilty or ashamed about something in your life, that guilt and shame are holding you back. <strong>Give your guilt and shame to God.</strong> We all experience these emotions, but we must recognize that they either have a presence in our lives or a lingering sense within our hearts. Left unchecked, guilt and shame can lead to fear, then anger, then a sense of inferiority, and ultimately, hopelessness.</p>
+
+    <p>The truth is simple — <strong>our problems and solutions are spiritual.</strong> We must seek the root of our struggles, and they are rarely at the physical level. You can have everything you need in the natural world and still feel lost or burdened. That’s because guilt and shame are spiritual weights, placed upon us by the slanderer — <strong>Satan</strong> — who seeks to obstruct who the Lord created us to be. But <strong>Jesus bestows forgiveness and freedom.</strong> He breaks every chain that keeps us bound.</p>
+
+    <p>How many people today don’t know there is a Savior who brings love, grace, and forgiveness? And among those who do know Him, how many Christians have forgotten this truth — that they are already forgiven and free? Guilt and shame can take root in childhood and linger into adulthood, shaping how we see ourselves and others. Yet Scripture reminds us of a powerful truth:</p>
+
+    <blockquote>
+      Romans 8:1 — “Therefore, there is now no condemnation for those who are in Christ Jesus.”
+    </blockquote>
+
+    <p>When we belong to Christ Jesus, there is <strong>no guilt, no shame, and no condemnation.</strong> God doesn’t want us to live under the weight of shame. He wants us to bring our distress to Him, to experience what the Bible calls <strong>Godly sorrow</strong> — the kind that leads to repentance and renewal. There is a difference between condemnation and conviction. Condemnation pushes us away from God, while conviction draws us closer to Him in humility and love.</p>
+
+    <p>Let go of your guilt and shame. Take them to the cross where Jesus already paid for them in full. Allow His grace to wash over you and set you free. Remember — when Christ says you are forgiven, you are free indeed.</p>
+
+    <p><strong>Let the guilt and shame go, and go before Christ the Lord.</strong></p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="culture" id="post-jesus-freak" data-slug="jesus-freak" data-title="Jesus Freak" data-date="November 20, 2023">
+        <summary>
+          <div class="title">Jesus Freak</div>
+          <div class="meta">November 20, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+     <img class="thumb" src="images/main.jpg" alt=""> 
+        <p>In delving deeper into the concept of being a <strong>“Jesus freak,”</strong> I’ve come to realize that the term carries profound meaning beyond its countercultural origins. It’s not merely about being an enthusiastic outlier in society; it’s about embodying a deep, consistent commitment to faith and walking with Christ in every aspect of life.</p>
+
+    <p>The <strong>Jesus Movement</strong> of the late 1960s and early 1970s emphasized personal conversion experiences, community, and authenticity in faith. Those labeled as “Jesus freaks” weren’t rebelling for rebellion’s sake — they were rejecting hollow religious formalism and returning to the raw, transformative message of Jesus Christ. They sought to live out the Gospel with genuine passion, simplicity, and boldness.</p>
+
+    <p>Initially, I wanted to avoid identifying with the term. Maybe I thought that those called “Jesus freaks” were overly zealous, detached from reality, or simply too extreme. But over time, life has reshaped that perspective. This past year, amid trials, uncertainties, and loss, my faith has not only survived — it’s been <strong>reforged</strong>. It’s become a source of strength, peace, and direction in the chaos of the world.</p>
+
+    <p>Now, I can confidently say I <strong>want</strong> to be known as a “Jesus freak.” It’s not about fitting in or seeking approval from society — it’s about standing apart, marked by an unwavering commitment to Christ. In a world that’s lost its moral compass, being a “Jesus freak” means aligning with <strong>God’s true north</strong>. It’s a compass that points toward divine purpose, love, and truth.</p>
+
+    <p>Embracing this label means recognizing that being a “Jesus freak” is something <strong>good</strong> — something powerful. It’s about a faith that goes beyond Sunday services and becomes a transformative force shaping every part of who we are. People notice when faith is authentic — when it’s more than words, when it’s lived out daily with conviction and compassion. That authenticity is what draws others closer to Christ.</p>
+
+    <p>Ultimately, being a “Jesus freak” is an invitation to <strong>pick up your cross and follow Christ</strong> without hesitation. It’s a declaration that we are anchored to something greater than ourselves — that our foundation is unshakable in Him. In a world that constantly shifts, we stand firm.</p>
+
+    <blockquote>
+      “If anyone would come after Me, let him deny himself and take up his cross daily and follow Me.” — Luke 9:23
+    </blockquote>
+
+    <p>So yes — call me a “Jesus freak.” I’ll wear the label with joy and conviction, because it reflects not fanaticism, but a <strong>faith alive</strong> — bold, unashamed, and fully surrendered to the One who gave it all for me.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-faith-and-forgiveness" data-slug="faith-and-forgiveness" data-title="Faith and Forgiveness" data-date="November 13, 2023">
+        <summary>
+          <div class="title">Faith and Forgiveness</div>
+          <div class="meta">November 13, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+          <img class="thumb" src="images/main.jpg" alt=""> 
+          <p>I will start this by saying that <strong>God loves you</strong>. He loves you more than anyone in your life ever could or ever will.</p>
+
+    <p>Never forget where you are able to go for help. When the twelve disciples were caught in the storm, they cried out for Jesus. Peter asked to join Him on the water—not because Jesus commanded it, but because Peter took a step of faith. Like Peter, we take steps that grow our faith, but at times we become distracted by sin and begin to sink. Do not be afraid—Jesus will lift you when you call out to Him. He does not want you to drown; He wants you to <strong>stand and embrace Him.</strong></p>
+
+    <h4>Faith and Forgiveness</h4>
+    <p>Satan works against you every single day. He has been working to demolish you long before you were even born. He wants you weak and unaware that <strong>God has a plan for your life.</strong> Some struggles may even feel generational—and that’s because sin entered the world through Adam and Eve. Their mistake was, indeed, <strong>generational</strong>.</p>
+
+    <p>But here is the good news: <strong>Jesus Christ, our Lord and Savior, died for our sins. PRAISE BE HIS NAME!</strong></p>
+
+    <h4>Sanctification</h4>
+    <p>Jesus has sanctified us. <em>What does that mean?</em> Merriam-Webster defines sanctification as:</p>
+    <ol>
+      <li>To set apart for a sacred purpose or religious use.</li>
+      <li>To free from sin.</li>
+    </ol>
+
+    <p>Sanctification comes in three parts, as explained by Craig Caster, founder of Family Discipleship Ministries:</p>
+
+    <ul>
+      <li><strong>Initial Sanctification:</strong> The position God gives every believer at salvation. We are redeemed, forgiven, and made righteous through the blood of Jesus Christ. We are called “saints,” not because we are perfect, but because Christ took our guilt upon Himself on the cross.</li>
+      <li><strong>Progressive Sanctification:</strong> This is the daily process of abiding in Christ and surrendering to His power. It requires continual participation—being <strong>willing</strong> to surrender and walk in obedience.</li>
+      <li><strong>Ultimate Sanctification:</strong> This final stage occurs when believers are fully conformed to the image of Jesus Christ at His second coming.</li>
+    </ul>
+
+    <p>Sanctification is a journey, not an overnight change. It’s the process of stepping away from sin and allowing God to reshape our hearts. Sin always breaks—it depresses, poisons, and destroys. It broke our relationship with God and, consequently, with one another. But through Christ, that brokenness can be restored.</p>
+
+    <blockquote>“Yell out, ‘I NEED HELP!’ God sent His only Son to save us. Jesus has freed us from the weight of sin so we no longer have to carry it.” — Tim Gilligan</blockquote>
+
+    <p>Pastor Gilligan once shared that in <strong>John 3:16–18</strong>, we can replace the word <em>condemn</em> with <em>drowning</em> to better understand that Jesus came to save us from sinking in our sin. God is good, God does good, and He works all things together for our good. The only thing that blocks His goodness from reaching us is <strong>unforgiveness.</strong></p>
+
+    <h4>Unforgiveness</h4>
+    <p>Unforgiveness is one of the most powerful barriers to healing. Jesus Himself modeled ultimate forgiveness when He prayed from the cross, <strong>“Father, forgive them, for they know not what they do.”</strong> (Luke 23:34)</p>
+
+    <p>Forgiveness is not saying what happened is okay—it’s allowing something new to grow in its place. Forgiveness has little to do with the other person; it’s about releasing yourself from the chains that bind your heart.</p>
+
+    <p>Many of us struggle to forgive because we want justice, acknowledgment, or payback. But Pastor Gilligan reminds us: <strong>“Forgiveness has nothing to do with them—it’s for your healing.”</strong> Forgiving doesn’t erase your memory, but it stops you from reliving your pain. You cannot move into your future while still living in your past.</p>
+
+    <p>We must forgive because unforgiveness not only separates us from others—it separates us from God. Forgiveness restores peace, healing, and freedom. If God can forgive us, we can forgive others. It might not be easy, and it may take time, but forgiveness is an act of faith, not feeling. Pray for the strength to forgive and keep your heart open to the work of the Holy Spirit.</p>
+
+    <blockquote>“God’s gift of forgiveness is meant to free you—not to excuse others, but to heal your soul.”</blockquote>
+
+    <h4>The Cost of Sin</h4>
+    <p>Pastor Tim Gilligan said there are three places to pay for sin:</p>
+    <ol>
+      <li><strong>The Cross</strong> — where Jesus paid it all.</li>
+      <li><strong>Hell</strong> — which is eternal, because we can never pay it off.</li>
+      <li><strong>Hell on Earth</strong> — where we try to pay it off ourselves, but never succeed.</li>
+    </ol>
+
+    <p>Let us choose the first. Let us come to the cross. That’s where faith meets forgiveness, and where our freedom begins. Call out to Jesus, release the weight of guilt, and let Him make you whole again.</p>
+
+        </div>
+      </details>
+    
+      <details class="card" data-category="reflection" id="post-who-are-you" data-slug="who-are-you" data-title="Who Are You?" data-date="November 6, 2023">
+        <summary>
+          <div class="title">Who Are You?</div>
+          <div class="meta">November 6, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+        <img class="thumb" src="images/main.jpg" alt=""> 
+          <p><strong>Who are you?</strong></p>
+
+    <p>Here is who you are <em>not</em>:</p>
+
+    <ol>
+      <li>You are not what you look like.</li>
+      <li>You are not what you do.</li>
+      <li>You are not what you have.</li>
+      <li>You are not what others say about you.</li>
+      <li>You are not what happened to you.</li>
+      <li>You are not what was done to you.</li>
+      <li>You are not what you have done.</li>
+    </ol>
+
+    <p>The only true reflection of who you are is found in <strong>God’s Word.</strong></p>
+
+    <p>If you do not know who you are, you will not find your purpose. Pastor Tim Gilligan once said, “It’s like trying to paint with a screwdriver when you don’t know who you are.” Without understanding your identity in Christ, your purpose will always feel out of reach.</p>
+
+    <h4>How Do You Know Who You Are?</h4>
+    <p>You will find yourself when you open God’s Word.</p>
+
+    <p><strong>In Him, you are complete.</strong></p>
+
+    <blockquote>
+      Colossians 2:8–10 (NKJV)<br>
+      [8] Beware lest anyone cheat you through philosophy and empty deceit, according to the tradition of men, according to the basic principles of the world, and not according to Christ. <br>
+      [9] For in Him dwells all the fullness of the Godhead bodily; <br>
+      [10] and you are complete in Him, who is the head of all principality and power.
+    </blockquote>
+
+    <p>Jesus did not come merely to save us, but to <strong>comfort, bless, and love us.</strong> We find our truest selves in Jesus Christ, not in the world’s definitions or labels. Every search for identity outside of Him leads to confusion — but in Him, we find wholeness and peace.</p>
+
+    <p>Jesus took the full punishment our sins deserved. <strong>Praise the Lord!</strong> He has removed our judgment day — paying a debt we were incapable of paying. That’s who you are — someone <strong>redeemed</strong> by grace.</p>
+
+    <blockquote>
+      “If God is for us, who can be against us?” — Romans 8:31
+    </blockquote>
+
+    <h4>Here is who you are:</h4>
+
+    <ol>
+      <li>You are saved.</li>
+      <li>You are a child of God.</li>
+    </ol>
+
+    <p><strong>YOU. ARE. LOVED. BY. GOD.</strong></p>
+        </div>
+      </details>
+    
+      <details class="card" data-category="faith" id="post-god-will-strengthen-and-free-you" data-slug="god-will-strengthen-and-free-you" data-title="God Will Strengthen and Free You" data-date="November 5, 2023">
+        <summary>
+          <div class="title">God Will Strengthen and Free You</div>
+          <div class="meta">November 5, 2023 <span class="chev">▾</span></div>
+        </summary>
+        <div class="content">
+       <img class="thumb" src="images/main.jpg" alt="">
+           <p>Do you know what is truly amazing? The <strong>Gospel not only saves you</strong>, but also <strong>frees you</strong> to be the man or woman God has created you to be.</p>
+
+    <blockquote>
+      1 John 3:1 (NIV)<br>
+      “See what great love the Father has lavished on us, that we should be called children of God! And that is what we are! The reason the world does not know us is that it did not know him.”
+    </blockquote>
+
+    <p>Would you consider what you do with your dominant hand to be better than the work you would do with your non-dominant hand? Imagine trying to write, throw, or play a sport using your weaker side. Sounds frustrating, doesn’t it? You would miss more, struggle more, and never operate at your full potential. </p>
+
+    <p><strong>That’s what life without Christ is like.</strong> When you’re living outside of His guidance, you’re not functioning as the complete, whole person He created you to be. You’re missing the strength, balance, and purpose that only come through Him.</p>
+
+    <p>When you live in Christ—your “dominant side,” so to speak—you walk in power. You live in wholeness. You begin to step into your full God-given potential. But when brokenness from your past remains unhealed, it still influences how you move through life. You can forgive, but the wound can linger.</p>
+
+    <h4>A Hard Truth</h4>
+    <p><strong>Just because you have forgiven someone does not mean you have been healed from the pain they caused.</strong></p>
+
+    <p>Forgiveness and healing are connected, but they are not the same. Forgiveness releases the offender; healing restores the wounded. Forgiveness happens in a moment, but healing often takes time, surrender, and deep trust in the Father.</p>
+
+    <p>We’ve all heard phrases like, “Time heals all wounds,” or “Just move on.” But time alone doesn’t heal—it’s <strong>God</strong> who heals. Only when we bring our pain to Him do we find true restoration. And sometimes, when you pray for healing, the pain might get worse before it gets better. That’s not a sign of failure; it’s a sign that God is reaching deeper into the wound to remove what’s been festering there.</p>
+
+    <h4>Run to the Father</h4>
+    <p>It’s one thing to <em>know</em> about God’s love—it’s another to <em>be known</em> by the Father. He isn’t distant; He’s waiting for you to come home. No matter how broken, angry, or numb you feel, He wants to heal your heart completely.</p>
+
+    <p>We often tell ourselves, “I just need to be stronger.” But strength apart from God is a fragile illusion. You might hold it together for a season, but when life hits hard again, you’ll crumble. True strength—lasting strength—comes only when you allow God to carry you.</p>
+
+    <p><strong>When you ask God to help you, you will become stronger than you’ve ever been.</strong> You won’t crumble under pressure; you’ll stand firm knowing He is with you. His strength will sustain you. His peace will anchor you.</p>
+
+    <blockquote>
+      “God sent His only Son to die for us—not only to save us, but to have a relationship with each and every one of us.”
+    </blockquote>
+
+    <p>That’s the heart of the Gospel: <strong>God saves, God restores, and God heals.</strong> The cross didn’t just secure your eternity—it gave you freedom and healing in this life, right now. Come to Him. Bring your pain, your past, your weakness. He is ready to make you whole again.</p>
+
+        </div>
+      </details>
+    
+    </section>
+  </main>
+
+  <!-- Full-screen modal -->
+  <div id="postModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="sheet">
+      <button class="close" aria-label="Close">×</button>
+      <h2 id="modalTitle"></h2>
+      <div id="modalMeta" class="meta"></div>
+      <div id="modalBody"></div>
+
+      <div class="sharebar">
+        <button id="btnWebShare" type="button">Share…</button>
+        <a id="btnCopyLink" href="#" role="button">Copy link</a>
+        <a id="btnFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
+        <a id="btnX" href="#" target="_blank" rel="noopener">X</a>
+        <a id="btnEmail" href="#" target="_blank" rel="noopener">Email</a>
+        <a id="btnSMS" href="#" target="_blank" rel="noopener">SMS</a>
+        <span id="copyStatus" class="copy-ok" aria-live="polite"></span>
+      </div>
     </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Faith Based Pilot</p>
+  <footer class="footer">
+    <p>© <span id="year">2022</span> Faith Based Pilot</p>
   </footer>
 
   <script>
+  (function () {
+    // Theme toggle
     const body = document.body;
-    const toggle = document.getElementById('themeToggle');
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modalText');
-    const closeModal = modal.querySelector('.close');
-    const groupToggle = document.getElementById('groupToggle');
-    let showingGroup = false;
+    const toggleEl = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') body.classList.add('light');
+    function toggleTheme() {
+      body.classList.toggle('light');
+      localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
+    }
+    toggleEl.addEventListener('click', toggleTheme);
+    toggleEl.setAttribute('role','button');
+    toggleEl.setAttribute('aria-label','Toggle color theme');
+    toggleEl.setAttribute('tabindex','0');
+    toggleEl.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggleTheme(); } });
 
-    const posts = [
-      { title: "Men: Stand Firm", content: "Men are called to lead, protect, and serve...", topic: "Men" },
-      { title: "Faith Under Fire", content: "Trials refine our faith and show God's glory.", topic: "Faith" },
-      { title: "Cultural Decline", content: "We must stand against moral compromise.", topic: "Culture" },
-      { title: "Armor of God", content: "The full armor is vital for daily spiritual battle.", topic: "Spiritual" },
-      { title: "Daily Reflection", content: "What did I do today that honored Christ?", topic: "Reflection" },
-    ];
+    // Modal behavior (desktop + mobile) + share
+    const modal = document.getElementById('postModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta  = document.getElementById('modalMeta');
+    const modalBody  = document.getElementById('modalBody');
+    const closeBtn   = modal.querySelector('.close');
+    const btnWebShare = document.getElementById('btnWebShare');
+    const btnCopyLink = document.getElementById('btnCopyLink');
+    const btnFacebook = document.getElementById('btnFacebook');
+    const btnX        = document.getElementById('btnX');
+    const btnEmail    = document.getElementById('btnEmail');
+    const btnSMS      = document.getElementById('btnSMS');
+    const copyStatus  = document.getElementById('copyStatus');
+    let lastTrigger = null;
+    let currentSlug = null;
 
-    function renderPosts(filter = null) {
-      const grid = document.getElementById('postGrid');
-      grid.innerHTML = '';
-      const list = filter ? posts.filter(p => p.topic === filter) : posts;
-      list.forEach(post => {
-        const el = document.createElement('div');
-        el.className = 'card';
-        el.dataset.topic = post.topic;
-        el.innerText = post.title;
-        el.onclick = () => {
-          modalText.textContent = post.content;
-          modal.style.display = 'flex';
-        };
-        grid.appendChild(el);
-      });
+    function buildShareURL(slug) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('post', slug);
+      url.hash = '';
+      return url.toString();
     }
 
-    renderPosts();
+    function updateShareLinks(title, date, slug) {
+      const shareUrl = buildShareURL(slug);
+      const text = title + (date ? ' — ' + date : '');
 
-    document.querySelectorAll('.filters button[data-topic]').forEach(btn => {
-      btn.onclick = () => {
-        renderPosts(btn.dataset.topic);
-        groupToggle.textContent = "Show Original Order";
-        groupToggle.disabled = true;
+      // Web Share API
+      btnWebShare.onclick = async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: title, text: text, url: shareUrl });
+          } catch(e) {}
+        } else {
+          // Fallback: copy link
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            copyStatus.textContent = 'Link copied';
+            setTimeout(() => copyStatus.textContent = '', 2000);
+          } catch(e) {}
+        }
       };
-    });
 
-    groupToggle.onclick = () => {
-      if (!showingGroup) {
-        posts.sort((a, b) => a.topic.localeCompare(b.topic));
-        groupToggle.textContent = "Show Original Order";
-        showingGroup = true;
-      } else {
-        groupToggle.textContent = "Group by Topic";
-        showingGroup = false;
-      }
-      groupToggle.disabled = false;
-      renderPosts();
-    };
+      // Copy Link
+      btnCopyLink.onclick = async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          copyStatus.textContent = 'Link copied';
+          setTimeout(() => copyStatus.textContent = '', 2000);
+        } catch(e) {}
+      };
 
-    closeModal.onclick = () => modal.style.display = 'none';
+      // Facebook sharer
+      btnFacebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl);
 
-    function speakContent() {
-      const msg = new SpeechSynthesisUtterance(modalText.textContent);
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(msg);
+      // X (Twitter)
+      btnX.href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text) + "&url=" + encodeURIComponent(shareUrl);
+
+      // Email
+      btnEmail.href = "mailto:?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(text + "\n\n" + shareUrl);
+
+      // SMS (may vary by device)
+      btnSMS.href = "sms:?&body=" + encodeURIComponent(text + " " + shareUrl);
     }
 
-    const saved = localStorage.getItem('theme') || 'dark';
-    body.classList.remove('light','dark');
-    body.classList.add(saved);
-    toggle.addEventListener('click', () => {
-      const next = body.classList.contains('dark') ? 'light' : 'dark';
-      body.classList.remove('dark','light');
-      body.classList.add(next);
-      localStorage.setItem('theme', next);
+    function openFromCard(card) {
+      const summary = card.querySelector('summary');
+      const title = summary.querySelector('.title')?.textContent?.trim() || '';
+      const metaEl = summary.querySelector('.meta');
+      let date = '';
+      if (metaEl) {
+        date = Array.from(metaEl.childNodes).filter(n => n.nodeType === Node.TEXT_NODE)
+                    .map(n => n.nodeValue.trim()).join(' ').trim();
+      }
+      const contentHTML = card.querySelector('.content')?.innerHTML || '';
+      const slug = card.getAttribute('data-slug') || '';
+
+      modalTitle.textContent = title;
+      modalMeta.textContent  = date;
+      modalBody.innerHTML    = contentHTML;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lastTrigger = summary;
+      currentSlug = slug;
+
+      // push state for deep link
+      const shareUrl = buildShareURL(slug);
+      history.pushState({ post: slug }, '', shareUrl);
+
+      updateShareLinks(title, date, slug);
+    }
+
+    // Attach click to all cards
+    document.querySelectorAll('details.card > summary').forEach(summary => {
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = summary.parentElement;
+        openFromCard(card);
+      });
     });
-  </script>
+
+    function closeModal(popHistory=true) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      modalBody.innerHTML = '';
+      if (lastTrigger) lastTrigger.focus();
+      if (popHistory) {
+        // remove ?post= param
+        const url = new URL(window.location.href);
+        url.searchParams.delete('post');
+        history.pushState(null, '', url.toString());
+      }
+      currentSlug = null;
+    }
+    closeBtn.addEventListener('click', () => closeModal(true));
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(true); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(true); });
+
+    // Prevent native details opening
+    document.querySelectorAll('details.card').forEach(d => {
+      d.addEventListener('toggle', () => { if (d.open) d.removeAttribute('open'); });
+    });
+
+    // Deep-link: open if ?post=slug exists
+    const params = new URLSearchParams(window.location.search);
+    const initialSlug = params.get('post');
+    if (initialSlug) {
+      const card = document.querySelector('details.card[data-slug="' + initialSlug + '"]');
+      if (card) openFromCard(card);
+    }
+
+    // Handle back/forward
+    window.addEventListener('popstate', (evt) => {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('post');
+      if (slug) {
+        if (!modal.classList.contains('open') || slug !== currentSlug) {
+          const card = document.querySelector('details.card[data-slug="' + slug + '"]');
+          if (card) openFromCard(card);
+        }
+      } else {
+        if (modal.classList.contains('open')) closeModal(false);
+      }
+    });
+  })();
+  
+      // ===== Group by topic (uses data-category on each <details class="card">) =====
+      const grid = document.getElementById('grid') || document.querySelector('.grid');
+      if (grid){
+        const cards = Array.from(grid.children).filter(el => el.matches('details.card'));
+        const originalOrder = cards.slice();
+        const catOrder = ['faith','leadership','culture','warfare','reflection'];
+        const groupToggle = document.getElementById('groupToggle');
+
+        function groupByTopic() {
+          const grouped = catOrder.flatMap(cat =>
+            cards.filter(c => (c.dataset.category || '').toLowerCase() === cat)
+          );
+          const remainder = cards.filter(c => !catOrder.includes((c.dataset.category || '').toLowerCase()));
+          [...grouped, ...remainder].forEach(c => grid.appendChild(c));
+        }
+        function restoreOrder() {
+          originalOrder.forEach(c => grid.appendChild(c));
+        }
+        const savedGrouping = localStorage.getItem('hangarGrouping') === 'topic';
+        if (savedGrouping && groupToggle) {
+          groupByTopic();
+          groupToggle.setAttribute('aria-pressed','true');
+          groupToggle.textContent = 'Show original order';
+        }
+        if (groupToggle){
+          groupToggle.addEventListener('click', () => {
+            const pressed = groupToggle.getAttribute('aria-pressed') === 'true';
+            if (pressed) {
+              restoreOrder();
+              groupToggle.setAttribute('aria-pressed','false');
+              groupToggle.textContent = 'Group by topic';
+              localStorage.setItem('hangarGrouping','original');
+            } else {
+              groupByTopic();
+              groupToggle.setAttribute('aria-pressed','true');
+              groupToggle.textContent = 'Show original order';
+              localStorage.setItem('hangarGrouping','topic');
+            }
+          });
+        }
+      }
+
+      // Auto-update copyright year if #year exists
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+</script>
 </body>
 </html>
