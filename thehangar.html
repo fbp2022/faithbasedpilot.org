@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Hangar</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     :root {
       --bg: #111;
@@ -14,14 +16,10 @@
       --inkL: #000;
       --panelL: #f7f7f7;
       --borderL: rgba(0, 0, 0, 0.12);
-      --faith: #5b9bff;
-      --men: #a484ff;
-      --culture: #f86c6b;
-      --warfare: #ffa500;
-      --reflect: #00c49a;
     }
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
@@ -31,173 +29,194 @@
       color: var(--inkL);
     }
     header {
-      background: #1a1a1a;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 16px 32px;
+      background-color: #1a1a1a;
     }
-    body.light header {
-      background: #f0f0f0;
-    }
-    .nav-links, .theme-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .nav-links a {
+    body.light header { background-color: #f2f2f2; }
+    .nav-left a {
       color: inherit;
-      font-weight: bold;
       text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
     }
-    .theme-toggle {
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      filter: invert(1);
-    }
-    body.light .theme-toggle {
-      filter: invert(0);
-    }
-    h1 {
+    .nav-right img { height: 32px; }
+    h1 { text-align: center; margin-top: 20px; }
+    .subheading {
       text-align: center;
-      margin-top: 1.5rem;
-    }
-    .intro {
-      text-align: center;
-      margin: 0.5rem auto 2rem;
+      font-size: 16px;
+      margin: 10px auto 20px;
       max-width: 800px;
-      font-size: 1rem;
     }
-    body.light .intro {
-      color: #000;
-    }
-    .filters {
+    body.light .subheading { color: #000; }
+    .filter-buttons {
       display: flex;
       justify-content: center;
+      gap: 12px;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 24px;
     }
-    .filters button {
-      padding: 6px 12px;
-      border-radius: 6px;
+    .filter-buttons button {
+      border: none;
+      padding: 10px 16px;
+      background-color: transparent;
       font-weight: bold;
-      border: 1px solid #888;
-      background: transparent;
+      border-radius: 8px;
       cursor: pointer;
     }
-    .filters button.active {
-      background: #ccc;
-      color: #000;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-      max-width: 1100px;
-      margin: 0 auto 4rem;
-      padding: 0 1rem;
+    .posts-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 16px 64px;
     }
     .card {
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: none;
-      border: none;
-      color: white;
+      padding: 16px;
+      border-radius: 12px;
+      width: 300px;
+      box-sizing: border-box;
     }
-    .card h3 { margin: 0; font-size: 1rem; }
-    .card p { margin: 0.25rem 0 0; font-size: 0.875rem; color: rgba(255,255,255,0.7); }
-    .faith { background: var(--faith); color: #000; }
-    .men { background: var(--men); color: #000; }
-    .culture { background: var(--culture); color: #000; }
-    .warfare { background: var(--warfare); color: #000; }
-    .reflect { background: var(--reflect); color: #000; }
-    body.light .card { color: #000; }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      font-size: 0.85rem;
-      color: #888;
-    }
+    .card h3 { margin: 0 0 8px 0; }
+    .card p { margin: 0; font-size: 14px; }
+    .blue { background-color: #6495ED; color: #fff; }
+    .purple { background-color: #BA55D3; color: #fff; }
+    .red { background-color: #F08080; color: #fff; }
+    .orange { background-color: #FFA500; color: #000; }
+    .green { background-color: #40E0D0; color: #000; }
+    footer { text-align: center; font-size: 14px; padding: 32px; opacity: 0.5; }
   </style>
 </head>
 <body>
   <header>
-    <nav class="nav-links">
-      <a href="/">Home</a>
-      <a href="/beliefs.html">Beliefs</a>
-      <a href="/logbook.html">Logbook</a>
-      <a href="/thehangar.html">The Hangar</a>
-      <a href="/videos.html">Videos</a>
-    </nav>
-    <div class="theme-controls">
-      <a href="#"><img src="/fbpicon.png" alt="Click Me" height="24" /></a>
-      <img src="/theme-toggle.svg" alt="Toggle Theme" class="theme-toggle" onclick="toggleTheme()">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="thehangar.html">The Hangar</a>
+      <a href="videos.html">Videos</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">
+        <img src="images/fbp_compass.png" alt="FBP Logo" />
+      </a>
     </div>
   </header>
 
   <h1>The Hangar</h1>
-  <p class="intro">The Hangar is a runway for faith-filled thought — where devotion, courage, and truth are grounded before they soar. Click a title card to read!</p>
+  <p class="subheading">
+    The Hangar is a runway for faith-filled thought — where devotion, courage, and truth are grounded before they soar. Click a title card to read!
+  </p>
 
-  <div class="filters">
-    <button onclick="filterCards('faith')">Faith</button>
-    <button onclick="filterCards('men')">Men’s Leadership</button>
-    <button onclick="filterCards('culture')">Culture</button>
-    <button onclick="filterCards('warfare')">Spiritual Warfare</button>
-    <button onclick="filterCards('reflect')">Reflection</button>
-    <button onclick="resetCards()">Group by topic</button>
+  <div class="filter-buttons">
+    <button>Faith</button>
+    <button>Men’s Leadership</button>
+    <button>Culture</button>
+    <button>Spiritual Warfare</button>
+    <button>Reflection</button>
+    <button>Group by topic</button>
   </div>
 
-  <div class="cards" id="cardContainer">
-    <div class="card faith">
-      <h3>Faith Under Fire</h3>
+  <div class="posts-container">
+    <div class="card blue">
+      <h3>The Strength of a Servant: Killing Pride and Leading Low</h3>
       <p>May 26, 2025</p>
     </div>
-    <div class="card culture">
-      <h3>Cultural Decline</h3>
-      <p>December 23, 2024</p>
+    <div class="card blue">
+      <h3>Slave to Christ</h3>
+      <p>May 26, 2025</p>
     </div>
-    <div class="card men">
-      <h3>Servant Leadership in Crisis</h3>
-      <p>November 14, 2024</p>
+    <div class="card blue">
+      <h3>Separated to Reunite</h3>
+      <p>May 24, 2025</p>
     </div>
-    <div class="card warfare">
-      <h3>Spiritual Battle in the Workplace</h3>
-      <p>October 8, 2024</p>
+    <div class="card blue">
+      <h3>The Raven and the Dove</h3>
+      <p>May 18, 2025</p>
     </div>
-    <div class="card reflect">
-      <h3>Discerning God’s Voice</h3>
-      <p>September 1, 2024</p>
+    <div class="card red">
+      <h3>Stand Firm: A Call to Integrity and Biblical Morals</h3>
+      <p>Dec 23, 2024</p>
+    </div>
+    <div class="card red">
+      <h3>The Manna from Heaven and the Gift of Christmas</h3>
+      <p>Dec 23, 2024</p>
+    </div>
+    <div class="card red">
+      <h3>Hello, Let’s Talk About Your Car’s Extended Warranty</h3>
+      <p>Dec 18, 2024</p>
+    </div>
+    <div class="card orange">
+      <h3>The Spiritual Dangers of Halloween</h3>
+      <p>Oct 18, 2024</p>
+    </div>
+    <div class="card orange">
+      <h3>Do Not Stop, Do Not Drop, and Do Not Roll</h3>
+      <p>Oct 16, 2024</p>
+    </div>
+    <div class="card orange">
+      <h3>Tuning Out the Noise</h3>
+      <p>Oct 14, 2024</p>
+    </div>
+    <div class="card purple">
+      <h3>Position Lights and the Christian Walk</h3>
+      <p>Aug 27, 2024</p>
+    </div>
+    <div class="card blue">
+      <h3>When Help is Refused: Faith-Based Guidance</h3>
+      <p>Aug 12, 2024</p>
+    </div>
+    <div class="card blue">
+      <h3>True Confidence vs. False Security</h3>
+      <p>Jul 18, 2024</p>
+    </div>
+    <div class="card green">
+      <h3>Tolerance and Faith: How to Walk in Today’s World</h3>
+      <p>Jul 18, 2024</p>
+    </div>
+    <div class="card green">
+      <h3>God Won’t Give You Anything He Can’t Handle</h3>
+      <p>Jul 15, 2024</p>
+    </div>
+    <div class="card red">
+      <h3>Soft Society, Hard Truths: Undone Culture</h3>
+      <p>May 7, 2024</p>
+    </div>
+    <div class="card blue">
+      <h3>Faith: Strength, Courage, Community</h3>
+      <p>Apr 29, 2024</p>
+    </div>
+    <div class="card green">
+      <h3>Patience</h3>
+      <p>Apr 24, 2024</p>
+    </div>
+    <div class="card red">
+      <h3>Mark Driscoll, Guest Speaker, Kicked Off the Stage</h3>
+      <p>Apr 17, 2024</p>
+    </div>
+    <div class="card red">
+      <h3>7 Deadly Sins</h3>
+      <p>Mar 25, 2024</p>
+    </div>
+    <div class="card green">
+      <h3>Discerning the Divine: Understanding the Voice of God</h3>
+      <p>Mar 5, 2024</p>
     </div>
   </div>
 
-  <footer>
-    <span id="year">© 2025</span> Faith Based Pilot
-  </footer>
+  <footer>© 2025 Faith Based Pilot</footer>
 
   <script>
-    function toggleTheme() {
+    const toggleTheme = () => {
       document.body.classList.toggle("light");
       localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-    }
-    function setThemeFromStorage() {
-      if (localStorage.getItem("theme") === "light") {
-        document.body.classList.add("light");
-      }
-    }
-    function filterCards(category) {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        card.style.display = card.classList.contains(category) ? 'block' : 'none';
-      });
-    }
-    function resetCards() {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => card.style.display = 'block');
-    }
-    document.getElementById("year").textContent = "© " + new Date().getFullYear();
-    setThemeFromStorage();
+    };
+    window.addEventListener("DOMContentLoaded", () => {
+      if(localStorage.getItem("theme") === "light") document.body.classList.add("light");
+    });
   </script>
+
 </body>
 </html>
