@@ -39,7 +39,12 @@
       border-radius:12px; background:rgba(255,255,255,.03);
       overflow:hidden;
     }
-    body.light details.card { border-color:#e2e2e2; background:#fff; }
+    body.light details.card:not([data-category]){
+  background:var(--panelL);
+  border-color:var(--borderL);
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
 
     details.card > summary {
       list-style:none; outline:none; cursor:pointer;
@@ -132,6 +137,27 @@
     .btn{appearance:none;border:1px solid var(--border);background:#202020;color:#fff;padding:.45rem .8rem;border-radius:8px;font-size:.9rem;cursor:pointer;}
     .btn:hover{filter:brightness(1.08)}
     body.light .btn{background:#f5f5f5;color:#000;border-color:var(--borderL)}
+
+
+/* Color coding – keep these last for highest specificity */
+details.card[data-category="faith"]{
+  background-color:var(--faith) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="leadership"]{
+  background-color:var(--leadership) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="culture"]{
+  background-color:var(--culture) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="warfare"]{
+  background-color:var(--warfare) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category="reflection"]{
+  background-color:var(--reflection) !important; color:#fff !important; border-color:rgba(0,0,0,.35) !important;
+}
+details.card[data-category] .content{
+  border-top-color:rgba(255,255,255,.35) !important;
+}
 
 </style>
 </head>
