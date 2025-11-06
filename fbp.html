@@ -94,7 +94,24 @@
       .cards{grid-template-columns:1fr;}
       .card img{height:220px;}
     }
-  </style>
+  
+    #clickMe {
+      position: absolute;
+      right: 2.5rem;
+      top: 3.25rem;
+      color: red;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    #clickMe::before {
+      content: "↑";
+      position: absolute;
+      left: -12px;
+      top: -18px;
+      font-size: 1.2rem;
+    }
+
+</style>
 </head>
 
 <body>
@@ -107,6 +124,8 @@
       <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">Videos</a>
     </nav>
     <img id="themeToggle" src="images/theme-toggle-logo.png" alt="Toggle Theme">
+    <div id="clickMe">Click Me!</div>
+
   </header>
 
   <h1>Welcome</h1>
