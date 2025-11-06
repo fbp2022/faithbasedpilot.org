@@ -115,7 +115,25 @@
     }
     body.light .sharebar button, body.light .sharebar a { border-color:#ddd; }
     .sharebar .copy-ok { font-size:.85rem; opacity:.75; }
-  </style>
+  
+    /* Full-card color coding */
+    details.card[data-category="faith"]      { background:var(--faith);      color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="leadership"] { background:var(--leadership); color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="culture"]    { background:var(--culture);    color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="warfare"]    { background:var(--warfare);    color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category="reflection"] { background:var(--reflection); color:#fff; border-color:rgba(0,0,0,.25); }
+    details.card[data-category] .content{ border-top-color:rgba(255,255,255,.35); }
+    /* Legend + controls base styles (fallback if missing) */
+    .legend-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;margin:10px auto 18px;}
+    .legend{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+    .key{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .6rem;border-radius:999px;font-weight:bold;font-size:.9rem;border:1px solid var(--border);}
+    .sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+    .controls{display:flex;gap:8px}
+    .btn{appearance:none;border:1px solid var(--border);background:#202020;color:#fff;padding:.45rem .8rem;border-radius:8px;font-size:.9rem;cursor:pointer;}
+    .btn:hover{filter:brightness(1.08)}
+    body.light .btn{background:#f5f5f5;color:#000;border-color:var(--borderL)}
+
+</style>
 </head>
 <body>
   <header>
@@ -133,12 +151,27 @@
 
   <main class="wrap">
     <h1>The Hangar</h1>
+
+    <!-- Legend + Grouping control -->
+    <div class="legend-row">
+      <div class="legend" aria-label="Topic Legend">
+        <span class="key"><span class="sw" style="background:var(--faith)"></span> Faith</span>
+        <span class="key"><span class="sw" style="background:var(--leadership)"></span> Men’s Leadership</span>
+        <span class="key"><span class="sw" style="background:var(--culture)"></span> Culture</span>
+        <span class="key"><span class="sw" style="background:var(--warfare)"></span> Spiritual Warfare</span>
+        <span class="key"><span class="sw" style="background:var(--reflection)"></span> Reflection</span>
+      </div>
+      <div class="controls">
+        <button id="groupToggle" class="btn" aria-pressed="false">Group by topic</button>
+      </div>
+    </div>
+
     <p class="lede"> The Hangar is a runway for faith-filled thought — where devotion, courage, and truth are grounded before they soar. <break>Click a title card to read! </break></p>
    
 
     <section class="grid">
 
-      <details class="card" id="post-the-strength-of-a-servant-killing-pride-and-leading-low" data-slug="the-strength-of-a-servant-killing-pride-and-leading-low" data-title="The Strength of a Servant: Killing Pride and Leading Low" data-date="May 26, 2025">
+      <details class="card" data-category="leadership" id="post-the-strength-of-a-servant-killing-pride-and-leading-low" data-slug="the-strength-of-a-servant-killing-pride-and-leading-low" data-title="The Strength of a Servant: Killing Pride and Leading Low" data-date="May 26, 2025">
         <summary>
           <div class="title">The Strength of a Servant: Killing Pride and Leading Low</div>
           <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
@@ -187,7 +220,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-slave-to-christ" data-slug="slave-to-christ" data-title="Slave to Christ" data-date="May 26, 2025">
+      <details class="card" data-category="culture" id="post-slave-to-christ" data-slug="slave-to-christ" data-title="Slave to Christ" data-date="May 26, 2025">
         <summary>
           <div class="title">Slave to Christ</div>
           <div class="meta">May 26, 2025 <span class="chev">▾</span></div>
@@ -223,7 +256,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-separated-to-reunite" data-slug="separated-to-reunite" data-title="Separated to Reunite" data-date="May 24, 2025">
+      <details class="card" data-category="leadership" id="post-separated-to-reunite" data-slug="separated-to-reunite" data-title="Separated to Reunite" data-date="May 24, 2025">
         <summary>
           <div class="title">Separated to Reunite</div>
           <div class="meta">May 24, 2025 <span class="chev">▾</span></div>
@@ -257,7 +290,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-raven-and-the-dove" data-slug="the-raven-and-the-dove" data-title="The Raven and the Dove" data-date="May 18, 2025">
+      <details class="card" data-category="reflection" id="post-the-raven-and-the-dove" data-slug="the-raven-and-the-dove" data-title="The Raven and the Dove" data-date="May 18, 2025">
         <summary>
           <div class="title">The Raven and the Dove</div>
           <div class="meta">May 18, 2025 <span class="chev">▾</span></div>
@@ -299,7 +332,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-stand-firm-a-call-to-integrity-and-biblical-morals" data-slug="stand-firm-a-call-to-integrity-and-biblical-morals" data-title="Stand Firm: A Call to Integrity and Biblical Morals" data-date="December 23, 2024">
+      <details class="card" data-category="faith" id="post-stand-firm-a-call-to-integrity-and-biblical-morals" data-slug="stand-firm-a-call-to-integrity-and-biblical-morals" data-title="Stand Firm: A Call to Integrity and Biblical Morals" data-date="December 23, 2024">
         <summary>
           <div class="title">Stand Firm: A Call to Integrity and Biblical Morals</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
@@ -328,7 +361,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-slug="the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-title="The Manna from Heaven and the Gift of Christmas: A Profound Call" data-date="December 23, 2024">
+      <details class="card" data-category="reflection" id="post-the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-slug="the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call" data-title="The Manna from Heaven and the Gift of Christmas: A Profound Call" data-date="December 23, 2024">
         <summary>
           <div class="title">The Manna from Heaven and the Gift of Christmas: A Profound Call</div>
           <div class="meta">December 23, 2024 <span class="chev">▾</span></div>
@@ -358,7 +391,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-hello-let-s-talk-about-your-car-s-extended-warranty" data-slug="hello-let-s-talk-about-your-car-s-extended-warranty" data-title="Hello, Let’s Talk About Your Car’s Extended Warranty" data-date="December 18, 2024">
+      <details class="card" data-category="faith" id="post-hello-let-s-talk-about-your-car-s-extended-warranty" data-slug="hello-let-s-talk-about-your-car-s-extended-warranty" data-title="Hello, Let’s Talk About Your Car’s Extended Warranty" data-date="December 18, 2024">
         <summary>
           <div class="title">Hello, Let’s Talk About Your Car’s Extended Warranty</div>
           <div class="meta">December 18, 2024 <span class="chev">▾</span></div>
@@ -395,7 +428,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-spiritual-dangers-of-halloween" data-slug="the-spiritual-dangers-of-halloween" data-title="The Spiritual Dangers of Halloween" data-date="October 18, 2024">
+      <details class="card" data-category="culture" id="post-the-spiritual-dangers-of-halloween" data-slug="the-spiritual-dangers-of-halloween" data-title="The Spiritual Dangers of Halloween" data-date="October 18, 2024">
         <summary>
           <div class="title">The Spiritual Dangers of Halloween</div>
           <div class="meta">October 18, 2024 <span class="chev">▾</span></div>
@@ -454,7 +487,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-do-not-stop-do-not-drop-and-do-not-roll" data-slug="do-not-stop-do-not-drop-and-do-not-roll" data-title="Do Not Stop, Do Not Drop, and Do Not Roll" data-date="October 16, 2024">
+      <details class="card" data-category="warfare" id="post-do-not-stop-do-not-drop-and-do-not-roll" data-slug="do-not-stop-do-not-drop-and-do-not-roll" data-title="Do Not Stop, Do Not Drop, and Do Not Roll" data-date="October 16, 2024">
         <summary>
           <div class="title">Do Not Stop, Do Not Drop, and Do Not Roll</div>
           <div class="meta">October 16, 2024 <span class="chev">▾</span></div>
@@ -502,7 +535,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-tuning-out-the-noise" data-slug="tuning-out-the-noise" data-title="Tuning Out the Noise" data-date="October 14, 2024">
+      <details class="card" data-category="faith" id="post-tuning-out-the-noise" data-slug="tuning-out-the-noise" data-title="Tuning Out the Noise" data-date="October 14, 2024">
         <summary>
           <div class="title">Tuning Out the Noise</div>
           <div class="meta">October 14, 2024 <span class="chev">▾</span></div>
@@ -562,7 +595,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-position-lights-and-the-christian-walk" data-slug="position-lights-and-the-christian-walk" data-title="✈️ Position Lights and the Christian Walk" data-date="August 27, 2024">
+      <details class="card" data-category="reflection" id="post-position-lights-and-the-christian-walk" data-slug="position-lights-and-the-christian-walk" data-title="✈️ Position Lights and the Christian Walk" data-date="August 27, 2024">
         <summary>
           <div class="title">✈️ Position Lights and the Christian Walk</div>
           <div class="meta">August 27, 2024 <span class="chev">▾</span></div>
@@ -591,7 +624,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable" data-slug="when-help-is-refused-faith-based-guidance-for-the-unreachable" data-title="When Help is Refused: Faith-Based Guidance for the Unreachable" data-date="August 12, 2024">
+      <details class="card" data-category="reflection" id="post-when-help-is-refused-faith-based-guidance-for-the-unreachable" data-slug="when-help-is-refused-faith-based-guidance-for-the-unreachable" data-title="When Help is Refused: Faith-Based Guidance for the Unreachable" data-date="August 12, 2024">
         <summary>
           <div class="title">When Help is Refused: Faith-Based Guidance for the Unreachable</div>
           <div class="meta">August 12, 2024 <span class="chev">▾</span></div>
@@ -621,7 +654,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-true-confidence-vs-false-security" data-slug="true-confidence-vs-false-security" data-title="True Confidence vs. False Security" data-date="July 18, 2024">
+      <details class="card" data-category="culture" id="post-true-confidence-vs-false-security" data-slug="true-confidence-vs-false-security" data-title="True Confidence vs. False Security" data-date="July 18, 2024">
         <summary>
           <div class="title">True Confidence vs. False Security</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
@@ -678,7 +711,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-tolerance-and-faith-how-to-walk-in-today-s-world" data-slug="tolerance-and-faith-how-to-walk-in-today-s-world" data-title="Tolerance and Faith: How to Walk in Today’s World" data-date="July 18, 2024">
+      <details class="card" data-category="reflection" id="post-tolerance-and-faith-how-to-walk-in-today-s-world" data-slug="tolerance-and-faith-how-to-walk-in-today-s-world" data-title="Tolerance and Faith: How to Walk in Today’s World" data-date="July 18, 2024">
         <summary>
           <div class="title">Tolerance and Faith: How to Walk in Today’s World</div>
           <div class="meta">July 18, 2024 <span class="chev">▾</span></div>
@@ -704,7 +737,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-god-won-t-give-you-anything-he-can-t-handle" data-slug="god-won-t-give-you-anything-he-can-t-handle" data-title="God Won't Give You Anything He Can't Handle" data-date="July 15, 2024">
+      <details class="card" data-category="faith" id="post-god-won-t-give-you-anything-he-can-t-handle" data-slug="god-won-t-give-you-anything-he-can-t-handle" data-title="God Won't Give You Anything He Can't Handle" data-date="July 15, 2024">
         <summary>
           <div class="title">God Won't Give You Anything He Can't Handle</div>
           <div class="meta">July 15, 2024 <span class="chev">▾</span></div>
@@ -734,7 +767,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-soft-society-hard-truths-undone-culture" data-slug="soft-society-hard-truths-undone-culture" data-title="Soft Society, Hard Truths: Undone Culture" data-date="May 7, 2024">
+      <details class="card" data-category="culture" id="post-soft-society-hard-truths-undone-culture" data-slug="soft-society-hard-truths-undone-culture" data-title="Soft Society, Hard Truths: Undone Culture" data-date="May 7, 2024">
         <summary>
           <div class="title">Soft Society, Hard Truths: Undone Culture</div>
           <div class="meta">May 7, 2024 <span class="chev">▾</span></div>
@@ -756,7 +789,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-faith-strength-courage-community" data-slug="faith-strength-courage-community" data-title="Faith: Strength, Courage, Community" data-date="April 29, 2024">
+      <details class="card" data-category="warfare" id="post-faith-strength-courage-community" data-slug="faith-strength-courage-community" data-title="Faith: Strength, Courage, Community" data-date="April 29, 2024">
         <summary>
           <div class="title">Faith: Strength, Courage, Community</div>
           <div class="meta">April 29, 2024 <span class="chev">▾</span></div>
@@ -790,7 +823,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-patience" data-slug="patience" data-title="Patience" data-date="April 24, 2024">
+      <details class="card" data-category="culture" id="post-patience" data-slug="patience" data-title="Patience" data-date="April 24, 2024">
         <summary>
           <div class="title">Patience</div>
           <div class="meta">April 24, 2024 <span class="chev">▾</span></div>
@@ -818,7 +851,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage" data-slug="mark-driscoll-guest-speaker-kicked-off-the-stage" data-title="Mark Driscoll, Guest Speaker, Kicked Off the Stage" data-date="April 17, 2024">
+      <details class="card" data-category="leadership" id="post-mark-driscoll-guest-speaker-kicked-off-the-stage" data-slug="mark-driscoll-guest-speaker-kicked-off-the-stage" data-title="Mark Driscoll, Guest Speaker, Kicked Off the Stage" data-date="April 17, 2024">
         <summary>
           <div class="title">Mark Driscoll, Guest Speaker, Kicked Off the Stage</div>
           <div class="meta">April 17, 2024 <span class="chev">▾</span></div>
@@ -845,7 +878,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-7-deadly-sins" data-slug="7-deadly-sins" data-title="7 Deadly Sins" data-date="March 25, 2024">
+      <details class="card" data-category="reflection" id="post-7-deadly-sins" data-slug="7-deadly-sins" data-title="7 Deadly Sins" data-date="March 25, 2024">
         <summary>
           <div class="title">7 Deadly Sins</div>
           <div class="meta">March 25, 2024 <span class="chev">▾</span></div>
@@ -869,7 +902,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-discerning-the-divine-understanding-the-voice-of-god" data-slug="discerning-the-divine-understanding-the-voice-of-god" data-title="Discerning the Divine: Understanding the Voice of God" data-date="March 5, 2024">
+      <details class="card" data-category="warfare" id="post-discerning-the-divine-understanding-the-voice-of-god" data-slug="discerning-the-divine-understanding-the-voice-of-god" data-title="Discerning the Divine: Understanding the Voice of God" data-date="March 5, 2024">
         <summary>
           <div class="title">Discerning the Divine: Understanding the Voice of God</div>
           <div class="meta">March 5, 2024 <span class="chev">▾</span></div>
@@ -902,7 +935,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit" data-slug="the-dynamic-dialogue-conscience-and-the-holy-spirit" data-title="The Dynamic Dialogue: Conscience and the Holy Spirit" data-date="March 4, 2024">
+      <details class="card" data-category="culture" id="post-the-dynamic-dialogue-conscience-and-the-holy-spirit" data-slug="the-dynamic-dialogue-conscience-and-the-holy-spirit" data-title="The Dynamic Dialogue: Conscience and the Holy Spirit" data-date="March 4, 2024">
         <summary>
           <div class="title">The Dynamic Dialogue: Conscience and the Holy Spirit</div>
           <div class="meta">March 4, 2024 <span class="chev">▾</span></div>
@@ -923,7 +956,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-growing-good-fruit-reflecting-on-spiritual-transformation" data-slug="growing-good-fruit-reflecting-on-spiritual-transformation" data-title="Growing Good Fruit: Reflecting on Spiritual Transformation" data-date="February 8, 2024">
+      <details class="card" data-category="reflection" id="post-growing-good-fruit-reflecting-on-spiritual-transformation" data-slug="growing-good-fruit-reflecting-on-spiritual-transformation" data-title="Growing Good Fruit: Reflecting on Spiritual Transformation" data-date="February 8, 2024">
         <summary>
           <div class="title">Growing Good Fruit: Reflecting on Spiritual Transformation</div>
           <div class="meta">February 8, 2024 <span class="chev">▾</span></div>
@@ -949,7 +982,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-a-call-to-fortitude-reflecting-on-generational-strength" data-slug="a-call-to-fortitude-reflecting-on-generational-strength" data-title="A Call to Fortitude: Reflecting on Generational Strength" data-date="January 3, 2024">
+      <details class="card" data-category="warfare" id="post-a-call-to-fortitude-reflecting-on-generational-strength" data-slug="a-call-to-fortitude-reflecting-on-generational-strength" data-title="A Call to Fortitude: Reflecting on Generational Strength" data-date="January 3, 2024">
         <summary>
           <div class="title">A Call to Fortitude: Reflecting on Generational Strength</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
@@ -975,7 +1008,7 @@
         </div>
       </details>
     
-      <details class="card" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo" data-slug="the-unyielding-path-of-a-christian-challenging-the-status-quo" data-title="The Unyielding Path of a Christian: Challenging the Status Quo" data-date="January 3, 2024">
+      <details class="card" data-category="culture" id="post-the-unyielding-path-of-a-christian-challenging-the-status-quo" data-slug="the-unyielding-path-of-a-christian-challenging-the-status-quo" data-title="The Unyielding Path of a Christian: Challenging the Status Quo" data-date="January 3, 2024">
         <summary>
           <div class="title">The Unyielding Path of a Christian: Challenging the Status Quo</div>
           <div class="meta">January 3, 2024 <span class="chev">▾</span></div>
@@ -1000,7 +1033,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-unspoken-facing-the-uncomfortable-truths" data-slug="unspoken-facing-the-uncomfortable-truths" data-title="Unspoken: Facing the Uncomfortable Truths" data-date="December 31, 2023">
+      <details class="card" data-category="culture" id="post-unspoken-facing-the-uncomfortable-truths" data-slug="unspoken-facing-the-uncomfortable-truths" data-title="Unspoken: Facing the Uncomfortable Truths" data-date="December 31, 2023">
         <summary>
           <div class="title">Unspoken: Facing the Uncomfortable Truths</div>
           <div class="meta">December 31, 2023 <span class="chev">▾</span></div>
@@ -1036,7 +1069,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-unapologetically-christian" data-slug="unapologetically-christian" data-title="Unapologetically Christian" data-date="December 29, 2023">
+      <details class="card" data-category="culture" id="post-unapologetically-christian" data-slug="unapologetically-christian" data-title="Unapologetically Christian" data-date="December 29, 2023">
         <summary>
           <div class="title">Unapologetically Christian</div>
           <div class="meta">December 29, 2023 <span class="chev">▾</span></div>
@@ -1066,7 +1099,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-trusting-god-amidst-jezebel-s-tactics" data-slug="trusting-god-amidst-jezebel-s-tactics" data-title="Trusting God Amidst Jezebel's Tactics" data-date="December 19, 2023">
+      <details class="card" data-category="warfare" id="post-trusting-god-amidst-jezebel-s-tactics" data-slug="trusting-god-amidst-jezebel-s-tactics" data-title="Trusting God Amidst Jezebel's Tactics" data-date="December 19, 2023">
         <summary>
           <div class="title">Trusting God Amidst Jezebel's Tactics</div>
           <div class="meta">December 19, 2023 <span class="chev">▾</span></div>
@@ -1100,7 +1133,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-defending-the-spirit" data-slug="defending-the-spirit" data-title="Defending the Spirit" data-date="December 11, 2023">
+      <details class="card" data-category="warfare" id="post-defending-the-spirit" data-slug="defending-the-spirit" data-title="Defending the Spirit" data-date="December 11, 2023">
         <summary>
           <div class="title">Defending the Spirit</div>
           <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
@@ -1152,7 +1185,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-guidance-and-asking-for-help" data-slug="guidance-and-asking-for-help" data-title="Guidance and Asking for Help" data-date="December 11, 2023">
+      <details class="card" data-category="reflection" id="post-guidance-and-asking-for-help" data-slug="guidance-and-asking-for-help" data-title="Guidance and Asking for Help" data-date="December 11, 2023">
         <summary>
           <div class="title">Guidance and Asking for Help</div>
           <div class="meta">December 11, 2023 <span class="chev">▾</span></div>
@@ -1170,7 +1203,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-christmas" data-slug="christmas" data-title="Christmas" data-date="December 4, 2023">
+      <details class="card" data-category="reflection" id="post-christmas" data-slug="christmas" data-title="Christmas" data-date="December 4, 2023">
         <summary>
           <div class="title">Christmas</div>
           <div class="meta">December 4, 2023 <span class="chev">▾</span></div>
@@ -1199,7 +1232,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-guilt-shame" data-slug="guilt-shame" data-title="Guilt & Shame" data-date="November 27, 2023">
+      <details class="card" data-category="faith" id="post-guilt-shame" data-slug="guilt-shame" data-title="Guilt & Shame" data-date="November 27, 2023">
         <summary>
           <div class="title">Guilt & Shame</div>
           <div class="meta">November 27, 2023 <span class="chev">▾</span></div>
@@ -1225,7 +1258,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-jesus-freak" data-slug="jesus-freak" data-title="Jesus Freak" data-date="November 20, 2023">
+      <details class="card" data-category="culture" id="post-jesus-freak" data-slug="jesus-freak" data-title="Jesus Freak" data-date="November 20, 2023">
         <summary>
           <div class="title">Jesus Freak</div>
           <div class="meta">November 20, 2023 <span class="chev">▾</span></div>
@@ -1253,7 +1286,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-faith-and-forgiveness" data-slug="faith-and-forgiveness" data-title="Faith and Forgiveness" data-date="November 13, 2023">
+      <details class="card" data-category="reflection" id="post-faith-and-forgiveness" data-slug="faith-and-forgiveness" data-title="Faith and Forgiveness" data-date="November 13, 2023">
         <summary>
           <div class="title">Faith and Forgiveness</div>
           <div class="meta">November 13, 2023 <span class="chev">▾</span></div>
@@ -1314,7 +1347,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-who-are-you" data-slug="who-are-you" data-title="Who Are You?" data-date="November 6, 2023">
+      <details class="card" data-category="reflection" id="post-who-are-you" data-slug="who-are-you" data-title="Who Are You?" data-date="November 6, 2023">
         <summary>
           <div class="title">Who Are You?</div>
           <div class="meta">November 6, 2023 <span class="chev">▾</span></div>
@@ -1370,7 +1403,7 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
         </div>
       </details>
     
-      <details class="card" id="post-god-will-strengthen-and-free-you" data-slug="god-will-strengthen-and-free-you" data-title="God Will Strengthen and Free You" data-date="November 5, 2023">
+      <details class="card" data-category="faith" id="post-god-will-strengthen-and-free-you" data-slug="god-will-strengthen-and-free-you" data-title="God Will Strengthen and Free You" data-date="November 5, 2023">
         <summary>
           <div class="title">God Will Strengthen and Free You</div>
           <div class="meta">November 5, 2023 <span class="chev">▾</span></div>
@@ -1604,6 +1637,53 @@ So, in the end, it’s not just about embracing discomfort; it’s about embraci
       }
     });
   })();
-  </script>
+  
+      // ===== Group by topic (uses data-category on each <details class="card">) =====
+      const grid = document.getElementById('grid') || document.querySelector('.grid');
+      if (grid){
+        const cards = Array.from(grid.children).filter(el => el.matches('details.card'));
+        const originalOrder = cards.slice();
+        const catOrder = ['faith','leadership','culture','warfare','reflection'];
+        const groupToggle = document.getElementById('groupToggle');
+
+        function groupByTopic() {
+          const grouped = catOrder.flatMap(cat =>
+            cards.filter(c => (c.dataset.category || '').toLowerCase() === cat)
+          );
+          const remainder = cards.filter(c => !catOrder.includes((c.dataset.category || '').toLowerCase()));
+          [...grouped, ...remainder].forEach(c => grid.appendChild(c));
+        }
+        function restoreOrder() {
+          originalOrder.forEach(c => grid.appendChild(c));
+        }
+        const savedGrouping = localStorage.getItem('hangarGrouping') === 'topic';
+        if (savedGrouping && groupToggle) {
+          groupByTopic();
+          groupToggle.setAttribute('aria-pressed','true');
+          groupToggle.textContent = 'Show original order';
+        }
+        if (groupToggle){
+          groupToggle.addEventListener('click', () => {
+            const pressed = groupToggle.getAttribute('aria-pressed') === 'true';
+            if (pressed) {
+              restoreOrder();
+              groupToggle.setAttribute('aria-pressed','false');
+              groupToggle.textContent = 'Group by topic';
+              localStorage.setItem('hangarGrouping','original');
+            } else {
+              groupByTopic();
+              groupToggle.setAttribute('aria-pressed','true');
+              groupToggle.textContent = 'Show original order';
+              localStorage.setItem('hangarGrouping','topic');
+            }
+          });
+        }
+      }
+
+      // Auto-update copyright year if #year exists
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+</script>
 </body>
 </html>
