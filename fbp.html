@@ -255,7 +255,9 @@
       header::after{ top:110px; }
       .cards{grid-template-columns:repeat(2,minmax(0,1fr));}
     }
-    @media(max-width:600px){
+
+    /* Treat small-width OR short-height like mobile to avoid overlap */
+    @media(max-width:600px), (max-height:500px){
       /* make nav less crowded & avoid overlapping the subtitle */
       nav{
         position:static;
@@ -368,7 +370,7 @@
     <p style="margin-top:1rem;font-style:italic;color:gray;">— FBP (Faith Based Pilot)</p>
   </div>
 
-  <!-- Footer (social links locked to the bottom) -->
+  <!-- Footer -->
   <footer class="footer">
     <nav class="social" aria-label="Social Links">
       <a href="https://www.instagram.com/faithbasedpilot/" target="_blank" rel="noopener" aria-label="Instagram">
