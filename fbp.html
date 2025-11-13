@@ -371,7 +371,7 @@
     .social svg{width:22px;height:22px;display:block;}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
-    /* Nav theme button for mobile */
+/* Mobile theme-toggle inside hamburger */
 .nav-theme-btn{
   display:none;
   margin-top:.5rem;
@@ -387,22 +387,18 @@
   width:100%;
   text-align:center;
 }
+
 body.light .nav-theme-btn{
   background:rgba(255,255,255,.95);
   border-color:rgba(0,80,110,.25);
 }
 
-    /* Force mobile theme toggle to appear inside the hamburger menu */
-.mobile-theme-toggle {
-  display: none;
-}
-
-@media(max-width: 900px) {
-  header.nav-open .mobile-theme-toggle {
-    display: block !important;
+/* Show mobile theme button ONLY when hamburger menu is open */
+@media(max-width:900px){
+  header.nav-open .nav-theme-btn{
+    display:block;
   }
 }
-
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:1100px){
@@ -441,12 +437,7 @@ body.light .nav-theme-btn{
         display:flex;
       }
 
-      /* show theme button inside mobile nav */
-      .nav-theme-btn{
-        display:block;
-      }
-
-      .hero-text{
+    .hero-text{
         margin-top:40px;
       }
 
@@ -505,39 +496,37 @@ body.light .nav-theme-btn{
 </head>
 
 <body>
-  <!-- Header -->
-  <header id="pageHeader">
-    <div class="header-bar">
-      <!-- Desktop light/dark theme pill on the LEFT -->
-      <button id="themeButton" class="theme-btn" type="button">Light Theme</button>
+<!-- Header -->
+<header id="pageHeader">
+  <div class="header-bar">
+    <!-- Desktop light/dark theme pill on the LEFT -->
+    <button id="themeButton" class="theme-btn" type="button">Light Theme</button>
 
-      <!-- Hamburger for mobile/tablet -->
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <!-- Hamburger for mobile/tablet -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
 
-      <!-- Glass nav -->
-      <nav>
-        <a href="beliefs.html">Beliefs</a>
-        <a href="logbook.html">Logbook</a>
-        <a href="thehangar.html">The Hangar</a>
-        <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">FBP.NET</a>
-        <!-- Theme toggle inside mobile menu (ALWAYS shows when nav is open on mobile) -->
-<button id="navThemeButton" class="nav-theme-btn mobile-theme-toggle" type="button">
-  Light Theme
-</button>
+    <!-- Glass nav -->
+    <nav>
+      <a href="beliefs.html">Beliefs</a>
+      <a href="logbook.html">Logbook</a>
+      <a href="thehangar.html">The Hangar</a>
+      <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">FBP.NET</a>
+      <!-- Theme toggle inside mobile menu -->
+      <button id="navThemeButton" class="nav-theme-btn" type="button">Light Theme</button>
+    </nav>
 
+    <!-- Compass logo on the RIGHT -->
+    <img id="headerLogo" src="images/compasslogo.png" alt="Faith Based Pilot" aria-hidden="true">
+  </div>
 
-      <!-- Compass logo on the RIGHT -->
-      <img id="headerLogo" src="images/compasslogo.png" alt="Faith Based Pilot" aria-hidden="true">
-    </div>
-
-    <!-- Hero title text only -->
-    <div class="hero-text">
-      <div class="hero-title">FAITH BASED PILOT</div>
-      <div class="hero-subtitle">JOIN ME ON THE FLIGHT WITH CHRIST</div>
-    </div>
-  </header>
+  <!-- Hero title text only -->
+  <div class="hero-text">
+    <div class="hero-title">FAITH BASED PILOT</div>
+    <div class="hero-subtitle">JOIN ME ON THE FLIGHT WITH CHRIST</div>
+  </div>
+</header>
 
   <h1>Welcome</h1>
 
