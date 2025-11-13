@@ -148,19 +148,46 @@
     }
     nav a:hover::after, nav a:focus::after{ width:100%; }
 
-    /* Right logo – bigger */
-    #themeToggle{
-      width:60px;
-      height:60px;
+    /* Desktop theme button on the LEFT */
+    .theme-btn{
       position:absolute;
-      left:8px;
+      left:2rem;
       top:50%;
       transform:translateY(-50%);
+      margin-top:0;
+      padding:8px 24px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);
+      background:rgba(10,16,24,.9);
+      color:var(--ink);
+      font-size:.8rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      cursor:pointer;
+      backdrop-filter:blur(8px) saturate(130%);
+      box-shadow:0 0 18px rgba(0,0,0,.75);
+      white-space:nowrap;
+    }
+    body.light .theme-btn{
+      background:rgba(255,255,255,.95);
+      border-color:rgba(0,80,110,.3);
+      box-shadow:0 0 16px rgba(0,0,0,.25);
+    }
+
+    /* Compass logo on the RIGHT */
+    #headerLogo{
+      position:absolute;
+      right:2rem;
+      top:50%;
+      transform:translateY(-50%);
+      width:72px;
+      height:72px;
+      object-fit:contain;
       cursor:default;
       filter:none;
     }
 
-    /* Hero title + center theme button (desktop) */
+    /* Hero title below nav row */
     .hero-text{
       margin-top:16px;
       text-align:center;
@@ -186,31 +213,10 @@
       text-shadow:0 0 10px rgba(255,207,102,.4);
     }
 
-    .theme-btn{
-      margin-top:12px;
-      padding:8px 24px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(10,16,24,.9);
-      color:var(--ink);
-      font-size:.8rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      cursor:pointer;
-      backdrop-filter:blur(8px) saturate(130%);
-      box-shadow:0 0 18px rgba(0,0,0,.75);
-      white-space:nowrap;
-    }
-    body.light .theme-btn{
-      background:rgba(255,255,255,.95);
-      border-color:rgba(0,80,110,.3);
-      box-shadow:0 0 16px rgba(0,0,0,.25);
-    }
-
     /* ===== PAGE TITLE ===== */
     h1{
       text-align:center;
-      margin:1.1rem 0 1.2rem;   /* tighter gap below hero */
+      margin:1.1rem 0 1.2rem;
       letter-spacing:.02em;
       text-shadow:0 0 14px rgba(0,255,213,.15);
     }
@@ -337,10 +343,11 @@
 
     .social{
       display:flex;
+      flex-direction:row !important;
       gap:1rem;
       align-items:center;
       justify-content:center;
-      flex-wrap:nowrap;           /* force one row */
+      flex-wrap:nowrap;
     }
     .social a{
       display:inline-flex;align-items:center;justify-content:center;
@@ -439,7 +446,7 @@
         max-width:340px;
       }
       .social{
-        gap:.55rem;
+        gap:.5rem;
       }
       .social a{
         width:30px;
@@ -449,6 +456,12 @@
         width:18px;
         height:18px;
       }
+
+      #headerLogo{
+        width:60px;
+        height:60px;
+        right:1.2rem;
+      }
     }
 
     @media(max-width:480px){
@@ -456,11 +469,11 @@
         max-width:310px;
       }
       .social{
-        gap:.5rem;
+        gap:.4rem;
       }
       .social a{
-        width:28px;
-        height:28px;
+        width:26px;
+        height:26px;
       }
       .social svg{
         width:16px;
@@ -476,37 +489,36 @@
 
 <body>
   <!-- Header -->
- <header id="pageHeader">
-  <div class="header-bar">
-    <!-- Desktop light/dark theme pill on the LEFT -->
-    <button id="themeButton" class="theme-btn" type="button">Light Theme</button>
+  <header id="pageHeader">
+    <div class="header-bar">
+      <!-- Desktop light/dark theme pill on the LEFT -->
+      <button id="themeButton" class="theme-btn" type="button">Light Theme</button>
 
-    <!-- Hamburger for mobile/tablet -->
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+      <!-- Hamburger for mobile/tablet -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-    <!-- Glass nav -->
-    <nav>
-      <a href="beliefs.html">Beliefs</a>
-      <a href="logbook.html">Logbook</a>
-      <a href="thehangar.html">The Hangar</a>
-      <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">FBP.NET</a>
-      <!-- Theme toggle inside mobile menu -->
-      <button id="navThemeButton" class="nav-theme-btn" type="button">Light Theme</button>
-    </nav>
+      <!-- Glass nav -->
+      <nav>
+        <a href="beliefs.html">Beliefs</a>
+        <a href="logbook.html">Logbook</a>
+        <a href="thehangar.html">The Hangar</a>
+        <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">FBP.NET</a>
+        <!-- Theme toggle inside mobile menu -->
+        <button id="navThemeButton" class="nav-theme-btn" type="button">Light Theme</button>
+      </nav>
 
-    <!-- Compass logo on the RIGHT -->
-<img id="headerLogo" src="images/compasslogo.png" alt="Faith Based Pilot" aria-hidden="true">
+      <!-- Compass logo on the RIGHT -->
+      <img id="headerLogo" src="images/compasslogo.png" alt="Faith Based Pilot" aria-hidden="true">
+    </div>
 
-
-  <!-- Hero title text only -->
-  <div class="hero-text">
-    <div class="hero-title">FAITH BASED PILOT</div>
-    <div class="hero-subtitle">JOIN ME ON THE FLIGHT WITH CHRIST</div>
-  </div>
-</header>
-
+    <!-- Hero title text only -->
+    <div class="hero-text">
+      <div class="hero-title">FAITH BASED PILOT</div>
+      <div class="hero-subtitle">JOIN ME ON THE FLIGHT WITH CHRIST</div>
+    </div>
+  </header>
 
   <h1>Welcome</h1>
 
