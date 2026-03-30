@@ -1073,38 +1073,11 @@ body.light .modal .sheet {
   }
 
   .nav-toggle {
-    display: flex;
+    display: none !important;
   }
 
-  .cockpit-header nav {
-    position: absolute;
-    left: 50%;
-    top: 52px;
-    transform: translateX(-50%);
-    flex-direction: column;
-    align-items: center;
-    min-width: 220px;
-    display: none;
-    gap: 0.75rem;
-    border-radius: 18px;
-  }
-
-  .cockpit-header.nav-open .header-bar {
-    position: relative;
-    z-index: 400;
-  }
-
-  .cockpit-header.nav-open nav {
-    display: flex;
-    z-index: 410;
-  }
-
-  .cockpit-header.nav-open .nav-theme-btn {
-    display: block;
-  }
-
-  .nav-social-group {
-    display: block;
+  .cockpit-header .header-bar > nav {
+    display: none !important;
   }
 
   .hero-text {
@@ -1767,8 +1740,8 @@ body.light .mfd-frame::before {
   }
 }
 
-/* Mobile: live instruments (JS sets data-live + --live-* on .instrument-deck) */
-@media (max-width: 900px) {
+/* Live instruments: phones/tablets (incl. landscape >900px) + coarse/touch UIs */
+@media (max-width: 1200px), (hover: none) {
   .instrument-deck[data-live="1"] .gauge--airspeed .gauge__needle {
     animation: none !important;
     transform: rotate(var(--live-asi, -12deg));
@@ -1797,43 +1770,216 @@ body.light .mfd-frame::before {
   }
 }
 
-/* Tap outside to close: button#navBackdrop inserted by JS after <header> */
-/* Solid dim only — backdrop-filter on a fixed full-screen layer often composites above the nav on iOS/Safari. */
-.nav-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 120;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: rgba(1, 4, 12, 0.65);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.nav-backdrop.is-visible {
-  display: block;
-}
-
-body.mobile-nav-open {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
+/* ----- Mobile bottom tab bar + “More” sheet (≤900px) ----- */
 @media (min-width: 901px) {
-  .nav-backdrop {
+  .mobile-tabbar,
+  .mobile-more-backdrop,
+  .mobile-more-sheet {
     display: none !important;
-  }
-
-  body.mobile-nav-open {
-    overflow: unset;
-    overscroll-behavior: unset;
   }
 
   .instrument-deck .live-hud-digit {
     display: none !important;
   }
+}
+
+.mobile-more-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 7990;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(1, 4, 12, 0.5);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-more-backdrop.is-visible {
+  display: block;
+}
+
+.mobile-more-sheet {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(52px + env(safe-area-inset-bottom, 0px));
+  z-index: 7995;
+  max-height: min(70vh, 420px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  padding: 0.65rem 1rem 1rem;
+  border-radius: 18px 18px 0 0;
+  background: rgba(6, 14, 24, 0.98);
+  border: 1px solid rgba(60, 255, 228, 0.32);
+  border-bottom: none;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+body.light .mobile-more-sheet {
+  background: rgba(252, 253, 255, 0.98);
+  border-color: rgba(0, 100, 130, 0.28);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.mobile-more-sheet.is-visible {
+  display: block;
+}
+
+.mobile-more-sheet__title {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--hud);
+  text-align: center;
+}
+
+.mobile-more-sheet__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mobile-more-sheet__row a,
+.mobile-more-sheet__row button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font);
+  text-decoration: none;
+  border: 1px solid rgba(60, 255, 228, 0.22);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--ink);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+body.light .mobile-more-sheet__row a,
+body.light .mobile-more-sheet__row button {
+  background: rgba(0, 60, 90, 0.06);
+  border-color: rgba(0, 100, 130, 0.22);
+}
+
+.mobile-more-sheet__social {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(60, 255, 228, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.mobile-more-sheet__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(60, 255, 228, 0.25);
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+body.mobile-more-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+@media (min-width: 901px) {
+  body.mobile-more-open {
+    overflow: unset;
+    overscroll-behavior: unset;
+  }
+}
+
+.mobile-tabbar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8000;
+  margin: 0;
+  padding: 4px 2px calc(4px + env(safe-area-inset-bottom, 0px));
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 0;
+  background: rgba(4, 12, 22, 0.94);
+  border-top: 1px solid rgba(60, 255, 228, 0.35);
+  box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.5);
+}
+
+body.light .mobile-tabbar {
+  background: rgba(248, 250, 252, 0.96);
+  border-top-color: rgba(0, 100, 130, 0.28);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 900px) {
+  .mobile-tabbar {
+    display: flex;
+  }
+}
+
+.mobile-tab {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 2px;
+  margin: 0;
+  text-decoration: none;
+  color: var(--dim);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font);
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-tab .mobile-tab__ic {
+  width: 24px;
+  height: 24px;
+  opacity: 0.75;
+}
+
+.mobile-tab[aria-current="page"],
+.mobile-tab.is-active {
+  color: var(--hud);
+  background: rgba(60, 255, 228, 0.12);
+}
+
+.mobile-tab[aria-current="page"] .mobile-tab__ic,
+.mobile-tab.is-active .mobile-tab__ic {
+  opacity: 1;
+}
+
+body.light .mobile-tab[aria-current="page"],
+body.light .mobile-tab.is-active {
+  background: rgba(0, 100, 130, 0.1);
 }
 
 /* Mobile layout: distinct from desktop, easy navigation, instruments scroll + stay live */
@@ -1849,7 +1995,8 @@ body.mobile-nav-open {
       linear-gradient(172deg, #010509 0%, #0b1a2a 45%, #040d18 100%);
     padding-left: env(safe-area-inset-left, 0px);
     padding-right: env(safe-area-inset-right, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+    /* Space for fixed bottom tab bar + home indicator */
+    padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px));
   }
 
   body.cockpit.light {
@@ -1869,76 +2016,15 @@ body.mobile-nav-open {
   }
 
   .nav-toggle {
-    min-width: 48px;
-    min-height: 48px;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    left: max(0.25rem, env(safe-area-inset-left, 0px));
+    display: none !important;
+  }
+
+  .cockpit-header .header-bar > nav {
+    display: none !important;
   }
 
   #headerLogo {
     right: max(0.65rem, env(safe-area-inset-right, 0px));
-  }
-
-  .cockpit-header nav {
-    left: 0;
-    right: 0;
-    transform: none;
-    width: calc(100% - 1.5rem);
-    max-width: 22rem;
-    margin-left: auto;
-    margin-right: auto;
-    top: 58px;
-    padding: 0.45rem 0.5rem 1rem;
-    border-radius: 18px;
-    gap: 0;
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, 0.72),
-      0 0 0 1px rgba(60, 255, 228, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  }
-
-  .cockpit-header nav a,
-  .cockpit-header nav button.nav-theme-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-size: 0.98rem;
-    letter-spacing: 0.1em;
-    padding: 15px 18px;
-    border-radius: 12px;
-    box-sizing: border-box;
-  }
-
-  .cockpit-header nav a {
-    border-bottom: 1px solid rgba(60, 255, 228, 0.1);
-  }
-
-  .cockpit-header nav a:last-of-type {
-    border-bottom: none;
-  }
-
-  .cockpit-header nav .nav-theme-btn {
-    margin-top: 8px;
-    padding: 15px 18px;
-    border-top: 1px solid rgba(60, 255, 228, 0.22);
-  }
-
-  .nav-social-group {
-    margin-top: 6px;
-    border-top: 1px solid rgba(60, 255, 228, 0.18);
-    padding-top: 8px;
-  }
-
-  .nav-social-toggle {
-    padding: 14px 16px;
-    font-size: 0.85rem;
-  }
-
-  .nav-social-list a {
-    padding: 13px 10px;
-    font-size: 0.95rem;
   }
 
   .instrument-deck {
@@ -2041,12 +2127,7 @@ body.mobile-nav-open {
       <!-- Desktop light/dark theme pill on the LEFT -->
       <button id="themeButton" class="theme-btn" type="button">Light Theme</button>
 
-      <!-- Hamburger for mobile/tablet -->
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <!-- Glass nav -->
+      <!-- Glass nav (desktop); mobile uses bottom tab bar -->
       <nav>
         <a href="beliefs.html">Beliefs</a>
         <a href="logbook.html">Logbook</a>
@@ -2207,19 +2288,57 @@ body.mobile-nav-open {
     <p>© <span id="year"></span> Faith Based Pilot</p>
   </footer>
 
+  <nav class="mobile-tabbar" id="mobileTabbar" aria-label="Site sections">
+    <a href="fbp.html" class="mobile-tab" aria-current="page">
+      <svg class="mobile-tab__ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="beliefs.html" class="mobile-tab">
+      <svg class="mobile-tab__ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 3h2v8h8v2h-8v8h-2v-8H3v-2h8V3z"/></svg>
+      <span>Beliefs</span>
+    </a>
+    <a href="logbook.html" class="mobile-tab">
+      <svg class="mobile-tab__ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h12a2 2 0 012 2v15H7a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v13h12V5H7zm2 2h8v2H9V7zm0 4h8v2H9v-2zm0 4h5v2H9v-2z"/></svg>
+      <span>Logbook</span>
+    </a>
+    <a href="thehangar.html" class="mobile-tab">
+      <svg class="mobile-tab__ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+      <span>Hangar</span>
+    </a>
+    <button type="button" class="mobile-tab mobile-tab--more" id="mobileMoreBtn" aria-expanded="false" aria-controls="mobileMoreSheet" aria-haspopup="dialog">
+      <svg class="mobile-tab__ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="18" cy="12" r="2" fill="currentColor"/></svg>
+      <span>More</span>
+    </button>
+  </nav>
+  <button type="button" class="mobile-more-backdrop" id="mobileMoreBackdrop" aria-label="Close menu" tabindex="-1"></button>
+  <div class="mobile-more-sheet" id="mobileMoreSheet" role="dialog" aria-modal="true" aria-labelledby="mobileMoreTitle">
+    <p id="mobileMoreTitle" class="mobile-more-sheet__title">Links &amp; settings</p>
+    <div class="mobile-more-sheet__row">
+      <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">FBP.NET</a>
+      <button type="button" id="mobileSheetThemeBtn">Light Theme</button>
+    </div>
+    <div class="mobile-more-sheet__social">
+      <a href="https://www.instagram.com/faithbasedpilot/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100093368342398" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/FaithBasedPilot" target="_blank" rel="noopener">X</a>
+      <a href="https://truthsocial.com/@FaithBasedPilot" target="_blank" rel="noopener">Truth</a>
+      <a href="https://www.youtube.com/@FaithBasedPilot" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://rumble.com/c/c-7796604" target="_blank" rel="noopener">Rumble</a>
+    </div>
+  </div>
+
   <!-- Year + nav + theme + social submenu -->
   <script>
     (function(){
       // copyright year
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      const header       = document.getElementById('pageHeader');
-      const toggle       = document.getElementById('navToggle');
-      const body         = document.body;
-      const themeBtn     = document.getElementById('themeButton');
-      const navThemeBtn  = document.getElementById('navThemeButton');
-      const socialGroup  = document.getElementById('navSocialGroup');
-      const socialToggle = document.getElementById('navSocialToggle');
+      const body              = document.body;
+      const themeBtn          = document.getElementById('themeButton');
+      const navThemeBtn       = document.getElementById('navThemeButton');
+      const mobileSheetTheme  = document.getElementById('mobileSheetThemeBtn');
+      const socialGroup       = document.getElementById('navSocialGroup');
+      const socialToggle      = document.getElementById('navSocialToggle');
 
       // migrate legacy key; apply saved theme
       if(!localStorage.getItem('fbpTheme') && localStorage.getItem('theme')){
@@ -2233,8 +2352,9 @@ body.mobile-nav-open {
       function syncThemeLabel(){
         const light = body.classList.contains('light');
         const label = light ? 'Dark Theme' : 'Light Theme';
-        if(themeBtn)    themeBtn.textContent    = label;
-        if(navThemeBtn) navThemeBtn.textContent = label;
+        if(themeBtn)           themeBtn.textContent           = label;
+        if(navThemeBtn)        navThemeBtn.textContent        = label;
+        if(mobileSheetTheme)   mobileSheetTheme.textContent   = label;
       }
       syncThemeLabel();
 
@@ -2249,54 +2369,55 @@ body.mobile-nav-open {
       if(themeBtn){
         themeBtn.addEventListener('click', toggleTheme);
       }
-      // mobile-nav theme button
       if(navThemeBtn){
         navThemeBtn.addEventListener('click', toggleTheme);
       }
+      if(mobileSheetTheme){
+        mobileSheetTheme.addEventListener('click', toggleTheme);
+      }
 
-      // mobile nav: sheet + dim backdrop + scroll lock (≤900px)
-      if (toggle && header) {
-        var backdrop = document.getElementById("navBackdrop");
-        if (!backdrop) {
-          backdrop = document.createElement("button");
-          backdrop.type = "button";
-          backdrop.id = "navBackdrop";
-          backdrop.className = "nav-backdrop";
-          backdrop.setAttribute("aria-label", "Close menu");
-          backdrop.setAttribute("tabindex", "-1");
-          if (header.parentNode) header.parentNode.insertBefore(backdrop, header.nextSibling);
+      // Mobile: bottom “More” sheet (≤900px)
+      (function () {
+        var moreBtn = document.getElementById("mobileMoreBtn");
+        var sheet = document.getElementById("mobileMoreSheet");
+        var mBack = document.getElementById("mobileMoreBackdrop");
+        if (!moreBtn || !sheet || !mBack) return;
+        var mq = window.matchMedia("(max-width: 900px)");
+        function closeMore() {
+          moreBtn.setAttribute("aria-expanded", "false");
+          sheet.classList.remove("is-visible");
+          mBack.classList.remove("is-visible");
+          body.classList.remove("mobile-more-open");
         }
-        function mqMobile() {
-          return window.matchMedia("(max-width: 900px)").matches;
+        function openMore() {
+          moreBtn.setAttribute("aria-expanded", "true");
+          sheet.classList.add("is-visible");
+          mBack.classList.add("is-visible");
+          body.classList.add("mobile-more-open");
         }
-        function setNavOpen(isOpen) {
-          header.classList.toggle("nav-open", isOpen);
-          toggle.classList.toggle("open", isOpen);
-          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-          var m = mqMobile();
-          if (backdrop) {
-            backdrop.classList.toggle("is-visible", isOpen && m);
-            backdrop.setAttribute("aria-hidden", isOpen && m ? "false" : "true");
-          }
-          document.body.classList.toggle("mobile-nav-open", isOpen && m);
+        function syncMore() {
+          if (!mq.matches) closeMore();
         }
-        toggle.addEventListener("click", function () {
-          setNavOpen(!header.classList.contains("nav-open"));
+        moreBtn.addEventListener("click", function () {
+          if (!mq.matches) return;
+          if (sheet.classList.contains("is-visible")) closeMore();
+          else openMore();
         });
-        backdrop.addEventListener("click", function () {
-          setNavOpen(false);
+        mBack.addEventListener("click", closeMore);
+        sheet.addEventListener("click", function (ev) {
+          var a = ev.target.closest("a");
+          if (a && a.getAttribute("href")) closeMore();
         });
         document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape" && header.classList.contains("nav-open")) setNavOpen(false);
+          if (e.key === "Escape" && sheet.classList.contains("is-visible")) closeMore();
         });
-        window.addEventListener("resize", function () {
-          if (!mqMobile()) setNavOpen(false);
-        });
-        setNavOpen(false);
+        if (typeof mq.addEventListener === "function") mq.addEventListener("change", syncMore);
+        else mq.addListener(syncMore);
         window.addEventListener("pageshow", function (ev) {
-          if (ev.persisted) setNavOpen(false);
+          if (ev.persisted) closeMore();
         });
-      }
+        syncMore();
+      })();
 
       // Social links submenu toggle (mobile)
       if(socialToggle && socialGroup){
@@ -2309,15 +2430,20 @@ body.mobile-nav-open {
   <script>
     (function liveInstrumentDeck() {
       var deck = document.querySelector(".instrument-deck");
-      if (!deck || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (!deck) return;
 
-      var mq = window.matchMedia("(max-width: 900px)");
+      /* Was max-width 900px only — many phones in landscape are 900–1024+ wide, so HUD stayed “---”. */
+      var mqLive = window.matchMedia("(max-width: 1200px), (hover: none)");
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
       var rafId = null;
+      var slowId = null;
       var t0 = performance.now();
 
       function stop() {
         if (rafId != null) cancelAnimationFrame(rafId);
         rafId = null;
+        if (slowId != null) clearInterval(slowId);
+        slowId = null;
         deck.removeAttribute("data-live");
         deck.style.removeProperty("--live-asi");
         deck.style.removeProperty("--live-vsi");
@@ -2326,19 +2452,7 @@ body.mobile-nav-open {
         deck.style.removeProperty("--live-hsi");
       }
 
-      function frame(now) {
-        if (!mq.matches) {
-          stop();
-          return;
-        }
-        var t = (now - t0) / 1000;
-        deck.setAttribute("data-live", "1");
-        deck.style.setProperty("--live-asi", Math.sin(t * 0.75) * 32 - 6 + "deg");
-        deck.style.setProperty("--live-vsi", Math.sin(t * 1.05) * 20 + 3 + "deg");
-        deck.style.setProperty("--live-adi", Math.sin(t * 0.62) * 11 + "%");
-        deck.style.setProperty("--live-tape", Math.sin(t * 0.35) * 16 + "px");
-        deck.style.setProperty("--live-hsi", ((t * 38) % 360) + "deg");
-
+      function updateHudDigits(t) {
         var utc = new Date().toISOString().slice(11, 19) + "Z";
         deck.querySelectorAll(".live-utc").forEach(function (el) {
           el.textContent = utc;
@@ -2351,18 +2465,51 @@ body.mobile-nav-open {
         deck.querySelectorAll(".live-ias").forEach(function (el) {
           el.textContent = String(ias);
         });
+      }
 
+      function frame(now) {
+        if (!mqLive.matches) {
+          stop();
+          return;
+        }
+        var t = (now - t0) / 1000;
+        if (!reduce.matches) {
+          deck.setAttribute("data-live", "1");
+          deck.style.setProperty("--live-asi", Math.sin(t * 0.75) * 32 - 6 + "deg");
+          deck.style.setProperty("--live-vsi", Math.sin(t * 1.05) * 20 + 3 + "deg");
+          deck.style.setProperty("--live-adi", Math.sin(t * 0.62) * 11 + "%");
+          deck.style.setProperty("--live-tape", Math.sin(t * 0.35) * 16 + "px");
+          deck.style.setProperty("--live-hsi", ((t * 38) % 360) + "deg");
+        } else {
+          deck.removeAttribute("data-live");
+        }
+        updateHudDigits(t);
         rafId = requestAnimationFrame(frame);
       }
 
-      function sync() {
-        if (mq.matches) {
-          if (rafId == null) rafId = requestAnimationFrame(frame);
-        } else stop();
+      function tickSlow() {
+        if (!mqLive.matches) return;
+        updateHudDigits((performance.now() - t0) / 1000);
       }
 
-      if (typeof mq.addEventListener === "function") mq.addEventListener("change", sync);
-      else mq.addListener(sync);
+      function sync() {
+        stop();
+        if (!mqLive.matches) return;
+        if (reduce.matches) {
+          tickSlow();
+          slowId = setInterval(tickSlow, 1000);
+        } else {
+          rafId = requestAnimationFrame(frame);
+        }
+      }
+
+      if (typeof mqLive.addEventListener === "function") {
+        mqLive.addEventListener("change", sync);
+        reduce.addEventListener("change", sync);
+      } else {
+        mqLive.addListener(sync);
+        reduce.addListener(sync);
+      }
       sync();
     })();
   </script>

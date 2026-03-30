@@ -1763,8 +1763,8 @@ body.light .mfd-frame::before {
   }
 }
 
-/* Mobile: live instruments (JS sets data-live + --live-* on .instrument-deck) */
-@media (max-width: 900px) {
+/* Live instruments (mirrors main pages) */
+@media (max-width: 1200px), (hover: none) {
   .instrument-deck[data-live="1"] .gauge--airspeed .gauge__needle {
     animation: none !important;
     transform: rotate(var(--live-asi, -12deg));
@@ -1793,40 +1793,8 @@ body.light .mfd-frame::before {
   }
 }
 
-/* Tap outside to close: button#navBackdrop inserted by JS after <header> */
-/* Solid dim only — backdrop-filter on a fixed full-screen layer often composites above the nav on iOS/Safari. */
-.nav-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 120;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: rgba(1, 4, 12, 0.65);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.nav-backdrop.is-visible {
-  display: block;
-}
-
-body.mobile-nav-open {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
+/* Bottom tab navigation is on main pages (fbp, beliefs, logbook, hangar). */
 @media (min-width: 901px) {
-  .nav-backdrop {
-    display: none !important;
-  }
-
-  body.mobile-nav-open {
-    overflow: unset;
-    overscroll-behavior: unset;
-  }
-
   .instrument-deck .live-hud-digit {
     display: none !important;
   }
