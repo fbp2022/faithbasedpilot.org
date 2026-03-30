@@ -91,7 +91,6 @@ body.cockpit.light::before {
     linear-gradient(90deg, rgba(0, 100, 130, 0.06) 1px, transparent 1px);
 }
 
-body.cockpit > header,
 body.cockpit > main,
 body.cockpit > h1,
 body.cockpit > .container,
@@ -100,6 +99,11 @@ body.cockpit > footer,
 body.cockpit > .wrap {
   position: relative;
   z-index: 1;
+}
+
+body.cockpit > header.cockpit-header {
+  position: relative;
+  z-index: 5;
 }
 
 a {
@@ -1857,9 +1861,12 @@ body.mobile-nav-open {
       linear-gradient(172deg, var(--bg) 0%, #d8e4f4 100%);
   }
 
+  body.cockpit > header.cockpit-header {
+    z-index: 3000;
+  }
+
   .cockpit-header {
     position: relative;
-    z-index: 3000;
     padding-left: max(0.35rem, env(safe-area-inset-left, 0px));
     padding-right: max(0.35rem, env(safe-area-inset-right, 0px));
   }

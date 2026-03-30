@@ -1854,9 +1854,12 @@ body.mobile-nav-open {
       linear-gradient(172deg, var(--bg) 0%, #d8e4f4 100%);
   }
 
+  body.cockpit > header.cockpit-header {
+    z-index: 3000;
+  }
+
   .cockpit-header {
     position: relative;
-    z-index: 3000;
     padding-left: max(0.35rem, env(safe-area-inset-left, 0px));
     padding-right: max(0.35rem, env(safe-area-inset-right, 0px));
   }
