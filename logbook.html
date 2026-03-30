@@ -1797,18 +1797,18 @@ body.light .mfd-frame::before {
 }
 
 /* Tap outside to close: button#navBackdrop inserted by JS after <header> */
+/* Solid dim only — backdrop-filter on a fixed full-screen layer often composites above the nav on iOS/Safari. */
 .nav-backdrop {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 350;
+  z-index: 120;
   margin: 0;
   padding: 0;
   border: none;
-  background: rgba(1, 4, 12, 0.74);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(1, 4, 12, 0.65);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-backdrop.is-visible {
@@ -1859,7 +1859,7 @@ body.mobile-nav-open {
 
   .cockpit-header {
     position: relative;
-    z-index: 500;
+    z-index: 3000;
     padding-left: max(0.35rem, env(safe-area-inset-left, 0px));
     padding-right: max(0.35rem, env(safe-area-inset-right, 0px));
   }
@@ -2293,6 +2293,10 @@ body.mobile-nav-open {
         });
         window.addEventListener("resize", function () {
           if (!mqMobile()) setNavOpen(false);
+        });
+        setNavOpen(false);
+        window.addEventListener("pageshow", function (ev) {
+          if (ev.persisted) setNavOpen(false);
         });
       }
 
