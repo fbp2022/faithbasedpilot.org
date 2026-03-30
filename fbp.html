@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faith Based Pilot</title>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/cockpit.css" />
+
+  <!-- reCAPTCHA Enterprise -->
+  <script 
+    src="https://www.google.com/recaptcha/enterprise.js?render=6LcFj-grAAAAAHkCqd7KHorciNrbZmX81Tq4Fens" 
+    async defer></script>
+</head>
+
+<body class="cockpit page-home">
+  <!-- Header -->
+  <header id="pageHeader" class="cockpit-header">
+    <div class="header-bar">
+      <!-- Desktop light/dark theme pill on the LEFT -->
+      <button id="themeButton" class="theme-btn" type="button">Light Theme</button>
+
+      <!-- Hamburger for mobile/tablet -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Glass nav -->
+      <nav>
+        <a href="beliefs.html">Beliefs</a>
+        <a href="logbook.html">Logbook</a>
+        <a href="thehangar.html">The Hangar</a>
+        <a href="https://faithbasedpilot.net" target="_blank" rel="noopener">FBP.NET</a>
+
+        <!-- Theme toggle inside mobile menu -->
+        <button id="navThemeButton" class="nav-theme-btn" type="button">Light Theme</button>
+
+        <!-- Social Links submenu (mobile) -->
+        <div class="nav-social-group" id="navSocialGroup">
+          <button type="button" id="navSocialToggle" class="nav-social-toggle">
+            Social Links
+          </button>
+          <div class="nav-social-list" id="navSocialList">
+            <a href="https://www.instagram.com/faithbasedpilot/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=100093368342398" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://x.com/FaithBasedPilot" target="_blank" rel="noopener">X (Twitter)</a>
+            <a href="https://truthsocial.com/@FaithBasedPilot" target="_blank" rel="noopener">Truth Social</a>
+            <a href="https://www.youtube.com/@FaithBasedPilot" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://rumble.com/c/c-7796604" target="_blank" rel="noopener">Rumble</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Compass logo on the RIGHT -->
+      <img id="headerLogo" src="images/compasslogo.png" alt="Faith Based Pilot" aria-hidden="true">
+    </div>
+
+    <!-- Hero title text only -->
+    <div class="hero-text">
+      <div class="hero-title">FAITH BASED PILOT</div>
+      <div class="hero-subtitle">JOIN ME ON THE FLIGHT WITH CHRIST</div>
+    </div>
+  </header>
+
+  <h1>Welcome</h1>
+
+  <!-- Cards -->
+  <div class="container">
+    <section class="cards" aria-label="Highlights">
+      <article class="card">
+        <div class="card__screen">
+          <img src="images/welcome.jpg" alt="Faith Based Pilot - Welcome" loading="lazy" decoding="async">
+          <div class="card__hud">
+            <span>IAS 110</span><span>ALT 4500</span>
+          </div>
+        </div>
+        <h2>Welcome</h2>
+        <p>
+          Welcome to Faith Based Pilot — where faith, aviation, and purpose intersect.
+          We’re here to lift others by giving guidance to truth, and our own purpose
+          is everything to do with it.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card__screen">
+          <img src="images/mission.jpg" alt="Mission Image" loading="lazy" decoding="async">
+          <div class="card__hud">
+            <span>HDG 090</span><span>VS +500</span>
+          </div>
+        </div>
+        <h2>Mission</h2>
+        <p>
+          Our mission is to equip others with lessons drawn from flying.
+          Core principles include clarity, building skill, and the courage to act.
+          These aren’t just flight lessons — they’re life lessons.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card__screen">
+          <img src="images/anonymity.jpg" alt="Anonymity Image" loading="lazy" decoding="async">
+          <div class="card__hud">
+            <span>COM1 118.70</span><span>XPDR 1200</span>
+          </div>
+        </div>
+        <h2>Why Anonymity</h2>
+        <p>
+          We believe in focusing on message before messenger.
+          That’s why photos are anonymous, stories are universal, and the hope is simple:
+          to reach people where they are and point toward something greater.
+        </p>
+      </article>
+    </section>
+  </div>
+
+  <!-- Contact -->
+  <div class="section" id="contact">
+    <h2>Contact</h2>
+    <p>
+      If you’d like to reach out, share encouragement, collaborate, or request a prayer,
+      you can contact me directly at:<br><br>
+      <a href="mailto:aviationministries@faithbasedpilot.com">
+        aviationministries@faithbasedpilot.com
+      </a>
+    </p>
+    <p style="margin-top:1rem;font-style:italic;color:var(--dim);">— FBP (Faith Based Pilot)</p>
+  </div>
+
+  <!-- Footer (copyright only) -->
+  <footer class="footer">
+    <p>© <span id="year"></span> Faith Based Pilot</p>
+  </footer>
+
+  <!-- Year + nav + theme + social submenu -->
+  <script>
+    (function(){
+      // copyright year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const header       = document.getElementById('pageHeader');
+      const toggle       = document.getElementById('navToggle');
+      const body         = document.body;
+      const themeBtn     = document.getElementById('themeButton');
+      const navThemeBtn  = document.getElementById('navThemeButton');
+      const socialGroup  = document.getElementById('navSocialGroup');
+      const socialToggle = document.getElementById('navSocialToggle');
+
+      // migrate legacy key; apply saved theme
+      if(!localStorage.getItem('fbpTheme') && localStorage.getItem('theme')){
+        localStorage.setItem('fbpTheme', localStorage.getItem('theme'));
+      }
+      const savedTheme = localStorage.getItem('fbpTheme');
+      if(savedTheme === 'light'){
+        body.classList.add('light');
+      }
+
+      function syncThemeLabel(){
+        const light = body.classList.contains('light');
+        const label = light ? 'Dark Theme' : 'Light Theme';
+        if(themeBtn)    themeBtn.textContent    = label;
+        if(navThemeBtn) navThemeBtn.textContent = label;
+      }
+      syncThemeLabel();
+
+      function toggleTheme(){
+        body.classList.toggle('light');
+        const mode = body.classList.contains('light') ? 'light' : 'dark';
+        localStorage.setItem('fbpTheme', mode);
+        syncThemeLabel();
+      }
+
+      // desktop theme button
+      if(themeBtn){
+        themeBtn.addEventListener('click', toggleTheme);
+      }
+      // mobile-nav theme button
+      if(navThemeBtn){
+        navThemeBtn.addEventListener('click', toggleTheme);
+      }
+
+      // mobile nav toggle
+      if(toggle && header){
+        toggle.addEventListener('click', function(){
+          const isOpen = header.classList.toggle('nav-open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      // Social links submenu toggle (mobile)
+      if(socialToggle && socialGroup){
+        socialToggle.addEventListener('click', function(){
+          socialGroup.classList.toggle('open');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
