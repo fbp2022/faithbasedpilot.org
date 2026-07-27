@@ -310,6 +310,22 @@ input:focus-visible, [tabindex]:focus-visible {
 .article-grid details.card > summary::-webkit-details-marker { display:none; }
 .article-grid .content { display:none; }
 .article-grid details.card .thumb { width:100%; aspect-ratio:16/10; object-fit:cover; margin:0; border:0; border-radius:0; box-shadow:none; background:var(--paper-3); }
+/* Branded placeholder for teachings without a dedicated photo */
+.thumb--brand,
+.article-grid details.card .thumb--brand { position:relative; display:grid; place-items:center; overflow:hidden;
+  background:radial-gradient(120% 120% at 50% 12%, var(--navy-700), var(--navy-900)); }
+.thumb--brand::before { content:""; position:absolute; left:50%; top:50%; width:150%; height:150%;
+  transform:translate(-50%,-50%);
+  background:
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0 42deg, rgba(217,185,106,.10) 42deg 45deg),
+    radial-gradient(circle at 50% 50%, transparent 30%, rgba(217,185,106,.06) 31% 32%, transparent 33%);
+  -webkit-mask:radial-gradient(circle at 50% 50%, #000 60%, transparent 72%);
+          mask:radial-gradient(circle at 50% 50%, #000 60%, transparent 72%); }
+.thumb--brand img { position:relative; width:34%; max-width:118px; height:auto; opacity:.95;
+  filter:drop-shadow(0 6px 16px rgba(0,0,0,.4)); }
+.thumb--brand::after { content:""; position:absolute; left:18%; right:18%; bottom:16%; height:1px;
+  background:repeating-linear-gradient(90deg, var(--gold-brt) 0 6px, transparent 6px 12px); opacity:.5; }
+.post-card__media .thumb--brand { position:absolute; inset:0; width:100%; height:100%; }
 .article-card__text { padding:1.15rem 1.3rem 1.4rem; }
 .article-grid .title { font-family:var(--font-display); font-weight:600; font-size:1.28rem; line-height:1.22; color:var(--ink); margin-bottom:.5rem; }
 .article-grid .meta { font-family:var(--font-body); font-size:.78rem; letter-spacing:.03em; color:var(--gold-deep); display:flex; align-items:center; gap:.4rem; }
