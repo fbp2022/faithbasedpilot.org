@@ -62,14 +62,19 @@
     var lastTrigger = null, currentSlug = null;
 
     function shareURL(slug) {
+      // used for in-page history state so the modal + back/forward keep working
       var u = new URL(window.location.href);
       u.searchParams.set("post", slug);
       u.hash = "";
       return u.toString();
     }
+    function canonicalURL(slug) {
+      // the real, shareable page whose static meta tags drive link previews
+      return new URL(slug + ".html", window.location.href).toString();
+    }
 
     function wireShare(title, date, slug) {
-      var url = shareURL(slug);
+      var url = canonicalURL(slug);
       var text = title + (date ? " — " + date : "");
       var byId = function (id) { return document.getElementById(id); };
       var web = byId("btnWebShare"), copy = byId("btnCopyLink"),
