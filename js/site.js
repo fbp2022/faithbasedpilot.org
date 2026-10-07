@@ -223,6 +223,8 @@
       sec.setAttribute("data-cat", cat.title);
       var dateMatch = cat.title.match(/\(([^)]+)\)\s*$/);
       var name = cat.title.replace(/\s*\([^)]*\)\s*$/, "");
+      // Anchor id so links like logbook.html#spirit-of-elijah land on this section
+      sec.id = name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
       sec.innerHTML =
         '<h2>' + esc(name) + (dateMatch ? ' <span class="date">' + esc(dateMatch[1]) + '</span>' : '') + '</h2>' +
         '<div class="logbook-grid"></div>';
@@ -248,6 +250,12 @@
 
     cats.forEach(function (c) { out.appendChild(render(c)); });
     raw.style.display = "none";
+
+    // Sections are built after the page loads, so the browser can't jump to #section on its own
+    if (location.hash) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
 
     // Category chips
     var chipbar = document.getElementById("logbookCats");
@@ -284,15 +292,18 @@
     function applySearch() {
       var q = (lbSearch ? lbSearch.value : "").trim().toLowerCase();
       var shown = 0;
+      // Respect the selected category chip, so clearing a search restores the right sections
+      var activeChip = chipbar && chipbar.querySelector('.chip[aria-pressed="true"]');
+      var cat = activeChip ? activeChip.getAttribute("data-filter") : "all";
       out.querySelectorAll(".logbook-section").forEach(function (sec) {
-        if (sec.style.display === "none" && !q) return;
+        if (cat !== "all" && sec.getAttribute("data-cat") !== cat) { sec.style.display = "none"; return; }
         var secVisible = false;
         sec.querySelectorAll(".file-card").forEach(function (card) {
           var match = !q || (card.getAttribute("data-title") || "").indexOf(q) !== -1;
           card.style.display = match ? "" : "none";
           if (match) { shown++; secVisible = true; }
         });
-        if (q) sec.style.display = secVisible ? "" : "none";
+        sec.style.display = (!q || secVisible) ? "" : "none";
       });
       if (lbCount) lbCount.textContent = shown + (shown === 1 ? " resource" : " resources");
       if (lbNone) lbNone.style.display = shown ? "none" : "block";
