@@ -1236,7 +1236,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:36:46.607Z",
    "v": "449cbcdb1f"
+  },
+  "logbook/are-catholics-lost-in-the-law": {
+   "title": "Are Catholics Lost in the Law",
+   "kind": "logbook",
+   "hash": "cbc216525be35515",
+   "seconds": 644.1,
+   "parts": [
+    {
+     "file": "audio/logbook/are-catholics-lost-in-the-law.mp3",
+     "bytes": 5153517,
+     "seconds": 644.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:40:46.538Z",
+   "v": "cbc216525b"
   }
  },
- "updated": "2026-11-26T23:36:49.783Z"
+ "updated": "2026-11-26T23:40:49.871Z"
 }
