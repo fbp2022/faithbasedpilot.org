@@ -799,7 +799,23 @@
    "machine": "server",
    "made": "2026-11-26T21:54:41.501Z",
    "v": "50329be141"
+  },
+  "logbook/reclaiming-your-relationship-with-god-a-bold": {
+   "title": "Reclaiming Your Relationship with God",
+   "kind": "logbook",
+   "hash": "020ea5604ef06a95",
+   "seconds": 805.9,
+   "parts": [
+    {
+     "file": "audio/logbook/reclaiming-your-relationship-with-god-a-bold.mp3",
+     "bytes": 6447981,
+     "seconds": 805.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:55:56.512Z",
+   "v": "020ea5604e"
   }
  },
- "updated": "2026-11-26T21:54:44.794Z"
+ "updated": "2026-11-26T21:56:00.074Z"
 }
