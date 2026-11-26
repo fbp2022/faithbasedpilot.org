@@ -1076,7 +1076,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:04:38.402Z",
    "v": "08b0bf432b"
+  },
+  "logbook/acts-20-13-28": {
+   "title": "Acts 20:13–28",
+   "kind": "logbook",
+   "hash": "18052698c9f5461c",
+   "seconds": 912.3,
+   "parts": [
+    {
+     "file": "audio/logbook/acts-20-13-28.mp3",
+     "bytes": 7299117,
+     "seconds": 912.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:06:39.105Z",
+   "v": "18052698c9"
   }
  },
- "updated": "2026-11-26T23:04:41.992Z"
+ "updated": "2026-11-26T23:06:42.449Z"
 }
