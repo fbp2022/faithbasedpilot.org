@@ -1023,7 +1023,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:48:30.875Z",
    "v": "03a24100ba"
+  },
+  "logbook/the-pillars": {
+   "title": "The Pillars",
+   "kind": "logbook",
+   "hash": "7f641accb5b677ee",
+   "seconds": 666.9,
+   "parts": [
+    {
+     "file": "audio/logbook/the-pillars.mp3",
+     "bytes": 5335917,
+     "seconds": 666.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:54:40.125Z",
+   "v": "7f641accb5"
   }
  },
- "updated": "2026-11-26T22:48:34.570Z"
+ "updated": "2026-11-26T22:54:43.628Z"
 }
