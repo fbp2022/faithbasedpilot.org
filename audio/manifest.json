@@ -1092,7 +1092,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:06:39.105Z",
    "v": "18052698c9"
+  },
+  "logbook/giving-praise-through-trials-and-tribulation": {
+   "title": "Giving Praise Through Trials and Tribulation",
+   "kind": "logbook",
+   "hash": "d701005af0193ee9",
+   "seconds": 415.4,
+   "parts": [
+    {
+     "file": "audio/logbook/giving-praise-through-trials-and-tribulation.mp3",
+     "bytes": 3323373,
+     "seconds": 415.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:08:28.586Z",
+   "v": "d701005af0"
   }
  },
- "updated": "2026-11-26T23:06:42.449Z"
+ "updated": "2026-11-26T23:08:31.783Z"
 }
