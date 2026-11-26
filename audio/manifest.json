@@ -543,7 +543,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:12:54.888Z",
    "v": "d1dafb721a"
+  },
+  "hangar/defending-the-spirit": {
+   "title": "Defending the Spirit",
+   "kind": "hangar",
+   "hash": "ed741ba6935e2535",
+   "seconds": 320.1,
+   "parts": [
+    {
+     "file": "audio/hangar/defending-the-spirit.mp3",
+     "bytes": 2561133,
+     "seconds": 320.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:16:02.387Z",
+   "v": "ed741ba693"
   }
  },
- "updated": "2026-11-26T21:12:58.762Z"
+ "updated": "2026-11-26T21:16:05.744Z"
 }
