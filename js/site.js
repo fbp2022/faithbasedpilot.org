@@ -212,6 +212,7 @@
       b.innerHTML = playSVG + '<span>Listen</span><span class="listen-btn__len">' + mins(entry.seconds) + "</span>";
       b.setAttribute("aria-label", "Listen to " + (title || entry.title) + ", " + mins(entry.seconds));
       b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); play(key, title, entry); });
+      b.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") e.stopPropagation(); });
       return b;
     }
     return {
@@ -224,25 +225,25 @@
           container.insertBefore(button(key, title, entry, "listen-btn--lead"), container.firstChild);
         });
       },
-      // Add a Listen button inside a Logbook file card.
-      card: function (cardEl, key, title) {
+      // Put a Listen button on a card, right after `afterEl` (e.g. its date line).
+      card: function (afterEl, key, title) {
         manifestP.then(function (m) {
           var entry = m.items && m.items[key];
-          if (!entry) return;
-          var text = cardEl.querySelector(".file-card__meta") || cardEl;
-          text.parentNode.insertBefore(button(key, title, entry, "listen-btn--card"), text.nextSibling);
+          if (!entry || !afterEl || !afterEl.parentNode) return;
+          if (afterEl.parentNode.querySelector(":scope > .listen-btn")) return;
+          afterEl.parentNode.insertBefore(button(key, title, entry, "listen-btn--card"), afterEl.nextSibling);
         });
       },
     };
   })();
 
-  // A Hangar post's own share page (e.g. /guilt-shame.html): Listen at the top of the article.
-  (function sharePage() {
-    var article = document.querySelector("article.prose");
-    if (!article || document.getElementById("article-grid")) return;
-    var slug = (location.pathname.split("/").pop() || "").replace(/\.html$/, "");
-    if (slug) FBPListen.prepend(article, "hangar/" + slug);
-  })();
+  // Home page post cards (link to thehangar.html?post=<slug>): Listen on the card.
+  document.querySelectorAll('a.post-card[href*="post="]').forEach(function (a) {
+    var slug = (a.getAttribute("href").match(/[?&]post=([^&#]+)/) || [])[1];
+    var meta = a.querySelector(".post-card__meta");
+    var title = (a.querySelector(".post-card__title") || {}).textContent || "";
+    if (slug && meta) FBPListen.card(meta, "hangar/" + decodeURIComponent(slug), title.trim());
+  });
 
   (function hangar() {
     var grid = document.getElementById("article-grid");
@@ -300,7 +301,6 @@
       mTitle.textContent = title;
       mMeta.textContent = date;
       mBody.innerHTML = card.querySelector(".content") ? card.querySelector(".content").innerHTML : "";
-      FBPListen.prepend(mBody, "hangar/" + slug, title);
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
       lastTrigger = summary; currentSlug = slug;
@@ -324,6 +324,7 @@
 
     grid.querySelectorAll("details.card").forEach(function (card) {
       var summary = card.querySelector("summary");
+      FBPListen.card(summary.querySelector(".meta"), "hangar/" + card.getAttribute("data-slug"), card.getAttribute("data-title"));
       // Keep native <details> from toggling; we use the modal instead.
       card.addEventListener("toggle", function () { if (card.open) card.removeAttribute("open"); });
       summary.setAttribute("role", "button");
@@ -442,7 +443,7 @@
           (it.summary ? '<span class="file-card__summary">' + esc(it.summary) + '</span>' : '') +
           '<span class="file-card__meta">' + (it.meta ? esc(it.meta) : (isPdf ? "PDF study" : "Image")) + '</span></span>' +
           '<span class="file-card__action" aria-hidden="true">' + (isPdf ? downloadSVG : openSVG) + '</span>';
-        if (isPdf) FBPListen.card(a, "logbook/" + FBPListen.slugify(it.file.replace(/\.[^.]+$/, "")), it.title);
+        if (isPdf) FBPListen.card(a.querySelector(".file-card__meta"), "logbook/" + FBPListen.slugify(it.file.replace(/\.[^.]+$/, "")), it.title);
         g.appendChild(a);
       });
       return sec;
