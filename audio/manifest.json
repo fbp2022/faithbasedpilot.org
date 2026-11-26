@@ -15,7 +15,439 @@
    "machine": "server",
    "made": "2026-11-26T19:37:38.087Z",
    "v": "7269b13072"
+  },
+  "hangar/when-your-heart-aches-for-the-lord": {
+   "title": "When Your Heart Aches for the Lord",
+   "kind": "hangar",
+   "hash": "c97c5ecb6f5b6cb3",
+   "seconds": 659.7,
+   "parts": [
+    {
+     "file": "audio/hangar/when-your-heart-aches-for-the-lord.mp3",
+     "bytes": 5277933,
+     "seconds": 659.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T19:38:16.769Z",
+   "v": "c97c5ecb6f"
+  },
+  "hangar/when-the-sermon-becomes-bigger-than-scripture": {
+   "title": "When the Sermon Becomes Bigger Than Scripture",
+   "kind": "hangar",
+   "hash": "54cd394acb9d8155",
+   "seconds": 631.8,
+   "parts": [
+    {
+     "file": "audio/hangar/when-the-sermon-becomes-bigger-than-scripture.mp3",
+     "bytes": 5054829,
+     "seconds": 631.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T19:45:30.263Z",
+   "v": "54cd394acb"
+  },
+  "hangar/stand-firm": {
+   "title": "Stand Firm",
+   "kind": "hangar",
+   "hash": "c14a75db0c4d3671",
+   "seconds": 1062.8,
+   "parts": [
+    {
+     "file": "audio/hangar/stand-firm.mp3",
+     "bytes": 8502765,
+     "seconds": 1062.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T19:58:53.324Z",
+   "v": "c14a75db0c"
+  },
+  "hangar/you-can-love-them-and-still-walk-away": {
+   "title": "You Can Love Them and Still Walk Away",
+   "kind": "hangar",
+   "hash": "2ed56371f5119813",
+   "seconds": 806.7,
+   "parts": [
+    {
+     "file": "audio/hangar/you-can-love-them-and-still-walk-away.mp3",
+     "bytes": 6454125,
+     "seconds": 806.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:08:00.630Z",
+   "v": "2ed56371f5"
+  },
+  "hangar/when-our-words-become-a-stumbling-block": {
+   "title": "When Our Words Become a Stumbling Block",
+   "kind": "hangar",
+   "hash": "8662d20bdba54640",
+   "seconds": 610.1,
+   "parts": [
+    {
+     "file": "audio/hangar/when-our-words-become-a-stumbling-block.mp3",
+     "bytes": 4881261,
+     "seconds": 610.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:14:11.321Z",
+   "v": "8662d20bdb"
+  },
+  "hangar/the-strength-of-a-servant-killing-pride-and-leading-low": {
+   "title": "The Strength of a Servant: Killing Pride and Leading Low",
+   "kind": "hangar",
+   "hash": "ef45f30fde2ee234",
+   "seconds": 415.7,
+   "parts": [
+    {
+     "file": "audio/hangar/the-strength-of-a-servant-killing-pride-and-leading-low.mp3",
+     "bytes": 3326445,
+     "seconds": 415.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:17:32.390Z",
+   "v": "ef45f30fde"
+  },
+  "hangar/slave-to-christ": {
+   "title": "Slave to Christ",
+   "kind": "hangar",
+   "hash": "c8797fe30fc7885a",
+   "seconds": 176.1,
+   "parts": [
+    {
+     "file": "audio/hangar/slave-to-christ.mp3",
+     "bytes": 1409325,
+     "seconds": 176.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:17:38.700Z",
+   "v": "c8797fe30f"
+  },
+  "hangar/separated-to-reunite": {
+   "title": "Separated to Reunite",
+   "kind": "hangar",
+   "hash": "7c908bc7ab02b7da",
+   "seconds": 215.2,
+   "parts": [
+    {
+     "file": "audio/hangar/separated-to-reunite.mp3",
+     "bytes": 1721901,
+     "seconds": 215.2
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:19:34.212Z",
+   "v": "7c908bc7ab"
+  },
+  "hangar/the-raven-and-the-dove": {
+   "title": "The Raven and the Dove",
+   "kind": "hangar",
+   "hash": "093edea40ee15311",
+   "seconds": 283.1,
+   "parts": [
+    {
+     "file": "audio/hangar/the-raven-and-the-dove.mp3",
+     "bytes": 2265453,
+     "seconds": 283.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:22:10.996Z",
+   "v": "093edea40e"
+  },
+  "hangar/stand-firm-a-call-to-integrity-and-biblical-morals": {
+   "title": "Stand Firm: A Call to Integrity and Biblical Morals",
+   "kind": "hangar",
+   "hash": "608db3297a965956",
+   "seconds": 202.8,
+   "parts": [
+    {
+     "file": "audio/hangar/stand-firm-a-call-to-integrity-and-biblical-morals.mp3",
+     "bytes": 1622829,
+     "seconds": 202.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:23:57.365Z",
+   "v": "608db3297a"
+  },
+  "hangar/the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call": {
+   "title": "The Manna from Heaven and the Gift of Christmas: A Profound Call",
+   "kind": "hangar",
+   "hash": "a0669708f9048bd3",
+   "seconds": 228.2,
+   "parts": [
+    {
+     "file": "audio/hangar/the-manna-from-heaven-and-the-gift-of-christmas-a-profound-call.mp3",
+     "bytes": 1826349,
+     "seconds": 228.2
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:24:03.861Z",
+   "v": "a0669708f9"
+  },
+  "hangar/hello-let-s-talk-about-your-car-s-extended-warranty": {
+   "title": "Hello, Let’s Talk About Your Car’s Extended Warranty",
+   "kind": "hangar",
+   "hash": "dcb29ed4c9ec1231",
+   "seconds": 312.2,
+   "parts": [
+    {
+     "file": "audio/hangar/hello-let-s-talk-about-your-car-s-extended-warranty.mp3",
+     "bytes": 2498157,
+     "seconds": 312.2
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:26:44.033Z",
+   "v": "dcb29ed4c9"
+  },
+  "hangar/the-spiritual-dangers-of-halloween": {
+   "title": "The Spiritual Dangers of Halloween",
+   "kind": "hangar",
+   "hash": "aa3e632089a10a89",
+   "seconds": 441.3,
+   "parts": [
+    {
+     "file": "audio/hangar/the-spiritual-dangers-of-halloween.mp3",
+     "bytes": 3530925,
+     "seconds": 441.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:31:06.443Z",
+   "v": "aa3e632089"
+  },
+  "hangar/do-not-stop-do-not-drop-and-do-not-roll": {
+   "title": "Do Not Stop, Do Not Drop, and Do Not Roll",
+   "kind": "hangar",
+   "hash": "203c66c45217ebd8",
+   "seconds": 384.8,
+   "parts": [
+    {
+     "file": "audio/hangar/do-not-stop-do-not-drop-and-do-not-roll.mp3",
+     "bytes": 3078573,
+     "seconds": 384.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:34:30.478Z",
+   "v": "203c66c452"
+  },
+  "hangar/tuning-out-the-noise": {
+   "title": "Tuning Out the Noise",
+   "kind": "hangar",
+   "hash": "b050b12a7a86b4b7",
+   "seconds": 357.9,
+   "parts": [
+    {
+     "file": "audio/hangar/tuning-out-the-noise.mp3",
+     "bytes": 2863341,
+     "seconds": 357.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:37:37.122Z",
+   "v": "b050b12a7a"
+  },
+  "hangar/position-lights-and-the-christian-walk": {
+   "title": "✈️ Position Lights and the Christian Walk",
+   "kind": "hangar",
+   "hash": "05bbe054691ed969",
+   "seconds": 146.1,
+   "parts": [
+    {
+     "file": "audio/hangar/position-lights-and-the-christian-walk.mp3",
+     "bytes": 1169325,
+     "seconds": 146.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:38:55.699Z",
+   "v": "05bbe05469"
+  },
+  "hangar/when-help-is-refused-faith-based-guidance-for-the-unreachable": {
+   "title": "When Help is Refused: Faith-Based Guidance for the Unreachable",
+   "kind": "hangar",
+   "hash": "74c875931e95c2af",
+   "seconds": 350.4,
+   "parts": [
+    {
+     "file": "audio/hangar/when-help-is-refused-faith-based-guidance-for-the-unreachable.mp3",
+     "bytes": 2803437,
+     "seconds": 350.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:41:46.640Z",
+   "v": "74c875931e"
+  },
+  "hangar/true-confidence-vs-false-security": {
+   "title": "True Confidence vs. False Security",
+   "kind": "hangar",
+   "hash": "9bd9371f0d381b2e",
+   "seconds": 316.5,
+   "parts": [
+    {
+     "file": "audio/hangar/true-confidence-vs-false-security.mp3",
+     "bytes": 2532333,
+     "seconds": 316.5
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:44:47.252Z",
+   "v": "9bd9371f0d"
+  },
+  "hangar/tolerance-and-faith-how-to-walk-in-today-s-world": {
+   "title": "Tolerance and Faith: How to Walk in Today’s World",
+   "kind": "hangar",
+   "hash": "d57a194ee71f9825",
+   "seconds": 231.2,
+   "parts": [
+    {
+     "file": "audio/hangar/tolerance-and-faith-how-to-walk-in-today-s-world.mp3",
+     "bytes": 1850157,
+     "seconds": 231.2
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:46:49.757Z",
+   "v": "d57a194ee7"
+  },
+  "hangar/god-won-t-give-you-anything-he-can-t-handle": {
+   "title": "God Won't Give You Anything He Can't Handle",
+   "kind": "hangar",
+   "hash": "da26845248805597",
+   "seconds": 247.4,
+   "parts": [
+    {
+     "file": "audio/hangar/god-won-t-give-you-anything-he-can-t-handle.mp3",
+     "bytes": 1979949,
+     "seconds": 247.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:49:07.848Z",
+   "v": "da26845248"
+  },
+  "hangar/soft-society-hard-truths-undone-culture": {
+   "title": "Soft Society, Hard Truths: Undone Culture",
+   "kind": "hangar",
+   "hash": "b49e6f871cffbd5c",
+   "seconds": 270.7,
+   "parts": [
+    {
+     "file": "audio/hangar/soft-society-hard-truths-undone-culture.mp3",
+     "bytes": 2165997,
+     "seconds": 270.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:51:34.101Z",
+   "v": "b49e6f871c"
+  },
+  "hangar/faith-strength-courage-community": {
+   "title": "Faith: Strength, Courage, Community",
+   "kind": "hangar",
+   "hash": "30d0b558543cca36",
+   "seconds": 287.3,
+   "parts": [
+    {
+     "file": "audio/hangar/faith-strength-courage-community.mp3",
+     "bytes": 2299053,
+     "seconds": 287.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:53:58.786Z",
+   "v": "30d0b55854"
+  },
+  "hangar/patience": {
+   "title": "Patience",
+   "kind": "hangar",
+   "hash": "ed002c19a089843d",
+   "seconds": 145,
+   "parts": [
+    {
+     "file": "audio/hangar/patience.mp3",
+     "bytes": 1160301,
+     "seconds": 145
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:55:19.103Z",
+   "v": "ed002c19a0"
+  },
+  "hangar/mark-driscoll-guest-speaker-kicked-off-the-stage": {
+   "title": "Mark Driscoll, Guest Speaker, Kicked Off the Stage",
+   "kind": "hangar",
+   "hash": "7798b16762ea4f8f",
+   "seconds": 251.8,
+   "parts": [
+    {
+     "file": "audio/hangar/mark-driscoll-guest-speaker-kicked-off-the-stage.mp3",
+     "bytes": 2014701,
+     "seconds": 251.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:57:34.113Z",
+   "v": "7798b16762"
+  },
+  "hangar/7-deadly-sins": {
+   "title": "7 Deadly Sins",
+   "kind": "hangar",
+   "hash": "585734b5944dd7d2",
+   "seconds": 172.9,
+   "parts": [
+    {
+     "file": "audio/hangar/7-deadly-sins.mp3",
+     "bytes": 1383405,
+     "seconds": 172.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T20:59:07.478Z",
+   "v": "585734b594"
+  },
+  "hangar/discerning-the-divine-understanding-the-voice-of-god": {
+   "title": "Discerning the Divine: Understanding the Voice of God",
+   "kind": "hangar",
+   "hash": "33938cbbd3a56275",
+   "seconds": 191.4,
+   "parts": [
+    {
+     "file": "audio/hangar/discerning-the-divine-understanding-the-voice-of-god.mp3",
+     "bytes": 1531437,
+     "seconds": 191.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:00:53.433Z",
+   "v": "33938cbbd3"
+  },
+  "hangar/the-dynamic-dialogue-conscience-and-the-holy-spirit": {
+   "title": "The Dynamic Dialogue: Conscience and the Holy Spirit",
+   "kind": "hangar",
+   "hash": "f97fe58cf5badb63",
+   "seconds": 157,
+   "parts": [
+    {
+     "file": "audio/hangar/the-dynamic-dialogue-conscience-and-the-holy-spirit.mp3",
+     "bytes": 1256493,
+     "seconds": 157
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:02:25.951Z",
+   "v": "f97fe58cf5"
   }
  },
- "updated": "2026-11-26T19:39:55.990Z"
+ "updated": "2026-11-26T21:03:01.306Z"
 }
