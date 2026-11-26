@@ -1156,7 +1156,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:13:51.066Z",
    "v": "36172adb2a"
+  },
+  "logbook/prayer": {
+   "title": "Prayer",
+   "kind": "logbook",
+   "hash": "944f196046a097c1",
+   "seconds": 351.2,
+   "parts": [
+    {
+     "file": "audio/logbook/prayer.mp3",
+     "bytes": 2809965,
+     "seconds": 351.2
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:16:41.084Z",
+   "v": "944f196046"
   }
  },
- "updated": "2026-11-26T23:13:54.313Z"
+ "updated": "2026-11-26T23:16:44.463Z"
 }
