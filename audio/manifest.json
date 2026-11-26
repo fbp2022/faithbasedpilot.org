@@ -719,7 +719,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:43:36.684Z",
    "v": "5874950e5b"
+  },
+  "logbook/vanity-transhumanism-and-the-eternal-soul-a": {
+   "title": "Vanity, Transhumanism, and the Eternal Soul",
+   "kind": "logbook",
+   "hash": "cb2482a78e415208",
+   "seconds": 574.7,
+   "parts": [
+    {
+     "file": "audio/logbook/vanity-transhumanism-and-the-eternal-soul-a.mp3",
+     "bytes": 4597869,
+     "seconds": 574.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:46:28.476Z",
+   "v": "cb2482a78e"
   }
  },
- "updated": "2026-11-26T21:43:40.061Z"
+ "updated": "2026-11-26T21:46:31.782Z"
 }
