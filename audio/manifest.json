@@ -1007,7 +1007,23 @@
    "machine": "server",
    "made": "2026-11-26T22:46:11.603Z",
    "v": "a86fcd60dd"
+  },
+  "logbook/stand-firm-the-armor-of-god": {
+   "title": "Stand Firm: The Armor of God",
+   "kind": "logbook",
+   "hash": "03a24100baabfff2",
+   "seconds": 1966.1,
+   "parts": [
+    {
+     "file": "audio/logbook/stand-firm-the-armor-of-god.mp3",
+     "bytes": 15729261,
+     "seconds": 1966.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:48:30.875Z",
+   "v": "03a24100ba"
   }
  },
- "updated": "2026-11-26T22:46:14.981Z"
+ "updated": "2026-11-26T22:48:34.570Z"
 }
