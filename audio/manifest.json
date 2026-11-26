@@ -783,7 +783,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:54:23.566Z",
    "v": "3d713c4135"
+  },
+  "logbook/recognizing-the-spirit-of-elijah": {
+   "title": "Recognizing the Spirit of Elijah",
+   "kind": "logbook",
+   "hash": "50329be1410d9cce",
+   "seconds": 265.7,
+   "parts": [
+    {
+     "file": "audio/logbook/recognizing-the-spirit-of-elijah.mp3",
+     "bytes": 2125676,
+     "seconds": 265.7
+    }
+   ],
+   "machine": "server",
+   "made": "2026-11-26T21:54:41.501Z",
+   "v": "50329be141"
   }
  },
- "updated": "2026-11-26T21:54:27.066Z"
+ "updated": "2026-11-26T21:54:44.794Z"
 }
