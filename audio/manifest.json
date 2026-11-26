@@ -1204,7 +1204,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:29:30.747Z",
    "v": "afb9dc09c9"
+  },
+  "logbook/faiths-wings-accountability-peace-compassi": {
+   "title": "Faith's Wings: Accountability, Peace, Compassion",
+   "kind": "logbook",
+   "hash": "da591a3e43ff165d",
+   "seconds": 671.4,
+   "parts": [
+    {
+     "file": "audio/logbook/faiths-wings-accountability-peace-compassi.mp3",
+     "bytes": 5372013,
+     "seconds": 671.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:35:30.273Z",
+   "v": "da591a3e43"
   }
  },
- "updated": "2026-11-26T23:29:33.865Z"
+ "updated": "2026-11-26T23:35:33.944Z"
 }
