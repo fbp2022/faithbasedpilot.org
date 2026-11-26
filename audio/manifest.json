@@ -895,7 +895,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:12:08.891Z",
    "v": "65617cad88"
+  },
+  "logbook/forgiving-the-jezebelian-inhabited": {
+   "title": "Forgiving the Jezebelian Inhabited",
+   "kind": "logbook",
+   "hash": "928067389edc1e9d",
+   "seconds": 968.1,
+   "parts": [
+    {
+     "file": "audio/logbook/forgiving-the-jezebelian-inhabited.mp3",
+     "bytes": 7745133,
+     "seconds": 968.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:15:05.001Z",
+   "v": "928067389e"
   }
  },
- "updated": "2026-11-26T22:12:12.296Z"
+ "updated": "2026-11-26T22:15:08.643Z"
 }
