@@ -1140,7 +1140,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:13:42.944Z",
    "v": "3693179437"
+  },
+  "logbook/gods-blessings-promises-and-how-he-keeps-us": {
+   "title": "God’s Blessings and Promises",
+   "kind": "logbook",
+   "hash": "36172adb2ae9514f",
+   "seconds": 784.2,
+   "parts": [
+    {
+     "file": "audio/logbook/gods-blessings-promises-and-how-he-keeps-us.mp3",
+     "bytes": 6274029,
+     "seconds": 784.2
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:13:51.066Z",
+   "v": "36172adb2a"
   }
  },
- "updated": "2026-11-26T23:13:46.165Z"
+ "updated": "2026-11-26T23:13:54.313Z"
 }
