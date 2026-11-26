@@ -1,0 +1,21 @@
+{
+ "items": {
+  "hangar/guidance-and-asking-for-help": {
+   "title": "Guidance and Asking for Help",
+   "kind": "hangar",
+   "hash": "7269b13072318742",
+   "seconds": 81.1,
+   "parts": [
+    {
+     "file": "audio/hangar/guidance-and-asking-for-help.mp3",
+     "bytes": 649004,
+     "seconds": 81.1
+    }
+   ],
+   "machine": "server",
+   "made": "2026-11-26T19:37:38.087Z",
+   "v": "7269b13072"
+  }
+ },
+ "updated": "2026-11-26T19:39:55.990Z"
+}
