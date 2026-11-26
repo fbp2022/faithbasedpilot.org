@@ -815,7 +815,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:55:56.512Z",
    "v": "020ea5604e"
+  },
+  "logbook/what-is-an-ahab-spirit": {
+   "title": "What is an Ahab Spirit",
+   "kind": "logbook",
+   "hash": "908051874dfdd628",
+   "seconds": 378.9,
+   "parts": [
+    {
+     "file": "audio/logbook/what-is-an-ahab-spirit.mp3",
+     "bytes": 3031533,
+     "seconds": 378.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:57:33.622Z",
+   "v": "908051874d"
   }
  },
- "updated": "2026-11-26T21:56:00.074Z"
+ "updated": "2026-11-26T21:57:36.819Z"
 }
