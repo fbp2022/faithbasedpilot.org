@@ -943,7 +943,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:18:09.114Z",
    "v": "40fa562646"
+  },
+  "logbook/book-of-genesis-chapter-1-9-31": {
+   "title": "Book of Genesis - Chapter 1:9–31",
+   "kind": "logbook",
+   "hash": "86090b381fba7e85",
+   "seconds": 569.6,
+   "parts": [
+    {
+     "file": "audio/logbook/book-of-genesis-chapter-1-9-31.mp3",
+     "bytes": 4557357,
+     "seconds": 569.6
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:21:04.619Z",
+   "v": "86090b381f"
   }
  },
- "updated": "2026-11-26T22:18:12.592Z"
+ "updated": "2026-11-26T22:21:08.216Z"
 }
