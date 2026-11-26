@@ -69,6 +69,22 @@
     </div>
   </section>
 
+
+  <section class="section section--band" id="daily-verse" aria-labelledby="daily-verse-h">
+    <div class="wrap wrap--narrow" style="text-align:center">
+      <p class="kicker">Standing on Scripture</p>
+      <h2 class="section__title" id="daily-verse-h">Verse of the Day</h2>
+      <p>Legacy Standard Bible (LSB) <span id="daily-verse-date"></span></p>
+      <div aria-live="polite" aria-atomic="true">
+        <p id="daily-verse-status">Loading today&rsquo;s verse&hellip;</p>
+        <blockquote class="prose" id="daily-verse-text" style="margin:1.5rem 0;font-size:clamp(1.25rem,2.5vw,1.65rem);line-height:1.65" hidden></blockquote>
+        <p><a id="daily-verse-reference" href="https://www.biblegateway.com/?version=LSB" hidden></a></p>
+      </div>
+      <noscript><p>Enable JavaScript to see the daily verse here, or <a href="https://www.biblegateway.com/?version=LSB">read it on Bible Gateway in the LSB</a>.</p></noscript>
+      <p style="font-size:.8rem;margin-bottom:0">Powered by <a href="https://www.biblegateway.com/?version=LSB">BibleGateway.com</a><br />Legacy Standard Bible. Copyright &copy; 2021 by <a href="https://www.lockman.org/">The Lockman Foundation</a>. All rights reserved.</p>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="features">
@@ -249,5 +265,6 @@
   </div>
 </footer>
 <script src="js/site.js" defer></script>
+<script src="js/daily-verse.js" defer></script>
 </body>
 </html>
