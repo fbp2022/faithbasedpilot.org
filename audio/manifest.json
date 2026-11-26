@@ -911,7 +911,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:15:05.001Z",
    "v": "928067389e"
+  },
+  "logbook/book-of-genesis-chapter-1-verses-1-5": {
+   "title": "Book of Genesis - Chapter 1 Verses 1–5",
+   "kind": "logbook",
+   "hash": "4d948c11a7f33df9",
+   "seconds": 466.6,
+   "parts": [
+    {
+     "file": "audio/logbook/book-of-genesis-chapter-1-verses-1-5.mp3",
+     "bytes": 3733101,
+     "seconds": 466.6
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:16:06.222Z",
+   "v": "4d948c11a7"
   }
  },
- "updated": "2026-11-26T22:15:08.643Z"
+ "updated": "2026-11-26T22:16:09.648Z"
 }
