@@ -463,7 +463,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:04:18.079Z",
    "v": "8de188ba1c"
+  },
+  "hangar/a-call-to-fortitude-reflecting-on-generational-strength": {
+   "title": "A Call to Fortitude: Reflecting on Generational Strength",
+   "kind": "hangar",
+   "hash": "425cc4be1026ce09",
+   "seconds": 156.4,
+   "parts": [
+    {
+     "file": "audio/hangar/a-call-to-fortitude-reflecting-on-generational-strength.mp3",
+     "bytes": 1251501,
+     "seconds": 156.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:05:50.167Z",
+   "v": "425cc4be10"
   }
  },
- "updated": "2026-11-26T21:04:21.602Z"
+ "updated": "2026-11-26T21:05:53.422Z"
 }
