@@ -847,7 +847,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:59:22.997Z",
    "v": "eb8c3fdc67"
+  },
+  "logbook/what-is-a-jezebelian-spirit": {
+   "title": "What is a Jezebelian Spirit",
+   "kind": "logbook",
+   "hash": "f130aa366856a691",
+   "seconds": 462.7,
+   "parts": [
+    {
+     "file": "audio/logbook/what-is-a-jezebelian-spirit.mp3",
+     "bytes": 3701805,
+     "seconds": 462.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:01:02.619Z",
+   "v": "f130aa3668"
   }
  },
- "updated": "2026-11-26T21:59:26.153Z"
+ "updated": "2026-11-26T22:01:06.255Z"
 }
