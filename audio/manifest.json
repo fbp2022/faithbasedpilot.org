@@ -735,7 +735,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:46:28.476Z",
    "v": "cb2482a78e"
+  },
+  "logbook/the-significance-of-christmas": {
+   "title": "The Significance of Christmas",
+   "kind": "logbook",
+   "hash": "9e7ed3b0c16e4798",
+   "seconds": 664.8,
+   "parts": [
+    {
+     "file": "audio/logbook/the-significance-of-christmas.mp3",
+     "bytes": 5319021,
+     "seconds": 664.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:49:11.690Z",
+   "v": "9e7ed3b0c1"
   }
  },
- "updated": "2026-11-26T21:46:31.782Z"
+ "updated": "2026-11-26T21:49:15.145Z"
 }
