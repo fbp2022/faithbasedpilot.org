@@ -639,7 +639,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:27:04.478Z",
    "v": "0884c1a50e"
+  },
+  "hangar/god-will-strengthen-and-free-you": {
+   "title": "God Will Strengthen and Free You",
+   "kind": "hangar",
+   "hash": "c688ea7df6a821e6",
+   "seconds": 216.7,
+   "parts": [
+    {
+     "file": "audio/hangar/god-will-strengthen-and-free-you.mp3",
+     "bytes": 1733805,
+     "seconds": 216.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:29:20.517Z",
+   "v": "c688ea7df6"
   }
  },
- "updated": "2026-11-26T21:27:07.784Z"
+ "updated": "2026-11-26T21:29:23.683Z"
 }
