@@ -975,7 +975,23 @@
    "machine": "server",
    "made": "2026-11-26T22:21:39.488Z",
    "v": "a9f5a3e5d9"
+  },
+  "logbook/promised-land-eschatology-references": {
+   "title": "Promised Land & Eschatology References",
+   "kind": "logbook",
+   "hash": "4327207720012716",
+   "seconds": 877.9,
+   "parts": [
+    {
+     "file": "audio/logbook/promised-land-eschatology-references.mp3",
+     "bytes": 7023981,
+     "seconds": 877.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:29:10.882Z",
+   "v": "4327207720"
   }
  },
- "updated": "2026-11-26T22:21:42.777Z"
+ "updated": "2026-11-26T22:29:14.299Z"
 }
