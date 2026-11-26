@@ -1188,7 +1188,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:22:17.257Z",
    "v": "da970a9fc5"
+  },
+  "logbook/obey-and-abide": {
+   "title": "Obey and Abide",
+   "kind": "logbook",
+   "hash": "afb9dc09c97c648a",
+   "seconds": 818.4,
+   "parts": [
+    {
+     "file": "audio/logbook/obey-and-abide.mp3",
+     "bytes": 6548013,
+     "seconds": 818.4
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:29:30.747Z",
+   "v": "afb9dc09c9"
   }
  },
- "updated": "2026-11-26T23:22:20.654Z"
+ "updated": "2026-11-26T23:29:33.865Z"
 }
