@@ -87,18 +87,83 @@
     var playSVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
     var headSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>';
 
+    var SPEEDS = [1, 1.25, 1.5, 1.75, 2, 0.85];
+    var speed = 1;
+    try { speed = parseFloat(localStorage.getItem("fbpListenSpeed")) || 1; } catch (e) {}
+    function fmt(t) { t = Math.max(0, Math.floor(t || 0)); var h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = t % 60; return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(s).padStart(2, "0"); }
+    var ICON = {
+      play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z" fill="currentColor"/></svg>',
+      pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="currentColor"/></svg>',
+      back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/></svg>',
+      fwd: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4h-4"/></svg>',
+    };
+
+    // Big, thumb-friendly controls (usable on the road): play/pause, back 15 s, ahead 30 s,
+    // a thick seek bar, and playback speed. Lock-screen / car controls via Media Session.
     function ensureBar() {
       if (bar) return;
       bar = document.createElement("div");
       bar.className = "listen-bar";
       bar.setAttribute("role", "region");
       bar.setAttribute("aria-label", "Audio player");
-      bar.innerHTML = '<span class="listen-bar__icon">' + headSVG + '</span>' +
-        '<div class="listen-bar__info"><div class="listen-bar__label">Now playing</div><div class="listen-bar__title"></div></div>' +
-        '<audio class="listen-bar__audio" controls preload="none"></audio>' +
-        '<button type="button" class="listen-bar__close" aria-label="Close player">&times;</button>';
+      bar.innerHTML =
+        '<div class="listen-bar__top">' +
+          '<span class="listen-bar__icon">' + headSVG + '</span>' +
+          '<div class="listen-bar__info"><div class="listen-bar__label">Now playing</div><div class="listen-bar__title"></div></div>' +
+          '<button type="button" class="listen-bar__close" aria-label="Close player">&times;</button>' +
+        '</div>' +
+        '<div class="listen-bar__seek">' +
+          '<span class="listen-bar__time" data-now>0:00</span>' +
+          '<input type="range" class="listen-bar__range" min="0" max="1000" step="1" value="0" aria-label="Seek" />' +
+          '<span class="listen-bar__time" data-left>-0:00</span>' +
+        '</div>' +
+        '<div class="listen-bar__controls">' +
+          '<button type="button" class="listen-bar__btn" data-act="back" aria-label="Back 15 seconds">' + ICON.back + '<span>15</span></button>' +
+          '<button type="button" class="listen-bar__btn listen-bar__play" data-act="play" aria-label="Play">' + ICON.play + '</button>' +
+          '<button type="button" class="listen-bar__btn" data-act="fwd" aria-label="Ahead 30 seconds">' + ICON.fwd + '<span>30</span></button>' +
+          '<button type="button" class="listen-bar__speed" data-act="speed" aria-label="Playback speed">1×</button>' +
+        '</div>' +
+        '<audio preload="metadata"></audio>';
       document.body.appendChild(bar);
       audio = bar.querySelector("audio");
+      var range = bar.querySelector(".listen-bar__range"), dragging = false;
+      var playBtn = bar.querySelector(".listen-bar__play"), speedBtn = bar.querySelector(".listen-bar__speed");
+
+      function skip(d) { if (audio.duration) audio.currentTime = Math.min(Math.max(0, audio.currentTime + d), audio.duration - 0.25); }
+      function sync() {
+        var d = audio.duration || 0, t = audio.currentTime || 0;
+        if (!dragging) range.value = d ? Math.round(t / d * 1000) : 0;
+        range.style.setProperty("--pct", (d ? t / d * 100 : 0) + "%");
+        bar.querySelector("[data-now]").textContent = fmt(t);
+        bar.querySelector("[data-left]").textContent = "-" + fmt(d - t);
+        if ("mediaSession" in navigator && navigator.mediaSession.setPositionState && d) {
+          try { navigator.mediaSession.setPositionState({ duration: d, position: Math.min(t, d), playbackRate: audio.playbackRate }); } catch (e) {}
+        }
+      }
+      function paint() {
+        var on = !audio.paused;
+        playBtn.innerHTML = on ? ICON.pause : ICON.play;
+        playBtn.setAttribute("aria-label", on ? "Pause" : "Play");
+        if ("mediaSession" in navigator) navigator.mediaSession.playbackState = on ? "playing" : "paused";
+      }
+      function setSpeed(v) {
+        speed = v; audio.playbackRate = v; audio.defaultPlaybackRate = v;
+        speedBtn.textContent = (v % 1 ? v : v.toFixed(0)) + "×";
+        try { localStorage.setItem("fbpListenSpeed", String(v)); } catch (e) {}
+      }
+      bar.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-act]"); if (!b) return;
+        var act = b.getAttribute("data-act");
+        if (act === "play") { if (audio.paused) audio.play().catch(function () {}); else audio.pause(); }
+        else if (act === "back") skip(-15);
+        else if (act === "fwd") skip(30);
+        else if (act === "speed") setSpeed(SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length]);
+      });
+      range.addEventListener("input", function () { dragging = true; var d = audio.duration || 0; bar.querySelector("[data-now]").textContent = fmt(range.value / 1000 * d); range.style.setProperty("--pct", range.value / 10 + "%"); });
+      range.addEventListener("change", function () { dragging = false; if (audio.duration) audio.currentTime = range.value / 1000 * audio.duration; });
+      ["timeupdate", "durationchange", "loadedmetadata", "seeked"].forEach(function (ev) { audio.addEventListener(ev, sync); });
+      ["play", "pause", "ended"].forEach(function (ev) { audio.addEventListener(ev, paint); });
+      audio.addEventListener("loadedmetadata", function () { audio.playbackRate = speed; });
       audio.addEventListener("ended", function () {
         if (partIdx + 1 < parts.length) { partIdx++; setPart(); audio.play().catch(function () {}); }
       });
@@ -106,9 +171,21 @@
         audio.pause(); audio.removeAttribute("src"); audio.load();
         bar.classList.remove("open"); document.body.classList.remove("has-listen-bar"); nowKey = null;
       });
+      if ("mediaSession" in navigator) {
+        var ms = navigator.mediaSession, h = function (a, f) { try { ms.setActionHandler(a, f); } catch (e) {} };
+        h("play", function () { audio.play(); });
+        h("pause", function () { audio.pause(); });
+        h("seekbackward", function (d) { skip(-((d && d.seekOffset) || 15)); });
+        h("seekforward", function (d) { skip((d && d.seekOffset) || 30); });
+        h("seekto", function (d) { if (d && d.seekTime != null) audio.currentTime = d.seekTime; });
+        h("previoustrack", function () { if (partIdx > 0) { partIdx--; setPart(); audio.play(); } else audio.currentTime = 0; });
+        h("nexttrack", function () { if (partIdx + 1 < parts.length) { partIdx++; setPart(); audio.play(); } });
+      }
+      setSpeed(speed);
     }
     function setPart() {
       audio.src = parts[partIdx];
+      audio.playbackRate = speed;
       var t = bar.querySelector(".listen-bar__title");
       bar.querySelector(".listen-bar__label").textContent = parts.length > 1 ? "Now playing · part " + (partIdx + 1) + " of " + parts.length : "Now playing";
       if ("mediaSession" in navigator && window.MediaMetadata) {
