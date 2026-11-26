@@ -591,7 +591,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:20:20.129Z",
    "v": "7fd24b4576"
+  },
+  "hangar/jesus-freak": {
+   "title": "Jesus Freak",
+   "kind": "hangar",
+   "hash": "f869c686b2857c5d",
+   "seconds": 171.9,
+   "parts": [
+    {
+     "file": "audio/hangar/jesus-freak.mp3",
+     "bytes": 1375725,
+     "seconds": 171.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:22:08.535Z",
+   "v": "f869c686b2"
   }
  },
- "updated": "2026-11-26T21:20:23.802Z"
+ "updated": "2026-11-26T21:22:11.975Z"
 }
