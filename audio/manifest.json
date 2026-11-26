@@ -1124,7 +1124,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:11:03.179Z",
    "v": "1bc409224a"
+  },
+  "logbook/forgiveness": {
+   "title": "Forgiveness",
+   "kind": "logbook",
+   "hash": "3693179437b6f4f1",
+   "seconds": 294,
+   "parts": [
+    {
+     "file": "audio/logbook/forgiveness.mp3",
+     "bytes": 2352621,
+     "seconds": 294
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:13:42.944Z",
+   "v": "3693179437"
   }
  },
- "updated": "2026-11-26T23:11:06.551Z"
+ "updated": "2026-11-26T23:13:46.165Z"
 }
