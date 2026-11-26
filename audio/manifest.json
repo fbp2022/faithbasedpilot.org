@@ -655,7 +655,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:29:20.517Z",
    "v": "c688ea7df6"
+  },
+  "logbook/no-other-way-the-narrow-gate-of-rebirth": {
+   "title": "No Other Way: The Narrow Gate of Rebirth",
+   "kind": "logbook",
+   "hash": "f812b96eec792c34",
+   "seconds": 519.7,
+   "parts": [
+    {
+     "file": "audio/logbook/no-other-way-the-narrow-gate-of-rebirth.mp3",
+     "bytes": 4158381,
+     "seconds": 519.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:34:22.093Z",
+   "v": "f812b96eec"
   }
  },
- "updated": "2026-11-26T21:29:23.683Z"
+ "updated": "2026-11-26T21:34:25.757Z"
 }
