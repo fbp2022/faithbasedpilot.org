@@ -879,7 +879,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:06:54.414Z",
    "v": "e9085cbaa5"
+  },
+  "logbook/recognizing-a-jezebelian-spirit": {
+   "title": "Recognizing a Jezebelian Spirit",
+   "kind": "logbook",
+   "hash": "65617cad88471b5f",
+   "seconds": 1539.7,
+   "parts": [
+    {
+     "file": "audio/logbook/recognizing-a-jezebelian-spirit.mp3",
+     "bytes": 12317805,
+     "seconds": 1539.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:12:08.891Z",
+   "v": "65617cad88"
   }
  },
- "updated": "2026-11-26T22:06:57.692Z"
+ "updated": "2026-11-26T22:12:12.296Z"
 }
