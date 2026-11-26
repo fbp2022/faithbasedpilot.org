@@ -927,7 +927,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:16:06.222Z",
    "v": "4d948c11a7"
+  },
+  "logbook/book-of-genesis-chapter-1-verses-6-8": {
+   "title": "Book of Genesis - Chapter 1 Verses 6–8",
+   "kind": "logbook",
+   "hash": "40fa562646214d46",
+   "seconds": 360.8,
+   "parts": [
+    {
+     "file": "audio/logbook/book-of-genesis-chapter-1-verses-6-8.mp3",
+     "bytes": 2887149,
+     "seconds": 360.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:18:09.114Z",
+   "v": "40fa562646"
   }
  },
- "updated": "2026-11-26T22:16:09.648Z"
+ "updated": "2026-11-26T22:18:12.592Z"
 }
