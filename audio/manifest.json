@@ -671,7 +671,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:34:22.093Z",
    "v": "f812b96eec"
+  },
+  "logbook/take-every-thought-captive-a-call-to-men-to": {
+   "title": "Take Every Thought Captive",
+   "kind": "logbook",
+   "hash": "1a4b08f58b7853a8",
+   "seconds": 1080.8,
+   "parts": [
+    {
+     "file": "audio/logbook/take-every-thought-captive-a-call-to-men-to.mp3",
+     "bytes": 8646765,
+     "seconds": 1080.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:39:49.111Z",
+   "v": "1a4b08f58b"
   }
  },
- "updated": "2026-11-26T21:34:25.757Z"
+ "updated": "2026-11-26T21:39:52.479Z"
 }
