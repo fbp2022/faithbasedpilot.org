@@ -703,7 +703,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:41:25.913Z",
    "v": "c380726fe2"
+  },
+  "logbook/guarding-your-heart": {
+   "title": "Guarding Your Heart",
+   "kind": "logbook",
+   "hash": "5874950e5ba4d9d5",
+   "seconds": 436.6,
+   "parts": [
+    {
+     "file": "audio/logbook/guarding-your-heart.mp3",
+     "bytes": 3493485,
+     "seconds": 436.6
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:43:36.684Z",
+   "v": "5874950e5b"
   }
  },
- "updated": "2026-11-26T21:41:29.177Z"
+ "updated": "2026-11-26T21:43:40.061Z"
 }
