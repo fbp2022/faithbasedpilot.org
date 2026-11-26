@@ -1252,7 +1252,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:40:46.538Z",
    "v": "cbc216525b"
+  },
+  "logbook/when-the-mission-becomes-a-trap": {
+   "title": "When the Mission Becomes a Trap",
+   "kind": "logbook",
+   "hash": "0beb0631b3f42f4e",
+   "seconds": 1545.8,
+   "parts": [
+    {
+     "file": "audio/logbook/when-the-mission-becomes-a-trap.mp3",
+     "bytes": 12366957,
+     "seconds": 1545.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:49:41.150Z",
+   "v": "0beb0631b3"
   }
  },
- "updated": "2026-11-26T23:40:49.871Z"
+ "updated": "2026-11-26T23:49:44.557Z"
 }
