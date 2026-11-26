@@ -607,7 +607,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:22:08.535Z",
    "v": "f869c686b2"
+  },
+  "hangar/faith-and-forgiveness": {
+   "title": "Faith and Forgiveness",
+   "kind": "hangar",
+   "hash": "70c15c8b38da2e14",
+   "seconds": 313.1,
+   "parts": [
+    {
+     "file": "audio/hangar/faith-and-forgiveness.mp3",
+     "bytes": 2505645,
+     "seconds": 313.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:25:19.456Z",
+   "v": "70c15c8b38"
   }
  },
- "updated": "2026-11-26T21:22:11.975Z"
+ "updated": "2026-11-26T21:25:22.891Z"
 }
