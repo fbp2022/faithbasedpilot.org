@@ -418,6 +418,8 @@ input:focus-visible, [tabindex]:focus-visible {
 .listen-btn svg { width:1rem; height:1rem; flex:none; }
 .listen-btn__len { font-weight:500; color:var(--ink-soft); }
 .listen-btn--lead { margin:0 0 1.2rem; }
+.listen-parts { display:flex; flex-wrap:wrap; gap:.45rem; align-self:flex-start; margin-top:.55rem; }
+.listen-parts .listen-btn--card { margin-top:0; }
 .listen-btn--card { align-self:flex-start; justify-self:start; width:auto; margin-top:.55rem; padding:.35rem .75rem .35rem .6rem; font-size:.82rem; }
 .listen-bar { position:fixed; left:0; right:0; bottom:0; z-index:1300; display:none; flex-direction:column; gap:.55rem; padding:.75rem max(1rem, env(safe-area-inset-left)) calc(.8rem + env(safe-area-inset-bottom)); background:var(--navy-900); color:#fff; box-shadow:0 -10px 30px rgba(11,28,46,.25); }
 .listen-bar.open { display:flex; }

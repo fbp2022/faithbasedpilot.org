@@ -195,23 +195,27 @@
         });
       }
     }
-    function play(key, title, entry) {
+    function play(key, title, entry, startPart) {
       ensureBar();
-      if (nowKey === key) { if (audio.paused) audio.play().catch(function () {}); else audio.pause(); return; }
-      nowKey = key; partIdx = 0;
+      startPart = startPart || 0;
+      if (nowKey === key && partIdx === startPart) { if (audio.paused) audio.play().catch(function () {}); else audio.pause(); return; }
+      nowKey = key; partIdx = startPart;
       parts = entry.parts.map(function (p) { return p.file + "?v=" + (entry.v || ""); });
       bar.querySelector(".listen-bar__title").textContent = title || entry.title;
       setPart();
       bar.classList.add("open"); document.body.classList.add("has-listen-bar");
       audio.play().catch(function () {});
     }
-    function button(key, title, entry, extraClass) {
+    // part: null = whole recording; 0, 1, … = start at that part (long papers have one button per part)
+    function button(key, title, entry, extraClass, part) {
       var b = document.createElement("button");
       b.type = "button";
       b.className = "listen-btn" + (extraClass ? " " + extraClass : "");
-      b.innerHTML = playSVG + '<span>Listen</span><span class="listen-btn__len">' + mins(entry.seconds) + "</span>";
-      b.setAttribute("aria-label", "Listen to " + (title || entry.title) + ", " + mins(entry.seconds));
-      b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); play(key, title, entry); });
+      var many = part != null, secs = many ? entry.parts[part].seconds : entry.seconds;
+      var label = many ? "Part " + (part + 1) : "Listen";
+      b.innerHTML = playSVG + "<span>" + label + '</span><span class="listen-btn__len">' + mins(secs) + "</span>";
+      b.setAttribute("aria-label", "Listen to " + (title || entry.title) + (many ? ", part " + (part + 1) + " of " + entry.parts.length : "") + ", " + mins(secs));
+      b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); play(key, title, entry, part || 0); });
       b.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") e.stopPropagation(); });
       return b;
     }
@@ -230,8 +234,16 @@
         manifestP.then(function (m) {
           var entry = m.items && m.items[key];
           if (!entry || !afterEl || !afterEl.parentNode) return;
-          if (afterEl.parentNode.querySelector(":scope > .listen-btn")) return;
-          afterEl.parentNode.insertBefore(button(key, title, entry, "listen-btn--card"), afterEl.nextSibling);
+          if (afterEl.parentNode.querySelector(":scope > .listen-btn, :scope > .listen-parts")) return;
+          var el;
+          if (entry.parts && entry.parts.length > 1) {
+            el = document.createElement("span");
+            el.className = "listen-parts";
+            entry.parts.forEach(function (_, i) { el.appendChild(button(key, title, entry, "listen-btn--card", i)); });
+          } else {
+            el = button(key, title, entry, "listen-btn--card");
+          }
+          afterEl.parentNode.insertBefore(el, afterEl.nextSibling);
         });
       },
     };
