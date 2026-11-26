@@ -26,6 +26,17 @@
     p.appendChild(a);
   });
 
+  /* ---------- Valiant Faith initiative navigation ---------- */
+  document.querySelectorAll("#primary-nav, .footer-nav").forEach(function (nav) {
+    if (nav.querySelector('a[href="valiant-faith.html"]')) return;
+    var link = document.createElement("a");
+    link.href = "valiant-faith.html";
+    link.textContent = "Valiant Faith";
+    if (window.location.pathname.endsWith("/valiant-faith.html")) link.setAttribute("aria-current", "page");
+    var contact = nav.querySelector('a[href="fbp.html#contact"]');
+    nav.insertBefore(link, contact);
+  });
+
   /* ---------- Mobile nav ---------- */
   (function nav() {
     var toggle = document.querySelector("[data-nav-toggle]");
@@ -54,7 +65,7 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && menu.classList.contains("open")) close();
     });
-    window.matchMedia("(min-width: 861px)").addEventListener("change", function (m) {
+    window.matchMedia("(min-width: 1101px)").addEventListener("change", function (m) {
       if (m.matches) close();
     });
   })();
