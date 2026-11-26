@@ -863,7 +863,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:01:02.619Z",
    "v": "f130aa3668"
+  },
+  "logbook/guarding-against-a-jezebelian-spirit": {
+   "title": "Guarding Against a Jezebelian Spirit",
+   "kind": "logbook",
+   "hash": "e9085cbaa5b7d1da",
+   "seconds": 685.9,
+   "parts": [
+    {
+     "file": "audio/logbook/guarding-against-a-jezebelian-spirit.mp3",
+     "bytes": 5487597,
+     "seconds": 685.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T22:06:54.414Z",
+   "v": "e9085cbaa5"
   }
  },
- "updated": "2026-11-26T22:01:06.255Z"
+ "updated": "2026-11-26T22:06:57.692Z"
 }
