@@ -479,7 +479,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:05:50.167Z",
    "v": "425cc4be10"
+  },
+  "hangar/the-unyielding-path-of-a-christian-challenging-the-status-quo": {
+   "title": "The Unyielding Path of a Christian: Challenging the Status Quo",
+   "kind": "hangar",
+   "hash": "32072cbdcdc14bfb",
+   "seconds": 123.3,
+   "parts": [
+    {
+     "file": "audio/hangar/the-unyielding-path-of-a-christian-challenging-the-status-quo.mp3",
+     "bytes": 986925,
+     "seconds": 123.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:07:12.092Z",
+   "v": "32072cbdcd"
   }
  },
- "updated": "2026-11-26T21:05:53.422Z"
+ "updated": "2026-11-26T21:07:15.507Z"
 }
