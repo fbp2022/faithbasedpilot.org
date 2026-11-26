@@ -687,7 +687,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:39:49.111Z",
    "v": "1a4b08f58b"
+  },
+  "logbook/the-danger-of-progressive-christianity-and-the": {
+   "title": "The Danger of Progressive Christianity",
+   "kind": "logbook",
+   "hash": "c380726fe274b744",
+   "seconds": 831.3,
+   "parts": [
+    {
+     "file": "audio/logbook/the-danger-of-progressive-christianity-and-the.mp3",
+     "bytes": 6650733,
+     "seconds": 831.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:41:25.913Z",
+   "v": "c380726fe2"
   }
  },
- "updated": "2026-11-26T21:39:52.479Z"
+ "updated": "2026-11-26T21:41:29.177Z"
 }
