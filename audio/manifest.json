@@ -767,7 +767,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:50:56.893Z",
    "v": "755e2230a9"
+  },
+  "logbook/meaning-of-the-spirit-of-elijah": {
+   "title": "Meaning of \"Spirit of Elijah\"",
+   "kind": "logbook",
+   "hash": "3d713c4135b03e55",
+   "seconds": 392.7,
+   "parts": [
+    {
+     "file": "audio/logbook/meaning-of-the-spirit-of-elijah.mp3",
+     "bytes": 3142317,
+     "seconds": 392.7
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:54:23.566Z",
+   "v": "3d713c4135"
   }
  },
- "updated": "2026-11-26T21:51:00.217Z"
+ "updated": "2026-11-26T21:54:27.066Z"
 }
