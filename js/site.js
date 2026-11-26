@@ -71,6 +71,102 @@
   })();
 
   /* ---------- The Hangar: modal reader + search + share ---------- */
+  /* ---------- Listen: narrated audio for Hangar posts and Logbook papers ----------
+     audio/manifest.json (published from ATC) lists each recording and its MP3 part(s).
+     One player bar at the bottom of the screen keeps playing while you scroll, and
+     shows on the phone lock screen (Media Session), so it works for listening on the road. */
+  var FBPListen = (function () {
+    var manifestP = fetch("audio/manifest.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : { items: {} }; })
+      .catch(function () { return { items: {} }; });
+    var bar = null, audio = null, nowKey = null, parts = [], partIdx = 0;
+
+    // Same rule as ATC and the narration engine (keys must match).
+    function slugify(s) { return String(s).toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80); }
+    function mins(sec) { var m = Math.max(1, Math.round((sec || 0) / 60)); return m + " min"; }
+    var playSVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+    var headSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>';
+
+    function ensureBar() {
+      if (bar) return;
+      bar = document.createElement("div");
+      bar.className = "listen-bar";
+      bar.setAttribute("role", "region");
+      bar.setAttribute("aria-label", "Audio player");
+      bar.innerHTML = '<span class="listen-bar__icon">' + headSVG + '</span>' +
+        '<div class="listen-bar__info"><div class="listen-bar__label">Now playing</div><div class="listen-bar__title"></div></div>' +
+        '<audio class="listen-bar__audio" controls preload="none"></audio>' +
+        '<button type="button" class="listen-bar__close" aria-label="Close player">&times;</button>';
+      document.body.appendChild(bar);
+      audio = bar.querySelector("audio");
+      audio.addEventListener("ended", function () {
+        if (partIdx + 1 < parts.length) { partIdx++; setPart(); audio.play().catch(function () {}); }
+      });
+      bar.querySelector(".listen-bar__close").addEventListener("click", function () {
+        audio.pause(); audio.removeAttribute("src"); audio.load();
+        bar.classList.remove("open"); document.body.classList.remove("has-listen-bar"); nowKey = null;
+      });
+    }
+    function setPart() {
+      audio.src = parts[partIdx];
+      var t = bar.querySelector(".listen-bar__title");
+      bar.querySelector(".listen-bar__label").textContent = parts.length > 1 ? "Now playing · part " + (partIdx + 1) + " of " + parts.length : "Now playing";
+      if ("mediaSession" in navigator && window.MediaMetadata) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: t.textContent, artist: "Faith Based Pilot", album: nowKey.indexOf("logbook/") === 0 ? "The Logbook" : "The Hangar",
+          artwork: [{ src: "images/compasslogo.png", sizes: "512x512", type: "image/png" }],
+        });
+      }
+    }
+    function play(key, title, entry) {
+      ensureBar();
+      if (nowKey === key) { if (audio.paused) audio.play().catch(function () {}); else audio.pause(); return; }
+      nowKey = key; partIdx = 0;
+      parts = entry.parts.map(function (p) { return p.file + "?v=" + (entry.v || ""); });
+      bar.querySelector(".listen-bar__title").textContent = title || entry.title;
+      setPart();
+      bar.classList.add("open"); document.body.classList.add("has-listen-bar");
+      audio.play().catch(function () {});
+    }
+    function button(key, title, entry, extraClass) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "listen-btn" + (extraClass ? " " + extraClass : "");
+      b.innerHTML = playSVG + '<span>Listen</span><span class="listen-btn__len">' + mins(entry.seconds) + "</span>";
+      b.setAttribute("aria-label", "Listen to " + (title || entry.title) + ", " + mins(entry.seconds));
+      b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); play(key, title, entry); });
+      return b;
+    }
+    return {
+      slugify: slugify,
+      // Put a Listen button at the top of `container` if `key` has audio.
+      prepend: function (container, key, title) {
+        manifestP.then(function (m) {
+          var entry = m.items && m.items[key];
+          if (!entry || !container || container.querySelector(".listen-btn")) return;
+          container.insertBefore(button(key, title, entry, "listen-btn--lead"), container.firstChild);
+        });
+      },
+      // Add a Listen button inside a Logbook file card.
+      card: function (cardEl, key, title) {
+        manifestP.then(function (m) {
+          var entry = m.items && m.items[key];
+          if (!entry) return;
+          var text = cardEl.querySelector(".file-card__meta") || cardEl;
+          text.parentNode.insertBefore(button(key, title, entry, "listen-btn--card"), text.nextSibling);
+        });
+      },
+    };
+  })();
+
+  // A Hangar post's own share page (e.g. /guilt-shame.html): Listen at the top of the article.
+  (function sharePage() {
+    var article = document.querySelector("article.prose");
+    if (!article || document.getElementById("article-grid")) return;
+    var slug = (location.pathname.split("/").pop() || "").replace(/\.html$/, "");
+    if (slug) FBPListen.prepend(article, "hangar/" + slug);
+  })();
+
   (function hangar() {
     var grid = document.getElementById("article-grid");
     var modal = document.getElementById("postModal");
@@ -127,6 +223,7 @@
       mTitle.textContent = title;
       mMeta.textContent = date;
       mBody.innerHTML = card.querySelector(".content") ? card.querySelector(".content").innerHTML : "";
+      FBPListen.prepend(mBody, "hangar/" + slug, title);
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
       lastTrigger = summary; currentSlug = slug;
@@ -247,6 +344,8 @@
       sec.setAttribute("data-cat", cat.title);
       var dateMatch = cat.title.match(/\(([^)]+)\)\s*$/);
       var name = cat.title.replace(/\s*\([^)]*\)\s*$/, "");
+      // Anchor id so links like logbook.html#spirit-of-elijah land on this section
+      sec.id = name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
       sec.innerHTML =
         '<h2>' + esc(name) + (dateMatch ? ' <span class="date">' + esc(dateMatch[1]) + '</span>' : '') + '</h2>' +
         '<div class="logbook-grid"></div>';
@@ -266,6 +365,7 @@
           (it.summary ? '<span class="file-card__summary">' + esc(it.summary) + '</span>' : '') +
           '<span class="file-card__meta">' + (it.meta ? esc(it.meta) : (isPdf ? "PDF study" : "Image")) + '</span></span>' +
           '<span class="file-card__action" aria-hidden="true">' + (isPdf ? downloadSVG : openSVG) + '</span>';
+        if (isPdf) FBPListen.card(a, "logbook/" + FBPListen.slugify(it.file.replace(/\.[^.]+$/, "")), it.title);
         g.appendChild(a);
       });
       return sec;
@@ -273,6 +373,12 @@
 
     cats.forEach(function (c) { out.appendChild(render(c)); });
     raw.style.display = "none";
+
+    // Sections are built after the page loads, so the browser can't jump to #section on its own
+    if (location.hash) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
 
     // Category chips
     var chipbar = document.getElementById("logbookCats");

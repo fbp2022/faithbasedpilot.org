@@ -410,3 +410,30 @@ input:focus-visible, [tabindex]:focus-visible {
 .file-card > span:nth-child(2) { min-width:0; }
 .file-card__title, .file-card__meta { display:block; }
 .file-card__summary { display:block; margin:.5rem 0 .65rem; font-size:.88rem; line-height:1.6; color:var(--ink-soft); overflow-wrap:anywhere; }
+
+/* ---------- Listen (narrated audio) ---------- */
+.listen-btn { display:inline-flex; align-items:center; gap:.45rem; font:600 .9rem/1 var(--font-body); color:var(--navy-900); background:var(--gold-soft); border:1px solid var(--gold); border-radius:999px; padding:.5rem .95rem .5rem .75rem; cursor:pointer; transition:background .15s ease, transform .15s ease; }
+.listen-btn:hover { background:var(--gold-brt); }
+.listen-btn:active { transform:scale(.97); }
+.listen-btn svg { width:1rem; height:1rem; flex:none; }
+.listen-btn__len { font-weight:500; color:var(--ink-soft); }
+.listen-btn--lead { margin:0 0 1.2rem; }
+.listen-btn--card { margin-top:.55rem; padding:.35rem .75rem .35rem .6rem; font-size:.82rem; }
+.listen-bar { position:fixed; left:0; right:0; bottom:0; z-index:1300; display:none; align-items:center; gap:.8rem; padding:.65rem max(1rem, env(safe-area-inset-left)) calc(.65rem + env(safe-area-inset-bottom)); background:var(--navy-900); color:#fff; box-shadow:0 -10px 30px rgba(11,28,46,.25); }
+.listen-bar.open { display:flex; }
+body.has-listen-bar { padding-bottom:84px; }
+body.has-listen-bar .modal__sheet { max-height:calc(92vh - 84px); margin-bottom:0; }
+.listen-bar__icon svg { width:1.5rem; height:1.5rem; color:var(--gold-brt); display:block; }
+.listen-bar__info { min-width:0; flex:0 1 32%; }
+.listen-bar__label { font:600 .68rem/1.2 var(--font-body); letter-spacing:.08em; text-transform:uppercase; color:var(--gold-brt); }
+.listen-bar__title { font:600 .95rem/1.3 var(--font-body); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.listen-bar__audio { flex:1 1 auto; min-width:0; height:40px; }
+.listen-bar__close { flex:none; width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:transparent; color:#fff; font-size:1.4rem; line-height:1; cursor:pointer; }
+.listen-bar__close:hover { background:rgba(255,255,255,.1); }
+@media (max-width: 640px) {
+  .listen-bar { flex-wrap:wrap; gap:.4rem .7rem; }
+  .listen-bar__info { flex:1 1 0; }
+  .listen-bar__audio { order:3; flex:1 1 100%; }
+  body.has-listen-bar { padding-bottom:124px; }
+  body.has-listen-bar .modal__sheet { max-height:calc(92vh - 124px); }
+}
