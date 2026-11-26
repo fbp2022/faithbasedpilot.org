@@ -310,7 +310,12 @@
       var q = (lbSearch ? lbSearch.value : "").trim().toLowerCase();
       var shown = 0;
       out.querySelectorAll(".logbook-section").forEach(function (sec) {
-        if (sec.style.display === "none" && !q) return;
+        if (!q) {
+          var selected = chipbar && chipbar.querySelector('.chip[aria-pressed="true"]');
+          var category = selected ? selected.getAttribute("data-filter") : "all";
+          sec.style.display = category === "all" || sec.getAttribute("data-cat") === category ? "" : "none";
+          if (sec.style.display === "none") return;
+        }
         var secVisible = false;
         sec.querySelectorAll(".file-card").forEach(function (card) {
           var match = !q || (card.getAttribute("data-title") || "").indexOf(q) !== -1;
