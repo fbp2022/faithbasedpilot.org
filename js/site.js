@@ -230,6 +230,7 @@
         current.items.push({
           title: node.textContent.trim(),
           file: file,
+          summary: (node.getAttribute("data-summary") || "").trim(),
           ext: ext,
           meta: trailing.replace(/[-–|]/g, " ").replace(/[()]/g, " ").replace(/\s+/g, " ").trim()
         });
@@ -256,12 +257,13 @@
         var a = document.createElement("a");
         a.className = "file-card";
         a.href = href;
-        a.setAttribute("data-title", it.title.toLowerCase());
+        a.setAttribute("data-title", (it.title + " " + it.summary).toLowerCase());
         if (isPdf) a.setAttribute("download", "");
         else { a.target = "_blank"; a.rel = "noopener"; }
         a.innerHTML =
           '<span class="file-card__icon ' + it.ext + '">' + it.ext.toUpperCase() + '</span>' +
           '<span><span class="file-card__title">' + esc(it.title) + '</span>' +
+          (it.summary ? '<span class="file-card__summary">' + esc(it.summary) + '</span>' : '') +
           '<span class="file-card__meta">' + (it.meta ? esc(it.meta) : (isPdf ? "PDF study" : "Image")) + '</span></span>' +
           '<span class="file-card__action" aria-hidden="true">' + (isPdf ? downloadSVG : openSVG) + '</span>';
         g.appendChild(a);
