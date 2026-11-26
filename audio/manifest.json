@@ -1172,7 +1172,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:16:41.084Z",
    "v": "944f196046"
+  },
+  "logbook/your-sin-affects-those-around-you": {
+   "title": "Your Sin Affects Those Around You",
+   "kind": "logbook",
+   "hash": "da970a9fc5fd18fa",
+   "seconds": 652.8,
+   "parts": [
+    {
+     "file": "audio/logbook/your-sin-affects-those-around-you.mp3",
+     "bytes": 5223021,
+     "seconds": 652.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:22:17.257Z",
+   "v": "da970a9fc5"
   }
  },
- "updated": "2026-11-26T23:16:44.463Z"
+ "updated": "2026-11-26T23:22:20.654Z"
 }
