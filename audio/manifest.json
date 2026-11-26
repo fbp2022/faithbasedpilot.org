@@ -495,7 +495,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:07:12.092Z",
    "v": "32072cbdcd"
+  },
+  "hangar/unspoken-facing-the-uncomfortable-truths": {
+   "title": "Unspoken: Facing the Uncomfortable Truths",
+   "kind": "hangar",
+   "hash": "da8f23d98c31312e",
+   "seconds": 215.3,
+   "parts": [
+    {
+     "file": "audio/hangar/unspoken-facing-the-uncomfortable-truths.mp3",
+     "bytes": 1722861,
+     "seconds": 215.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:09:19.708Z",
+   "v": "da8f23d98c"
   }
  },
- "updated": "2026-11-26T21:07:15.507Z"
+ "updated": "2026-11-26T21:09:22.954Z"
 }
