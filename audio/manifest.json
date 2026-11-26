@@ -991,7 +991,23 @@
    "machine": "pc",
    "made": "2026-11-26T22:29:10.882Z",
    "v": "4327207720"
+  },
+  "logbook/guarding-against-an-ahab-spirit": {
+   "title": "Guarding Against an Ahab Spirit",
+   "kind": "logbook",
+   "hash": "a86fcd60dd177c95",
+   "seconds": 265.7,
+   "parts": [
+    {
+     "file": "audio/logbook/guarding-against-an-ahab-spirit.mp3",
+     "bytes": 2125868,
+     "seconds": 265.7
+    }
+   ],
+   "machine": "server",
+   "made": "2026-11-26T22:46:11.603Z",
+   "v": "a86fcd60dd"
   }
  },
- "updated": "2026-11-26T22:29:14.299Z"
+ "updated": "2026-11-26T22:46:14.981Z"
 }
