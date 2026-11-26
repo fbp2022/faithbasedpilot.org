@@ -1268,7 +1268,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:49:41.150Z",
    "v": "0beb0631b3"
+  },
+  "logbook/when-the-weight-lifts": {
+   "title": "When the Weight Lifts",
+   "kind": "logbook",
+   "hash": "2cec4e0f2b8d3653",
+   "seconds": 1404,
+   "parts": [
+    {
+     "file": "audio/logbook/when-the-weight-lifts.mp3",
+     "bytes": 11232621,
+     "seconds": 1404
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:52:22.594Z",
+   "v": "2cec4e0f2b"
   }
  },
- "updated": "2026-11-26T23:49:44.557Z"
+ "updated": "2026-11-26T23:52:25.866Z"
 }
