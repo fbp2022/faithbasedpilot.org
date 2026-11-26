@@ -14,6 +14,29 @@
     el.textContent = new Date().getFullYear();
   });
 
+  /* ---------- ATC (site admin) link in the footer ---------- */
+  document.querySelectorAll(".footer-bottom p").forEach(function (p) {
+    if (p.querySelector('a[href^="https://atc.faithbasedpilot.org"]')) return;
+    var a = document.createElement("a");
+    a.href = "https://atc.faithbasedpilot.org/";
+    a.textContent = "ATC";
+    a.title = "Site admin";
+    a.rel = "nofollow";
+    p.appendChild(document.createTextNode(" · "));
+    p.appendChild(a);
+  });
+
+  /* ---------- Valiant Faith initiative navigation ---------- */
+  document.querySelectorAll("#primary-nav, .footer-nav").forEach(function (nav) {
+    if (nav.querySelector('a[href="valiant-faith.html"]')) return;
+    var link = document.createElement("a");
+    link.href = "valiant-faith.html";
+    link.textContent = "Valiant Faith";
+    if (window.location.pathname.endsWith("/valiant-faith.html")) link.setAttribute("aria-current", "page");
+    var contact = nav.querySelector('a[href="fbp.html#contact"]');
+    nav.insertBefore(link, contact);
+  });
+
   /* ---------- Mobile nav ---------- */
   (function nav() {
     var toggle = document.querySelector("[data-nav-toggle]");
@@ -42,7 +65,7 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && menu.classList.contains("open")) close();
     });
-    window.matchMedia("(min-width: 861px)").addEventListener("change", function (m) {
+    window.matchMedia("(min-width: 1101px)").addEventListener("change", function (m) {
       if (m.matches) close();
     });
   })();
@@ -207,6 +230,7 @@
         current.items.push({
           title: node.textContent.trim(),
           file: file,
+          summary: (node.getAttribute("data-summary") || "").trim(),
           ext: ext,
           meta: trailing.replace(/[-–|]/g, " ").replace(/[()]/g, " ").replace(/\s+/g, " ").trim()
         });
@@ -235,12 +259,13 @@
         var a = document.createElement("a");
         a.className = "file-card";
         a.href = href;
-        a.setAttribute("data-title", it.title.toLowerCase());
+        a.setAttribute("data-title", (it.title + " " + it.summary).toLowerCase());
         if (isPdf) a.setAttribute("download", "");
         else { a.target = "_blank"; a.rel = "noopener"; }
         a.innerHTML =
           '<span class="file-card__icon ' + it.ext + '">' + it.ext.toUpperCase() + '</span>' +
           '<span><span class="file-card__title">' + esc(it.title) + '</span>' +
+          (it.summary ? '<span class="file-card__summary">' + esc(it.summary) + '</span>' : '') +
           '<span class="file-card__meta">' + (it.meta ? esc(it.meta) : (isPdf ? "PDF study" : "Image")) + '</span></span>' +
           '<span class="file-card__action" aria-hidden="true">' + (isPdf ? downloadSVG : openSVG) + '</span>';
         g.appendChild(a);
@@ -292,18 +317,20 @@
     function applySearch() {
       var q = (lbSearch ? lbSearch.value : "").trim().toLowerCase();
       var shown = 0;
-      // Respect the selected category chip, so clearing a search restores the right sections
-      var activeChip = chipbar && chipbar.querySelector('.chip[aria-pressed="true"]');
-      var cat = activeChip ? activeChip.getAttribute("data-filter") : "all";
       out.querySelectorAll(".logbook-section").forEach(function (sec) {
-        if (cat !== "all" && sec.getAttribute("data-cat") !== cat) { sec.style.display = "none"; return; }
+        if (!q) {
+          var selected = chipbar && chipbar.querySelector('.chip[aria-pressed="true"]');
+          var category = selected ? selected.getAttribute("data-filter") : "all";
+          sec.style.display = category === "all" || sec.getAttribute("data-cat") === category ? "" : "none";
+          if (sec.style.display === "none") return;
+        }
         var secVisible = false;
         sec.querySelectorAll(".file-card").forEach(function (card) {
           var match = !q || (card.getAttribute("data-title") || "").indexOf(q) !== -1;
           card.style.display = match ? "" : "none";
           if (match) { shown++; secVisible = true; }
         });
-        sec.style.display = (!q || secVisible) ? "" : "none";
+        if (q) sec.style.display = secVisible ? "" : "none";
       });
       if (lbCount) lbCount.textContent = shown + (shown === 1 ? " resource" : " resources");
       if (lbNone) lbNone.style.display = shown ? "none" : "block";
