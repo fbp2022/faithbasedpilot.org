@@ -559,7 +559,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:16:02.387Z",
    "v": "ed741ba693"
+  },
+  "hangar/christmas": {
+   "title": "Christmas",
+   "kind": "hangar",
+   "hash": "7411c62c23bec1d2",
+   "seconds": 236.3,
+   "parts": [
+    {
+     "file": "audio/hangar/christmas.mp3",
+     "bytes": 1891245,
+     "seconds": 236.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:18:35.049Z",
+   "v": "7411c62c23"
   }
  },
- "updated": "2026-11-26T21:16:05.744Z"
+ "updated": "2026-11-26T21:18:38.231Z"
 }
