@@ -751,7 +751,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:49:11.690Z",
    "v": "9e7ed3b0c1"
+  },
+  "logbook/how-to-know-when-you-turned-away-from-the-lord": {
+   "title": "How to Know When You Have Turned Away From the Lord",
+   "kind": "logbook",
+   "hash": "755e2230a9ac32ec",
+   "seconds": 534.1,
+   "parts": [
+    {
+     "file": "audio/logbook/how-to-know-when-you-turned-away-from-the-lord.mp3",
+     "bytes": 4273581,
+     "seconds": 534.1
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:50:56.893Z",
+   "v": "755e2230a9"
   }
  },
- "updated": "2026-11-26T21:49:15.145Z"
+ "updated": "2026-11-26T21:51:00.217Z"
 }
