@@ -575,7 +575,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:18:35.049Z",
    "v": "7411c62c23"
+  },
+  "hangar/guilt-shame": {
+   "title": "Guilt & Shame",
+   "kind": "hangar",
+   "hash": "7fd24b4576fbe00b",
+   "seconds": 151.3,
+   "parts": [
+    {
+     "file": "audio/hangar/guilt-shame.mp3",
+     "bytes": 1210989,
+     "seconds": 151.3
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:20:20.129Z",
+   "v": "7fd24b4576"
   }
  },
- "updated": "2026-11-26T21:18:38.231Z"
+ "updated": "2026-11-26T21:20:23.802Z"
 }
