@@ -1108,7 +1108,23 @@
    "machine": "pc",
    "made": "2026-11-26T23:08:28.586Z",
    "v": "d701005af0"
+  },
+  "logbook/forgiving-an-ahab-spirit": {
+   "title": "Forgiving an Ahab Spirit",
+   "kind": "logbook",
+   "hash": "1bc409224a857707",
+   "seconds": 284.9,
+   "parts": [
+    {
+     "file": "audio/logbook/forgiving-an-ahab-spirit.mp3",
+     "bytes": 2279853,
+     "seconds": 284.9
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T23:11:03.179Z",
+   "v": "1bc409224a"
   }
  },
- "updated": "2026-11-26T23:08:31.783Z"
+ "updated": "2026-11-26T23:11:06.551Z"
 }
