@@ -831,7 +831,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:57:33.622Z",
    "v": "908051874d"
+  },
+  "logbook/recognizing-an-ahab-spirit": {
+   "title": "Recognizing an Ahab Spirit",
+   "kind": "logbook",
+   "hash": "eb8c3fdc675445e5",
+   "seconds": 405.8,
+   "parts": [
+    {
+     "file": "audio/logbook/recognizing-an-ahab-spirit.mp3",
+     "bytes": 3247149,
+     "seconds": 405.8
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:59:22.997Z",
+   "v": "eb8c3fdc67"
   }
  },
- "updated": "2026-11-26T21:57:36.819Z"
+ "updated": "2026-11-26T21:59:26.153Z"
 }
