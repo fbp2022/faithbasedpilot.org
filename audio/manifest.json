@@ -527,7 +527,23 @@
    "machine": "pc",
    "made": "2026-11-26T21:11:02.865Z",
    "v": "e176f5c2ea"
+  },
+  "hangar/trusting-god-amidst-jezebel-s-tactics": {
+   "title": "Trusting God Amidst Jezebel's Tactics",
+   "kind": "hangar",
+   "hash": "d1dafb721a409eea",
+   "seconds": 168.6,
+   "parts": [
+    {
+     "file": "audio/hangar/trusting-god-amidst-jezebel-s-tactics.mp3",
+     "bytes": 1349229,
+     "seconds": 168.6
+    }
+   ],
+   "machine": "pc",
+   "made": "2026-11-26T21:12:54.888Z",
+   "v": "d1dafb721a"
   }
  },
- "updated": "2026-11-26T21:11:06.263Z"
+ "updated": "2026-11-26T21:12:58.762Z"
 }
