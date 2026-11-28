@@ -1288,13 +1288,13 @@
   "logbook/islam-under-examination": {
    "title": "Islam Under Examination",
    "kind": "logbook",
-   "hash": "26160f72a53e8e54",
-   "seconds": 24930.1,
+   "hash": "17df0bf34378779a",
+   "seconds": 24928.4,
    "parts": [
     {
      "file": "audio/logbook/islam-under-examination-part1.mp3",
-     "bytes": 22186029,
-     "seconds": 2773.2
+     "bytes": 22172589,
+     "seconds": 2771.5
     },
     {
      "file": "audio/logbook/islam-under-examination-part2.mp3",
@@ -1308,7 +1308,7 @@
     },
     {
      "file": "audio/logbook/islam-under-examination-part4.mp3",
-     "bytes": 22101549,
+     "bytes": 22101357,
      "seconds": 2762.6
     },
     {
@@ -1338,9 +1338,9 @@
     }
    ],
    "machine": "pc",
-   "made": "2026-11-27T23:35:10.634Z",
-   "v": "26160f72a5"
+   "made": "2026-11-28T01:01:48.602Z",
+   "v": "17df0bf343"
   }
  },
- "updated": "2026-11-27T23:35:14.166Z"
+ "updated": "2026-11-28T01:01:52.572Z"
 }
